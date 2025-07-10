@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "189199223338",
+    "project_id": "gold-dev-a8477",
+    "storage_bucket": "gold-dev-a8477.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189199223338:android:3d6db28a8486a2917ad153",
+        "android_client_info": {
+          "package_name": "com.asaar.gold.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsldC6bZ2zpwZBDNheTCj9itakbuDhS_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

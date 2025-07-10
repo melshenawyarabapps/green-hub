@@ -1,0 +1,4 @@
+enum NotificationActionType {
+  all,
+  none,
+}
