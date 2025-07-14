@@ -1,11 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/config/app_config.dart';
 import 'package:gold/core/routing/app_router.dart';
 import 'package:gold/core/routing/app_routes.dart';
+import 'package:gold/core/services/di/di.dart';
 import 'package:gold/core/services/navigator/navigator_service.dart';
 import 'package:gold/core/themes/app_theme.dart';
+import 'package:gold/features/ads/presentation/controllers/ads_controller.dart';
 
 class GoldApp extends StatelessWidget {
   static const GoldApp instance = GoldApp._();
@@ -20,19 +23,23 @@ class GoldApp extends StatelessWidget {
       designSize: const Size(360, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_,child)=>MaterialApp(
-        navigatorKey: NavigatorService.navigatorKey,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        title: AppConfig.instance.appName,
-        theme: AppTheme.instance.lightTheme,
-        darkTheme: AppTheme.instance.darkTheme,
-        themeMode: ThemeMode.dark,
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: AppRouter.instance.onGenerateRoute,
-        initialRoute: AppRoutes.initialRoute,
-      ),
+      builder:
+          (_, child) => MultiBlocProvider(
+            providers: [BlocProvider.value(value: getIt.get<AdsController>())],
+            child: MaterialApp(
+              navigatorKey: NavigatorService.navigatorKey,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              title: AppConfig.instance.appName,
+              theme: AppTheme.instance.lightTheme,
+              darkTheme: AppTheme.instance.darkTheme,
+              themeMode: ThemeMode.dark,
+              debugShowCheckedModeBanner: false,
+              onGenerateRoute: AppRouter.instance.onGenerateRoute,
+              initialRoute: AppRoutes.initialRoute,
+            ),
+          ),
     );
   }
 }

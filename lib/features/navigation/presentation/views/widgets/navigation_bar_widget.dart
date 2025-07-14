@@ -48,7 +48,6 @@ class NavigationBarWidget extends StatelessWidget {
           ),
       ],
       onTap: (index) {
-        currentIndex.value = index;
         controller.animateToPage(
           index,
           duration: Duration(milliseconds: 300),

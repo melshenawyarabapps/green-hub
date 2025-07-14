@@ -1,12 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gold/features/ads/presentation/controllers/ads_controller.dart';
 import 'package:gold/features/bullion/presentation/views/bullion_view.dart';
 import 'package:gold/features/currencies/presentation/views/currencies_view.dart';
 import 'package:gold/features/gold/presentation/views/gold_view.dart';
 import 'package:gold/features/navigation/presentation/views/widgets/navigation_bar_widget.dart';
 
-class NavigationView extends HookWidget {
+class NavigationView extends StatefulHookWidget {
   const NavigationView({super.key});
+
+  @override
+  State<NavigationView> createState() => _NavigationViewState();
+}
+
+class _NavigationViewState extends State<NavigationView> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AdsController>().listenToAppStateChanges();
+      context.read<AdsController>().loadAppOpenAd();
+    });
+  }
+
+  int _attempts = 0;
+
+  void addToAttempts() {
+    _attempts++;
+    if (_attempts == 1 || _attempts % 5 == 0) {
+      context.read<AdsController>().loadInterstitialAd();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +42,7 @@ class NavigationView extends HookWidget {
         controller: controller,
         onPageChanged: (index) {
           currentIndex.value = index;
+          addToAttempts();
         },
         itemBuilder:
             (_, index) =>

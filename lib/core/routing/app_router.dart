@@ -14,9 +14,15 @@ class AppRouter {
   Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.initialRoute:
-        return MaterialPageRoute(builder: (_) => const NavigationView());
+        return MaterialPageRoute(
+          builder:
+              (_) => const NavigationView(),
+        );
       case AppRoutes.calculatorView:
-        return MaterialPageRoute(builder: (_) => CalculatorView(type: settings.arguments as CurrencyType));
+        return MaterialPageRoute(
+          builder:
+              (_) => CalculatorView(type: settings.arguments as CurrencyType),
+        );
       default:
         return MaterialPageRoute(
           builder:
