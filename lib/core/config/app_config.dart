@@ -1,3 +1,4 @@
+import 'package:cached_network_image_plus/cached_network_image_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gold/core/services/cache/cache_service.dart';
@@ -46,6 +47,7 @@ class AppConfig {
     await Future.wait([
       getIt.get<CacheService>().init(CacheConstants.appBox + flavor),
       NotificationsService.init(),
+      CacheImageService.init(),
     ]);
 
     FlutterNativeSplash.remove();
