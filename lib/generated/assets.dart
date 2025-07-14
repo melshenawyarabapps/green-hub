@@ -2,8 +2,26 @@
 class Assets {
   Assets._();
 
-  static const String devLogoDev = 'assets/dev/logo.png';
+  static const String devCurrency = 'assets/dev/currency.png';
+  static const String devLogo = 'assets/dev/logo.png';
+  static const String iconsBullionSelected = 'assets/icons/bullion-selected.png';
+  static const String iconsBullionUnselected = 'assets/icons/bullion-unselected.png';
+  static const String iconsCalculator = 'assets/icons/calculator.png';
+  static const String iconsCurrenciesSelected = 'assets/icons/currencies-selected.png';
+  static const String iconsCurrenciesUnselected = 'assets/icons/currencies-unselected.png';
+  static const String iconsCurrencyDollar = 'assets/icons/currency-dollar.png';
+  static const String iconsGoldSelected = 'assets/icons/gold-selected.png';
+  static const String iconsMoreSelected = 'assets/icons/more-selected.png';
+  static const String iconsMoreUnselected = 'assets/icons/more-unselected.png';
+  static const String iconsPercentage = 'assets/icons/percentage.png';
+  static const String iconsReload = 'assets/icons/reload.png';
+  static const String iconsShare = 'assets/icons/share.png';
+  static const String iconsTrendDown = 'assets/icons/trend-down.png';
+  static const String iconsTrendUp = 'assets/icons/trend-up.png';
   static const String imagesEmpty = 'assets/images/empty.png';
+  static const String saCurrency = 'assets/sa/currency.png';
+  static const String saLogo = 'assets/sa/logo.png';
+  static const String testDemo = 'assets/test/demo.png';
   static const String translationsAr = 'assets/translations/ar.json';
   static const String translationsEn = 'assets/translations/en.json';
 

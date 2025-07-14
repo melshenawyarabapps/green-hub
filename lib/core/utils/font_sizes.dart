@@ -7,6 +7,8 @@ class FontSizes {
 
   static FontSizes get instance => _instance ??= FontSizes._();
 
+  double get s6 => 6.sp;
+
   double get s7 => 7.sp;
 
   double get s8 => 8.sp;

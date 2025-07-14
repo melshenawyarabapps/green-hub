@@ -5,6 +5,7 @@ import 'package:gold/core/services/di/di.dart';
 import 'package:gold/core/services/notifications/notifications_service.dart';
 import 'package:gold/core/themes/app_colors.dart';
 import 'package:gold/core/utils/cache_constants.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gold/firebase_options_dev.dart' as dev;
@@ -21,6 +22,7 @@ class AppConfig {
 
   String baseUrl = '';
   String appLogo = '';
+  String appCurrency = '';
   String appName = '';
   String currentFlavor = '';
   AppColors? lightColors;
@@ -31,11 +33,16 @@ class AppConfig {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
     currentFlavor = flavor;
     appLogo = 'assets/$flavor/logo.png';
+    appCurrency = 'assets/$flavor/currency.png';
     appName = 'Gold $flavor';
     baseUrl = 'https://api.$flavor.com/api/v3/';
     setUp();
     initializeColors(flavor);
-    await Future.wait([Hive.initFlutter(), initializeFirebaseApp(flavor)]);
+    await Future.wait([
+      Hive.initFlutter(),
+      initializeFirebaseApp(flavor),
+      MobileAds.instance.initialize(),
+    ]);
     await Future.wait([
       getIt.get<CacheService>().init(CacheConstants.appBox + flavor),
       NotificationsService.init(),

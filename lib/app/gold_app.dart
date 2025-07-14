@@ -20,7 +20,7 @@ class GoldApp extends StatelessWidget {
       designSize: const Size(360, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(
+      builder: (_,child)=>MaterialApp(
         navigatorKey: NavigatorService.navigatorKey,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
@@ -28,10 +28,10 @@ class GoldApp extends StatelessWidget {
         title: AppConfig.instance.appName,
         theme: AppTheme.instance.lightTheme,
         darkTheme: AppTheme.instance.darkTheme,
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.dark,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.instance.onGenerateRoute,
-        initialRoute: AppRoutes.instance.initialRoute,
+        initialRoute: AppRoutes.initialRoute,
       ),
     );
   }

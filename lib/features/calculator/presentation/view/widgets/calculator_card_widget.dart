@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gold/core/config/app_config.dart';
+import 'package:gold/core/utils/app_padding.dart';
+import 'package:gold/core/utils/font_sizes.dart';
+import 'package:gold/features/calculator/data/models/calculator_model.dart';
+import 'package:gold/generated/assets.dart';
+
+class CalculatorCardWidget extends StatelessWidget {
+  const CalculatorCardWidget({
+    super.key,
+    required this.model,
+    required this.index,
+  });
+
+  final CardModel model;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (_, size) {
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            border:
+                model.isSelected
+                    ? Border.all(
+                      color: Theme.of(context).secondaryHeaderColor,
+                      width: 1.w,
+                    )
+                    : null,
+            color: Theme.of(context).shadowColor,
+          ),
+          child: Padding(
+            padding: AppPadding.instance.all(AppPadding.instance.p6),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  model.title,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: FontSizes.instance.s10,
+                  ),
+                ),
+                Row(
+                  children: [
+                    if (model.hasPercent) SizedBox.shrink(),
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          model.price,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    ),
+                    if (model.hasPercent)
+                      Image.asset(
+                        model.isPercent
+                            ? Assets.iconsPercentage
+                            : AppConfig.instance.appCurrency,
+                        height: size.maxHeight * 0.5,
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

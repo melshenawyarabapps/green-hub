@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:gold/core/utils/app_exceptions.dart';
 import 'package:gold/translations/locale_keys.g.dart';
 
 
@@ -32,7 +31,7 @@ class ServerFailure extends Failure {
       }
     } catch (e) {
       return ServerFailure(
-        LocaleKeys.opps_an_unexpected_error_occurred_please_try_again_later
+        LocaleKeys.oppsAnUnexpectedErrorOccurredPleaseTryAgainLater
             .tr(),
       );
     }
@@ -46,33 +45,30 @@ class ServerFailure extends Failure {
     switch (exception.type) {
       case DioExceptionType.sendTimeout:
         return ServerFailure(
-          LocaleKeys.send_time_out_please_try_again_later.tr(),
+          LocaleKeys.sendTimeOutPleaseTryAgainLater.tr(),
             statusCode:
             exception.response?.statusCode,
         );
       case DioExceptionType.receiveTimeout:
         return ServerFailure(
-          LocaleKeys.receive_time_out_please_try_again_later.tr(),statusCode:
+          LocaleKeys.receiveTimeOutPleaseTryAgainLater.tr(),statusCode:
         exception.response?.statusCode,
         );
       case DioExceptionType.connectionError:
         return ServerFailure(
-          LocaleKeys.connection_error_please_try_again_later.tr(),statusCode:
+          LocaleKeys.connectionErrorPleaseTryAgainLater.tr(),statusCode:
         exception.response?.statusCode,
         );
       case DioExceptionType.cancel:
         return ServerFailure(
-          LocaleKeys.request_has_been_cancelled_please_try_again_later.tr(),statusCode:
+          LocaleKeys.requestHasBeenCancelledPleaseTryAgainLater.tr(),statusCode:
         exception.response?.statusCode,
         );
       case DioExceptionType.badResponse:
         if (exception.response!.statusCode == 440) {
-          AppExceptions.updateException(
-            LocaleKeys.opps_you_need_to_login_again.tr(),
-          );
 
           return ServerFailure(
-            LocaleKeys.opps_you_need_to_login_again.tr(),
+            LocaleKeys.oppsYouNeedToUpdateApp.tr(),
             statusCode: 440,
           );
         } else if (exception.response!.data['message'] != null) {
@@ -82,13 +78,13 @@ class ServerFailure extends Failure {
           );
         }
         return ServerFailure(
-          LocaleKeys.opps_an_unexpected_error_occurred_please_try_again_later
+          LocaleKeys.oppsAnUnexpectedErrorOccurredPleaseTryAgainLater
               .tr(),statusCode:
         exception.response?.statusCode,
         );
       default:
         return ServerFailure(
-          LocaleKeys.opps_an_unexpected_error_occurred_please_try_again_later
+          LocaleKeys.oppsAnUnexpectedErrorOccurredPleaseTryAgainLater
               .tr(),statusCode:
         exception.response?.statusCode,
         );

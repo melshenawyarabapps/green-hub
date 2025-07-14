@@ -2,7 +2,7 @@
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show defaultTargetPlatform, TargetPlatform;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -16,39 +16,17 @@ import 'package:flutter/foundation.dart'
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-    if (kIsWeb) {
-      return web;
-    }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
         return ios;
-      case TargetPlatform.macOS:
-        return macos;
-      case TargetPlatform.windows:
-        return windows;
-      case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
         );
     }
   }
-
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD8y_dwSlS9DfEwO7jfKOg0IHxCg8m_fUo',
-    appId: '1:189199223338:web:689999faa1a2caa87ad153',
-    messagingSenderId: '189199223338',
-    projectId: 'gold-dev-a8477',
-    authDomain: 'gold-dev-a8477.firebaseapp.com',
-    storageBucket: 'gold-dev-a8477.firebasestorage.app',
-    measurementId: 'G-BCJY4NL6HN',
-  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDsldC6bZ2zpwZBDNheTCj9itakbuDhS_g',
@@ -65,24 +43,5 @@ class DefaultFirebaseOptions {
     projectId: 'gold-dev-a8477',
     storageBucket: 'gold-dev-a8477.firebasestorage.app',
     iosBundleId: 'com.asaar.gold.dev',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDwDHEnMcb9RfQTWzJJjrgpMRC6ug89ic4',
-    appId: '1:189199223338:ios:8b29634b32e406d97ad153',
-    messagingSenderId: '189199223338',
-    projectId: 'gold-dev-a8477',
-    storageBucket: 'gold-dev-a8477.firebasestorage.app',
-    iosBundleId: 'com.asaar.gold',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyD8y_dwSlS9DfEwO7jfKOg0IHxCg8m_fUo',
-    appId: '1:189199223338:web:cf554b09df0b3be27ad153',
-    messagingSenderId: '189199223338',
-    projectId: 'gold-dev-a8477',
-    authDomain: 'gold-dev-a8477.firebaseapp.com',
-    storageBucket: 'gold-dev-a8477.firebasestorage.app',
-    measurementId: 'G-XHRKHM8RFP',
   );
 }

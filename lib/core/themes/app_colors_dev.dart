@@ -3,10 +3,11 @@ import 'package:gold/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class LightColorsDev implements AppColors {
-
   static LightColorsDev? _instance;
+
   static LightColorsDev get instance => _instance ??= const LightColorsDev._();
-  const  LightColorsDev._();
+
+  const LightColorsDev._();
 
   @override
   Color get primaryColor => Color(0xff20043d);
@@ -67,22 +68,32 @@ class LightColorsDev implements AppColors {
 
   @override
   Color get greyColor1 => Colors.grey;
-}
 
+  @override
+  Color get primary900Color => Color(0xff141926);
+
+  @override
+  Color get greenColor1 => Colors.green;
+
+  @override
+  Color get redColor1 => Colors.red;
+}
 
 class DarkColorsDev implements AppColors {
   static DarkColorsDev? _instance;
+
   static DarkColorsDev get instance => _instance ??= const DarkColorsDev._();
-  const  DarkColorsDev._();
+
+  const DarkColorsDev._();
 
   @override
-  Color get primaryColor => Color(0xff20043d);
+  Color get primaryColor => Color(0xff1b212f);
 
   @override
-  Color get secondaryColor => Color(0xff1d1586);
+  Color get secondaryColor => Color(0xffedc781);
 
   @override
-  Color get thirdColor => Color(0xff16042c);
+  Color get thirdColor => Color(0xff033648);
 
   @override
   Color get transparent => Colors.transparent;
@@ -134,4 +145,12 @@ class DarkColorsDev implements AppColors {
 
   @override
   Color get greyColor1 => Colors.grey;
+
+  @override
+  Color get primary900Color => Color(0xff141926);
+  @override
+  Color get greenColor1 => Colors.green;
+
+  @override
+  Color get redColor1 => Colors.red;
 }

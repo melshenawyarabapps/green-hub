@@ -1,11 +1,7 @@
- class AppRoutes {
+ abstract class AppRoutes {
 
-  final String initialRoute = '/';
-  static AppRoutes? _instance;
-
-  static AppRoutes get instance => _instance ??= AppRoutes._();
-
-  AppRoutes._();
+  static const String initialRoute = '/';
+  static const  String calculatorView = '/calculatorView';
 
 
 }

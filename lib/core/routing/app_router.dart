@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:gold/core/enums/currency_enums.dart';
+import 'package:gold/core/routing/app_routes.dart';
+import 'package:gold/features/calculator/presentation/view/calculator_view.dart';
+import 'package:gold/features/navigation/presentation/views/navigation_view.dart';
 
- class AppRouter {
+class AppRouter {
+  static AppRouter? _instance;
 
-   static AppRouter? _instance;
+  static AppRouter get instance => _instance ??= AppRouter._();
 
-   static AppRouter get instance => _instance ??= AppRouter._();
+  AppRouter._();
 
-   AppRouter._();
-
-
-
-   Route onGenerateRoute(RouteSettings settings) {
+  Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutes.initialRoute:
+        return MaterialPageRoute(builder: (_) => const NavigationView());
+      case AppRoutes.calculatorView:
+        return MaterialPageRoute(builder: (_) => CalculatorView(type: settings.arguments as CurrencyType));
       default:
         return MaterialPageRoute(
           builder:

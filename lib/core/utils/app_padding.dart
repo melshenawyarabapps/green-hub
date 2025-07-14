@@ -15,17 +15,25 @@ class AppPadding {
       EdgeInsets.symmetric(horizontal: width).w;
 
   EdgeInsetsDirectional onlyPadding({
-    start = 0.0,
-    top = 0.0,
-    end = 0.0,
-    bottom = 0.0,
+    double start = 0.0,
+    double top = 0.0,
+    double  end = 0.0,
+    double  bottom = 0.0,
   }) => EdgeInsetsDirectional.only(
     top: top.h,
     bottom: bottom.h,
     start: start.w,
     end: end.w,
   );
+  EdgeInsetsDirectional all(double all) => EdgeInsetsDirectional.only(
+    top: all.h,
+    bottom: all.h,
+    start: all.w,
+    end: all.w,
+  );
 
+  double get p4 => 4;
+  double get p6 => 6;
   double get p8 => 8;
 
   double get p10 => 10;
