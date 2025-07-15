@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'gold-sa-8364b.firebasestorage.app',
     iosBundleId: 'com.asaar.gold.sa',
   );
+
 }
