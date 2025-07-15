@@ -59,7 +59,7 @@ class AppConfig {
       'sa' => sa.DefaultFirebaseOptions.currentPlatform,
       _ => throw UnsupportedError('Invalid flavor: $flavor'),
     };
-    await Firebase.initializeApp(options: firebaseOptions);
+    await Firebase.initializeApp(options: firebaseOptions,name: appName.replaceAll(' ', ''));
   }
 
   void initializeColors(String flavor) {

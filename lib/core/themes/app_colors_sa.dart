@@ -86,14 +86,15 @@ class DarkColorsDev implements AppColors {
 
   const DarkColorsDev._();
 
-  @override
-  Color get primaryColor => Color(0xff20043d);
 
   @override
-  Color get secondaryColor => Color(0xff1d1586);
+  Color get primaryColor => Color(0xff1b212f);
 
   @override
-  Color get thirdColor => Color(0xff16042c);
+  Color get secondaryColor => Color(0xffedc781);
+
+  @override
+  Color get thirdColor => Color(0xff033648);
 
   @override
   Color get transparent => Colors.transparent;
@@ -148,7 +149,6 @@ class DarkColorsDev implements AppColors {
 
   @override
   Color get primary900Color => Color(0xff141926);
-
   @override
   Color get greenColor1 => Colors.green;
 
