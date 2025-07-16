@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-abstract class AppColors {
-  Color get primaryColor;
+class AppColors {
+  const AppColors();
+  Color get primaryColor => const Color(0xff1b212f);
 
-  Color get secondaryColor;
+  Color get secondaryColor => const Color(0xffedc781);
 
-  Color get thirdColor;
-
-  Color get primary900Color;
+  Color get thirdColor => const Color(0xff033648);
 
   Color get transparent => Colors.transparent;
+
+  Color get primary900Color => const Color(0xff141926);
 
   Color get whiteColor => Colors.white;
 

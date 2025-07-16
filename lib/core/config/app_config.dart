@@ -13,8 +13,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gold/firebase_options_dev.dart' as dev;
 import 'package:gold/firebase_options_sa.dart' as sa;
-import 'package:gold/core/themes/app_colors_dev.dart' as dev_colors;
-import 'package:gold/core/themes/app_colors_sa.dart' as sa_colors;
+import 'package:gold/core/themes/app_colors_dev.dart';
+import 'package:gold/core/themes/app_colors_sa.dart';
 
 class AppConfig {
   static AppConfig? _instance;
@@ -71,13 +71,13 @@ class AppConfig {
     switch (flavor) {
       case 'dev':
         {
-          lightColors = dev_colors.LightColorsDev.instance;
-          darkColors = dev_colors.DarkColorsDev.instance;
+          lightColors = LightColorsDev.instance;
+          darkColors =DarkColorsDev.instance;
         }
       case 'sa':
         {
-          lightColors = sa_colors.LightColorsDev.instance;
-          darkColors = sa_colors.DarkColorsDev.instance;
+          lightColors = LightColorsSa.instance;
+          darkColors = DarkColorsSa.instance;
         }
       default:
         throw UnsupportedError('Invalid flavor: $flavor');
