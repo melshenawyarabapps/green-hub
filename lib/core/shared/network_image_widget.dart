@@ -22,7 +22,6 @@ class NetworkImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedImageWidget(
       url: imageUrl,
-      key: ValueKey(imageUrl),
       fit: fit,
       placeholder: PlaceHolderWidget(emptyHolder: emptyHolder, holder: holder),
     );
