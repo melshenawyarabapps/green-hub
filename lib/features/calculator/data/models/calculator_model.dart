@@ -1,20 +1,31 @@
 import 'package:equatable/equatable.dart';
+import 'package:gold/core/enums/currency_enums.dart';
 
 class CalculatorModel extends Equatable {
   final String totalPrice;
   final List<CardModel> cards;
+  final CurrencyType type;
 
-  const CalculatorModel({required this.totalPrice, required this.cards});
+  const CalculatorModel({
+    required this.totalPrice,
+    required this.cards,
+    required this.type,
+  });
 
-  CalculatorModel copyWith({String? totalPrice, List<CardModel>? cards}) {
+  CalculatorModel copyWith({
+    String? totalPrice,
+    List<CardModel>? cards,
+    CurrencyType? type,
+  }) {
     return CalculatorModel(
       totalPrice: totalPrice ?? this.totalPrice,
       cards: cards ?? this.cards,
+      type: type ?? this.type,
     );
   }
 
   @override
-  List<Object?> get props => [totalPrice, cards];
+  List<Object?> get props => [totalPrice, cards, type];
 }
 
 class CardModel extends Equatable {

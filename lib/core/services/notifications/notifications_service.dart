@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -7,17 +6,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:gold/core/enums/notifications_enums.dart';
 import 'package:gold/core/models/notification_action_model.dart';
+import 'package:gold/core/services/logger/app_logger.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  log('_firebaseMessagingBackgroundHandler : ${message.toMap()}');
+  AppLogger.instance.debug('_firebaseMessagingBackgroundHandler : ${message.toMap()}');
 }
 
 @pragma('vm:entry-point')
 Future<void> _onDidReceiveBackgroundNotificationResponse(
   NotificationResponse response,
 ) async {
-  log('_onDidReceiveBackgroundNotificationResponse : ${response.payload}');
+  AppLogger.instance.debug('_onDidReceiveBackgroundNotificationResponse : ${response.payload}');
 }
 
 abstract class NotificationsService {
@@ -61,7 +61,7 @@ abstract class NotificationsService {
   static void _messagingListener() {
     FirebaseMessaging.onMessage.listen(_showFlutterNotification);
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
-      log('onMessageOpenedApp : ${event.toMap()}');
+      AppLogger.instance.debug('onMessageOpenedApp : ${event.toMap()}');
       _notificationActions(NotificationActionModel.fromJson(event.data));
     });
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -76,7 +76,7 @@ abstract class NotificationsService {
         iOS: DarwinInitializationSettings(),
       ),
       onDidReceiveNotificationResponse: (NotificationResponse response) {
-        log('onDidReceiveNotificationResponse : ${response.payload}');
+        AppLogger.instance.debug('onDidReceiveNotificationResponse : ${response.payload}');
         final model = NotificationActionModel.fromJson(
           json.decode(response.payload ?? ''),
         );
@@ -95,7 +95,7 @@ abstract class NotificationsService {
   }
 
   static void _showFlutterNotification(RemoteMessage message) async {
-    log('_showFlutterNotification : ${message.data}');
+    AppLogger.instance.debug('_showFlutterNotification : ${message.data}');
     RemoteNotification? notification = message.notification;
     Uint8List? largeIcon;
     if (notification?.android?.imageUrl != null) {
@@ -119,7 +119,7 @@ abstract class NotificationsService {
             largeIcon:
                 largeIcon != null ? ByteArrayAndroidBitmap(largeIcon) : null,
             playSound: true,
-            sound: RawResourceAndroidNotificationSound('notification'),
+            sound: const RawResourceAndroidNotificationSound('notification'),
           ),
           iOS: DarwinNotificationDetails(
             presentAlert: true,
@@ -141,7 +141,7 @@ abstract class NotificationsService {
   }
 
   static void _notificationActions(NotificationActionModel model) {
-    log('_notificationActions : ${model.action}');
+    AppLogger.instance.debug('_notificationActions : ${model.action}');
     switch (model.action) {
       default:
         break;

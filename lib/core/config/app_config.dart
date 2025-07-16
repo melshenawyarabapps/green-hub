@@ -1,9 +1,11 @@
 import 'package:cached_network_image_plus/cached_network_image_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gold/core/services/cache/cache_service.dart';
 import 'package:gold/core/services/di/di.dart';
 import 'package:gold/core/services/notifications/notifications_service.dart';
+import 'package:gold/core/services/observers/bloc_lifecycle_observer.dart';
 import 'package:gold/core/themes/app_colors.dart';
 import 'package:gold/core/utils/cache_constants.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -38,6 +40,9 @@ class AppConfig {
     appName = 'Gold $flavor';
     baseUrl = 'https://api.$flavor.com/api/v3/';
     setUp();
+    if (flavor == 'dev') {
+      Bloc.observer = BlocLifecycleObserver.instance;
+    }
     initializeColors(flavor);
     await Future.wait([
       Hive.initFlutter(),
@@ -59,7 +64,7 @@ class AppConfig {
       'sa' => sa.DefaultFirebaseOptions.currentPlatform,
       _ => throw UnsupportedError('Invalid flavor: $flavor'),
     };
-    await Firebase.initializeApp(options: firebaseOptions,name: appName.replaceAll(' ', ''));
+    await Firebase.initializeApp(options: firebaseOptions);
   }
 
   void initializeColors(String flavor) {

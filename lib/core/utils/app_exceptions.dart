@@ -1,9 +1,14 @@
-abstract class AppExceptions {
-  static networkException() {}
+ class AppExceptions {
 
-  static updateException([String? message]) {}
+  AppExceptions._();
+  static AppExceptions? _instance;
+  static AppExceptions get instance => _instance ??= AppExceptions._();
 
-  static unExpectedException([String? message]) {}
+  void networkException() {}
 
-  static success(String message) {}
+  void updateException([String? message]) {}
+
+  void unExpectedException([String? message]) {}
+
+  void success(String message) {}
 }

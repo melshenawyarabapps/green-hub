@@ -21,11 +21,11 @@ class ListViewWidget extends StatelessWidget {
                 AppPadding.instance.p16,
               ),
               itemCount: 10,
-              itemBuilder: (_, index) => index==0?BannerAdWidget():ListViewItemWidget(type: type),
+              itemBuilder: (_, index) => index==0?const BannerAdWidget():ListViewItemWidget(type: type),
               separatorBuilder: (_, __) => 8.verticalSpace,
             ),
           ),
-          BannerAdWidget(),
+          const BannerAdWidget(),
         ],
       ),
     );

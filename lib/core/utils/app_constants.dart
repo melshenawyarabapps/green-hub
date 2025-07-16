@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'package:gold/core/enums/ads_enums.dart';
-
 class AppConstants {
   AppConstants._();
 

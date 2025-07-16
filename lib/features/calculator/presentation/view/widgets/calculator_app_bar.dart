@@ -17,7 +17,7 @@ class CalculatorAppBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: () {
           context.pop();
         },
-        icon: Icon(Icons.arrow_back_ios),
+        icon: const Icon(Icons.arrow_back_ios),
       ),
       title: AppBarTitle(type: type,isCalculator: true,),
     );

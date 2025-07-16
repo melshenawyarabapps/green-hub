@@ -1,8 +1,7 @@
 
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:gold/core/services/logger/app_logger.dart';
 import 'package:gold/translations/locale_keys.g.dart';
 
 
@@ -41,7 +40,7 @@ class ServerFailure extends Failure {
   }
 
   factory ServerFailure._fromDioException(DioException exception) {
-    log(exception.response!.data.toString());
+    AppLogger.instance.error(exception.response!.data.toString());
     switch (exception.type) {
       case DioExceptionType.sendTimeout:
         return ServerFailure(

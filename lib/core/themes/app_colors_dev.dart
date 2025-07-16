@@ -10,13 +10,13 @@ class LightColorsDev implements AppColors {
   const LightColorsDev._();
 
   @override
-  Color get primaryColor => Color(0xff20043d);
+  Color get primaryColor => const Color(0xff20043d);
 
   @override
-  Color get secondaryColor => Color(0xff1d1586);
+  Color get secondaryColor => const Color(0xff1d1586);
 
   @override
-  Color get thirdColor => Color(0xff16042c);
+  Color get thirdColor => const Color(0xff16042c);
 
   @override
   Color get transparent => Colors.transparent;
@@ -70,7 +70,7 @@ class LightColorsDev implements AppColors {
   Color get greyColor1 => Colors.grey;
 
   @override
-  Color get primary900Color => Color(0xff141926);
+  Color get primary900Color => const Color(0xff141926);
 
   @override
   Color get greenColor1 => Colors.green;
@@ -87,13 +87,13 @@ class DarkColorsDev implements AppColors {
   const DarkColorsDev._();
 
   @override
-  Color get primaryColor => Color(0xff1b212f);
+  Color get primaryColor => const Color(0xff1b212f);
 
   @override
-  Color get secondaryColor => Color(0xffedc781);
+  Color get secondaryColor => const Color(0xffedc781);
 
   @override
-  Color get thirdColor => Color(0xff033648);
+  Color get thirdColor => const Color(0xff033648);
 
   @override
   Color get transparent => Colors.transparent;
@@ -147,7 +147,7 @@ class DarkColorsDev implements AppColors {
   Color get greyColor1 => Colors.grey;
 
   @override
-  Color get primary900Color => Color(0xff141926);
+  Color get primary900Color => const Color(0xff141926);
   @override
   Color get greenColor1 => Colors.green;
 

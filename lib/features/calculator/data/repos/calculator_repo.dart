@@ -1,0 +1,194 @@
+import 'package:dartz/dartz.dart';
+import 'package:gold/core/enums/currency_enums.dart';
+import 'package:gold/core/enums/number_enums.dart';
+import 'package:gold/core/extensions/string_extensions.dart';
+import 'package:gold/core/services/api/api_errors.dart';
+import 'package:gold/core/services/api/api_service.dart';
+import 'package:gold/features/calculator/data/models/calculator_model.dart';
+import 'package:gold/features/calculator/data/models/category_model.dart';
+import 'package:gold/features/calculator/data/models/number_model.dart';
+
+class CalculatorRepo {
+  final ApiService _apiService;
+
+  CalculatorRepo(this._apiService);
+
+  Future<Either<Failure, List<CategoryModel>>> getCategories(
+    CurrencyType type,
+  ) async {
+    try {
+      return Right(switch (type) {
+        CurrencyType.gold => [
+          const CategoryModel(id: 1, name: 'عيار 24', price: '5300.0'),
+          const CategoryModel(id: 2, name: 'عيار 21', price: '4500.0'),
+          const CategoryModel(id: 3, name: 'عيار 18', price: '3800.0'),
+          const CategoryModel(id: 4, name: 'عيار 14', price: '3000.0'),
+        ],
+        CurrencyType.currencies => [
+          const CategoryModel(id: 1, name: 'دولار أمريكي', price: '100.0'),
+          const CategoryModel(id: 2, name: 'يورو', price: '90.0'),
+          const CategoryModel(id: 3, name: 'جنيه إسترليني', price: '80.0'),
+          const CategoryModel(id: 4, name: 'ين ياباني', price: '70.0'),
+        ],
+        CurrencyType.bullion => [
+          const CategoryModel(id: 1, name: 'سبائك ذهبية', price: '5000.0'),
+          const CategoryModel(id: 2, name: 'سبائك فضية', price: '3000.0'),
+          const CategoryModel(id: 3, name: 'سبائك بلاتينية', price: '7000.0'),
+        ],
+      });
+    } catch (e) {
+      return Left(ServerFailure.generalException(e));
+    }
+  }
+
+  CalculatorModel? onCardPressed(CalculatorModel? model, int index) {
+    if (model == null) {
+      return null;
+    }
+
+    final List<CardModel> newCards = List.from(model.cards);
+
+    for (int i = 0; i < newCards.length; i++) {
+      newCards[i] = newCards[i].copyWith(isSelected: i == index);
+    }
+    return model.copyWith(
+      cards: newCards,
+    );
+  }
+
+  CalculatorModel? onNumberPressed(
+    CalculatorModel? calculatorModel,
+    NumberModel numberModel,
+  ) {
+    if (calculatorModel == null) {
+      return null;
+    }
+    final newCalculatorModel = CalculatorModel(
+      totalPrice: calculatorModel.totalPrice,
+      cards: List.from(calculatorModel.cards),
+      type: calculatorModel.type,
+    );
+    final selectedCardIndex = newCalculatorModel.cards.indexWhere(
+      (element) => element.isSelected,
+    );
+    if (selectedCardIndex == -1) {
+      return newCalculatorModel;
+    }
+    CardModel selectedCard = newCalculatorModel.cards[selectedCardIndex];
+    final price = selectedCard.price.parsePrice;
+
+    switch (numberModel.type) {
+      case NumberType.number:
+        if (price == 0) {
+          selectedCard = selectedCard.copyWith(
+            price: numberModel.number == '.' ? null : numberModel.number,
+          );
+        } else {
+          if (selectedCard.isPercent) {
+            final newPrice =
+                (selectedCard.price + numberModel.number).parsePrice;
+            if (newPrice <= 100) {
+              selectedCard = selectedCard.copyWith(
+                price: selectedCard.price + numberModel.number,
+              );
+            } else {
+              selectedCard = selectedCard.copyWith(price: '100');
+            }
+          } else {
+            selectedCard = selectedCard.copyWith(
+              price: selectedCard.price + numberModel.number,
+            );
+          }
+        }
+        break;
+      case NumberType.delete:
+        if (price != 0 && selectedCard.price.length != 1) {
+          selectedCard = selectedCard.copyWith(
+            price: selectedCard.price.substring(
+              0,
+              selectedCard.price.length - 1,
+            ),
+          );
+        } else {
+          selectedCard = selectedCard.copyWith(price: '00.0');
+        }
+        break;
+      case NumberType.c:
+        selectedCard = selectedCard.copyWith(price: '00.0');
+        break;
+      case NumberType.ac:
+        final List<CardModel> newCards = [];
+        for (var card in newCalculatorModel.cards) {
+          newCards.add(card.copyWith(price: '00.0'));
+        }
+        return newCalculatorModel.copyWith(cards: newCards);
+      case NumberType.equal:
+        return newCalculatorModel.copyWith(
+          totalPrice: _getTotalPrice(newCalculatorModel),
+        );
+    }
+    newCalculatorModel.cards[selectedCardIndex] = selectedCard;
+    return newCalculatorModel;
+  }
+
+  String _getTotalPrice(CalculatorModel model) {
+    switch (model.type) {
+      default:
+        num grams = 0;
+        num price = 0;
+        num work = 0;
+        num tax = 0;
+        final workCard = model.cards[2];
+        final taxCard = model.cards[3];
+        grams = model.cards[0].price.parsePrice;
+        price = model.cards[1].price.parsePrice;
+        work =
+            workCard.hasPercent && workCard.isPercent
+                ? (price / 100) * workCard.price.parsePrice
+                : workCard.price.parsePrice;
+        tax =
+            taxCard.hasPercent && taxCard.isPercent
+                ? (price / 100) * taxCard.price.parsePrice
+                : taxCard.price.parsePrice;
+        final totalPrice = grams * (price + work + tax);
+        return totalPrice == 0 ? '00.0' : totalPrice.toString();
+    }
+  }
+
+  CalculatorModel? onCategoryPressed(
+    CalculatorModel? calculatorModel,
+    CategoryModel categoryModel,
+  ) {
+    if (calculatorModel == null) {
+      return null;
+    }
+
+    final newCalculatorModel = CalculatorModel(
+      totalPrice: calculatorModel.totalPrice,
+      cards: List.from(calculatorModel.cards),
+      type: calculatorModel.type,
+    );
+    switch (newCalculatorModel.type) {
+      default:
+        newCalculatorModel.cards[1] = newCalculatorModel.cards[1].copyWith(
+          price: categoryModel.price,
+        );
+        break;
+    }
+
+    return newCalculatorModel;
+  }
+
+  CalculatorModel? onPercentPressed(CalculatorModel? model, int index) {
+    if (model == null) {
+      return null;
+    }
+
+    final List<CardModel> newCards = List.from(model.cards);
+    newCards[index] = model.cards[index].copyWith(
+      isPercent: !model.cards[index].isPercent,
+      price: '00.0'
+    );
+    return model.copyWith(cards: newCards);
+  }
+}

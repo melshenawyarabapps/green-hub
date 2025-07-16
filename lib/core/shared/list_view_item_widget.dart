@@ -18,7 +18,7 @@ class ListViewItemWidget extends StatelessWidget {
       borderColor: Theme.of(context).secondaryHeaderColor,
       child: Row(
         children: [
-          TextImageWidget(
+          const TextImageWidget(
             text: 'عيار 24',
             directionalType: DirectionalType.start,
             imagePath: Assets.testDemo,
@@ -34,7 +34,7 @@ class ListViewItemWidget extends StatelessWidget {
             isDollar: !type.isCurrency,
             showIcon:  !type.isCurrency,
           ),
-          if (type.isGold) ChangeWidget(),
+          if (type.isGold) const ChangeWidget(),
         ],
       ),
     );

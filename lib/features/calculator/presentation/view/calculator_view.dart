@@ -1,26 +1,38 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/utils/app_padding.dart';
 import 'package:gold/features/ads/presentation/views/fluid_ad_mobile_widget.dart.dart';
-import 'package:gold/features/calculator/data/models/calculator_model.dart';
+import 'package:gold/features/calculator/presentation/controllers/calculator_controller.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_app_bar.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_cards_widget.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/categories_widget.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/numbers_widget.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/total_price_widget.dart';
-import 'package:gold/translations/locale_keys.g.dart';
 
-class CalculatorView extends StatelessWidget {
+class CalculatorView extends StatefulWidget {
   const CalculatorView({super.key, required this.type});
 
   final CurrencyType type;
 
   @override
+  State<CalculatorView> createState() => _CalculatorViewState();
+}
+
+class _CalculatorViewState extends State<CalculatorView> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<CalculatorController>().init(widget.type);
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CalculatorAppBar(type: type),
+      appBar: CalculatorAppBar(type: widget.type),
       body: ListView(
         padding: AppPadding.instance.all(AppPadding.instance.p16),
         children: [
@@ -28,58 +40,24 @@ class CalculatorView extends StatelessWidget {
             decoration: BoxDecoration(color: Theme.of(context).cardColor),
             child: Column(
               children: [
-                CalculatorCardsWidget(cards: model.cards),
+                const CalculatorCardsWidget(),
                 4.verticalSpace,
-                TotalPriceWidget(totalPrice: model.totalPrice),
+                const TotalPriceWidget(),
               ],
             ),
           ),
           16.verticalSpace,
           Row(
             children: [
-              CategoriesWidget(type: type),
+              const CategoriesWidget(),
               8.horizontalSpace,
-              NumbersWidget(),
+              const NumbersWidget(),
             ],
           ),
           16.verticalSpace,
-          FluidAdMobileWidget(),
+          const FluidAdMobileWidget(),
         ],
       ),
     );
   }
 }
-
-final model = CalculatorModel(
-  totalPrice: '00.0',
-  cards: [
-    CardModel(
-      title: LocaleKeys.grams.tr(),
-      price: '00.0',
-      isSelected: true,
-      hasPercent: false,
-      isPercent: false,
-    ),
-    CardModel(
-      title: LocaleKeys.caliberPrice.tr(),
-      price: '00.0',
-      isSelected: false,
-      hasPercent: false,
-      isPercent: false,
-    ),
-    CardModel(
-      title: LocaleKeys.workmanshipPerGram.tr(),
-      price: '00.0',
-      isSelected: false,
-      isPercent: true,
-      hasPercent: true,
-    ),
-    CardModel(
-      title: LocaleKeys.taxPerGram.tr(),
-      price: '00.0',
-      isSelected: false,
-      isPercent: false,
-      hasPercent: true,
-    ),
-  ],
-);

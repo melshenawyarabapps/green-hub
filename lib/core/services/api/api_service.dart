@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:gold/core/config/app_config.dart';
+import 'package:gold/core/services/observers/dio_interceptor_observer.dart';
 
 class ApiService {
   static ApiService get instance => _instance ??= ApiService._();
@@ -18,6 +19,7 @@ class ApiService {
       },
     );
     _dio = Dio(baseOptions);
+    _dio.interceptors.add(DioInterceptorObserver.instance);
   }
 
   late final Dio _dio;
