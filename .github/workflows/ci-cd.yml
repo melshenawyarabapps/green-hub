@@ -11,19 +11,12 @@ on:
         default: sa
 
 jobs:
-  android:
+  android-test:
+    if: github.ref_name == 'test'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - branch: test
-            flavor: dev
-            build-type: apk
-          - branch: main
-            # 👇 Always use input flavor (fallback to 'sa' if manual trigger not used)
-            flavor: ${{ github.event.inputs.flavor || 'sa' }}
-            build-type: aab
-    if: ${{ github.ref_name == matrix.branch }}
+    env:
+      FLAVOR: dev
+      BUILD_TYPE: apk
 
     steps:
       - uses: actions/checkout@v4
@@ -40,59 +33,71 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - name: Set secrets
+      - name: Set Firebase secrets
         run: |
-          # Dynamic secret loading for any flavor
-          echo "FIREBASE_APP_ID=${{ secrets[format('FIREBASE_APP_ID_{0}', matrix.flavor)] }}" >> $GITHUB_ENV
-          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_{0}', matrix.flavor)] }}" > $HOME/gcloud.json
+          echo "FIREBASE_APP_ID=${{ secrets[format('FIREBASE_APP_ID_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
+          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_%s', env.FLAVOR)] }}" > $HOME/gcloud.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
-          
-          # Google Play secrets only for main branch
-          if [[ "${{ matrix.branch }}" == "main" ]]; then
-            echo "GOOGLE_PLAY_JSON=${{ secrets[format('GOOGLE_PLAY_JSON_{0}', matrix.flavor)] }}" >> $GITHUB_ENV
-          fi
 
       - name: Install Firebase CLI
         run: curl -sL https://firebase.tools | bash
 
-      - name: Build Android artifact
-        run: |
-          if [[ "${{ matrix.build-type }}" == "apk" ]]; then
-            flutter build apk --flavor ${{ matrix.flavor }} -t lib/main.dart
-          else
-            flutter build appbundle --flavor ${{ matrix.flavor }} -t lib/main.dart
-          fi
+      - name: Build APK
+        run: flutter build apk --flavor ${{ env.FLAVOR }} -t lib/main.dart
 
-      - name: Upload to Firebase (test branch only)
-        if: ${{ matrix.branch == 'test' }}
+      - name: Upload to Firebase
         run: |
           firebase appdistribution:distribute \
-            build/app/outputs/flutter-apk/app-${{ matrix.flavor }}-release.apk \
+            build/app/outputs/flutter-apk/app-${{ env.FLAVOR }}-release.apk \
             --app $FIREBASE_APP_ID \
             --groups testers \
             --token ${{ secrets.FIREBASE_TOKEN }}
 
-      - name: Upload to Google Play (main branch only)
-        if: ${{ matrix.branch == 'main' }}
+  android-main:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    env:
+      FLAVOR: ${{ github.event.inputs.flavor || 'sa' }}
+      BUILD_TYPE: aab
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.2'
+          cache: true
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Set Google Play secrets
+        run: |
+          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_%s', env.FLAVOR)] }}" > $HOME/gcloud.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
+          echo "GOOGLE_PLAY_JSON=${{ secrets[format('GOOGLE_PLAY_JSON_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
+
+      - name: Build AAB
+        run: flutter build appbundle --flavor ${{ env.FLAVOR }} -t lib/main.dart
+
+      - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ env.GOOGLE_PLAY_JSON }}
-          packageName: com.asaar.gold.${{ matrix.flavor }}
-          releaseFile: build/app/outputs/bundle/${{ matrix.flavor }}Release/app-${{ matrix.flavor }}-release.aab
+          packageName: com.asaar.gold.${{ env.FLAVOR }}
+          releaseFile: build/app/outputs/bundle/${{ env.FLAVOR }}Release/app-${{ env.FLAVOR }}-release.aab
           track: internal
 
-  ios:
+  ios-test:
+    if: github.ref_name == 'test'
+    needs: android-test
     runs-on: macos-latest
-    needs: android
-    strategy:
-      matrix:
-        include:
-          - branch: test
-            flavor: dev
-          - branch: main
-            # 👇 Sync flavor with Android job
-            flavor: ${{ github.event.inputs.flavor || 'sa' }}
-    if: ${{ github.ref_name == matrix.branch }}
+    env:
+      FLAVOR: dev
 
     steps:
       - uses: actions/checkout@v4
@@ -108,7 +113,7 @@ jobs:
 
       - name: Set iOS secrets
         run: |
-          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_{0}', matrix.flavor)] }}" >> $GITHUB_ENV
+          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -124,4 +129,43 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           APP_STORE_CONNECT_API_KEY: ${{ env.APPLE_API_KEY }}
         run: |
-          fastlane ios build_and_upload flavor:${{ matrix.flavor }}
+          fastlane ios build_and_upload flavor:${{ env.FLAVOR }}
+
+  ios-main:
+    if: github.ref_name == 'main'
+    needs: android-main
+    runs-on: macos-latest
+    env:
+      FLAVOR: ${{ github.event.inputs.flavor || 'sa' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.2'
+          cache: true
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Set iOS secrets
+        run: |
+          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      - name: Upload IPA to TestFlight
+        working-directory: ios
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY: ${{ env.APPLE_API_KEY }}
+        run: |
+          fastlane ios build_and_upload flavor:${{ env.FLAVOR }}
