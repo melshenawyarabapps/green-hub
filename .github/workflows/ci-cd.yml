@@ -6,20 +6,25 @@ on:
   workflow_dispatch:
     inputs:
       flavor:
-        description: 'Flavor to build (dev or sa)'
+        description: 'Flavor to build (dev, sa, or future flavors)'
         required: true
-        default: sa
+        default: dev
 
 jobs:
   android:
     runs-on: ubuntu-latest
-
-    env:
-      BRANCH_NAME: ${{ github.ref_name }}
-      FLAVOR: ${{ github.ref_name == 'main' && github.event.inputs.flavor || 'dev' }}
+    strategy:
+      matrix:
+        include:
+          - branch: test
+            flavor: dev
+            build-type: apk
+          - branch: main
+            flavor: ${{ github.event.inputs.flavor }}
+            build-type: aab
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -32,62 +37,54 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      # 🔐 Set dynamic secrets
-      - name: Set dynamic secrets
+      - name: Set Firebase secrets
         run: |
-          echo "Setting secrets for flavor: $FLAVOR"
-          if [[ "$FLAVOR" == "dev" ]]; then
-            echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
-            echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_DEV }}" > $HOME/gcloud.json
-          elif [[ "$FLAVOR" == "sa" ]]; then
-            echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_SA }}" >> $GITHUB_ENV
-            echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_SA }}" >> $GITHUB_ENV
-            echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_SA }}" > $HOME/gcloud.json
-          else
-            echo "Unknown flavor: $FLAVOR"
-            exit 1
-          fi
+          echo "FIREBASE_APP_ID=${{ secrets[format('FIREBASE_APP_ID_{0}', matrix.flavor)] }}" >> $GITHUB_ENV
+          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_{0}', matrix.flavor)] }}" > $HOME/gcloud.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
 
       - name: Install Firebase CLI
         run: curl -sL https://firebase.tools | bash
 
-      # ✅ Android APK for test branch
-      - name: Build APK
-        if: ${{ env.BRANCH_NAME == 'test' }}
-        run: flutter build apk --flavor $FLAVOR -t lib/main.dart
+      - name: Build Android artifact
+        run: |
+          if [[ "${{ matrix.build-type }}" == "apk" ]]; then
+            flutter build apk --flavor ${{ matrix.flavor }} -t lib/main.dart
+          else
+            flutter build appbundle --flavor ${{ matrix.flavor }} -t lib/main.dart
+          fi
 
-      - name: Upload APK to Firebase App Distribution
-        if: ${{ env.BRANCH_NAME == 'test' }}
+      - name: Upload to Firebase (test branch)
+        if: ${{ matrix.branch == 'test' }}
         run: |
           firebase appdistribution:distribute \
-            build/app/outputs/flutter-apk/app-${FLAVOR}-release.apk \
+            build/app/outputs/flutter-apk/app-${{ matrix.flavor }}-release.apk \
             --app $FIREBASE_APP_ID \
-            --groups testers
+            --groups testers \
+            --token ${{ secrets.FIREBASE_TOKEN }}
 
-      # ✅ Android AAB for main branch
-      - name: Build AAB
-        if: ${{ env.BRANCH_NAME == 'main' }}
-        run: flutter build appbundle --flavor $FLAVOR -t lib/main.dart
-
-      - name: Upload AAB to Google Play
-        if: ${{ env.BRANCH_NAME == 'main' }}
+      - name: Upload to Google Play (main branch)
+        if: ${{ matrix.branch == 'main' }}
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJsonPlainText: ${{ env.GOOGLE_PLAY_JSON }}
-          packageName: com.asaar.gold.${{ env.FLAVOR }}
-          releaseFile: build/app/outputs/bundle/${{ env.FLAVOR }}Release/app-${{ env.FLAVOR }}-release.aab
+          serviceAccountJsonPlainText: ${{ secrets[format('GOOGLE_PLAY_JSON_{0}', matrix.flavor)] }}
+          packageName: com.asaar.gold.${{ matrix.flavor }}
+          releaseFile: build/app/outputs/bundle/${{ matrix.flavor }}Release/app-${{ matrix.flavor }}-release.aab
           track: internal
 
   ios:
     runs-on: macos-latest
     needs: android
-
-    env:
-      FLAVOR: ${{ github.ref_name == 'main' && github.event.inputs.flavor || 'dev' }}
+    strategy:
+      matrix:
+        include:
+          - branch: test
+            flavor: dev
+          - branch: main
+            flavor: ${{ github.event.inputs.flavor }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -97,17 +94,9 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      # 🔐 Set iOS secrets
-      - name: Set dynamic iOS secrets
+      - name: Set iOS secrets
         run: |
-          if [[ "$FLAVOR" == "dev" ]]; then
-            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_DEV }}" >> $GITHUB_ENV
-          elif [[ "$FLAVOR" == "sa" ]]; then
-            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_SA }}" >> $GITHUB_ENV
-          else
-            echo "Unknown flavor: $FLAVOR"
-            exit 1
-          fi
+          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_{0}', matrix.flavor)] }}" >> $GITHUB_ENV
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -123,4 +112,4 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           APP_STORE_CONNECT_API_KEY: ${{ env.APPLE_API_KEY }}
         run: |
-          fastlane ios build_and_upload flavor:${FLAVOR}
+          fastlane ios build_and_upload flavor:${{ matrix.flavor }}
