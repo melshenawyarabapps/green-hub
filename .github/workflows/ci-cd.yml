@@ -39,22 +39,24 @@ jobs:
           if [[ "$FLAVOR" == "dev" ]]; then
             echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
             echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_DEV }}" >> $GITHUB_ENV
+            echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_DEV }}" > $HOME/gcloud.json
           elif [[ "$FLAVOR" == "sa" ]]; then
             echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_SA }}" >> $GITHUB_ENV
             echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_SA }}" >> $GITHUB_ENV
+            echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_SA }}" > $HOME/gcloud.json
           else
             echo "Unknown flavor: $FLAVOR"
             exit 1
           fi
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
 
-      # ✅ Android APK (test only)
+      - name: Install Firebase CLI
+        run: curl -sL https://firebase.tools | bash
+
+      # ✅ Android APK for test branch
       - name: Build APK
         if: ${{ env.BRANCH_NAME == 'test' }}
         run: flutter build apk --flavor $FLAVOR -t lib/main.dart
-
-      - name: Install Firebase CLI
-        if: ${{ env.BRANCH_NAME == 'test' }}
-        run: curl -sL https://firebase.tools | bash
 
       - name: Upload APK to Firebase App Distribution
         if: ${{ env.BRANCH_NAME == 'test' }}
@@ -62,10 +64,9 @@ jobs:
           firebase appdistribution:distribute \
             build/app/outputs/flutter-apk/app-${FLAVOR}-release.apk \
             --app $FIREBASE_APP_ID \
-            --token ${{ secrets.FIREBASE_TOKEN }} \
             --groups testers
 
-      # ✅ Android AAB (main only)
+      # ✅ Android AAB for main branch
       - name: Build AAB
         if: ${{ env.BRANCH_NAME == 'main' }}
         run: flutter build appbundle --flavor $FLAVOR -t lib/main.dart
@@ -75,13 +76,13 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ env.GOOGLE_PLAY_JSON }}
-          packageName: com.yourcompany.${{ env.FLAVOR }}
+          packageName: com.asaar.gold.${{ env.FLAVOR }}
           releaseFile: build/app/outputs/bundle/${{ env.FLAVOR }}Release/app-${{ env.FLAVOR }}-release.aab
           track: internal
 
   ios:
     runs-on: macos-latest
-    needs: android  # optional; remove if iOS can run independently
+    needs: android
 
     env:
       FLAVOR: ${{ github.ref_name == 'main' && github.event.inputs.flavor || 'dev' }}
@@ -97,7 +98,7 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      # 🔐 Set dynamic secrets
+      # 🔐 Set iOS secrets
       - name: Set dynamic iOS secrets
         run: |
           if [[ "$FLAVOR" == "dev" ]]; then
