@@ -1,0 +1,95 @@
+name: Flutter CI/CD with Flavors
+
+on:
+  push:
+    branches: [test, main]
+  workflow_dispatch:
+    inputs:
+      flavor:
+        description: 'Flavor to build (dev or sa)'
+        required: true
+        default: sa
+
+jobs:
+  build-deploy:
+    runs-on: macos-latest
+
+    env:
+      BRANCH_NAME: ${{ github.ref_name }}
+      FLAVOR: ${{ github.ref_name == 'main' && github.event.inputs.flavor || 'dev' }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.6'
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
+
+      # 🔐 Dynamic Secrets per Flavor
+      - name: Set dynamic secrets
+        run: |
+          echo "Setting secrets for flavor: $FLAVOR"
+          if [[ "$FLAVOR" == "dev" ]]; then
+            echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
+            echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_DEV }}" >> $GITHUB_ENV
+            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_DEV }}" >> $GITHUB_ENV
+          elif [[ "$FLAVOR" == "sa" ]]; then
+            echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_SA }}" >> $GITHUB_ENV
+            echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_SA }}" >> $GITHUB_ENV
+            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_SA }}" >> $GITHUB_ENV
+          else
+            echo "Unknown flavor: $FLAVOR"
+            exit 1
+          fi
+
+      # ✅ Android APK (test only)
+      - name: Build APK
+        if: ${{ env.BRANCH_NAME == 'test' }}
+        run: flutter build apk --flavor $FLAVOR -t lib/main.dart
+
+      - name: Upload APK to Firebase App Distribution
+        if: ${{ env.BRANCH_NAME == 'test' }}
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ env.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: testers
+          file: build/app/outputs/flutter-apk/app-${{ env.FLAVOR }}-release.apk
+
+      # ✅ Android AAB (main only)
+      - name: Build AAB
+        if: ${{ env.BRANCH_NAME == 'main' }}
+        run: flutter build appbundle --flavor $FLAVOR -t lib/main.dart
+
+      - name: Upload AAB to Google Play
+        if: ${{ env.BRANCH_NAME == 'main' }}
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ env.GOOGLE_PLAY_JSON }}
+          packageName: com.yourcompany.${{ env.FLAVOR }}
+          releaseFile: build/app/outputs/bundle/${{ env.FLAVOR }}Release/app-${{ env.FLAVOR }}-release.aab
+          track: internal
+
+      # ✅ iOS: TestFlight
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      - name: Upload IPA to TestFlight
+        working-directory: ios
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY: ${{ env.APPLE_API_KEY }}
+        run: |
+          fastlane ios build_and_upload flavor:${{ env.FLAVOR }}
