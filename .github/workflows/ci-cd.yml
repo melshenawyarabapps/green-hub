@@ -38,7 +38,6 @@ jobs:
           echo "Setting secrets for flavor: $FLAVOR"
           if [[ "$FLAVOR" == "dev" ]]; then
             echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
-            echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_DEV }}" >> $GITHUB_ENV
             echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON_DEV }}" > $HOME/gcloud.json
           elif [[ "$FLAVOR" == "sa" ]]; then
             echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_SA }}" >> $GITHUB_ENV
