@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       flavor:
-        description: 'Flavor to build (dev, sa, or future flavors)'
+        description: 'Flavor to build (dev, sa, etc.)'
         required: true
-        default: dev
+        default: sa
 
 jobs:
   android:
@@ -20,8 +20,10 @@ jobs:
             flavor: dev
             build-type: apk
           - branch: main
-            flavor: ${{ github.event.inputs.flavor }}
+            # 👇 Always use input flavor (fallback to 'sa' if manual trigger not used)
+            flavor: ${{ github.event.inputs.flavor || 'sa' }}
             build-type: aab
+    if: ${{ github.ref_name == matrix.branch }}
 
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +32,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.29.2'
+          cache: true
 
       - name: Flutter pub get
         run: flutter pub get
@@ -37,11 +40,17 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - name: Set Firebase secrets
+      - name: Set secrets
         run: |
+          # Dynamic secret loading for any flavor
           echo "FIREBASE_APP_ID=${{ secrets[format('FIREBASE_APP_ID_{0}', matrix.flavor)] }}" >> $GITHUB_ENV
           echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_{0}', matrix.flavor)] }}" > $HOME/gcloud.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
+          
+          # Google Play secrets only for main branch
+          if [[ "${{ matrix.branch }}" == "main" ]]; then
+            echo "GOOGLE_PLAY_JSON=${{ secrets[format('GOOGLE_PLAY_JSON_{0}', matrix.flavor)] }}" >> $GITHUB_ENV
+          fi
 
       - name: Install Firebase CLI
         run: curl -sL https://firebase.tools | bash
@@ -54,7 +63,7 @@ jobs:
             flutter build appbundle --flavor ${{ matrix.flavor }} -t lib/main.dart
           fi
 
-      - name: Upload to Firebase (test branch)
+      - name: Upload to Firebase (test branch only)
         if: ${{ matrix.branch == 'test' }}
         run: |
           firebase appdistribution:distribute \
@@ -63,11 +72,11 @@ jobs:
             --groups testers \
             --token ${{ secrets.FIREBASE_TOKEN }}
 
-      - name: Upload to Google Play (main branch)
+      - name: Upload to Google Play (main branch only)
         if: ${{ matrix.branch == 'main' }}
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJsonPlainText: ${{ secrets[format('GOOGLE_PLAY_JSON_{0}', matrix.flavor)] }}
+          serviceAccountJsonPlainText: ${{ env.GOOGLE_PLAY_JSON }}
           packageName: com.asaar.gold.${{ matrix.flavor }}
           releaseFile: build/app/outputs/bundle/${{ matrix.flavor }}Release/app-${{ matrix.flavor }}-release.aab
           track: internal
@@ -81,7 +90,9 @@ jobs:
           - branch: test
             flavor: dev
           - branch: main
-            flavor: ${{ github.event.inputs.flavor }}
+            # 👇 Sync flavor with Android job
+            flavor: ${{ github.event.inputs.flavor || 'sa' }}
+    if: ${{ github.ref_name == matrix.branch }}
 
     steps:
       - uses: actions/checkout@v4
@@ -90,6 +101,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.29.2'
+          cache: true
 
       - name: Flutter pub get
         run: flutter pub get
