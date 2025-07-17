@@ -11,7 +11,7 @@ on:
         default: sa
 
 jobs:
-  build-deploy:
+  android:
     runs-on: ubuntu-latest
 
     env:
@@ -32,18 +32,16 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      # 🔐 Dynamic Secrets per Flavor
+      # 🔐 Set dynamic secrets
       - name: Set dynamic secrets
         run: |
           echo "Setting secrets for flavor: $FLAVOR"
           if [[ "$FLAVOR" == "dev" ]]; then
             echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_DEV }}" >> $GITHUB_ENV
             echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_DEV }}" >> $GITHUB_ENV
-            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_DEV }}" >> $GITHUB_ENV
           elif [[ "$FLAVOR" == "sa" ]]; then
             echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_SA }}" >> $GITHUB_ENV
             echo "GOOGLE_PLAY_JSON=${{ secrets.GOOGLE_PLAY_JSON_SA }}" >> $GITHUB_ENV
-            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_SA }}" >> $GITHUB_ENV
           else
             echo "Unknown flavor: $FLAVOR"
             exit 1
@@ -54,14 +52,18 @@ jobs:
         if: ${{ env.BRANCH_NAME == 'test' }}
         run: flutter build apk --flavor $FLAVOR -t lib/main.dart
 
+      - name: Install Firebase CLI
+        if: ${{ env.BRANCH_NAME == 'test' }}
+        run: curl -sL https://firebase.tools | bash
+
       - name: Upload APK to Firebase App Distribution
         if: ${{ env.BRANCH_NAME == 'test' }}
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ env.FIREBASE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: testers
-          file: build/app/outputs/flutter-apk/app-${{ env.FLAVOR }}-release.apk
+        run: |
+          firebase appdistribution:distribute \
+            build/app/outputs/flutter-apk/app-${FLAVOR}-release.apk \
+            --app $FIREBASE_APP_ID \
+            --token ${{ secrets.FIREBASE_TOKEN }} \
+            --groups testers
 
       # ✅ Android AAB (main only)
       - name: Build AAB
@@ -77,7 +79,36 @@ jobs:
           releaseFile: build/app/outputs/bundle/${{ env.FLAVOR }}Release/app-${{ env.FLAVOR }}-release.aab
           track: internal
 
-      # ✅ iOS: TestFlight
+  ios:
+    runs-on: macos-latest
+    needs: android  # optional; remove if iOS can run independently
+
+    env:
+      FLAVOR: ${{ github.ref_name == 'main' && github.event.inputs.flavor || 'dev' }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.2'
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      # 🔐 Set dynamic secrets
+      - name: Set dynamic iOS secrets
+        run: |
+          if [[ "$FLAVOR" == "dev" ]]; then
+            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_DEV }}" >> $GITHUB_ENV
+          elif [[ "$FLAVOR" == "sa" ]]; then
+            echo "APPLE_API_KEY=${{ secrets.APP_STORE_CONNECT_API_KEY_SA }}" >> $GITHUB_ENV
+          else
+            echo "Unknown flavor: $FLAVOR"
+            exit 1
+          fi
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -92,4 +123,4 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           APP_STORE_CONNECT_API_KEY: ${{ env.APPLE_API_KEY }}
         run: |
-          fastlane ios build_and_upload flavor:${{ env.FLAVOR }}
+          fastlane ios build_and_upload flavor:${FLAVOR}
