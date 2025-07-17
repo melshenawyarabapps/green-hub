@@ -35,8 +35,8 @@ jobs:
 
       - name: Set Firebase secrets
         run: |
-          echo "FIREBASE_APP_ID=${{ secrets[format('FIREBASE_APP_ID_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
-          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_%s', env.FLAVOR)] }}" > $HOME/gcloud.json
+          echo "FIREBASE_APP_ID=${{ secrets[format('FIREBASE_APP_ID_DEV', env.FLAVOR)] }}" >> $GITHUB_ENV
+          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_DEV', env.FLAVOR)] }}" > $HOME/gcloud.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
 
       - name: Install Firebase CLI
