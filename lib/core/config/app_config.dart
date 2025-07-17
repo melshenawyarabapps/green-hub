@@ -38,7 +38,7 @@ class AppConfig {
     appLogo = 'assets/$flavor/logo.png';
     appCurrency = 'assets/$flavor/currency.png';
     appName = 'Gold $flavor';
-    baseUrl = 'https://api.$flavor.com/api/v3/';
+    baseUrl = 'https://saudy.plusprices.net/api/v1';
     setUp();
     if (flavor == 'dev') {
       Bloc.observer = BlocLifecycleObserver.instance;

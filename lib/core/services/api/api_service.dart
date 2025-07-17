@@ -16,6 +16,7 @@ class ApiService {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
+        'lang': 'ar',
       },
     );
     _dio = Dio(baseOptions);

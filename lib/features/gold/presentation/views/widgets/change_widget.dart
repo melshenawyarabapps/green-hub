@@ -5,20 +5,21 @@ import 'package:gold/core/utils/font_sizes.dart';
 import 'package:gold/generated/assets.dart';
 
 class ChangeWidget extends StatelessWidget {
-  const ChangeWidget({super.key});
-
+  const ChangeWidget({super.key, required this.isUp, required this.price});
+final bool isUp;
+final String price;
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
         children: [
-          Image.asset(Assets.iconsTrendUp, height: 14.h),
+          Image.asset(isUp?Assets.iconsTrendUp:Assets.iconsTrendDown, height: 14.h),
           2.verticalSpace,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '5',
+                price,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontSize: FontSizes.instance.s10,
                 ),

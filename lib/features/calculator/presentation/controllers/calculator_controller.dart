@@ -1,10 +1,8 @@
-import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gold/core/enums/api_enums.dart';
 import 'package:gold/core/enums/currency_enums.dart';
-import 'package:gold/core/services/logger/app_logger.dart';
 import 'package:gold/features/calculator/data/models/calculator_model.dart';
 import 'package:gold/features/calculator/data/models/category_model.dart';
 import 'package:gold/features/calculator/data/models/number_model.dart';
@@ -19,28 +17,8 @@ class CalculatorController extends Cubit<CalculatorState> {
 
   void init(CurrencyType type) {
     emit(state.copyWith(calculatorModel: type.mock, type: type));
-    unawaited(_getCategories(type));
   }
 
-  Future<void> _getCategories(CurrencyType type) async {
-    emit(state.copyWith(categoriesStatus: RequestStatus.loading));
-
-    final response = await _calculatorRepo.getCategories(type);
-    response.fold(
-      (failure) {
-        AppLogger.instance.error('Error fetching categories: $failure');
-        emit(state.copyWith(categoriesStatus: RequestStatus.error));
-      },
-      (categories) {
-        emit(
-          state.copyWith(
-            categories: categories,
-            categoriesStatus: RequestStatus.loaded,
-          ),
-        );
-      },
-    );
-  }
 
   void onCardPressed(int index) {
     emit(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/enums/directional_enums.dart';
+import 'package:gold/core/extensions/string_extensions.dart';
+import 'package:gold/core/shared/network_image_widget.dart';
 import 'package:gold/core/utils/app_padding.dart';
 
 class TextImageWidget extends StatelessWidget {
@@ -8,7 +10,7 @@ class TextImageWidget extends StatelessWidget {
     super.key,
     required this.text,
     required this.imagePath,
-     this.directionalType=DirectionalType.start,
+    this.directionalType = DirectionalType.start,
     this.isDollar = false,
     this.showIcon = true,
   });
@@ -27,27 +29,44 @@ class TextImageWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (showIcon&&!isDollar&&directionalType.isStart) ...[
-              Image.asset(imagePath, height: 32.h),
+            if (showIcon && !isDollar && directionalType.isStart&&imagePath.isNotEmpty) ...[
+              ImageView(imagePath: imagePath),
               4.horizontalSpace,
             ],
             Expanded(
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  text + (!isDollar ? '' :' \$'),
+                  text + (!isDollar ? '' : ' \$'),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
               ),
             ),
-            if (showIcon&&!isDollar&&directionalType.isEnd) ...[
+            if (showIcon && !isDollar && directionalType.isEnd&&imagePath.isNotEmpty) ...[
               4.horizontalSpace,
-              Image.asset(imagePath, height: 16.h),
+              ImageView(imagePath: imagePath),
             ],
           ],
         ),
       ),
+    );
+  }
+}
+
+class ImageView extends StatelessWidget {
+  const ImageView({super.key, required this.imagePath});
+
+  final String imagePath;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 16.h,
+      child:
+          imagePath.isNetwork
+              ? NetworkImageWidget(imageUrl: imagePath, fit: BoxFit.contain,emptyHolder: true,)
+              : Image.asset(imagePath),
     );
   }
 }

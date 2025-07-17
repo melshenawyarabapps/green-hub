@@ -1,4 +1,5 @@
 import 'package:gold/core/utils/calculator_constants.dart';
+import 'package:gold/core/utils/end_points.dart';
 import 'package:gold/features/calculator/data/models/calculator_model.dart';
 
 enum CurrencyType { currencies, gold, bullion }
@@ -14,5 +15,10 @@ extension CurrencyTypeExtension on CurrencyType {
     CurrencyType.currencies => CalculatorConstants.instance.currenciesMock,
     CurrencyType.gold => CalculatorConstants.instance.goldMock,
     CurrencyType.bullion => CalculatorConstants.instance.bullionMock,
+  };
+  String get endPoint => switch (this) {
+    CurrencyType.currencies => EndPoints.instance.currencies,
+    CurrencyType.gold => EndPoints.instance.gold,
+    CurrencyType.bullion => EndPoints.instance.bullion,
   };
 }
