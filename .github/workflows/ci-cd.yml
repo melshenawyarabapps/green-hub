@@ -77,9 +77,9 @@ jobs:
 
       - name: Set Google Play secrets
         run: |
-          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_%s', env.FLAVOR)] }}" > $HOME/gcloud.json
+          echo "${{ secrets[format('GOOGLE_APPLICATION_CREDENTIALS_JSON_{0}', env.FLAVOR)] }}" > $HOME/gcloud.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
-          echo "GOOGLE_PLAY_JSON=${{ secrets[format('GOOGLE_PLAY_JSON_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
+          echo "GOOGLE_PLAY_JSON=${{ secrets[format('GOOGLE_PLAY_JSON_{0}', env.FLAVOR)] }}" >> $GITHUB_ENV
 
       - name: Build AAB
         run: flutter build appbundle --flavor ${{ env.FLAVOR }} -t lib/main.dart
@@ -113,7 +113,7 @@ jobs:
 
       - name: Set iOS secrets
         run: |
-          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
+          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_{0}', env.FLAVOR)] }}" >> $GITHUB_ENV
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -152,7 +152,7 @@ jobs:
 
       - name: Set iOS secrets
         run: |
-          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_%s', env.FLAVOR)] }}" >> $GITHUB_ENV
+          echo "APPLE_API_KEY=${{ secrets[format('APP_STORE_CONNECT_API_KEY_{0}', env.FLAVOR)] }}" >> $GITHUB_ENV
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
