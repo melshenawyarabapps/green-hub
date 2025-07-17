@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-deploy:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     env:
       BRANCH_NAME: ${{ github.ref_name }}
