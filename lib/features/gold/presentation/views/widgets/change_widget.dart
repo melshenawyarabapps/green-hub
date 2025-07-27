@@ -21,7 +21,7 @@ final String price;
               Text(
                 price,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: FontSizes.instance.s10,
+                  fontSize: FontSizes.instance.s12,
                 ),
               ),
               4.horizontalSpace,

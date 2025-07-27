@@ -80,7 +80,7 @@ class AppTheme {
       ),
       displayMedium: AppStyles.instance.getBoldStyle(
         color: AppConfig.instance.darkColors!.whiteColor,
-        fontSize: FontSizes.instance.s14,
+        fontSize: FontSizes.instance.s17,
       ),
       displaySmall: AppStyles.instance.getMediumStyle(
         color: AppConfig.instance.darkColors!.greyColor1,

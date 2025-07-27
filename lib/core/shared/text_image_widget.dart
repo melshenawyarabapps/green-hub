@@ -62,7 +62,7 @@ class ImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 16.h,
+      height: 12.h,
       child:
           imagePath.isNetwork
               ? NetworkImageWidget(imageUrl: imagePath, fit: BoxFit.contain,emptyHolder: true,)
