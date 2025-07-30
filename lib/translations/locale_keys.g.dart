@@ -51,4 +51,7 @@ abstract class LocaleKeys {
   static const String workmanshipPerGram = "workmanshipPerGram";
   static const String taxPerGram = "taxPerGram";
   static const String totalPrice = "totalPrice";
+  static const String selectCurrency = "selectCurrency";
+  static const String from = "from";
+  static const String to = "to";
 }

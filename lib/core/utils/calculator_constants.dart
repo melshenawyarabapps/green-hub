@@ -46,39 +46,78 @@ class CalculatorConstants {
         hasPercent: true,
       ),
     ],
-    // calculatePrice: (List<CardModel> cards) {
-    //   final grams = cards[0].price;
-    //   final caliberPrice = cards[1].price;
-    //   final workmanshipPerGram = cards[2].price;
-    //   final taxPerGram = cards[3].price;
-    //   final isWorkmanshipPercent = cards[2].isPercent;
-    //   final isTaxPercent = cards[3].isPercent;
-    //
-    //   final gramsValue = _parsePrice(grams);
-    //   final caliberPriceValue = _parsePrice(caliberPrice);
-    //   var workmanshipPerGramValue = _parsePrice(workmanshipPerGram);
-    //   var taxPerGramValue = _parsePrice(taxPerGram);
-    //
-    //   if (isWorkmanshipPercent) {
-    //     workmanshipPerGramValue =
-    //         ((caliberPriceValue * workmanshipPerGramValue) / 100);
-    //   }
-    //
-    //   if (isTaxPercent) {
-    //     taxPerGramValue = ((caliberPriceValue * taxPerGramValue) / 100);
-    //   }
-    //
-    //   final totalPrice =
-    //       (taxPerGramValue + workmanshipPerGramValue + caliberPriceValue) *
-    //       gramsValue;
-    //
-    //   return totalPrice.toStringAsFixed(2);
-    // },
   );
 
-  CalculatorModel get currenciesMock => goldMock;
+  CalculatorModel get currenciesMock => CalculatorModel(
+    totalPrice: '00.0',
+    type: CurrencyType.currencies,
+    cards: [
+      CardModel(
+        title: LocaleKeys.from.tr(),
+        price: LocaleKeys.selectCurrency.tr(),
+        isSelected: true,
+        hasPercent: false,
+        isPercent: false,
+      ),
+      CardModel(
+        title: LocaleKeys.to.tr(),
+        price: LocaleKeys.selectCurrency.tr(),
+        isSelected: false,
+        hasPercent: false,
+        isPercent: false,
+      ),
+      CardModel(
+        title: '',
+        price: '00.0',
+        isSelected: false,
+        hasPercent: false,
+        isPercent: false,
+      ),
+      CardModel(
+        title: '',
+        price: '00.0',
+        isSelected: false,
+        hasPercent: false,
+        isPercent: false,
+        canSelect: false
+      ),
+    ],
+  );
 
-  CalculatorModel get bullionMock => goldMock;
+  CalculatorModel get bullionMock =>CalculatorModel(
+    totalPrice: '00.0',
+    type: CurrencyType.bullion,
+    cards: [
+      CardModel(
+        title: LocaleKeys.grams.tr(),
+        price: '00.0',
+        isSelected: true,
+        hasPercent: false,
+        isPercent: false,
+      ),
+      CardModel(
+        title: LocaleKeys.caliberPrice.tr(),
+        price: '00.0',
+        isSelected: false,
+        hasPercent: false,
+        isPercent: false,
+      ),
+      CardModel(
+        title: LocaleKeys.workmanshipPerGram.tr(),
+        price: '00.0',
+        isSelected: false,
+        isPercent: true,
+        hasPercent: true,
+      ),
+      CardModel(
+        title: LocaleKeys.taxPerGram.tr(),
+        price: '00.0',
+        isSelected: false,
+        isPercent: false,
+        hasPercent: true,
+      ),
+    ],
+  );
 
   List<NumberModel> get numbers=>[
     const NumberModel(

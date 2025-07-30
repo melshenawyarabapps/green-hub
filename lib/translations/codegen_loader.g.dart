@@ -63,6 +63,9 @@ class CodegenLoader extends AssetLoader {
     LocaleKeys.workmanshipPerGram: "المصنعية/جرام : ",
     LocaleKeys.taxPerGram: "الدمغة والضريبة/جرام : ",
     LocaleKeys.totalPrice: "اجمالي السعر : ",
+    LocaleKeys.selectCurrency: " اختر العملة",
+    LocaleKeys.from: "من : ",
+    LocaleKeys.to: "الي : ",
   };
 
   static const Map<String, dynamic> en = {};

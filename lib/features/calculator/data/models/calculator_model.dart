@@ -31,9 +31,11 @@ class CalculatorModel extends Equatable {
 class CardModel extends Equatable {
   final String title;
   final String price;
+  final String currencyPrice;
   final bool isSelected;
   final bool hasPercent;
   final bool isPercent;
+  final bool canSelect;
 
   const CardModel({
     required this.title,
@@ -41,14 +43,18 @@ class CardModel extends Equatable {
     required this.isSelected,
     required this.hasPercent,
     required this.isPercent,
+    this.canSelect = true,
+    this.currencyPrice = '',
   });
 
   CardModel copyWith({
     String? title,
     String? price,
+    String? currencyPrice,
     bool? isSelected,
     bool? isPercent,
     bool? hasPercent,
+    bool? canSelect,
   }) {
     return CardModel(
       title: title ?? this.title,
@@ -56,9 +62,18 @@ class CardModel extends Equatable {
       isSelected: isSelected ?? this.isSelected,
       isPercent: isPercent ?? this.isPercent,
       hasPercent: hasPercent ?? this.hasPercent,
+      canSelect: canSelect ?? this.canSelect,
+      currencyPrice: currencyPrice ?? this.currencyPrice,
     );
   }
 
   @override
-  List<Object?> get props => [title, price, isSelected, isPercent, hasPercent];
+  List<Object?> get props => [
+    title,
+    price,
+    isSelected,
+    isPercent,
+    hasPercent,
+    canSelect,
+  ];
 }

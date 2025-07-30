@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/utils/app_padding.dart';
 import 'package:gold/features/ads/presentation/views/fluid_ad_mobile_widget.dart.dart';
+import 'package:gold/features/base/presentation/controllers/base_controller.dart';
 import 'package:gold/features/calculator/presentation/controllers/calculator_controller.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_app_bar.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_cards_widget.dart';
@@ -24,7 +25,7 @@ class _CalculatorViewState extends State<CalculatorView> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<CalculatorController>().init(widget.type);
+      context.read<BaseController>().getData(widget.type);
     });
     super.initState();
   }
@@ -41,15 +42,17 @@ class _CalculatorViewState extends State<CalculatorView> {
             child: Column(
               children: [
                 const CalculatorCardsWidget(),
-                4.verticalSpace,
-                const TotalPriceWidget(),
+                if (!widget.type.isCurrency) ...[
+                  4.verticalSpace,
+                  const TotalPriceWidget(),
+                ],
               ],
             ),
           ),
           16.verticalSpace,
           Row(
             children: [
-              const CategoriesWidget(),
+              CategoriesWidget(type: widget.type),
               8.horizontalSpace,
               const NumbersWidget(),
             ],

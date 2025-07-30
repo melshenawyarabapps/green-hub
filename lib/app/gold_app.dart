@@ -9,6 +9,7 @@ import 'package:gold/core/services/di/di.dart';
 import 'package:gold/core/services/navigator/navigator_service.dart';
 import 'package:gold/core/themes/app_theme.dart';
 import 'package:gold/features/ads/presentation/controllers/ads_controller.dart';
+import 'package:gold/features/base/presentation/controllers/base_controller.dart';
 
 class GoldApp extends StatelessWidget {
   static const GoldApp instance = GoldApp._();
@@ -25,7 +26,10 @@ class GoldApp extends StatelessWidget {
       splitScreenMode: true,
       builder:
           (_, child) => MultiBlocProvider(
-            providers: [BlocProvider.value(value: getIt.get<AdsController>())],
+            providers: [
+              BlocProvider.value(value: getIt.get<AdsController>()),
+              BlocProvider.value(value: getIt.get<BaseController>()),
+            ],
             child: MaterialApp(
               navigatorKey: NavigatorService.navigatorKey,
               localizationsDelegates: context.localizationDelegates,

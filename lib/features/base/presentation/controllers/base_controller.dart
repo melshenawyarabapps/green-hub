@@ -16,7 +16,7 @@ class BaseController extends Cubit<BaseState> {
   Future<void> getData(CurrencyType type) async {
     final status = Map<CurrencyType, RequestStatus>.from(state.status);
 
-    if (status[type]?.isLoading == true) {
+    if (status[type]?.isLoading == true||state.data[type]?.isNotEmpty==true) {
       return;
     }
     status[type] = RequestStatus.loading;

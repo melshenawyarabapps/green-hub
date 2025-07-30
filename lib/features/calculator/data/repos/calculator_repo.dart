@@ -1,49 +1,15 @@
-import 'package:dartz/dartz.dart';
 import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/enums/number_enums.dart';
 import 'package:gold/core/extensions/string_extensions.dart';
-import 'package:gold/core/services/api/api_errors.dart';
-import 'package:gold/core/services/api/api_service.dart';
+import 'package:gold/core/services/logger/app_logger.dart';
+import 'package:gold/features/base/data/models/base_model.dart';
 import 'package:gold/features/calculator/data/models/calculator_model.dart';
-import 'package:gold/features/calculator/data/models/category_model.dart';
 import 'package:gold/features/calculator/data/models/number_model.dart';
 
 class CalculatorRepo {
-  final ApiService _apiService;
-
-  CalculatorRepo(this._apiService);
-
-  Future<Either<Failure, List<CategoryModel>>> getCategories(
-    CurrencyType type,
-  ) async {
-    try {
-      return Right(switch (type) {
-        CurrencyType.gold => [
-          const CategoryModel(id: 1, name: 'عيار 24', price: '5300.0'),
-          const CategoryModel(id: 2, name: 'عيار 21', price: '4500.0'),
-          const CategoryModel(id: 3, name: 'عيار 18', price: '3800.0'),
-          const CategoryModel(id: 4, name: 'عيار 14', price: '3000.0'),
-        ],
-        CurrencyType.currencies => [
-          const CategoryModel(id: 1, name: 'دولار أمريكي', price: '100.0'),
-          const CategoryModel(id: 2, name: 'يورو', price: '90.0'),
-          const CategoryModel(id: 3, name: 'جنيه إسترليني', price: '80.0'),
-          const CategoryModel(id: 4, name: 'ين ياباني', price: '70.0'),
-        ],
-        CurrencyType.bullion => [
-          const CategoryModel(id: 1, name: 'سبائك ذهبية', price: '5000.0'),
-          const CategoryModel(id: 2, name: 'سبائك فضية', price: '3000.0'),
-          const CategoryModel(id: 3, name: 'سبائك بلاتينية', price: '7000.0'),
-        ],
-      });
-    } catch (e) {
-      return Left(ServerFailure.generalException(e));
-    }
-  }
-
   CalculatorModel? onCardPressed(CalculatorModel? model, int index) {
-    if (model == null) {
-      return null;
+    if (model == null || !model.cards[index].canSelect) {
+      return model;
     }
 
     final List<CardModel> newCards = List.from(model.cards);
@@ -51,17 +17,16 @@ class CalculatorRepo {
     for (int i = 0; i < newCards.length; i++) {
       newCards[i] = newCards[i].copyWith(isSelected: i == index);
     }
-    return model.copyWith(
-      cards: newCards,
-    );
+    return model.copyWith(cards: newCards);
   }
 
   CalculatorModel? onNumberPressed(
     CalculatorModel? calculatorModel,
     NumberModel numberModel,
   ) {
+    AppLogger.instance.debug('onNumberPressed : $calculatorModel');
     if (calculatorModel == null) {
-      return null;
+      return calculatorModel;
     }
     final newCalculatorModel = CalculatorModel(
       totalPrice: calculatorModel.totalPrice,
@@ -75,8 +40,10 @@ class CalculatorRepo {
       return newCalculatorModel;
     }
     CardModel selectedCard = newCalculatorModel.cards[selectedCardIndex];
+    if (calculatorModel.type.isCurrency && selectedCardIndex < 2) {
+      return calculatorModel;
+    }
     final price = selectedCard.price.parsePrice;
-
     switch (numberModel.type) {
       case NumberType.number:
         if (price == 0) {
@@ -123,6 +90,12 @@ class CalculatorRepo {
         }
         return newCalculatorModel.copyWith(cards: newCards);
       case NumberType.equal:
+        if (newCalculatorModel.type.isCurrency) {
+          newCalculatorModel.cards[3] = newCalculatorModel.cards[3].copyWith(
+            price: _getTotalPrice(newCalculatorModel),
+          );
+          return newCalculatorModel;
+        }
         return newCalculatorModel.copyWith(
           totalPrice: _getTotalPrice(newCalculatorModel),
         );
@@ -133,6 +106,12 @@ class CalculatorRepo {
 
   String _getTotalPrice(CalculatorModel model) {
     switch (model.type) {
+      case CurrencyType.currencies:
+        num fromDollarPrice = model.cards[0].currencyPrice.parsePrice;
+        num toDollarPrice = model.cards[1].currencyPrice.parsePrice;
+        num fromCount = model.cards[2].price.parsePrice;
+        final totalPrice = (toDollarPrice * fromCount) / fromDollarPrice;
+        return totalPrice == 0 ? '00.0' : totalPrice.toStringAsFixed(2);
       default:
         num grams = 0;
         num price = 0;
@@ -151,16 +130,16 @@ class CalculatorRepo {
                 ? (price / 100) * taxCard.price.parsePrice
                 : taxCard.price.parsePrice;
         final totalPrice = grams * (price + work + tax);
-        return totalPrice == 0 ? '00.0' : totalPrice.toString();
+        return totalPrice == 0 ? '00.0' : totalPrice.toStringAsFixed(2);
     }
   }
 
   CalculatorModel? onCategoryPressed(
     CalculatorModel? calculatorModel,
-    CategoryModel categoryModel,
+    BaseModel baseModel,
   ) {
     if (calculatorModel == null) {
-      return null;
+      return calculatorModel;
     }
 
     final newCalculatorModel = CalculatorModel(
@@ -169,9 +148,19 @@ class CalculatorRepo {
       type: calculatorModel.type,
     );
     switch (newCalculatorModel.type) {
+      case CurrencyType.currencies:
+        for (int i = 0; i < newCalculatorModel.cards.length; i++) {
+          if (newCalculatorModel.cards[i].isSelected) {
+            newCalculatorModel.cards[i] = newCalculatorModel.cards[i].copyWith(
+              price: baseModel.name,
+              currencyPrice: baseModel.dollarPrice,
+            );
+          }
+        }
+        break;
       default:
         newCalculatorModel.cards[1] = newCalculatorModel.cards[1].copyWith(
-          price: categoryModel.price,
+          price: baseModel.basePrice,
         );
         break;
     }
@@ -181,13 +170,13 @@ class CalculatorRepo {
 
   CalculatorModel? onPercentPressed(CalculatorModel? model, int index) {
     if (model == null) {
-      return null;
+      return model;
     }
 
     final List<CardModel> newCards = List.from(model.cards);
     newCards[index] = model.cards[index].copyWith(
       isPercent: !model.cards[index].isPercent,
-      price: '00.0'
+      price: '00.0',
     );
     return model.copyWith(cards: newCards);
   }

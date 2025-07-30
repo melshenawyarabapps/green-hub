@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/services/api/api_service.dart';
 import 'package:gold/core/services/cache/cache_service.dart';
 import 'package:gold/features/ads/data/repos/ads_repo.dart';
@@ -16,17 +17,17 @@ setUp() {
   getIt.registerLazySingleton(() => AdsRepo());
   getIt.registerFactory(() => AdsController(getIt.get<AdsRepo>()));
 
-  getIt.registerLazySingleton<CalculatorRepo>(
-    () => CalculatorRepo(getIt.get<ApiService>()),
-  );
+  getIt.registerLazySingleton<CalculatorRepo>(() => CalculatorRepo());
 
   getIt.registerLazySingleton<BaseRepo>(
     () => BaseRepo(getIt.get<ApiService>()),
   );
 
-  getIt.registerFactory<CalculatorController>(
-    () => CalculatorController(getIt.get<CalculatorRepo>()),
+  getIt.registerFactoryParam<CalculatorController, CurrencyType, CurrencyType?>(
+    (param1, param2) =>
+        CalculatorController(getIt.get<CalculatorRepo>(), param1),
   );
+
   getIt.registerFactory<BaseController>(
     () => BaseController(getIt.get<BaseRepo>()),
   );
