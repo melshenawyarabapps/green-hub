@@ -15,7 +15,7 @@ jobs:
     if: github.ref_name == 'test'
     runs-on: ubuntu-latest
     env:
-      FLAVOR: sa
+      FLAVOR: dev
       BUILD_TYPE: apk
 
     steps:
