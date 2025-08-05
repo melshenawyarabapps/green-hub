@@ -17,36 +17,47 @@ class ListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
-        children: [
-          Expanded(
-            child: BlocBuilder<BaseController, BaseState>(
-              builder: (_, state) {
-                final currentStatus =
-                    state.status[type] ?? RequestStatus.loading;
-                final currentData = state.data[type] ?? [];
-                return currentData.isNotEmpty
-                    ? ListView.separated(
-                      padding: AppPadding.instance.verticalPadding(
-                        AppPadding.instance.p16,
-                      ),
-                      itemCount: currentData.length + 1,
-                      itemBuilder:
-                          (_, index) =>
-                              index == 0
-                                  ? const BannerAdWidget()
-                                  : ListViewItemWidget(
-                                    type: type,
-                                    model: currentData[index - 1],
-                                  ),
-                      separatorBuilder: (_, __) => 8.verticalSpace,
-                    )
-                    : LoadingEmptyWidget(isLoading: currentStatus.isLoading);
-              },
+      child: RefreshIndicator(
+        onRefresh: ()async{
+          context.read<BaseController>().getData(
+            type,
+          );
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: BlocBuilder<BaseController, BaseState>(
+                builder: (_, state) {
+                  final currentStatus =
+                      state.status[type] ?? RequestStatus.loading;
+                  final currentData = state.data[type] ?? [];
+                  return currentData.isNotEmpty
+                      ? ListView.separated(
+                        padding: AppPadding.instance.verticalPadding(
+                          AppPadding.instance.p16,
+                        ),
+                        itemCount: currentData.length + 1,
+                        itemBuilder:
+                            (_, index) =>
+                                index == 0
+                                    ? const BannerAdWidget()
+                                    : ListViewItemWidget(
+                                      type: type,
+                                      model: currentData[index - 1],
+                                    ),
+                        separatorBuilder: (_, __) => 8.verticalSpace,
+                      )
+                      : ListView(
+                        children: [
+                          LoadingEmptyWidget(isLoading: currentStatus.isLoading),
+                        ],
+                      );
+                },
+              ),
             ),
-          ),
-          const BannerAdWidget(),
-        ],
+            const BannerAdWidget(),
+          ],
+        ),
       ),
     );
   }

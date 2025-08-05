@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/features/ads/presentation/controllers/ads_controller.dart';
+import 'package:gold/features/base/presentation/controllers/base_controller.dart';
 import 'package:gold/features/bullion/presentation/views/bullion_view.dart';
 import 'package:gold/features/currencies/presentation/views/currencies_view.dart';
 import 'package:gold/features/gold/presentation/views/gold_view.dart';

@@ -23,13 +23,27 @@ class NumberWidget extends StatelessWidget {
           border: Border.all(color: model.type.color),
         ),
         child: Center(
-          child: Text(
-            model.number,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: model.type.color,
-              fontSize: FontSizes.instance.s24,
-            ),
-          ),
+          child:
+              model.text == null
+                  ? Text(
+                    model.number,
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: model.type.color,
+                      fontSize: FontSizes.instance.s24,
+                    ),
+                  )
+                  : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.arrow_back, color: model.type.color,size: FontSizes.instance.s24,),
+                      Text(
+                        model.text!,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: model.type.color,fontSize: FontSizes.instance.s10,
+                        ),
+                      ),
+                    ],
+                  ),
         ),
       ),
     );

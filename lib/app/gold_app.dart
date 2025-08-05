@@ -20,17 +20,17 @@ class GoldApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder:
-          (_, child) => MultiBlocProvider(
-            providers: [
-              BlocProvider.value(value: getIt.get<AdsController>()),
-              BlocProvider.value(value: getIt.get<BaseController>()),
-            ],
-            child: MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: getIt.get<AdsController>()),
+        BlocProvider.value(value: getIt.get<BaseController>()),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder:
+            (_, child) => MaterialApp(
               navigatorKey: NavigatorService.navigatorKey,
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
@@ -43,7 +43,7 @@ class GoldApp extends StatelessWidget {
               onGenerateRoute: AppRouter.instance.onGenerateRoute,
               initialRoute: AppRoutes.initialRoute,
             ),
-          ),
+      ),
     );
   }
 }

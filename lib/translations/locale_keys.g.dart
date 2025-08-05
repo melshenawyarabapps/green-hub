@@ -54,4 +54,7 @@ abstract class LocaleKeys {
   static const String selectCurrency = "selectCurrency";
   static const String from = "from";
   static const String to = "to";
+  static const String writeAmount = "writeAmount";
+  static const String result = "result";
+  static const String delete = "delete";
 }

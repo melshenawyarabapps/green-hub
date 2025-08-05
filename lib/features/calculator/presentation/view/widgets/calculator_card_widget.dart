@@ -20,6 +20,7 @@ class CalculatorCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return InkWell(
       onTap: () {
         context.read<CalculatorController>().onCardPressed(index);
@@ -31,11 +32,11 @@ class CalculatorCardWidget extends StatelessWidget {
               border:
                   model.isSelected
                       ? Border.all(
-                        color: Theme.of(context).secondaryHeaderColor,
+                        color: theme.secondaryHeaderColor,
                         width: 1.w,
                       )
                       : null,
-              color: Theme.of(context).shadowColor,
+              color: theme.shadowColor,
             ),
             child: Padding(
               padding: AppPadding.instance.all(AppPadding.instance.p6),
@@ -44,7 +45,7 @@ class CalculatorCardWidget extends StatelessWidget {
                 children: [
                   Text(
                     model.title,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    style: theme.textTheme.bodyMedium?.copyWith(
                       fontSize: FontSizes.instance.s10,
                     ),
                   ),
@@ -56,7 +57,7 @@ class CalculatorCardWidget extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           child: Text(
                             model.price,
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            style: theme.textTheme.bodyLarge,
                           ),
                         ),
                       ),

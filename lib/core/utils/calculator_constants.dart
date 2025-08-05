@@ -35,14 +35,14 @@ class CalculatorConstants {
         title: LocaleKeys.workmanshipPerGram.tr(),
         price: '00.0',
         isSelected: false,
-        isPercent: true,
+        isPercent: false,
         hasPercent: true,
       ),
       CardModel(
         title: LocaleKeys.taxPerGram.tr(),
         price: '00.0',
         isSelected: false,
-        isPercent: false,
+        isPercent: true,
         hasPercent: true,
       ),
     ],
@@ -67,14 +67,14 @@ class CalculatorConstants {
         isPercent: false,
       ),
       CardModel(
-        title: '',
+        title: LocaleKeys.writeAmount.tr(),
         price: '00.0',
         isSelected: false,
         hasPercent: false,
         isPercent: false,
       ),
       CardModel(
-        title: '',
+          title: LocaleKeys.result.tr(),
         price: '00.0',
         isSelected: false,
         hasPercent: false,
@@ -106,23 +106,24 @@ class CalculatorConstants {
         title: LocaleKeys.workmanshipPerGram.tr(),
         price: '00.0',
         isSelected: false,
-        isPercent: true,
+        isPercent: false,
         hasPercent: true,
       ),
       CardModel(
         title: LocaleKeys.taxPerGram.tr(),
         price: '00.0',
         isSelected: false,
-        isPercent: false,
+        isPercent: true,
         hasPercent: true,
       ),
     ],
   );
 
   List<NumberModel> get numbers=>[
-    const NumberModel(
-      number: 'DEL',
+     NumberModel(
+      number: '⇾',
       type: NumberType.delete,
+      text:LocaleKeys.delete.tr(),
     ),
     const NumberModel(
       number: 'C',

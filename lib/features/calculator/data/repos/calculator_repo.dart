@@ -1,7 +1,6 @@
 import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/enums/number_enums.dart';
 import 'package:gold/core/extensions/string_extensions.dart';
-import 'package:gold/core/services/logger/app_logger.dart';
 import 'package:gold/features/base/data/models/base_model.dart';
 import 'package:gold/features/calculator/data/models/calculator_model.dart';
 import 'package:gold/features/calculator/data/models/number_model.dart';
@@ -24,7 +23,6 @@ class CalculatorRepo {
     CalculatorModel? calculatorModel,
     NumberModel numberModel,
   ) {
-    AppLogger.instance.debug('onNumberPressed : $calculatorModel');
     if (calculatorModel == null) {
       return calculatorModel;
     }
@@ -149,7 +147,7 @@ class CalculatorRepo {
     );
     switch (newCalculatorModel.type) {
       case CurrencyType.currencies:
-        for (int i = 0; i < newCalculatorModel.cards.length; i++) {
+        for (int i = 0; i < 2; i++) {
           if (newCalculatorModel.cards[i].isSelected) {
             newCalculatorModel.cards[i] = newCalculatorModel.cards[i].copyWith(
               price: baseModel.name,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gold/core/enums/api_enums.dart';
@@ -15,7 +17,6 @@ class BaseController extends Cubit<BaseState> {
 
   Future<void> getData(CurrencyType type) async {
     final status = Map<CurrencyType, RequestStatus>.from(state.status);
-
     if (status[type]?.isLoading == true||state.data[type]?.isNotEmpty==true) {
       return;
     }

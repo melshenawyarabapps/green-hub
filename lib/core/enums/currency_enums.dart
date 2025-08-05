@@ -2,7 +2,7 @@ import 'package:gold/core/utils/calculator_constants.dart';
 import 'package:gold/core/utils/end_points.dart';
 import 'package:gold/features/calculator/data/models/calculator_model.dart';
 
-enum CurrencyType { currencies, gold, bullion }
+enum CurrencyType { gold,currencies,  bullion }
 
 extension CurrencyTypeExtension on CurrencyType {
   bool get isCurrency => this == CurrencyType.currencies;
