@@ -11,6 +11,7 @@ class Assets {
   static const String iconsCurrenciesUnselected = 'assets/icons/currencies-unselected.png';
   static const String iconsCurrencyDollar = 'assets/icons/currency-dollar.png';
   static const String iconsGoldSelected = 'assets/icons/gold-selected.png';
+  static const String iconsGoldUnselected = 'assets/icons/gold-unselected.png';
   static const String iconsMoreSelected = 'assets/icons/more-selected.png';
   static const String iconsMoreUnselected = 'assets/icons/more-unselected.png';
   static const String iconsPercentage = 'assets/icons/percentage.png';

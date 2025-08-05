@@ -19,7 +19,7 @@ class NavigationBarWidget extends StatelessWidget {
     return BottomNavigationBar(
       items: [
           BottomNavigationBarItem(
-            icon: NavigationItemWidget(imagePath: Assets.iconsGoldSelected),
+            icon: NavigationItemWidget(imagePath: Assets.iconsGoldUnselected,),
             label: LocaleKeys.gold.tr(),
             activeIcon: NavigationItemWidget(
               imagePath: Assets.iconsGoldSelected,
