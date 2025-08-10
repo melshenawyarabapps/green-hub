@@ -6,7 +6,7 @@ import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/shared/list_view_item_widget.dart';
 import 'package:gold/core/shared/loading_empty_widget.dart';
 import 'package:gold/core/utils/app_padding.dart';
-import 'package:gold/features/ads/presentation/views/banner_ad_widget.dart';
+import 'package:gold/features/ads/presentation/views/widgets/banner_ad_widget.dart';
 import 'package:gold/features/base/presentation/controllers/base_controller.dart';
 
 class ListViewWidget extends StatelessWidget {

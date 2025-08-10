@@ -49,10 +49,16 @@ class AppConfig {
       initializeFirebaseApp(flavor),
       MobileAds.instance.initialize(),
     ]);
+   
     await Future.wait([
       getIt.get<CacheService>().init(CacheConstants.appBox + flavor),
       NotificationsService.init(),
       CacheImageService.init(),
+      MobileAds.instance.updateRequestConfiguration(
+        RequestConfiguration(
+          testDeviceIds: ["99DA914F40DA106632F6911A725C1171"],
+        ),
+      ),
     ]);
 
     FlutterNativeSplash.remove();
@@ -72,7 +78,7 @@ class AppConfig {
       case 'dev':
         {
           lightColors = LightColorsDev.instance;
-          darkColors =DarkColorsDev.instance;
+          darkColors = DarkColorsDev.instance;
         }
       case 'sa':
         {

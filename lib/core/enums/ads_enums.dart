@@ -7,17 +7,17 @@ extension AdsTypeExtension on AdsType {
     return switch (this) {
       AdsType.banner =>
         Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/6300978111'
-            : 'ca-app-pub-3940256099942544/2934735716',
-      AdsType.fluid => '/6499/example/APIDemo/Fluid',
+            ? 'ca-app-pub-1886707841143443/5011872617'
+            : 'ca-app-pub-1886707841143443/5941810901',
+      AdsType.fluid => 'ca-app-pub-1886707841143443/5011872617',
       AdsType.openApp =>
         Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/9257395921'
-            : 'ca-app-pub-3940256099942544/5575463023',
+            ? 'ca-app-pub-1886707841143443/9532769224'
+            : 'ca-app-pub-1886707841143443/1755153884',
       AdsType.interstitial =>
         Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/1033173712'
-            : 'ca-app-pub-3940256099942544/4411468910',
+            ? 'ca-app-pub-1886707841143443/8546990616'
+            : 'ca-app-pub-1886707841143443/8934003424',
     };
   }
 }

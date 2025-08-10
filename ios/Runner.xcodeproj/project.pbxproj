@@ -576,7 +576,7 @@
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "Gold Dev";
-				APP_ID = "ca-app-pub-5102517334316209~5716816400";
+				APP_ID = "ca-app-pub-1886707841143443~7042337256";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -674,7 +674,7 @@
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "Gold Dev";
-				APP_ID = "ca-app-pub-5102517334316209~5716816400";
+				APP_ID = "ca-app-pub-1886707841143443~7042337256";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -767,7 +767,7 @@
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "Gold Dev";
-				APP_ID = "ca-app-pub-5102517334316209~5716816400";
+				APP_ID = "ca-app-pub-1886707841143443~7042337256";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -865,7 +865,7 @@
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "Gold Sa";
-				APP_ID = "ca-app-pub-5102517334316209~5716816400";
+				APP_ID = "ca-app-pub-1886707841143443~7042337256";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-sa";
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -963,7 +963,7 @@
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "Gold Sa";
-				APP_ID = "ca-app-pub-5102517334316209~5716816400";
+				APP_ID = "ca-app-pub-1886707841143443~7042337256";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-sa";
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -1056,7 +1056,7 @@
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "Gold Sa";
-				APP_ID = "ca-app-pub-5102517334316209~5716816400";
+				APP_ID = "ca-app-pub-1886707841143443~7042337256";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-sa";
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";

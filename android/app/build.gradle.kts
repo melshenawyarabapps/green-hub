@@ -50,7 +50,7 @@ android {
             resValue(
                 type = "string",
                 name = "app_id",
-                value = "ca-app-pub-5102517334316209~2761444994")
+                value = "ca-app-pub-1886707841143443~7976947304")
             applicationIdSuffix = ".dev"
         }
         create("sa") {
@@ -62,7 +62,7 @@ android {
             resValue(
                 type = "string",
                 name = "app_id",
-                value = "ca-app-pub-5102517334316209~2761444994")
+                value = "ca-app-pub-1886707841143443~7976947304")
             applicationIdSuffix = ".sa"
         }
     }

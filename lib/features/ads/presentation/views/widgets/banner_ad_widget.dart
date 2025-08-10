@@ -1,10 +1,9 @@
 
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:gold/core/enums/ads_enums.dart' show AdsType, AdsTypeExtension;
 import 'package:gold/core/enums/api_enums.dart';
+import 'package:gold/core/services/logger/app_logger.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class BannerAdWidget extends StatefulWidget {
@@ -25,12 +24,12 @@ class _BannerAdWidgetState extends State<BannerAdWidget>
       adUnitId: AdsType.banner.adUnitId,
       listener: BannerAdListener(
         onAdLoaded: (Ad ad) {
-          log('BannerAd loaded.');
+          AppLogger.instance.debug('BannerAd loaded.');
           bannerAdStatus = RequestStatus.loaded;
           setState(() {});
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          log('BannerAd failedToLoad: $error');
+          AppLogger.instance.debug('BannerAd failedToLoad: $error');
           bannerAdStatus = RequestStatus.error;
           bannerAd?.dispose();
           bannerAd = null;
