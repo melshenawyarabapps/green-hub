@@ -4,7 +4,7 @@ import 'package:gold/features/calculator/data/models/calculator_model.dart';
 
 enum CurrencyType { gold,currencies,  bullion }
 
-extension CurrencyTypeExtension on CurrencyType {
+extension CurrencyTypeExtension on CurrencyType? {
   bool get isCurrency => this == CurrencyType.currencies;
 
   bool get isGold => this == CurrencyType.gold;
@@ -14,11 +14,11 @@ extension CurrencyTypeExtension on CurrencyType {
   CalculatorModel get mock => switch (this) {
     CurrencyType.currencies => CalculatorConstants.instance.currenciesMock,
     CurrencyType.gold => CalculatorConstants.instance.goldMock,
-    CurrencyType.bullion => CalculatorConstants.instance.bullionMock,
+    _ => CalculatorConstants.instance.bullionMock,
   };
   String get endPoint => switch (this) {
     CurrencyType.currencies => EndPoints.instance.currencies,
     CurrencyType.gold => EndPoints.instance.gold,
-    CurrencyType.bullion => EndPoints.instance.bullion,
+    _ => EndPoints.instance.bullion,
   };
 }

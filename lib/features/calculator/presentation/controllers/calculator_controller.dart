@@ -10,7 +10,7 @@ import 'package:gold/features/calculator/data/repos/calculator_repo.dart';
 part 'calculator_state.dart';
 
 class CalculatorController extends Cubit<CalculatorState> {
-  CalculatorController(this._calculatorRepo,CurrencyType type)
+  CalculatorController(this._calculatorRepo, CurrencyType type)
     : super(CalculatorState(calculatorModel: type.mock, type: type));
 
   final CalculatorRepo _calculatorRepo;
@@ -58,4 +58,5 @@ class CalculatorController extends Cubit<CalculatorState> {
       ),
     );
   }
+
 }

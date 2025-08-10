@@ -5,7 +5,6 @@ import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/utils/app_padding.dart';
 import 'package:gold/features/ads/presentation/views/fluid_ad_mobile_widget.dart.dart';
 import 'package:gold/features/base/presentation/controllers/base_controller.dart';
-import 'package:gold/features/calculator/presentation/controllers/calculator_controller.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_app_bar.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_cards_widget.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/categories_widget.dart';
@@ -37,8 +36,8 @@ class _CalculatorViewState extends State<CalculatorView> {
       body: ListView(
         padding: AppPadding.instance.all(AppPadding.instance.p16),
         children: [
-          DecoratedBox(
-            decoration: BoxDecoration(color: Theme.of(context).cardColor),
+          ColoredBox(
+            color: Theme.of(context).cardColor,
             child: Column(
               children: [
                 const CalculatorCardsWidget(),

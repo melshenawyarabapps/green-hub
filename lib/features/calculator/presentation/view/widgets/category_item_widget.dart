@@ -7,12 +7,13 @@ import 'package:gold/features/base/data/models/base_model.dart';
 import 'package:gold/features/calculator/presentation/controllers/calculator_controller.dart';
 
 class CategoryItemWidget extends StatelessWidget {
-  const CategoryItemWidget({super.key, required this.category});
+  const CategoryItemWidget({super.key, required this.category, required this.isSelected});
 
   final BaseModel category;
-
+final bool isSelected ;
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return InkWell(
       onTap: () {
         context.read<CalculatorController>().onCategoryPressed(category);
@@ -23,8 +24,9 @@ class CategoryItemWidget extends StatelessWidget {
             height: size.maxWidth,
             child: DecoratedBox(
               decoration: BoxDecoration(
+                color: isSelected ? theme.secondaryHeaderColor : null,
                 border: Border.all(
-                  color: Theme.of(context).secondaryHeaderColor,
+                  color: theme.secondaryHeaderColor,
                 ),
                 borderRadius: BorderRadius.circular(8.r),
               ),
@@ -46,7 +48,7 @@ class CategoryItemWidget extends StatelessWidget {
                         fit: BoxFit.scaleDown,
                         child: Text(
                           category.name,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: theme.textTheme.bodyMedium,
                           maxLines: 1,
                         ),
                       ),
