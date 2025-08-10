@@ -13,6 +13,8 @@ class AppPadding {
 
   EdgeInsets horizontalPadding(double width) =>
       EdgeInsets.symmetric(horizontal: width).w;
+  EdgeInsets get zero =>
+      EdgeInsets.zero;
 
   EdgeInsetsDirectional onlyPadding({
     double start = 0.0,
@@ -47,4 +49,5 @@ class AppPadding {
   double get p28 => 28;
 
   double get p32 => 32;
+  double get p48 => 48;
 }

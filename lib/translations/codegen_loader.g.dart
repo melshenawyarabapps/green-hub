@@ -69,6 +69,14 @@ class CodegenLoader extends AssetLoader {
     LocaleKeys.writeAmount: "اكتب المبلغ : ",
     LocaleKeys.result: "الناتج : ",
     LocaleKeys.delete: "حذف",
+    LocaleKeys.notifications: "الاشعارات",
+    LocaleKeys.rateApp: "تقييم التطبيق",
+    LocaleKeys.privacyPolicy: "سياسة الخصوصية",
+    LocaleKeys.disclaimer: "اخلاء مسؤلية",
+    LocaleKeys.shareApp: "شارك التطبيق",
+    LocaleKeys.contactUs: "تواصل معنا",
+    LocaleKeys.importantNote: "ملاحظة هامة\nيتم عرض الأسعار في التطبيق لأغراض اعلامية فقط",
+    LocaleKeys.checkOut:"تفقد هذا التطبيق"
   };
 
   static const Map<String, dynamic> en = {};

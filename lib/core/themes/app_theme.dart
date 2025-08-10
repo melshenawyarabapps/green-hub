@@ -87,5 +87,8 @@ class AppTheme {
         fontSize: FontSizes.instance.s12,
       ),
     ),
+    iconTheme: IconThemeData(
+      color: AppConfig.instance.darkColors!.whiteColor,
+    )
   );
 }

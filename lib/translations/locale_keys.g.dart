@@ -57,4 +57,12 @@ abstract class LocaleKeys {
   static const String writeAmount = "writeAmount";
   static const String result = "result";
   static const String delete = "delete";
+  static const String notifications = "notifications";
+  static const String rateApp = "rateApp";
+  static const String privacyPolicy = "privacyPolicy";
+  static const String disclaimer = "disclaimer";
+  static const String shareApp = "shareApp";
+  static const String contactUs = "contactUs";
+  static const String importantNote = "importantNote";
+  static const String checkOut = "checkOut";
 }
