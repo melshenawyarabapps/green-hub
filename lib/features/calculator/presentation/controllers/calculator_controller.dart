@@ -16,6 +16,7 @@ class CalculatorController extends Cubit<CalculatorState> {
   final CalculatorRepo _calculatorRepo;
 
   void onCardPressed(int index) {
+    refillModel();
     emit(
       state.copyWith(
         calculatorModel: _calculatorRepo.onCardPressed(
@@ -27,6 +28,7 @@ class CalculatorController extends Cubit<CalculatorState> {
   }
 
   void onNumberPressed(NumberModel model) {
+    refillModel();
     emit(
       state.copyWith(
         calculatorModel: _calculatorRepo.onNumberPressed(
@@ -38,6 +40,7 @@ class CalculatorController extends Cubit<CalculatorState> {
   }
 
   void onCategoryPressed(BaseModel model) {
+    refillModel();
     emit(
       state.copyWith(
         calculatorModel: _calculatorRepo.onCategoryPressed(
@@ -49,6 +52,7 @@ class CalculatorController extends Cubit<CalculatorState> {
   }
 
   void onPercentPressed(int index) {
+    refillModel();
     emit(
       state.copyWith(
         calculatorModel: _calculatorRepo.onPercentPressed(
@@ -59,4 +63,9 @@ class CalculatorController extends Cubit<CalculatorState> {
     );
   }
 
+  void refillModel() {
+    if (state.calculatorModel == null) {
+      emit(state.copyWith(calculatorModel: state.type.mock));
+    }
+  }
 }

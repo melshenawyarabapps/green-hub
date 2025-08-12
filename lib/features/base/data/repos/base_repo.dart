@@ -10,17 +10,19 @@ class BaseRepo {
 
   BaseRepo(this._apiService);
 
-  Future<Either<Failure, List<BaseModel>>> getData(CurrencyType type) async {
+  Future<Either<Failure, (List<BaseModel>, String)>> getData(
+    CurrencyType type,
+  ) async {
     try {
       final response = await _apiService.get(endPoint: type.endPoint);
       final data = response['data'] as List<dynamic>;
-
+      final lastUpdated = response['meta']?['latest_updated'] ?? '';
       final List<BaseModel> list = [];
 
       for (var item in data) {
         list.add((item as Map).toModel(type));
       }
-      return Right(list);
+      return Right((list, lastUpdated));
     } catch (e) {
       return Left(ServerFailure.generalException(e));
     }

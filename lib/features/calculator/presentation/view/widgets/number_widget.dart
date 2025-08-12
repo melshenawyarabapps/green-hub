@@ -13,15 +13,17 @@ class NumberWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        context.read<CalculatorController>().onNumberPressed(model);
-      },
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(color: model.type.color),
-        ),
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(color: model.type.color),
+      ),
+      child: InkWell(
+        onTap: () {
+          context.read<CalculatorController>().onNumberPressed(model);
+        },
+        splashColor:model.type.color,
         child: Center(
           child:
               model.text == null

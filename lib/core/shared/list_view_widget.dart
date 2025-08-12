@@ -19,7 +19,7 @@ class ListViewWidget extends StatelessWidget {
     return Expanded(
       child: RefreshIndicator(
         onRefresh: () async {
-          context.read<BaseController>().getData(type);
+          context.read<BaseController>().getData(type, isRefresh: true);
         },
         child: Column(
           children: [

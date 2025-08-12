@@ -7,7 +7,7 @@ extension AdsTypeExtension on AdsType {
     return switch (this) {
       AdsType.banner =>
         Platform.isAndroid
-            ? 'ca-app-pub-1886707841143443/5011872617'
+            ? 'ca-app-pub-3940256099942544/9214589741'
             : 'ca-app-pub-1886707841143443/5941810901',
       AdsType.fluid => 'ca-app-pub-1886707841143443/5011872617',
       AdsType.openApp =>

@@ -89,6 +89,6 @@ class AppTheme {
     ),
     iconTheme: IconThemeData(
       color: AppConfig.instance.darkColors!.whiteColor,
-    )
+    ),
   );
 }
