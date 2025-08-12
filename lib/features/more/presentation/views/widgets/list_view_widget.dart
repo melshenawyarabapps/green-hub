@@ -15,7 +15,7 @@ class ListViewWidget extends StatelessWidget {
       padding: AppPadding.instance.zero,
       shrinkWrap: true,
       itemBuilder: (_, index) => ListViewItemWidget(model:data[index]),
-      separatorBuilder: (_,__)=>24.verticalSpace,
+      separatorBuilder: (_,__)=>32.verticalSpace,
       itemCount: data.length,
     );
   }

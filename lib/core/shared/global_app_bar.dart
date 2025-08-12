@@ -8,6 +8,7 @@ import 'package:gold/core/extensions/string_extensions.dart';
 import 'package:gold/core/routing/app_routes.dart';
 import 'package:gold/core/services/navigator/navigator_service.dart';
 import 'package:gold/core/shared/app_bar_title.dart';
+import 'package:gold/core/utils/functions.dart';
 import 'package:gold/generated/assets.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -32,7 +33,9 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? null
               : [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    shareApp();
+                  },
                   child: Image.asset(Assets.iconsShare, height: 18.h),
                 ),
                 8.horizontalSpace,

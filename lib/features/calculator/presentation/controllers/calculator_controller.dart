@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gold/core/enums/api_enums.dart';
 import 'package:gold/core/enums/currency_enums.dart';
@@ -67,5 +68,9 @@ class CalculatorController extends Cubit<CalculatorState> {
     if (state.calculatorModel == null) {
       emit(state.copyWith(calculatorModel: state.type.mock));
     }
+  }
+
+  Future<void> takeScreenshot(GlobalKey globalKey) async {
+    _calculatorRepo.takeScreenshot(globalKey);
   }
 }

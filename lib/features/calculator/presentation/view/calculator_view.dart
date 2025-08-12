@@ -5,6 +5,7 @@ import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/utils/app_padding.dart';
 import 'package:gold/features/ads/presentation/views/widgets/fluid_ad_mobile_widget.dart.dart';
 import 'package:gold/features/base/presentation/controllers/base_controller.dart';
+import 'package:gold/features/calculator/presentation/controllers/calculator_controller.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_app_bar.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_cards_widget.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/categories_widget.dart';
@@ -29,36 +30,46 @@ class _CalculatorViewState extends State<CalculatorView> {
     super.initState();
   }
 
+  final GlobalKey _screenshotKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CalculatorAppBar(type: widget.type),
-      body: ListView(
-        padding: AppPadding.instance.all(AppPadding.instance.p16),
-        children: [
-          ColoredBox(
-            color: Theme.of(context).cardColor,
-            child: Column(
-              children: [
-                const CalculatorCardsWidget(),
-                if (!widget.type.isCurrency) ...[
-                  4.verticalSpace,
-                  const TotalPriceWidget(),
+    return RepaintBoundary(
+      key: _screenshotKey,
+      child: Scaffold(
+        appBar: CalculatorAppBar(
+          type: widget.type,
+          onShareTap: () {
+            context.read<CalculatorController>().takeScreenshot(_screenshotKey);
+          },
+        ),
+        body: ListView(
+          padding: AppPadding.instance.all(AppPadding.instance.p16),
+          children: [
+            ColoredBox(
+              color: Theme.of(context).cardColor,
+              child: Column(
+                children: [
+                  const CalculatorCardsWidget(),
+                  if (!widget.type.isCurrency) ...[
+                    4.verticalSpace,
+                    const TotalPriceWidget(),
+                  ],
                 ],
+              ),
+            ),
+            16.verticalSpace,
+            Row(
+              children: [
+                CategoriesWidget(type: widget.type),
+                8.horizontalSpace,
+                const NumbersWidget(),
               ],
             ),
-          ),
-          16.verticalSpace,
-          Row(
-            children: [
-              CategoriesWidget(type: widget.type),
-              8.horizontalSpace,
-              const NumbersWidget(),
-            ],
-          ),
-          16.verticalSpace,
-          const FluidAdMobileWidget(),
-        ],
+            16.verticalSpace,
+            const FluidAdMobileWidget(),
+          ],
+        ),
       ),
     );
   }

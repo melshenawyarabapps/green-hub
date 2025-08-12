@@ -16,7 +16,10 @@ class AppConstants {
 
   final String appVersion = '1.0.0';
 
-  String get storeUrl => Platform.isIOS ? '' : '';
+  String get storeUrl =>
+      Platform.isIOS
+          ? ''
+          : 'https://play.google.com/store/apps/details?id=com.asaar.gold.sa';
 
   String get privacyPolicyUrl =>
       'https://saudigoldpricenow.com/privacy-policy/';
@@ -33,7 +36,10 @@ class AppConstants {
       title: LocaleKeys.rateApp.tr(),
       icon: Icons.star_border,
       onPressed: () {
-        openUrl(AppConstants.instance.storeUrl,mode: LaunchMode.externalApplication);
+        openUrl(
+          AppConstants.instance.storeUrl,
+          mode: LaunchMode.externalApplication,
+        );
       },
     ),
     MoreModel(

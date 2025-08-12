@@ -7,6 +7,7 @@ class EndPoints {
   final String gold = '/gold-prices';
   final String bullion = '/bullion-prices';
   final String currencies = '/currencies';
+  final String contacts = '/contacts';
 
 
 }
