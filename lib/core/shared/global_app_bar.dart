@@ -33,7 +33,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
               : [
                 InkWell(
                   onTap: () {},
-                  child: Image.asset(Assets.iconsShare, height: 24.h),
+                  child: Image.asset(Assets.iconsShare, height: 18.h),
                 ),
                 8.horizontalSpace,
                 InkWell(
@@ -46,7 +46,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Image.asset(Assets.iconsCalculator, height: 24.h),
+                      Image.asset(Assets.iconsCalculator, height: 30.h),
                       4.verticalSpace,
                       Text(
                         '${type!.name}Calculator'.tr(),

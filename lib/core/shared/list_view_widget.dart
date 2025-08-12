@@ -18,10 +18,8 @@ class ListViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: RefreshIndicator(
-        onRefresh: ()async{
-          context.read<BaseController>().getData(
-            type,
-          );
+        onRefresh: () async {
+          context.read<BaseController>().getData(type);
         },
         child: Column(
           children: [
@@ -36,20 +34,19 @@ class ListViewWidget extends StatelessWidget {
                         padding: AppPadding.instance.verticalPadding(
                           AppPadding.instance.p16,
                         ),
-                        itemCount: currentData.length + 1,
+                        itemCount: currentData.length,
                         itemBuilder:
-                            (_, index) =>
-                                index == 0
-                                    ? const BannerAdWidget()
-                                    : ListViewItemWidget(
-                                      type: type,
-                                      model: currentData[index - 1],
-                                    ),
+                            (_, index) => ListViewItemWidget(
+                              type: type,
+                              model: currentData[index],
+                            ),
                         separatorBuilder: (_, __) => 8.verticalSpace,
                       )
                       : ListView(
                         children: [
-                          LoadingEmptyWidget(isLoading: currentStatus.isLoading),
+                          LoadingEmptyWidget(
+                            isLoading: currentStatus.isLoading,
+                          ),
                         ],
                       );
                 },

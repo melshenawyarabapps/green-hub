@@ -27,18 +27,20 @@ class ListViewItemWidget extends StatelessWidget {
           TextImageWidget(
             text: model.name,
             directionalType: DirectionalType.start,
-            imagePath: model.icon,
+            imagePath: model.icon, mainAxisAlignment: MainAxisAlignment.start,
           ),
           TextImageWidget(
             text: model.basePrice,
             directionalType: DirectionalType.end,
             imagePath: AppConfig.instance.appCurrency,
+            mainAxisAlignment: MainAxisAlignment.center,
           ),
           TextImageWidget(
             text: model.dollarPrice,
             imagePath: Assets.iconsCurrencyDollar,
             isDollar: !type.isCurrency,
             showIcon: !type.isCurrency,
+            mainAxisAlignment: type.isGold?MainAxisAlignment.end:MainAxisAlignment.center,
           ),
           if (type.isGold)
             ChangeWidget(

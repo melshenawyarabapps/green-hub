@@ -10,6 +10,7 @@ class TextImageWidget extends StatelessWidget {
     super.key,
     required this.text,
     required this.imagePath,
+    required this.mainAxisAlignment,
     this.directionalType = DirectionalType.start,
     this.isDollar = false,
     this.showIcon = true,
@@ -20,6 +21,7 @@ class TextImageWidget extends StatelessWidget {
   final DirectionalType directionalType;
   final bool isDollar;
   final bool showIcon;
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +30,13 @@ class TextImageWidget extends StatelessWidget {
         padding: AppPadding.instance.horizontalPadding(AppPadding.instance.p8),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: mainAxisAlignment,
           children: [
             if (showIcon && !isDollar && directionalType.isStart&&imagePath.isNotEmpty) ...[
               ImageView(imagePath: imagePath),
               4.horizontalSpace,
             ],
-            Expanded(
+            Flexible(
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
