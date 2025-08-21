@@ -11,7 +11,7 @@ final MoreModel model;
       onTap: model.onPressed,
       child: Row(
         children: [
-          Icon(model.icon),
+          Image.asset(model.icon,width: 20.w,),
           8.horizontalSpace,
           Text(model.title,style: Theme.of(context).textTheme.bodyLarge,),
         ],

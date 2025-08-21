@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:gold/core/models/more_model.dart';
 import 'package:gold/core/utils/functions.dart';
+import 'package:gold/generated/assets.dart';
 import 'package:gold/translations/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -30,12 +30,12 @@ class AppConstants {
   final List<MoreModel> moreItems = [
     MoreModel(
       title: LocaleKeys.notifications.tr(),
-      icon: Icons.notifications_outlined,
+      icon: Assets.iconsIconNotifications,
       onPressed: () {},
     ),
     MoreModel(
       title: LocaleKeys.rateApp.tr(),
-      icon: Icons.star_border,
+      icon: Assets.iconsIconEvaluation,
       onPressed: () {
         openUrl(
           AppConstants.instance.storeUrl,
@@ -45,28 +45,28 @@ class AppConstants {
     ),
     MoreModel(
       title: LocaleKeys.privacyPolicy.tr(),
-      icon: Icons.star_border,
+      icon: Assets.iconsIconPrivacy,
       onPressed: () {
         openUrl(AppConstants.instance.privacyPolicyUrl);
       },
     ),
     MoreModel(
       title: LocaleKeys.disclaimer.tr(),
-      icon: Icons.star_border,
+      icon: Assets.iconsIconResponsibility,
       onPressed: () {
         openUrl(AppConstants.instance.disclaimerUrl);
       },
     ),
     MoreModel(
       title: LocaleKeys.shareApp.tr(),
-      icon: Icons.star_border,
+      icon: Assets.iconsIconSharing,
       onPressed: () {
         shareApp();
       },
     ),
     MoreModel(
       title: LocaleKeys.contactUs.tr(),
-      icon: Icons.star_border,
+      icon: Assets.iconsIconContactus,
       onPressed: () {},
     ),
   ];

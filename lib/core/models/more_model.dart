@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 class MoreModel extends Equatable{
   final String title;
-  final IconData icon;
+  final String icon;
   final GestureTapCallback? onPressed;
   const MoreModel({
     required this.title,
