@@ -1,4 +1,4 @@
-package com.asaar.gold
+package com.saudi.goldprice
 
 import io.flutter.embedding.android.FlutterActivity
 

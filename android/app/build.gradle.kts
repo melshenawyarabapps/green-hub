@@ -16,7 +16,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 android {
-    namespace = "com.asaar.gold"
+    namespace = "com.saudi.goldprice"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -32,7 +32,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.asaar.gold"
+        applicationId = "com.saudi.goldprice"
         multiDexEnabled = true
 
         minSdk = 23
@@ -79,7 +79,6 @@ android {
                 type = "string",
                 name = "app_id",
                 value = "ca-app-pub-1886707841143443~7976947304")
-            applicationIdSuffix = ".sa"
         }
     }
 }

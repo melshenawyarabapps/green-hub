@@ -23,6 +23,44 @@
           "other_platform_oauth_client": []
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968979386708:android:f797e7ac112c349fc6f8c1",
+        "android_client_info": {
+          "package_name": "com.saudi.goldprice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRng6HDawDSseATKbCnZDf_8DKglsDH7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968979386708:android:8344c50e17f2f74ec6f8c1",
+        "android_client_info": {
+          "package_name": "com.saudi.goldprice.sa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRng6HDawDSseATKbCnZDf_8DKglsDH7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
     }
   ],
   "configuration_version": "1"

@@ -88,7 +88,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ env.GOOGLE_PLAY_JSON }}
-          packageName: com.asaar.gold.${{ env.FLAVOR }}
+          packageName: com.saudi.goldprice.${{ env.FLAVOR }}
           releaseFile: build/app/outputs/bundle/${{ env.FLAVOR }}Release/app-${{ env.FLAVOR }}-release.aab
           track: internal
 

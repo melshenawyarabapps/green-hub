@@ -19,7 +19,7 @@ class AppConstants {
   String get storeUrl =>
       Platform.isIOS
           ? ''
-          : 'https://play.google.com/store/apps/details?id=com.asaar.gold.sa';
+          : 'https://play.google.com/store/apps/details?id=com.saudi.goldprice.sa';
 
   String get privacyPolicyUrl =>
       'https://saudigoldpricenow.com/privacy-policy/';
