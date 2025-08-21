@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gold/core/enums/api_enums.dart';
 import 'package:gold/core/enums/currency_enums.dart';
@@ -13,11 +14,10 @@ class BaseController extends Cubit<BaseState> {
 
   final BaseRepo _baseRepo;
 
-  Future<void> getData(CurrencyType type,{
-    bool isRefresh = false
-  }) async {
+  Future<void> getData(CurrencyType type, {bool isRefresh = false}) async {
     final status = Map<CurrencyType, RequestStatus>.from(state.status);
-    if (status[type]?.isLoading == true||(state.data[type]?.isNotEmpty==true&&!isRefresh)) {
+    if (status[type]?.isLoading == true ||
+        (state.data[type]?.isNotEmpty == true && !isRefresh)) {
       return;
     }
     status[type] = RequestStatus.loading;
@@ -37,8 +37,14 @@ class BaseController extends Cubit<BaseState> {
         data[type] = list;
         final lastUpdates = Map<CurrencyType, String>.from(state.lastUpdates);
         lastUpdates[type] = r.$2;
-        emit(state.copyWith(status: status, data: data, lastUpdates: lastUpdates));
+        emit(
+          state.copyWith(status: status, data: data, lastUpdates: lastUpdates),
+        );
       },
     );
+  }
+
+  Future<void> takeScreenshot(GlobalKey globalKey, {String? text}) async {
+    _baseRepo.takeScreenshot(globalKey, text);
   }
 }

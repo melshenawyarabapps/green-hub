@@ -26,8 +26,8 @@ class BullionModel extends Equatable {
   factory BullionModel.fromJson(Map json) => BullionModel(
     id: json['id'],
     name: json['name'],
-    dollarPrice: json['dollar_price'],
-    basePrice: json['base_price'],
+    dollarPrice: json['dollar_price_nonformate'].toString(),
+    basePrice: json['base_price_nonformate'].toString(),
   );
 
   @override

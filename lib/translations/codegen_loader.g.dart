@@ -32,7 +32,7 @@ class CodegenLoader extends AssetLoader {
     LocaleKeys.currenciesPriceInDev: "أسعار العملات في التطوير",
     LocaleKeys.currenciesPriceInSa: "أسعار العملات في السعودية",
     LocaleKeys.bullionPriceInDev: "أسعار السبائك في التطوير",
-    LocaleKeys.bullionPriceInSa: "حاسبة السبائك في السعودية",
+    LocaleKeys.bullionPriceInSa: "أسعار السبائك في السعودية",
     LocaleKeys.goldCalculatorInDev: "حاسبة الذهب في التطوير",
     LocaleKeys.goldCalculatorInSa: "حاسبة الذهب في السعودية",
     LocaleKeys.currenciesCalculatorInDev: "حاسبة العملات في التطوير",
@@ -76,7 +76,7 @@ class CodegenLoader extends AssetLoader {
     LocaleKeys.shareApp: "شارك التطبيق",
     LocaleKeys.contactUs: "تواصل معنا",
     LocaleKeys.importantNote: "ملاحظة هامة\nيتم عرض الأسعار في التطبيق لأغراض اعلامية فقط",
-    LocaleKeys.checkOut:"تفقد هذا التطبيق"
+    LocaleKeys.checkOut:"تفقد هذا التطبيق",
   };
 
   static const Map<String, dynamic> en = {};

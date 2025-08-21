@@ -16,10 +16,11 @@ class AppConstants {
 
   final String appVersion = '1.0.0';
 
-  String get storeUrl =>
-      Platform.isIOS
-          ? ''
-          : 'https://play.google.com/store/apps/details?id=com.saudi.goldprice.sa';
+  String get androidStoreUrl => 'https://play.google.com/store/apps/details?id=com.saudi.goldprice';
+
+  String get iosStoreUrl => '';
+
+  String get storeUrl => Platform.isAndroid ? androidStoreUrl : iosStoreUrl;
 
   String get privacyPolicyUrl =>
       'https://saudigoldpricenow.com/privacy-policy/';

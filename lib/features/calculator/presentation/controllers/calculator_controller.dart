@@ -69,8 +69,4 @@ class CalculatorController extends Cubit<CalculatorState> {
       emit(state.copyWith(calculatorModel: state.type.mock));
     }
   }
-
-  Future<void> takeScreenshot(GlobalKey globalKey) async {
-    _calculatorRepo.takeScreenshot(globalKey);
-  }
 }

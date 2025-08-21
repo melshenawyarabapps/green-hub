@@ -29,7 +29,7 @@ class AppBarTitle extends StatelessWidget {
           selector:
               (state) =>
                   state.lastUpdates[type] ??
-                  DateTime.now().format,
+                  DateTime.now().formatDate,
           builder: (_, lastUpdate) {
             return Text(
               '${LocaleKeys.lastUpdate.tr()}$lastUpdate',

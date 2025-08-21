@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/config/app_config.dart';
+import 'package:gold/core/extensions/string_extensions.dart';
 import 'package:gold/core/utils/font_sizes.dart';
 import 'package:gold/generated/assets.dart';
 
@@ -19,7 +20,7 @@ final String price;
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                price,
+                price.formatNumber ,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontSize: FontSizes.instance.s12,
                 ),

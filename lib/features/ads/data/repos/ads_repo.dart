@@ -1,3 +1,4 @@
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gold/core/enums/ads_enums.dart';
 import 'package:gold/core/services/logger/app_logger.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -18,6 +19,7 @@ class AdsRepo {
         },
         onAdFailedToLoad: (error) {
           AppLogger.instance.debug('AppOpenAd failed to load: $error');
+          FlutterNativeSplash.remove();
         },
       ),
     );
@@ -57,7 +59,9 @@ class AdsRepo {
         _appOpenAd = null;
       },
     );
-    _appOpenAd!.show();
+    _appOpenAd!.show().then((_) {
+      FlutterNativeSplash.remove();
+    });
   }
 
   InterstitialAd? _interstitialAd;

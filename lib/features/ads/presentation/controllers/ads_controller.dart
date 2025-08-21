@@ -10,26 +10,8 @@ class AdsController extends Cubit<AdsState> {
 
   final AdsRepo _apiRepo;
 
-  void loadAppOpenAd() {
-    _apiRepo.loadAppOpenAd();
-  }
-
   void loadInterstitialAd() {
     _apiRepo.loadInterstitialAd();
   }
 
-  void listenToAppStateChanges() {
-    return;
-    AppStateEventNotifier.startListening();
-    AppStateEventNotifier.appStateStream.forEach(
-      (state) => _onAppStateChanged(state),
-    );
-  }
-
-  void _onAppStateChanged(AppState appState) {
-    log('New AppState state: $appState');
-    if (appState == AppState.foreground) {
-      loadAppOpenAd();
-    }
-  }
 }

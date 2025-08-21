@@ -8,6 +8,7 @@ import 'package:gold/core/services/notifications/notifications_service.dart';
 import 'package:gold/core/services/observers/bloc_lifecycle_observer.dart';
 import 'package:gold/core/themes/app_colors.dart';
 import 'package:gold/core/utils/cache_constants.dart';
+import 'package:gold/features/ads/data/repos/ads_repo.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -48,20 +49,19 @@ class AppConfig {
       Hive.initFlutter(),
       initializeFirebaseApp(flavor),
       MobileAds.instance.initialize(),
-    ]);
-   
-    await Future.wait([
-      getIt.get<CacheService>().init(CacheConstants.appBox + flavor),
-      NotificationsService.init(),
-      CacheImageService.init(),
       MobileAds.instance.updateRequestConfiguration(
         RequestConfiguration(
           testDeviceIds: ["99DA914F40DA106632F6911A725C1171"],
         ),
       ),
     ]);
+    getIt.get<AdsRepo>().loadAppOpenAd();
 
-    FlutterNativeSplash.remove();
+    await Future.wait([
+      getIt.get<CacheService>().init(CacheConstants.appBox + flavor),
+      NotificationsService.init(),
+      CacheImageService.init(),
+    ]);
   }
 
   Future<void> initializeFirebaseApp(String flavor) async {

@@ -12,8 +12,8 @@ import 'package:gold/features/base/presentation/controllers/base_controller.dart
 import 'package:gold/translations/locale_keys.g.dart';
 
 class GoldView extends StatefulWidget {
-  const GoldView({super.key});
-
+  const GoldView({super.key, required this.screenshotKey});
+  final GlobalKey screenshotKey ;
   @override
   State<GoldView> createState() => _GoldViewState();
 }
@@ -31,7 +31,7 @@ class _GoldViewState extends State<GoldView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GlobalAppBar(type: CurrencyType.gold),
+        GlobalAppBar(type: CurrencyType.gold, screenshotKey: widget.screenshotKey),
         8.verticalSpace,
         Text(LocaleKeys.pricesWithoutTax.tr()),
         12.verticalSpace,

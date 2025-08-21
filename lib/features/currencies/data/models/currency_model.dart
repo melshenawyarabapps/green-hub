@@ -21,8 +21,8 @@ class CurrencyModel extends Equatable {
         id: json['id'],
         targetCurrency: json['target_currency'],
         iconTargetCurrency: json['icon_target_currency'],
-        baseRate: json['base_rate'],
-        targetRate: json['target_rate'],
+        baseRate: json['base_rate_nonformate'].toString(),
+        targetRate: json['target_rate_nonformate'].toString(),
       );
 
   @override

@@ -40,7 +40,7 @@ class TextImageWidget extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  text + (!isDollar ? '' : ' \$'),
+                  text.formatNumber + (!isDollar ? '' : ' \$'),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),

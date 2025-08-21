@@ -5,7 +5,6 @@ import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/core/utils/app_padding.dart';
 import 'package:gold/features/ads/presentation/views/widgets/fluid_ad_mobile_widget.dart.dart';
 import 'package:gold/features/base/presentation/controllers/base_controller.dart';
-import 'package:gold/features/calculator/presentation/controllers/calculator_controller.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_app_bar.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/calculator_cards_widget.dart';
 import 'package:gold/features/calculator/presentation/view/widgets/categories_widget.dart';
@@ -40,7 +39,7 @@ class _CalculatorViewState extends State<CalculatorView> {
         appBar: CalculatorAppBar(
           type: widget.type,
           onShareTap: () {
-            context.read<CalculatorController>().takeScreenshot(_screenshotKey);
+            context.read<BaseController>().takeScreenshot(_screenshotKey);
           },
         ),
         body: ListView(

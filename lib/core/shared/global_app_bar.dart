@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/config/app_config.dart';
 import 'package:gold/core/enums/currency_enums.dart';
@@ -8,13 +9,16 @@ import 'package:gold/core/extensions/string_extensions.dart';
 import 'package:gold/core/routing/app_routes.dart';
 import 'package:gold/core/services/navigator/navigator_service.dart';
 import 'package:gold/core/shared/app_bar_title.dart';
-import 'package:gold/core/utils/functions.dart';
+import 'package:gold/core/utils/app_constants.dart';
+import 'package:gold/features/base/presentation/controllers/base_controller.dart';
 import 'package:gold/generated/assets.dart';
+import 'package:gold/translations/locale_keys.g.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const GlobalAppBar({super.key, this.type});
+  const GlobalAppBar({super.key, this.type, this.screenshotKey});
 
   final CurrencyType? type;
+  final GlobalKey? screenshotKey;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,13 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
               : [
                 InkWell(
                   onTap: () {
-                    shareApp();
+                    if (screenshotKey != null) {
+                      context.read<BaseController>().takeScreenshot(
+                        screenshotKey!,
+                        text:
+                            '${LocaleKeys.checkOut.tr()}\nGoogle Play : ${AppConstants.instance.androidStoreUrl}\nApp Store : ${AppConstants.instance.iosStoreUrl}',
+                      );
+                    }
                   },
                   child: Image.asset(Assets.iconsShare, height: 18.h),
                 ),

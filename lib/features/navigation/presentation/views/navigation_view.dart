@@ -7,6 +7,7 @@ import 'package:gold/features/currencies/presentation/views/currencies_view.dart
 import 'package:gold/features/gold/presentation/views/gold_view.dart';
 import 'package:gold/features/more/presentation/views/more_view.dart';
 import 'package:gold/features/navigation/presentation/views/widgets/navigation_bar_widget.dart';
+import 'package:in_app_review/in_app_review.dart';
 
 class NavigationView extends StatefulHookWidget {
   const NavigationView({super.key});
@@ -19,10 +20,11 @@ class _NavigationViewState extends State<NavigationView> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final adsController = context.read<AdsController>();
-      adsController.listenToAppStateChanges();
-      adsController.loadAppOpenAd();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final InAppReview inAppReview = InAppReview.instance;
+      if (await inAppReview.isAvailable()) {
+        inAppReview.requestReview();
+      }
     });
   }
 
@@ -35,30 +37,35 @@ class _NavigationViewState extends State<NavigationView> {
     }
   }
 
+  final _screenshotKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     final controller = usePageController(initialPage: 0);
     final currentIndex = useState(0);
-    return Scaffold(
-      body: PageView.builder(
-        controller: controller,
-        onPageChanged: (index) {
-          currentIndex.value = index;
-          addToAttempts();
-        },
-        itemBuilder:
-            (_, index) =>
-                const [
-                  GoldView(),
-                  CurrenciesView(),
-                  BullionView(),
-                  MoreView(),
-                ][index],
-        itemCount: 4,
-      ),
-      bottomNavigationBar: NavigationBarWidget(
-        currentIndex: currentIndex,
-        controller: controller,
+    return RepaintBoundary(
+      key: _screenshotKey,
+      child: Scaffold(
+        body: PageView.builder(
+          controller: controller,
+          onPageChanged: (index) {
+            currentIndex.value = index;
+            addToAttempts();
+          },
+          itemBuilder:
+              (_, index) =>
+                   [
+                    GoldView(screenshotKey: _screenshotKey,),
+                    CurrenciesView(screenshotKey: _screenshotKey,),
+                    BullionView(screenshotKey: _screenshotKey,),
+                    const MoreView(),
+                  ][index],
+          itemCount: 4,
+        ),
+        bottomNavigationBar: NavigationBarWidget(
+          currentIndex: currentIndex,
+          controller: controller,
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/config/app_config.dart';
+import 'package:gold/core/extensions/string_extensions.dart';
 import 'package:gold/core/utils/app_padding.dart';
 import 'package:gold/core/utils/font_sizes.dart';
 import 'package:gold/features/calculator/data/models/calculator_model.dart';
@@ -56,7 +57,7 @@ class CalculatorCardWidget extends StatelessWidget {
                         child: FittedBox(
                           fit: BoxFit.scaleDown,
                           child: Text(
-                            model.price,
+                            model.price.formatNumber,
                             style: theme.textTheme.bodyLarge,
                           ),
                         ),

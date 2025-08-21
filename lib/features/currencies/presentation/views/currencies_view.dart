@@ -11,8 +11,8 @@ import 'package:gold/features/base/presentation/controllers/base_controller.dart
 import 'package:gold/translations/locale_keys.g.dart';
 
 class CurrenciesView extends StatefulWidget {
-  const CurrenciesView({super.key});
-
+  const CurrenciesView({super.key, required this.screenshotKey});
+  final GlobalKey screenshotKey ;
   @override
   State<CurrenciesView> createState() => _CurrenciesViewState();
 }
@@ -30,7 +30,10 @@ class _CurrenciesViewState extends State<CurrenciesView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GlobalAppBar(type: CurrencyType.currencies),
+        GlobalAppBar(
+          screenshotKey: widget.screenshotKey,
+          type: CurrencyType.currencies,
+        ),
         8.verticalSpace,
         HeaderWidget(
           titles: [

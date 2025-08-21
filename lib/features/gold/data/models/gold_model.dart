@@ -25,8 +25,8 @@ class GoldModel extends Equatable {
     id: json['id'],
     name: json['name'],
     icon: json['icon'],
-    basePrice: json['base_price'],
-    dollarPrice: json['dollar_price'],
+    basePrice: json['base_price_nonformate'].toString(),
+    dollarPrice: json['dollar_price_nonformate'].toString(),
     statusPrice: json['status_price'],
     changeAmount: json['change_amount'],
   );

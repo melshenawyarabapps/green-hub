@@ -12,8 +12,8 @@ import 'package:gold/features/base/presentation/controllers/base_controller.dart
 import 'package:gold/translations/locale_keys.g.dart';
 
 class BullionView extends StatefulWidget {
-  const BullionView({super.key});
-
+  const BullionView({super.key, required this.screenshotKey});
+  final GlobalKey screenshotKey ;
   @override
   State<BullionView> createState() => _BullionViewState();
 }
@@ -26,11 +26,15 @@ class _BullionViewState extends State<BullionView> {
       context.read<BaseController>().getData(CurrencyType.bullion);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GlobalAppBar(type: CurrencyType.bullion),
+        GlobalAppBar(
+          screenshotKey: widget.screenshotKey,
+          type: CurrencyType.bullion,
+        ),
         8.verticalSpace,
         HeaderWidget(
           titles: [

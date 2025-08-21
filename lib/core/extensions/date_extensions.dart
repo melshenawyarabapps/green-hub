@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:gold/core/services/navigator/navigator_service.dart';
 
-extension StringExtensions on DateTime? {
-  String get format {
+extension DateExtensions on DateTime? {
+  String get formatDate {
     if (this == null) {
       return '';
     }
@@ -13,6 +13,6 @@ extension StringExtensions on DateTime? {
 
     String time = DateFormat('hh:mm a',locale).format(this!);
 
-    return '$weekday $date $time';
+    return '$weekday $time $date';
   }
 }
