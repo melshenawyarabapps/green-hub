@@ -9,7 +9,10 @@ extension AdsTypeExtension on AdsType {
         Platform.isAndroid
             ? 'ca-app-pub-1886707841143443/5011872617'
             : 'ca-app-pub-1886707841143443/5941810901',
-      AdsType.fluid => 'ca-app-pub-1886707841143443/5011872617',
+      AdsType.fluid =>
+        Platform.isAndroid
+            ? 'ca-app-pub-1886707841143443/4409237387'
+            : 'ca-app-pub-1886707841143443/1055513401',
       AdsType.openApp =>
         Platform.isAndroid
             ? 'ca-app-pub-1886707841143443/9532769224'
