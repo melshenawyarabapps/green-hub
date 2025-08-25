@@ -76,7 +76,7 @@ class CodegenLoader extends AssetLoader {
     LocaleKeys.shareApp: "شارك التطبيق",
     LocaleKeys.contactUs: "تواصل معنا",
     LocaleKeys.importantNote: "ملاحظة هامة\nيتم عرض الأسعار في التطبيق لأغراض اعلامية فقط",
-    LocaleKeys.checkOut:"تفقد هذا التطبيق",
+    LocaleKeys.checkOut:"تنزيل تطبيق اسعار الذهب و السبائك في السعودية",
   };
 
   static const Map<String, dynamic> en = {};
