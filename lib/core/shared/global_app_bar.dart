@@ -46,7 +46,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
                       );
                     }
                   },
-                  child: Image.asset(Assets.iconsShare, height: 18.h),
+                  child: Image.asset(Assets.iconsShare, height: 24.h),
                 ),
                 8.horizontalSpace,
                 InkWell(

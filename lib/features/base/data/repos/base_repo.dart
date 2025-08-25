@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -60,7 +59,7 @@ class BaseRepo {
           '${directory.path}/Gold-${AppConfig.instance.currentFlavor.toUpperCase()}.png';
       File file = File(filePath);
       await file.writeAsBytes(pngBytes);
-      SharePlus.instance.share(
+      await SharePlus.instance.share(
         ShareParams(
           previewThumbnail: XFile(filePath),
           files: [XFile(filePath)],

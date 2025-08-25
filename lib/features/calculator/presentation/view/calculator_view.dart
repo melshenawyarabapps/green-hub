@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gold/core/enums/currency_enums.dart';
+import 'package:gold/core/shared/loading_widget.dart';
 import 'package:gold/core/utils/app_padding.dart';
 import 'package:gold/features/ads/presentation/views/widgets/fluid_ad_mobile_widget.dart.dart';
 import 'package:gold/features/base/presentation/controllers/base_controller.dart';
@@ -35,40 +36,58 @@ class _CalculatorViewState extends State<CalculatorView> {
   Widget build(BuildContext context) {
     return RepaintBoundary(
       key: _screenshotKey,
-      child: Scaffold(
-        appBar: CalculatorAppBar(
-          type: widget.type,
-          onShareTap: () {
-            context.read<BaseController>().takeScreenshot(_screenshotKey);
-          },
-        ),
-        body: ListView(
-          padding: AppPadding.instance.all(AppPadding.instance.p16),
-          children: [
-            ColoredBox(
-              color: Theme.of(context).cardColor,
-              child: Column(
-                children: [
-                  const CalculatorCardsWidget(),
-                  if (!widget.type.isCurrency) ...[
-                    4.verticalSpace,
-                    const TotalPriceWidget(),
+      child: BlocSelector<BaseController, BaseState, bool>(
+        selector: (state) => state.shareAppLoading,
+        builder: (_, loading) {
+          return Stack(
+            children: [
+              Scaffold(
+                appBar: CalculatorAppBar(
+                  type: widget.type,
+                  onShareTap: () {
+                    context.read<BaseController>().takeScreenshot(
+                      _screenshotKey,
+                    );
+                  },
+                ),
+                body: ListView(
+                  padding: AppPadding.instance.all(AppPadding.instance.p16),
+                  children: [
+                    ColoredBox(
+                      color: Theme.of(context).cardColor,
+                      child: Column(
+                        children: [
+                          const CalculatorCardsWidget(),
+                          if (!widget.type.isCurrency) ...[
+                            4.verticalSpace,
+                            const TotalPriceWidget(),
+                          ],
+                        ],
+                      ),
+                    ),
+                    16.verticalSpace,
+                    Row(
+                      children: [
+                        CategoriesWidget(type: widget.type),
+                        8.horizontalSpace,
+                        const NumbersWidget(),
+                      ],
+                    ),
+                    16.verticalSpace,
+                    const FluidAdMobileWidget(),
                   ],
-                ],
+                ),
               ),
-            ),
-            16.verticalSpace,
-            Row(
-              children: [
-                CategoriesWidget(type: widget.type),
-                8.horizontalSpace,
-                const NumbersWidget(),
-              ],
-            ),
-            16.verticalSpace,
-            const FluidAdMobileWidget(),
-          ],
-        ),
+
+              if (loading)
+                Container(
+                  alignment: Alignment.center,
+                  color: Theme.of(context).splashColor,
+                  child: LoadingWidget(),
+                ),
+            ],
+          );
+        },
       ),
     );
   }

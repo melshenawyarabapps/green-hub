@@ -6,6 +6,7 @@ import 'package:gold/core/enums/currency_enums.dart';
 import 'package:gold/features/base/data/models/base_model.dart';
 
 import 'package:gold/features/base/data/repos/base_repo.dart';
+import 'package:gold/translations/locale_keys.g.dart';
 
 part 'base_state.dart';
 
@@ -45,6 +46,8 @@ class BaseController extends Cubit<BaseState> {
   }
 
   Future<void> takeScreenshot(GlobalKey globalKey, {String? text}) async {
-    _baseRepo.takeScreenshot(globalKey, text);
+    emit(state.copyWith(shareAppLoading: true));
+    await _baseRepo.takeScreenshot(globalKey, text);
+    emit(state.copyWith(shareAppLoading: false));
   }
 }

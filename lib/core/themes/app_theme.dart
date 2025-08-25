@@ -21,6 +21,7 @@ class AppTheme {
     highlightColor: AppConfig.instance.darkColors!.transparent,
     cardColor: AppConfig.instance.darkColors!.thirdColor,
     shadowColor: AppConfig.instance.darkColors!.primary900Color,
+    hoverColor: AppConfig.instance.darkColors!.black12Color,
     appBarTheme: AppBarTheme(
       backgroundColor: AppConfig.instance.darkColors!.primaryColor,
       surfaceTintColor: AppConfig.instance.darkColors!.primaryColor,

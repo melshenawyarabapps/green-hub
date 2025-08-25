@@ -74,7 +74,7 @@ android {
             resValue(
                 type = "string",
                 name = "app_name",
-                value = "Gold SA")
+                value = "أسعار الذهب والسبائك")
             resValue(
                 type = "string",
                 name = "app_id",
