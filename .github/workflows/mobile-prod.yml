@@ -1,0 +1,79 @@
+name: Mobile Prod Deploy
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: prod-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: macos-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: 'temurin', java-version: '17' }
+      - uses: subosito/flutter-action@v2
+        with: { flutter-version: 'stable' }
+      - uses: gradle/actions/setup-gradle@v3
+      - run: flutter pub get
+
+      - name: Write keystore & props
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/keystore.jks
+          cat > android/key.properties <<EOF
+          storePassword=${ANDROID_KEYSTORE_PASSWORD}
+          keyPassword=${ANDROID_KEY_PASSWORD}
+          keyAlias=${ANDROID_KEY_ALIAS}
+          storeFile=keystore.jks
+          EOF
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+
+      - name: Play credentials file
+        run: echo '${{ secrets.PLAY_CREDENTIALS_JSON }}' > play-credentials.json
+
+      - name: Build AAB (prod)
+        run: flutter build appbundle --flavor prod --release
+
+      - name: Upload to Google Play (production, PROD app)
+        run: ./gradlew :app:publishProdRelease
+        env:
+          GRADLE_OPTS: -Dorg.gradle.jvmargs='-Xmx3g'
+
+  ios:
+    runs-on: macos-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with: { flutter-version: 'stable' }
+      - run: flutter pub get
+
+      - name: Build IPA (prod flavor)
+        run: flutter build ipa --release --flavor prod
+
+      - name: Prepare App Store Connect API key
+        run: |
+          mkdir -p ~/private_keys
+          echo '${{ secrets.APP_STORE_CONNECT_API_KEY }}' > ~/private_keys/AuthKey_${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}.p8
+
+      - name: Upload to App Store (iTMSTransporter)
+        env:
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          ASC_ISSUER: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          BUNDLE_ID: ${{ secrets.IOS_BUNDLE_ID_PROD }}
+        run: |
+          IPA_PATH=$(ls build/ios/ipa/*.ipa | head -n1)
+          xcrun iTMSTransporter \
+            -apiKey $ASC_KEY_ID \
+            -apiIssuer $ASC_ISSUER \
+            -assetFile "$IPA_PATH" \
+            -destination "$(pwd)" \
+            -transporterOptions -m upload \
+            -v informational

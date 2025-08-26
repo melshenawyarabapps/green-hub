@@ -1,0 +1,93 @@
+name: Mobile Test Deploy
+on:
+  push:
+    branches: [test]
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: 'temurin', java-version: '17' }
+      - uses: subosito/flutter-action@v2
+        with: { flutter-version: 'stable' }
+      - uses: gradle/actions/setup-gradle@v3
+      - run: flutter pub get
+
+      - name: Write keystore & props
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/keystore.jks
+          cat > android/key.properties <<EOF
+          storePassword=${ANDROID_KEYSTORE_PASSWORD}
+          keyPassword=${ANDROID_KEY_PASSWORD}
+          keyAlias=${ANDROID_KEY_ALIAS}
+          storeFile=keystore.jks
+          EOF
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+
+      - name: Play credentials file
+        run: echo '${{ secrets.PLAY_CREDENTIALS_JSON }}' > play-credentials.json
+
+      - name: Build AAB (dev)
+        run: flutter build appbundle --flavor dev --release
+
+      # Optional: Firebase App Distribution (Android Dev) via official CLI
+      - name: Install Firebase CLI
+        run: curl -sL https://firebase.tools | bash
+      - name: Distribute to Firebase (Android dev)
+        if: ${{ env.FIREBASE_APP_ID_DEV != '' }}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/fb.json
+          FIREBASE_APP_ID_DEV: ${{ secrets.FIREBASE_ANDROID_APP_ID_DEV }}
+        run: |
+          echo '${{ secrets.FIREBASE_CREDENTIALS_JSON_DEV }}' > $GOOGLE_APPLICATION_CREDENTIALS
+          firebase appdistribution:distribute \
+            build/app/outputs/bundle/devRelease/app-dev-release.aab \
+            --app "$FIREBASE_APP_ID_DEV" \
+            --release-notes "${{ secrets.RELEASE_NOTES }}" \
+            ${FIREBASE_GROUPS:+--groups "$FIREBASE_GROUPS_DEV"}
+
+      - name: Upload to Google Play (internal, DEV app)
+        run: ./gradlew :app:publishDevRelease
+        env:
+          GRADLE_OPTS: -Dorg.gradle.jvmargs='-Xmx3g'
+
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with: { flutter-version: 'stable' }
+      - run: flutter pub get
+
+      - name: Build IPA (dev flavor)
+        run: flutter build ipa --release --flavor dev
+
+      - name: Prepare App Store Connect API key
+        run: |
+          mkdir -p ~/private_keys
+          echo '${{ secrets.APP_STORE_CONNECT_API_KEY }}' > ~/private_keys/AuthKey_${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}.p8
+
+      - name: Upload to TestFlight (iTMSTransporter)
+        env:
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          ASC_ISSUER: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          BUNDLE_ID: ${{ secrets.IOS_BUNDLE_ID_DEV }}
+        run: |
+          IPA_PATH=$(ls build/ios/ipa/*.ipa | head -n1)
+          xcrun iTMSTransporter \
+            -apiKey $ASC_KEY_ID \
+            -apiIssuer $ASC_ISSUER \
+            -assetFile "$IPA_PATH" \
+            -destination "$(pwd)" \
+            -transporterOptions -m upload \
+            -v informational
