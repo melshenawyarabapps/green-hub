@@ -14,7 +14,7 @@ class AppConstants {
 
   static AppConstants get instance => _instance ??= AppConstants._();
 
-  final String appVersion = '1.0.1';
+  final String appVersion = '1.0.2';
 
   String get androidStoreUrl => 'https://play.google.com/store/apps/details?id=com.saudi.goldprice';
 
