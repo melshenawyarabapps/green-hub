@@ -40,11 +40,10 @@ jobs:
       - name: Build AAB (dev)
         run: flutter build appbundle --flavor dev --release
 
-      # Optional: Firebase App Distribution (Android Dev) via official CLI
+      # Firebase CLI (official) for dev distribution
       - name: Install Firebase CLI
         run: curl -sL https://firebase.tools | bash
       - name: Distribute to Firebase (Android dev)
-        if: ${{ env.FIREBASE_APP_ID_DEV != '' }}
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/fb.json
           FIREBASE_APP_ID_DEV: ${{ secrets.FIREBASE_ANDROID_APP_ID_DEV }}
@@ -54,12 +53,11 @@ jobs:
             build/app/outputs/bundle/devRelease/app-dev-release.aab \
             --app "$FIREBASE_APP_ID_DEV" \
             --release-notes "${{ secrets.RELEASE_NOTES }}" \
-            ${FIREBASE_GROUPS:+--groups "$FIREBASE_GROUPS_DEV"}
+            ${FIREBASE_GROUPS_DEV:+--groups "$FIREBASE_GROUPS_DEV"}
 
-      - name: Upload to Google Play (internal, DEV app)
+      # Upload to Google Play (Internal) via GPP
+      - name: Publish to Google Play (internal, DEV app)
         run: ./gradlew :app:publishDevRelease
-        env:
-          GRADLE_OPTS: -Dorg.gradle.jvmargs='-Xmx3g'
 
   ios:
     runs-on: macos-latest
@@ -81,7 +79,6 @@ jobs:
         env:
           ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           ASC_ISSUER: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
-          BUNDLE_ID: ${{ secrets.IOS_BUNDLE_ID_DEV }}
         run: |
           IPA_PATH=$(ls build/ios/ipa/*.ipa | head -n1)
           xcrun iTMSTransporter \

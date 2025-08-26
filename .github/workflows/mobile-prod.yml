@@ -41,10 +41,8 @@ jobs:
       - name: Build AAB (prod)
         run: flutter build appbundle --flavor prod --release
 
-      - name: Upload to Google Play (production, PROD app)
+      - name: Publish to Google Play (production, PROD app)
         run: ./gradlew :app:publishProdRelease
-        env:
-          GRADLE_OPTS: -Dorg.gradle.jvmargs='-Xmx3g'
 
   ios:
     runs-on: macos-latest
@@ -67,7 +65,6 @@ jobs:
         env:
           ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           ASC_ISSUER: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
-          BUNDLE_ID: ${{ secrets.IOS_BUNDLE_ID_PROD }}
         run: |
           IPA_PATH=$(ls build/ios/ipa/*.ipa | head -n1)
           xcrun iTMSTransporter \

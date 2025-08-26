@@ -8,8 +8,6 @@ import 'package:gold/core/routing/app_routes.dart';
 import 'package:gold/core/services/di/di.dart';
 import 'package:gold/core/services/navigator/navigator_service.dart';
 import 'package:gold/core/themes/app_theme.dart';
-import 'package:gold/features/ads/presentation/controllers/ads_controller.dart';
-import 'package:gold/features/base/presentation/controllers/base_controller.dart';
 
 class GoldApp extends StatelessWidget {
   static const GoldApp instance = GoldApp._();
@@ -22,8 +20,7 @@ class GoldApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider.value(value: getIt.get<AdsController>()),
-        BlocProvider.value(value: getIt.get<BaseController>()),
+
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 812),

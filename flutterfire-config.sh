@@ -3,7 +3,7 @@
 # Feel free to reuse and adapt this script for your own projects
 
 if [[ $# -eq 0 ]]; then
-  echo "Error: No environment specified. Use 'dev', or 'sa'."
+  echo "Error: No environment specified. Use 'dev', or 'prod'."
   exit 1
 fi
 
@@ -11,11 +11,11 @@ case $1 in
   dev)
     flutterfire config \ --project=gold-dev-a8477 \ --out=lib/firebase_options_dev.dart \ --ios-bundle-id=com.saudi.goldprice.dev \ --ios-out=ios/flavors/dev/GoogleService-Info.plist \ --android-package-name=com.saudi.goldprice.dev \ --android-out=android/app/src/dev/google-services.json
     ;;
-  stg)
-flutterfire config \ --project=gold-sa-8364b \ --out=lib/firebase_options_sa.dart \ --ios-bundle-id=com.saudi.goldprice \ --ios-out=ios/flavors/sa/GoogleService-Info.plist \ --android-package-name=com.saudi.goldprice \ --android-out=android/app/src/sa/google-services.json
+  prod)
+flutterfire config \ --project=gold-sa-8364b \ --out=lib/firebase_options_prod.dart \ --ios-bundle-id=com.saudi.goldprice \ --ios-out=ios/flavors/prod/GoogleService-Info.plist \ --android-package-name=com.saudi.goldprice \ --android-out=android/app/src/prod/google-services.json
     ;;
   *)
-    echo "Error: Invalid environment specified. Use 'dev', or 'sa'."
+    echo "Error: Invalid environment specified. Use 'dev', or 'prod'."
     exit 1
     ;;
 esac

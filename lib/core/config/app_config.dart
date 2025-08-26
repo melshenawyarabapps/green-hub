@@ -8,14 +8,12 @@ import 'package:gold/core/services/notifications/notifications_service.dart';
 import 'package:gold/core/services/observers/bloc_lifecycle_observer.dart';
 import 'package:gold/core/themes/app_colors.dart';
 import 'package:gold/core/utils/cache_constants.dart';
-import 'package:gold/features/ads/data/repos/ads_repo.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gold/firebase_options_dev.dart' as dev;
-import 'package:gold/firebase_options_sa.dart' as sa;
+import 'package:gold/firebase_options_prod.dart' as prod;
 import 'package:gold/core/themes/app_colors_dev.dart';
-import 'package:gold/core/themes/app_colors_sa.dart';
+import 'package:gold/core/themes/app_colors_prod.dart';
 
 class AppConfig {
   static AppConfig? _instance;
@@ -39,7 +37,7 @@ class AppConfig {
     appLogo = 'assets/$flavor/logo.png';
     appCurrency = 'assets/$flavor/currency.png';
     appName = 'Gold $flavor';
-    baseUrl = 'https://saudy.plusprices.net/api/v1';
+    baseUrl = 'https://produdy.plusprices.net/api/v1';
     setUp();
     if (flavor == 'dev') {
       Bloc.observer = BlocLifecycleObserver.instance;
@@ -48,15 +46,7 @@ class AppConfig {
     await Future.wait([
       Hive.initFlutter(),
       initializeFirebaseApp(flavor),
-      MobileAds.instance.initialize(),
-      MobileAds.instance.updateRequestConfiguration(
-        RequestConfiguration(
-          testDeviceIds: ["99DA914F40DA106632F6911A725C1171"],
-        ),
-      ),
     ]);
-    getIt.get<AdsRepo>().loadAppOpenAd();
-
     await Future.wait([
       getIt.get<CacheService>().init(CacheConstants.appBox + flavor),
       NotificationsService.init(),
@@ -67,7 +57,7 @@ class AppConfig {
   Future<void> initializeFirebaseApp(String flavor) async {
     final firebaseOptions = switch (flavor) {
       'dev' => dev.DefaultFirebaseOptions.currentPlatform,
-      'sa' => sa.DefaultFirebaseOptions.currentPlatform,
+      'prod' => prod.DefaultFirebaseOptions.currentPlatform,
       _ => throw UnsupportedError('Invalid flavor: $flavor'),
     };
     await Firebase.initializeApp(options: firebaseOptions);
@@ -80,10 +70,10 @@ class AppConfig {
           lightColors = LightColorsDev.instance;
           darkColors = DarkColorsDev.instance;
         }
-      case 'sa':
+      case 'prod':
         {
-          lightColors = LightColorsSa.instance;
-          darkColors = DarkColorsSa.instance;
+          lightColors = LightColorsProd.instance;
+          darkColors = DarkColorsProd.instance;
         }
       default:
         throw UnsupportedError('Invalid flavor: $flavor');

@@ -62,25 +62,24 @@ android {
             resValue(
                 type = "string",
                 name = "app_name",
-                value = "Gold Dev")
-            resValue(
-                type = "string",
-                name = "app_id",
-                value = "ca-app-pub-1886707841143443~7976947304")
+                value = "Basic App Dev")
             applicationIdSuffix = ".dev"
         }
-        create("sa") {
+        create("prod") {
             dimension = "default"
             resValue(
                 type = "string",
                 name = "app_name",
-                value = "أسعار الذهب والسبائك")
-            resValue(
-                type = "string",
-                name = "app_id",
-                value = "ca-app-pub-1886707841143443~7976947304")
+                value = "Basic App Prod")
         }
     }
+}
+
+play {
+    // CI step writes this file at repo root
+    serviceAccountCredentials.set(file("${rootDir}/play-credentials.json"))
+    defaultToAppBundles.set(true)
+    track.set("internal") // for dev; prod overrides via task
 }
 
 flutter {
