@@ -8,7 +8,7 @@ plugins {
     // END: FlutterFire Configuration
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id("user.flutter.flutter-gradle-plugin")
+    id("dev.flutter.flutter-gradle-plugin")
 }
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
@@ -18,7 +18,7 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace = "com.shiphub"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -35,24 +35,29 @@ android {
         applicationId = "com.shiphub"
         multiDexEnabled = true
 
-        minSdk = 23
+        minSdk = flutter.minSdkVersion
         targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
     signingConfigs {
-        create("release") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
-            storePassword = keystoreProperties["storePassword"] as String
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = keystoreProperties["storeFile"]?.let { file(it) }
+                storePassword = keystoreProperties["storePassword"] as String
+            }
         }
     }
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("debug")
-            signingConfig = signingConfigs.getByName("release")
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            } else {
+                signingConfig = signingConfigs.getByName("debug")
+            }
         }
     }
     flavorDimensions += "default"
@@ -77,12 +82,13 @@ android {
     }
 }
 
-play {
-    // CI step writes this file at repo root
-    serviceAccountCredentials.set(file("${rootDir}/play-credentials.json"))
-    defaultToAppBundles.set(true)
-    track.set("internal") // for user; prod overrides via task
-}
+// Commented out - Add Gradle Play Publisher plugin if needed for publishing
+// play {
+//     // CI step writes this file at repo root
+//     serviceAccountCredentials.set(file("${rootDir}/play-credentials.json"))
+//     defaultToAppBundles.set(true)
+//     track.set("internal") // for user; prod overrides via task
+// }
 
 flutter {
     source = "../.."
