@@ -3,5 +3,7 @@ class Assets {
   Assets._();
 
   static const String iconsLogo = 'assets/icons/logo.png';
+  static const String svgsSplash = 'assets/svgs/splash.svg';
+  static const String svgsSplash1 = 'assets/svgs/splash1.svg';
 
 }

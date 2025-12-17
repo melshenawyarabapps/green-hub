@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/routing/app_router.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/themes/app_theme.dart';
-import 'package:greenhub/core/utils/app_constants.dart';
 
 class UserApp extends StatelessWidget {
   const UserApp._();
@@ -19,17 +18,17 @@ class UserApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: const Size(375, 800),
       builder: (_, _) =>
           MaterialApp(
-            title: AppConstants.appName,
+            title: 'ShipHub',
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.system,
+            themeMode: ThemeMode.light,
             onGenerateRoute: AppRouter.onGenerateRoute,
             initialRoute: AppRoutes.splashView,
           ),
