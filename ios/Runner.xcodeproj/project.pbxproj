@@ -74,8 +74,6 @@
 		EF452F02E6CD04779B9652B9 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4B5BB22E2674280044D89F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreenSa.storyboard; sourceTree = "<group>"; };
 		EF4B5BB32E2674280044D89F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreenDev.storyboard; sourceTree = "<group>"; };
-		EFB1E80C2E2683A600605DE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EFB1E80E2E2683A600605DE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F24A01165C2BEB2B7C0FE9BF /* Pods-RunnerTests.debug-sa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug-sa.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug-sa.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +147,6 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
-				EFB1E8102E2683A600605DE1 /* flavors */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -183,31 +180,6 @@
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
-			sourceTree = "<group>";
-		};
-		EFB1E80D2E2683A600605DE1 /* dev */ = {
-			isa = PBXGroup;
-			children = (
-				EFB1E80C2E2683A600605DE1 /* GoogleService-Info.plist */,
-			);
-			path = dev;
-			sourceTree = "<group>";
-		};
-		EFB1E80F2E2683A600605DE1 /* sa */ = {
-			isa = PBXGroup;
-			children = (
-				EFB1E80E2E2683A600605DE1 /* GoogleService-Info.plist */,
-			);
-			path = sa;
-			sourceTree = "<group>";
-		};
-		EFB1E8102E2683A600605DE1 /* flavors */ = {
-			isa = PBXGroup;
-			children = (
-				EFB1E80D2E2683A600605DE1 /* dev */,
-				EFB1E80F2E2683A600605DE1 /* sa */,
-			);
-			path = flavors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,7 +486,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		EFF9FA6E2E26523000AE8E75 /* Debug-dev */ = {
+		EFF9FA6E2E26523000AE8E75 /* Debug-user */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -569,35 +541,33 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = "Debug-dev";
+			name = "Debug-user";
 		};
-		EFF9FA6F2E26523000AE8E75 /* Debug-dev */ = {
+		EFF9FA6F2E26523000AE8E75 /* Debug-user */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "Gold Dev";
-				APP_ID = "ca-app-pub-1886707841143443~7042337256";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
+				APP_DISPLAY_NAME = ShipHub;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = KZ7HWU3SD7;
+				DEVELOPMENT_TEAM = 4XKJR2UN28;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				LAUNCH_SCREEN_STORYBOARD = LaunchScreenDev;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.saudi.goldprice.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiphub.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Debug-dev";
+			name = "Debug-user";
 		};
-		EFF9FA702E26523000AE8E75 /* Debug-dev */ = {
+		EFF9FA702E26523000AE8E75 /* Debug-user */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDD7664887F9152231D6B34B /* Pods-RunnerTests.debug-dev.xcconfig */;
 			buildSettings = {
@@ -613,13 +583,13 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Debug-dev";
+			name = "Debug-user";
 		};
-		EFF9FA712E26523C00AE8E75 /* Release-dev */ = {
+		EFF9FA712E26523C00AE8E75 /* Release-user */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-dev";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -667,34 +637,32 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Release-dev";
+			name = "Release-user";
 		};
-		EFF9FA722E26523C00AE8E75 /* Release-dev */ = {
+		EFF9FA722E26523C00AE8E75 /* Release-user */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "Gold Dev";
-				APP_ID = "ca-app-pub-1886707841143443~7042337256";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
+				APP_DISPLAY_NAME = ShipHub;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = KZ7HWU3SD7;
+				DEVELOPMENT_TEAM = 4XKJR2UN28;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				LAUNCH_SCREEN_STORYBOARD = LaunchScreenDev;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.saudi.goldprice.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiphub.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Release-dev";
+			name = "Release-user";
 		};
-		EFF9FA732E26523C00AE8E75 /* Release-dev */ = {
+		EFF9FA732E26523C00AE8E75 /* Release-user */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0A8EC80E14D6907DDFF8C21 /* Pods-RunnerTests.release-dev.xcconfig */;
 			buildSettings = {
@@ -708,13 +676,13 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Release-dev";
+			name = "Release-user";
 		};
-		EFF9FA742E26524500AE8E75 /* Profile-dev */ = {
+		EFF9FA742E26524500AE8E75 /* Profile-user */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-dev";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -760,34 +728,32 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Profile-dev";
+			name = "Profile-user";
 		};
-		EFF9FA752E26524500AE8E75 /* Profile-dev */ = {
+		EFF9FA752E26524500AE8E75 /* Profile-user */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "Gold Dev";
-				APP_ID = "ca-app-pub-1886707841143443~7042337256";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
+				APP_DISPLAY_NAME = ShipHub;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = KZ7HWU3SD7;
+				DEVELOPMENT_TEAM = 4XKJR2UN28;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				LAUNCH_SCREEN_STORYBOARD = LaunchScreenDev;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.saudi.goldprice.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiphub.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Profile-dev";
+			name = "Profile-user";
 		};
-		EFF9FA762E26524500AE8E75 /* Profile-dev */ = {
+		EFF9FA762E26524500AE8E75 /* Profile-user */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D42B9D4B2887DB899B67C9C /* Pods-RunnerTests.profile-dev.xcconfig */;
 			buildSettings = {
@@ -801,13 +767,13 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Profile-dev";
+			name = "Profile-user";
 		};
-		EFF9FA772E26525100AE8E75 /* Debug-sa */ = {
+		EFF9FA772E26525100AE8E75 /* Debug-delivery */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-dev";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -858,35 +824,36 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = "Debug-sa";
+			name = "Debug-delivery";
 		};
-		EFF9FA782E26525100AE8E75 /* Debug-sa */ = {
+		EFF9FA782E26525100AE8E75 /* Debug-delivery */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "Gold Sa";
-				APP_ID = "ca-app-pub-1886707841143443~7042337256";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-sa";
+				APP_DISPLAY_NAME = "ShipHub Delivery";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = BB88A4ALA5;
+				DEVELOPMENT_TEAM = 4XKJR2UN28;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				LAUNCH_SCREEN_STORYBOARD = LaunchScreenSa;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.saudi.goldprice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiphub.delivery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Debug-sa";
+			name = "Debug-delivery";
 		};
-		EFF9FA792E26525100AE8E75 /* Debug-sa */ = {
+		EFF9FA792E26525100AE8E75 /* Debug-delivery */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F24A01165C2BEB2B7C0FE9BF /* Pods-RunnerTests.debug-sa.xcconfig */;
 			buildSettings = {
@@ -902,13 +869,13 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Debug-sa";
+			name = "Debug-delivery";
 		};
-		EFF9FA7A2E26525900AE8E75 /* Release-sa */ = {
+		EFF9FA7A2E26525900AE8E75 /* Release-delivery */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-sa";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -956,34 +923,35 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Release-sa";
+			name = "Release-delivery";
 		};
-		EFF9FA7B2E26525900AE8E75 /* Release-sa */ = {
+		EFF9FA7B2E26525900AE8E75 /* Release-delivery */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "Gold Sa";
-				APP_ID = "ca-app-pub-1886707841143443~7042337256";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-sa";
+				APP_DISPLAY_NAME = "ShipHub Delivery";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = BB88A4ALA5;
+				DEVELOPMENT_TEAM = 4XKJR2UN28;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				LAUNCH_SCREEN_STORYBOARD = LaunchScreenSa;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.saudi.goldprice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiphub.delivery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Release-sa";
+			name = "Release-delivery";
 		};
-		EFF9FA7C2E26525900AE8E75 /* Release-sa */ = {
+		EFF9FA7C2E26525900AE8E75 /* Release-delivery */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 884A8CB2D08E8F68834E2CDA /* Pods-RunnerTests.release-sa.xcconfig */;
 			buildSettings = {
@@ -997,13 +965,13 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Release-sa";
+			name = "Release-delivery";
 		};
-		EFF9FA7D2E26526000AE8E75 /* Profile-sa */ = {
+		EFF9FA7D2E26526000AE8E75 /* Profile-delivery */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = "AppIcon-sa";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1049,34 +1017,35 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Profile-sa";
+			name = "Profile-delivery";
 		};
-		EFF9FA7E2E26526000AE8E75 /* Profile-sa */ = {
+		EFF9FA7E2E26526000AE8E75 /* Profile-delivery */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				APP_DISPLAY_NAME = "Gold Sa";
-				APP_ID = "ca-app-pub-1886707841143443~7042337256";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-sa";
+				APP_DISPLAY_NAME = "ShipHub Delivery";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = BB88A4ALA5;
+				DEVELOPMENT_TEAM = 4XKJR2UN28;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				LAUNCH_SCREEN_STORYBOARD = LaunchScreenSa;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.saudi.goldprice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiphub.delivery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Profile-sa";
+			name = "Profile-delivery";
 		};
-		EFF9FA7F2E26526000AE8E75 /* Profile-sa */ = {
+		EFF9FA7F2E26526000AE8E75 /* Profile-delivery */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01E51A1CCFE58549F5F68D01 /* Pods-RunnerTests.profile-sa.xcconfig */;
 			buildSettings = {
@@ -1090,7 +1059,7 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Profile-sa";
+			name = "Profile-delivery";
 		};
 /* End XCBuildConfiguration section */
 
@@ -1098,41 +1067,41 @@
 		331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "RunnerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EFF9FA702E26523000AE8E75 /* Debug-dev */,
-				EFF9FA792E26525100AE8E75 /* Debug-sa */,
-				EFF9FA732E26523C00AE8E75 /* Release-dev */,
-				EFF9FA7C2E26525900AE8E75 /* Release-sa */,
-				EFF9FA762E26524500AE8E75 /* Profile-dev */,
-				EFF9FA7F2E26526000AE8E75 /* Profile-sa */,
+				EFF9FA702E26523000AE8E75 /* Debug-user */,
+				EFF9FA792E26525100AE8E75 /* Debug-delivery */,
+				EFF9FA732E26523C00AE8E75 /* Release-user */,
+				EFF9FA7C2E26525900AE8E75 /* Release-delivery */,
+				EFF9FA762E26524500AE8E75 /* Profile-user */,
+				EFF9FA7F2E26526000AE8E75 /* Profile-delivery */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Debug-dev";
+			defaultConfigurationName = "Debug-user";
 		};
 		97C146E91CF9000F007C117D /* Build configuration list for PBXProject "Runner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EFF9FA6E2E26523000AE8E75 /* Debug-dev */,
-				EFF9FA772E26525100AE8E75 /* Debug-sa */,
-				EFF9FA712E26523C00AE8E75 /* Release-dev */,
-				EFF9FA7A2E26525900AE8E75 /* Release-sa */,
-				EFF9FA742E26524500AE8E75 /* Profile-dev */,
-				EFF9FA7D2E26526000AE8E75 /* Profile-sa */,
+				EFF9FA6E2E26523000AE8E75 /* Debug-user */,
+				EFF9FA772E26525100AE8E75 /* Debug-delivery */,
+				EFF9FA712E26523C00AE8E75 /* Release-user */,
+				EFF9FA7A2E26525900AE8E75 /* Release-delivery */,
+				EFF9FA742E26524500AE8E75 /* Profile-user */,
+				EFF9FA7D2E26526000AE8E75 /* Profile-delivery */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Debug-dev";
+			defaultConfigurationName = "Debug-user";
 		};
 		97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EFF9FA6F2E26523000AE8E75 /* Debug-dev */,
-				EFF9FA782E26525100AE8E75 /* Debug-sa */,
-				EFF9FA722E26523C00AE8E75 /* Release-dev */,
-				EFF9FA7B2E26525900AE8E75 /* Release-sa */,
-				EFF9FA752E26524500AE8E75 /* Profile-dev */,
-				EFF9FA7E2E26526000AE8E75 /* Profile-sa */,
+				EFF9FA6F2E26523000AE8E75 /* Debug-user */,
+				EFF9FA782E26525100AE8E75 /* Debug-delivery */,
+				EFF9FA722E26523C00AE8E75 /* Release-user */,
+				EFF9FA7B2E26525900AE8E75 /* Release-delivery */,
+				EFF9FA752E26524500AE8E75 /* Profile-user */,
+				EFF9FA7E2E26526000AE8E75 /* Profile-delivery */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Debug-dev";
+			defaultConfigurationName = "Debug-user";
 		};
 /* End XCConfigurationList section */
 	};

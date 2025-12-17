@@ -1,13 +1,7 @@
 
-class EndPoints {
+abstract class EndPoints {
 
-  static EndPoints? _instance ;
-  static EndPoints get instance => _instance ??= EndPoints._();
-  EndPoints._();
-  final String gold = '/gold-prices';
-  final String bullion = '/bullion-prices';
-  final String currencies = '/currencies';
-  final String contacts = '/contacts';
+  static const String baseUrl = 'https://fakestoreapi.com';
 
 
 }

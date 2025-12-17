@@ -1,14 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:gold/core/config/app_config.dart';
-import 'package:gold/core/services/observers/dio_interceptor_observer.dart';
+import 'package:greenhub/core/services/observers/dio_interceptor_observer.dart';
+import 'package:greenhub/core/utils/end_points.dart';
 
 class ApiService {
-  static ApiService get instance => _instance ??= ApiService._();
-  static ApiService? _instance;
 
-  ApiService._() {
+  ApiService() {
     final baseOptions = BaseOptions(
-      baseUrl: AppConfig.instance.baseUrl,
+      baseUrl: EndPoints.baseUrl,
       responseType: ResponseType.json,
       connectTimeout: const Duration(seconds: 20),
       receiveTimeout: const Duration(seconds: 15),
@@ -16,7 +14,6 @@ class ApiService {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'lang': 'ar',
       },
     );
     _dio = Dio(baseOptions);

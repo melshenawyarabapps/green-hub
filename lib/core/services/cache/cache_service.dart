@@ -1,42 +1,81 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 class CacheService {
-  CacheService._();
+  final Map<String, Box> _boxes = {};
 
-  static CacheService? _instance;
+  Box<T>? getBox<T>(String boxName) => _boxes[boxName] as Box<T>?;
 
-  static CacheService get instance => _instance ??= CacheService._();
-
-
-  Box? box;
-
-  Future init(String boxName) async {
-    box = await Hive.openBox(boxName);
+  Future init() async {
+    await Hive.initFlutter();
   }
 
-  Future<void> put<T>({required String key, required T value}) async {
+  Future<Box<T>?> openBox<T>(String boxName) async {
+    if (!_boxes.containsKey(boxName)) {
+      _boxes[boxName] = await Hive.openBox<T>(boxName);
+    }
+    return _boxes[boxName] as Box<T>?;
+  }
+
+  Future<void> put<T>({
+    required String boxName,
+    required dynamic key,
+    required T value,
+  }) async {
     try {
-      await box?.put(key, value);
+      await openBox<T>(boxName);
+      await getBox(boxName)?.put(key, value);
     } catch (_) {}
   }
 
-  T? get<T>({required String key, T? defaultValue}) {
+  Future<List<T>?> getValues<T>({required String boxName}) async {
     try {
-      return box?.get(key, defaultValue: defaultValue);
+      await openBox<T>(boxName);
+
+      return getBox<T>(boxName)?.values.toList();
     } catch (_) {
-      return defaultValue;
+      return [];
     }
   }
 
-  Future<void> delete({required String key}) async {
+  Future<T?> get<T>({required String boxName, required dynamic key}) async {
     try {
-      await box?.delete(key);
+      await openBox<T>(boxName);
+
+      return getBox<T>(boxName)?.get(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<bool> containsKey<T>({
+    required String boxName,
+    required dynamic key,
+  }) async {
+    try {
+      await openBox<T>(boxName);
+
+      return getBox<T>(boxName)?.containsKey(key) ?? false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<void> delete<T>({
+    required String boxName,
+    required dynamic key,
+  }) async {
+    try {
+      await openBox<T>(boxName);
+
+      await getBox(boxName)?.delete(key);
     } catch (_) {}
   }
 
-  Future<void> clear() async {
+  Future<void> clear<T>({required String boxName}) async {
     try {
-      await box?.clear();
+      await openBox<T>(boxName);
+
+      await getBox(boxName)?.clear();
     } catch (_) {}
   }
 }

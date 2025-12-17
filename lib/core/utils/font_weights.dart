@@ -1,15 +1,10 @@
 import 'dart:ui';
 
  class FontWeights {
-  FontWeights._();
 
-  static FontWeights? _instance;
-
-  static FontWeights get instance => _instance ??= FontWeights._();
-
-   FontWeight get light => FontWeight.w300;
-   FontWeight get regular => FontWeight.normal;
-   FontWeight get medium => FontWeight.w500;
-   FontWeight get semiBold => FontWeight.w600;
-   FontWeight get bold => FontWeight.bold;
+   static FontWeight get light => FontWeight.w300;
+   static FontWeight get regular => FontWeight.normal;
+   static FontWeight get medium => FontWeight.w500;
+   static FontWeight get semiBold => FontWeight.w600;
+   static FontWeight get bold => FontWeight.bold;
 }

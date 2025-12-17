@@ -37,13 +37,13 @@ jobs:
       - name: Play credentials file
         run: echo '${{ secrets.PLAY_CREDENTIALS_JSON }}' > play-credentials.json
 
-      - name: Build AAB (dev)
-        run: flutter build appbundle --flavor dev --release
+      - name: Build AAB (user)
+        run: flutter build appbundle --flavor user --release
 
-      # Firebase CLI (official) for dev distribution
+      # Firebase CLI (official) for user distribution
       - name: Install Firebase CLI
         run: curl -sL https://firebase.tools | bash
-      - name: Distribute to Firebase (Android dev)
+      - name: Distribute to Firebase (Android user)
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/fb.json
           FIREBASE_APP_ID_DEV: ${{ secrets.FIREBASE_ANDROID_APP_ID_DEV }}
@@ -56,8 +56,8 @@ jobs:
             ${FIREBASE_GROUPS_DEV:+--groups "$FIREBASE_GROUPS_DEV"}
 
       # Upload to Google Play (Internal) via GPP
-      - name: Publish to Google Play (internal, DEV app)
-        run: ./gradlew :app:publishDevRelease
+      - name: Publish to Google Play (internal, DEV apps)
+        run: ./gradlew :apps:publishDevRelease
 
   ios:
     runs-on: macos-latest
@@ -67,8 +67,8 @@ jobs:
         with: { flutter-version: 'stable' }
       - run: flutter pub get
 
-      - name: Build IPA (dev flavor)
-        run: flutter build ipa --release --flavor dev
+      - name: Build IPA (user flavor)
+        run: flutter build ipa --release --flavor user
 
       - name: Prepare App Store Connect API key
         run: |

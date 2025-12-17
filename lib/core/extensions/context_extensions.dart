@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 extension ContextExtensions on BuildContext {
   double get topPadding => MediaQuery.paddingOf(this).top;
-  double get screenHeight => MediaQuery.sizeOf(this).height;
-  double get screenWidth => MediaQuery.sizeOf(this).width;
 
   Future<T?> pushNamed<T extends Object?>(
     String routeName, {

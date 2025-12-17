@@ -8,7 +8,7 @@ plugins {
     // END: FlutterFire Configuration
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id("dev.flutter.flutter-gradle-plugin")
+    id("user.flutter.flutter-gradle-plugin")
 }
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
@@ -16,7 +16,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 android {
-    namespace = "com.saudi.goldprice"
+    namespace = "com.shiphub"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -32,7 +32,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.saudi.goldprice"
+        applicationId = "com.shiphub"
         multiDexEnabled = true
 
         minSdk = 23
@@ -57,20 +57,22 @@ android {
     }
     flavorDimensions += "default"
     productFlavors {
-        create("dev") {
+        create("user") {
             dimension = "default"
             resValue(
                 type = "string",
                 name = "app_name",
-                value = "Basic App Dev")
-            applicationIdSuffix = ".dev"
+                value = "ShipHub")
+            applicationIdSuffix = ".app"
         }
-        create("prod") {
+        create("delivery") {
             dimension = "default"
             resValue(
                 type = "string",
                 name = "app_name",
-                value = "Basic App Prod")
+                value = "ShipHub Delivery")
+            applicationIdSuffix = ".delivery"
+
         }
     }
 }
@@ -79,7 +81,7 @@ play {
     // CI step writes this file at repo root
     serviceAccountCredentials.set(file("${rootDir}/play-credentials.json"))
     defaultToAppBundles.set(true)
-    track.set("internal") // for dev; prod overrides via task
+    track.set("internal") // for user; prod overrides via task
 }
 
 flutter {

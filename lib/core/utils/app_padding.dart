@@ -1,53 +1,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppPadding {
-  AppPadding._();
-
-  static AppPadding? _instance;
-
-  static AppPadding get instance => _instance ??= AppPadding._();
-
-  EdgeInsets verticalPadding(double height) =>
+abstract class AppPadding {
+  static EdgeInsets verticalPadding(double height) =>
       EdgeInsets.symmetric(vertical: height).h;
 
-  EdgeInsets horizontalPadding(double width) =>
+  static EdgeInsets horizontalPadding(double width) =>
       EdgeInsets.symmetric(horizontal: width).w;
-  EdgeInsets get zero =>
-      EdgeInsets.zero;
 
-  EdgeInsetsDirectional onlyPadding({
+  static EdgeInsets hvPadding({double height = 0.0, double width = 0.0}) =>
+      EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
+
+  static EdgeInsets get zero => EdgeInsets.zero;
+
+  static EdgeInsetsDirectional onlyPadding({
     double start = 0.0,
     double top = 0.0,
-    double  end = 0.0,
-    double  bottom = 0.0,
+    double end = 0.0,
+    double bottom = 0.0,
   }) => EdgeInsetsDirectional.only(
     top: top.h,
     bottom: bottom.h,
     start: start.w,
     end: end.w,
   );
-  EdgeInsetsDirectional all(double all) => EdgeInsetsDirectional.only(
+
+  static EdgeInsetsDirectional all(double all) => EdgeInsetsDirectional.only(
     top: all.h,
     bottom: all.h,
     start: all.w,
     end: all.w,
   );
 
-  double get p4 => 4;
-  double get p6 => 6;
-  double get p8 => 8;
+  static double get p2 => 2;
 
-  double get p10 => 10;
+  static double get p4 => 4;
 
-  double get p12 => 12;
+  static double get p6 => 6;
 
-  double get p16 => 16;
+  static double get p8 => 8;
 
-  double get p24 => 24;
+  static double get p10 => 10;
 
-  double get p28 => 28;
+  static double get p12 => 12;
 
-  double get p32 => 32;
-  double get p48 => 48;
+  static double get p16 => 16;
+
+  static double get p24 => 24;
+
+  static double get p28 => 28;
+
+  static double get p32 => 32;
+
+  static double get p48 => 48;
 }

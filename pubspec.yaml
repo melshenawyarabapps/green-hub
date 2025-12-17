@@ -1,4 +1,4 @@
-name: gold
+name: greenhub
 description: "Gold App For Show Gold Price"
 
 publish_to: 'none'
@@ -19,39 +19,33 @@ dependencies:
   easy_localization: ^3.0.7+1
   dio: ^5.8.0+1
   hive_flutter: ^1.1.0
-  cached_network_image_plus:
-    git: https://github.com/melshenawyarabapps/cached_network_image_plus.git
   flutter_screenutil: ^5.9.3
   firebase_core: ^3.15.1
   flutter_local_notifications: ^19.3.0
   firebase_messaging: ^15.2.9
   equatable: ^2.0.7
-  flutter_native_splash: ^2.4.6
   flutter_hooks: ^0.21.2
-  intl: ^0.19.0
   dartz: ^0.10.1
   collection: ^1.19.1
-  in_app_review: ^2.0.10
-  url_launcher: ^6.3.2
+  cached_network_image: ^3.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
   flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
 
 flutter:
   generate: true
   uses-material-design: true
 
   assets:
-    - path: assets/dev/
-      flavors:
-        - dev
-    - path: assets/prod/
-      flavors:
-        - prod
     - assets/
     - assets/icons/
+    - assets/svgs/
     - assets/images/
-    - assets/translations/
+
+
+flutter_assets_generator:
+  output_dir: core/generated
 

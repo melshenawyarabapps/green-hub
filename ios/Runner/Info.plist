@@ -24,8 +24,6 @@
 		<string>????</string>
 		<key>CFBundleVersion</key>
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
-		<key>GADApplicationIdentifier</key>
-		<string>$(APP_ID)</string>
 		<key>LSApplicationQueriesSchemes</key>
 		<array>
 			<string>whatsapp</string>
@@ -34,8 +32,6 @@
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
-		<key>UILaunchStoryboardName</key>
-		<string>$(LAUNCH_SCREEN_STORYBOARD)</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
 		<key>UIStatusBarHidden</key>

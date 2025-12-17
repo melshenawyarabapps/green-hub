@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gold/core/services/logger/app_logger.dart';
+import 'package:greenhub/core/services/logger/app_logger.dart';
 
 class BlocLifecycleObserver extends BlocObserver {
 

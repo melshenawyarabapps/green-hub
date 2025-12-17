@@ -1,17 +1,7 @@
-import 'dart:io';
 
-class AppConstants {
-  AppConstants._();
+abstract class AppConstants {
+static const String appName = 'Flutter Task Systems Ltd';
+static const String productsBoxName = 'products';
+static const String favoritesBoxName = 'favorites';
 
-  static AppConstants? _instance;
-
-  static AppConstants get instance => _instance ??= AppConstants._();
-
-  final String appVersion = '1.0.0';
-
-  String get androidStoreUrl => '';
-
-  String get iosStoreUrl => '';
-
-  String get storeUrl => Platform.isAndroid ? androidStoreUrl : iosStoreUrl;
 }

@@ -1,6 +1,6 @@
 
 import 'package:dio/dio.dart';
-import 'package:gold/core/services/logger/app_logger.dart';
+import 'package:greenhub/core/services/logger/app_logger.dart';
 
 class DioInterceptorObserver implements Interceptor {
   DioInterceptorObserver._();

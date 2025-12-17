@@ -41,8 +41,8 @@ jobs:
       - name: Build AAB (prod)
         run: flutter build appbundle --flavor prod --release
 
-      - name: Publish to Google Play (production, PROD app)
-        run: ./gradlew :app:publishProdRelease
+      - name: Publish to Google Play (production, PROD apps)
+        run: ./gradlew :apps:publishProdRelease
 
   ios:
     runs-on: macos-latest
