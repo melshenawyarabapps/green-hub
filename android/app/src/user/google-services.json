@@ -1,40 +1,21 @@
 {
   "project_info": {
-    "project_number": "189199223338",
-    "project_id": "gold-dev-a8477",
-    "storage_bucket": "gold-dev-a8477.firebasestorage.app"
+    "project_number": "694252360716",
+    "project_id": "shiphub-dd08d",
+    "storage_bucket": "shiphub-dd08d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:189199223338:android:3d6db28a8486a2917ad153",
+        "mobilesdk_app_id": "1:694252360716:android:0bbb23a4f4c8cfed3e0a29",
         "android_client_info": {
-          "package_name": "com.asaar.gold.dev"
+          "package_name": "com.shiphub.app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDsldC6bZ2zpwZBDNheTCj9itakbuDhS_g"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:189199223338:android:f9271075962beb307ad153",
-        "android_client_info": {
-          "package_name": "com.saudi.goldprice.dev"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDsldC6bZ2zpwZBDNheTCj9itakbuDhS_g"
+          "current_key": "AIzaSyAQPT-3nUJyaip-bYLP-tBl9cPUE9EKdXY"
         }
       ],
       "services": {

@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBRng6HDawDSseATKbCnZDf_8DKglsDH7Y',
-    appId: '1:968979386708:android:f797e7ac112c349fc6f8c1',
-    messagingSenderId: '968979386708',
-    projectId: 'gold-delivery-8364b',
-    storageBucket: 'gold-delivery-8364b.firebasestorage.apps',
+    apiKey: 'AIzaSyAQPT-3nUJyaip-bYLP-tBl9cPUE9EKdXY',
+    appId: '1:694252360716:android:0bbb23a4f4c8cfed3e0a29',
+    messagingSenderId: '694252360716',
+    projectId: 'shiphub-dd08d',
+    storageBucket: 'shiphub-dd08d.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBKdLYP9QzFMn9GfqAYIi6HQo7hhXYmLr8',
-    appId: '1:968979386708:ios:19c4e8654baf2d0dc6f8c1',
-    messagingSenderId: '968979386708',
-    projectId: 'gold-delivery-8364b',
-    storageBucket: 'gold-delivery-8364b.firebasestorage.apps',
-    iosBundleId: 'com.shiphub.goldprice',
+    apiKey: 'AIzaSyANN5NHA7ZsPYgmN0ramltZVDSflP0BWdU',
+    appId: '1:694252360716:ios:254b8744bd64563e3e0a29',
+    messagingSenderId: '694252360716',
+    projectId: 'shiphub-dd08d',
+    storageBucket: 'shiphub-dd08d.firebasestorage.app',
+    iosBundleId: 'com.shiphub.app',
   );
 
 }

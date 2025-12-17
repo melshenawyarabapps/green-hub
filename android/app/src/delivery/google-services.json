@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "968979386708",
-    "project_id": "gold-sa-8364b",
-    "storage_bucket": "gold-sa-8364b.firebasestorage.app"
+    "project_number": "694252360716",
+    "project_id": "shiphub-dd08d",
+    "storage_bucket": "shiphub-dd08d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:968979386708:android:ce8724ddae6c4d76c6f8c1",
+        "mobilesdk_app_id": "1:694252360716:android:0bbb23a4f4c8cfed3e0a29",
         "android_client_info": {
-          "package_name": "com.asaar.gold.sa"
+          "package_name": "com.shiphub.app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBRng6HDawDSseATKbCnZDf_8DKglsDH7Y"
+          "current_key": "AIzaSyAQPT-3nUJyaip-bYLP-tBl9cPUE9EKdXY"
         }
       ],
       "services": {
@@ -26,34 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:968979386708:android:f797e7ac112c349fc6f8c1",
+        "mobilesdk_app_id": "1:694252360716:android:37f71cf7a9c2990b3e0a29",
         "android_client_info": {
-          "package_name": "com.saudi.goldprice"
+          "package_name": "com.shiphub.delivery"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBRng6HDawDSseATKbCnZDf_8DKglsDH7Y"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:968979386708:android:8344c50e17f2f74ec6f8c1",
-        "android_client_info": {
-          "package_name": "com.saudi.goldprice.sa"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBRng6HDawDSseATKbCnZDf_8DKglsDH7Y"
+          "current_key": "AIzaSyAQPT-3nUJyaip-bYLP-tBl9cPUE9EKdXY"
         }
       ],
       "services": {
