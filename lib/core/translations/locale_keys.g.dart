@@ -71,4 +71,5 @@ abstract class LocaleKeys {
   static const String havePreviousAccount = "havePreviousAccount";
   static const String fieldRequired = "fieldRequired";
   static const String mustBeNumber = "mustBeNumber";
+  static const String authLandingTitle14 = "authLandingTitle14";
 }

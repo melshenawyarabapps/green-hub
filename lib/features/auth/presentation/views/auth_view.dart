@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
-import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
+import 'package:greenhub/core/utils/font_sizes.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 
 class AuthView extends StatelessWidget {
@@ -14,125 +15,73 @@ class AuthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final decorations = theme.extension<AppDecorations>();
-
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image
           Positioned.fill(
-            child: Image.asset(
-              Assets.imagesBoarding1, // Placeholder
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset(Assets.imagesAuth, fit: BoxFit.fill),
           ),
-
-          // Gradient Overlay
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors:
-                      decorations?.mainDecoration.gradient?.colors ??
-                      [
-                        const Color(0xFF00A67E).withValues(alpha: 0.8),
-                        const Color(0xFF00A67E).withValues(alpha: 0.6),
-                      ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
-            ),
-          ),
-
-          // Content
           Padding(
-            padding: AppPadding.horizontalPadding(AppPadding.p24),
+            padding: AppPadding.horizontalPadding(AppPadding.p20),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Spacer(flex: 2), // Push content down
-                // Title
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                    style: theme.textTheme.headlineMedium?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      height: 1.5,
-                    ),
+                    style: theme.textTheme.titleLarge,
                     children: [
                       TextSpan(text: LocaleKeys.authLandingTitle11.tr()),
-                      TextSpan(text: " "),
                       TextSpan(
                         text: LocaleKeys.authLandingTitle12.tr(),
-                        style: const TextStyle(
-                          color: Color(0xFFCDFF05),
-                        ), // Yellowish
+                        style: theme.textTheme.bodyLarge,
                       ),
+                      TextSpan(text: "،"),
+
                       TextSpan(text: "\n"),
                       TextSpan(
                         text: LocaleKeys.authLandingTitle13.tr(),
-                        style: const TextStyle(color: Color(0xFFCDFF05)),
+                        style: theme.textTheme.bodyLarge,
                       ),
+                      TextSpan(text: LocaleKeys.authLandingTitle14.tr()),
                     ],
                   ),
                 ),
 
-                16.verticalSpace,
+                12.verticalSpace,
 
-                // Subtitle
                 Text(
                   LocaleKeys.authLandingSubtitle.tr(),
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: Colors.white.withValues(alpha: 0.9),
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    fontSize: FontSizes.s16,
                   ),
                   textAlign: TextAlign.center,
                 ),
-
-                const Spacer(flex: 1),
-
-                // Login Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 56.h,
-                  child: AppElevatedButton(
-                    title: LocaleKeys.loginAction.tr(),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(AppRoutes.loginView);
-                    },
-                    backgroundColor: const Color(
-                      0xFF00897B,
-                    ), // Darker green button? Or usage of Theme
-                  ),
+                32.verticalSpace,
+                AppElevatedButton(
+                  title: LocaleKeys.loginAction.tr(),
+                  onPressed: () {
+                    context.pushNamed(AppRoutes.loginView);
+                  },
                 ),
-
-                24.verticalSpace,
-
-                // create Account Link
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       LocaleKeys.havePreviousAccount.tr(),
-                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(AppRoutes.registerView);
-                      },
-                      child: Text(
-                        LocaleKeys.createAccount.tr(), // "Inshaa Hisab"
-                        style: TextStyle(
-                          color: const Color(0xFFCDFF05),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.sp,
-                        ),
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontSize: FontSizes.s16,
                       ),
+                    ),
+                    AppTextButton(
+                      onPressed: () {
+                        context.pushNamed(AppRoutes.registerView);
+                      },
+                      title: LocaleKeys.createAccount.tr(),
                     ),
                   ],
                 ),
-
-                48.verticalSpace,
+                12.verticalSpace,
               ],
             ),
           ),

@@ -41,6 +41,17 @@ abstract class AppTheme {
         fixedSize: WidgetStatePropertyAll(Size(335.w, 56.h)),
       ),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: WidgetStatePropertyAll(AppLightColors.secondaryColor),
+        textStyle: WidgetStatePropertyAll(
+          AppStyles.getBoldStyle(
+            color: AppLightColors.secondaryColor,
+            fontSize: FontSizes.s16,
+          ),
+        ),
+      ),
+    ),
     textTheme: TextTheme(
       titleLarge: AppStyles.getSemiBoldStyle(
         color: AppLightColors.whiteColor,

@@ -35,21 +35,34 @@ class AppElevatedButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.onPressed,
-    this.backgroundColor,
   });
 
   final String title;
   final VoidCallback onPressed;
-  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style:
-          backgroundColor != null
-              ? ElevatedButton.styleFrom(backgroundColor: backgroundColor)
-              : null,
+      child: Text(title),
+    );
+  }
+}
+
+class AppTextButton extends StatelessWidget {
+  const AppTextButton({
+    super.key,
+    required this.title,
+    required this.onPressed,
+  });
+
+  final String title;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPressed,
       child: Text(title),
     );
   }
