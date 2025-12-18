@@ -3,6 +3,12 @@ class Assets {
   Assets._();
 
   static const String iconsLogo = 'assets/icons/logo.png';
+  static const String imagesBoarding1 = 'assets/images/boarding1.png';
+  static const String imagesBoarding2 = 'assets/images/boarding2.png';
+  static const String imagesBoarding3 = 'assets/images/boarding3.png';
+  static const String imagesChooseImage = 'assets/images/chooseImage.png';
+  static const String imagesChooseOut = 'assets/images/chooseOut.png';
+  static const String svgsSkip = 'assets/svgs/skip.svg';
   static const String svgsSplash = 'assets/svgs/splash.svg';
   static const String svgsSplash1 = 'assets/svgs/splash1.svg';
 

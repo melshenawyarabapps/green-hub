@@ -26,21 +26,23 @@ class CodegenLoader extends AssetLoader {
     "oppsAnUnexpectedErrorOccurredPleaseTryAgainLater":
         "عفوًا، حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى لاحقًا",
     "noInternetConnection": "لا يوجد اتصال بالإنترنت",
+    "next":"التالي",
+    "userBoardingTitle11":"احجز",
+    "userBoardingTitle12":" توصيلك",
+    "userBoardingTitle13":"، وأسعد يومك",
+    "userBoardingTitle21":"تتبع",
+    "userBoardingTitle22":" شحنتك",
+    "userBoardingTitle23":" لحظة بلحظة",
+    "userBoardingTitle31":"...ShipHub ",
+    "userBoardingTitle32":"توصيل ذكي وسريع",
+    "userBoardingTitle33":"",
+    "userBoardingDescription1":"يصل طلبك إلى منزلك بسهولة وسرعة، دون \nالحاجة إلى عناء الذهاب، نصل إليك حيثما كنت.",
+    "userBoardingDescription2":"اتّبع شحنتك على الخريطة، واعرف موقع السائق \nفي كل وقت.",
+    "userBoardingDescription3":"نهتم بكل التفاصيل. جرب تجربة توصيل مختلفة، \nبجودة عالية وخدمة على مدار الساعة.",
   };
 
   static const Map<String, dynamic> en = {
-    "networkError": "Network error occurred",
-    "unexpectedError": "An unexpected error occurred",
-    "sendTimeOutPleaseTryAgainLater": "Send timeout. Please try again later",
-    "receiveTimeOutPleaseTryAgainLater":
-        "Receive timeout. Please try again later",
-    "connectionErrorPleaseTryAgainLater":
-        "Connection error. Please try again later",
-    "requestHasBeenCancelledPleaseTryAgainLater":
-        "Request cancelled. Please try again later",
-    "oppsAnUnexpectedErrorOccurredPleaseTryAgainLater":
-        "Oops! An unexpected error occurred. Please try again later",
-    "noInternetConnection": "No internet connection",
+
   };
 
   static const Map<String, Map<String, dynamic>> mapLocales = {

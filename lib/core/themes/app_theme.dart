@@ -1,11 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/utils/app_colors.dart';
+import 'package:greenhub/core/utils/app_styles.dart';
+import 'package:greenhub/core/utils/font_sizes.dart';
 
 abstract class AppTheme {
   static ThemeData get lightTheme => ThemeData(
     primaryColor: AppLightColors.primaryColor,
     secondaryHeaderColor: AppLightColors.secondaryColor,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppLightColors.primaryColor),
+        foregroundColor: WidgetStatePropertyAll(AppLightColors.whiteColor),
+        textStyle: WidgetStatePropertyAll(
+          AppStyles.getBoldStyle(
+            color: AppLightColors.whiteColor,
+            fontSize: FontSizes.s18,
+          ),
+        ),
+        fixedSize: WidgetStatePropertyAll(Size(335.w, 56.h)),
+      ),
+    ),
+    textTheme: TextTheme(
+      titleLarge: AppStyles.getSemiBoldStyle(
+        color: AppLightColors.whiteColor,
+        fontSize: FontSizes.s44,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      titleMedium: AppStyles.getRegularStyle(
+        color: AppLightColors.whiteColor,
+        fontSize: FontSizes.s17,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      bodyLarge: AppStyles.getSemiBoldStyle(
+        color: AppLightColors.thirdColor,
+        fontSize: FontSizes.s44,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+    ),
     extensions: [
       AppDecorations(
         mainDecoration: BoxDecoration(
@@ -19,8 +53,16 @@ abstract class AppTheme {
             stops: [0.0478, 0.9454],
           ),
         ),
-        borderWhite10Decoration: BoxDecoration(),
+        borderWhite20Decoration: BoxDecoration(),
         borderWhiteDecoration: BoxDecoration(),
+        circleWhite20Decoration: BoxDecoration(
+          color: AppLightColors.white20Color,
+          borderRadius: BorderRadius.all(Radius.circular(100)),
+        ),
+        circleWhiteDecoration: BoxDecoration(
+          color: AppLightColors.whiteColor,
+          borderRadius: BorderRadius.all(Radius.circular(100)),
+        ),
       ),
     ],
   );
