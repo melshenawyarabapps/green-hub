@@ -19,7 +19,7 @@ class SplashView extends StatelessWidget {
       child: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state.status == SplashStatus.navigateToBeforeAuth) {
-            context.pushReplacementNamed(AppRoutes.beforeAuthView);
+            context.pushNamed(AppRoutes.beforeAuthView);
           } else if (state.status == SplashStatus.navigateToBoarding) {
             context.pushReplacementNamed(AppRoutes.onBoardingView);
           }
