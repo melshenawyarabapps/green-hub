@@ -6,6 +6,7 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
   final BoxDecoration borderWhite20Decoration;
   final BoxDecoration circleWhiteDecoration;
   final BoxDecoration circleWhite20Decoration;
+  final BoxDecoration circleWhiteBorderDecoration;
 
   const AppDecorations({
     required this.mainDecoration,
@@ -13,6 +14,7 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     required this.borderWhiteDecoration,
     required this.circleWhiteDecoration,
     required this.circleWhite20Decoration,
+    required this.circleWhiteBorderDecoration,
   });
 
   @override
@@ -22,6 +24,7 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     BoxDecoration? borderWhite20Decoration,
     BoxDecoration? circleWhiteDecoration,
     BoxDecoration? circleWhite20Decoration,
+    BoxDecoration? circleWhiteBorderDecoration,
   }) {
     return AppDecorations(
       mainDecoration: mainDecoration ?? this.mainDecoration,
@@ -33,6 +36,8 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
           circleWhite20Decoration ?? this.circleWhite20Decoration,
       circleWhiteDecoration:
           circleWhiteDecoration ?? this.circleWhiteDecoration,
+      circleWhiteBorderDecoration:
+          circleWhiteBorderDecoration ?? this.circleWhiteBorderDecoration,
     );
   }
 
@@ -64,6 +69,12 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
           BoxDecoration.lerp(
             circleWhiteDecoration,
             other.circleWhiteDecoration,
+            t,
+          )!,
+      circleWhiteBorderDecoration:
+          BoxDecoration.lerp(
+            circleWhiteBorderDecoration,
+            other.circleWhiteBorderDecoration,
             t,
           )!,
     );

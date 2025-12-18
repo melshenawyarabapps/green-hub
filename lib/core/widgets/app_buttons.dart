@@ -18,19 +18,40 @@ class AppBackButton extends StatelessWidget {
   }
 }
 
+class AppSelectButton extends StatelessWidget {
+  const AppSelectButton({super.key, this.onChanged, required this.value});
+
+  final ValueChanged<bool?>? onChanged;
+  final bool value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(value: value, onChanged: onChanged);
+  }
+}
+
 class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton({
     super.key,
     required this.title,
     required this.onPressed,
+    this.backgroundColor,
   });
 
   final String title;
   final VoidCallback onPressed;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: onPressed, child: Text(title));
+    return ElevatedButton(
+      onPressed: onPressed,
+      style:
+          backgroundColor != null
+              ? ElevatedButton.styleFrom(backgroundColor: backgroundColor)
+              : null,
+      child: Text(title),
+    );
   }
 }
 

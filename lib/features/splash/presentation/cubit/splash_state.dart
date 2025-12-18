@@ -1,6 +1,12 @@
 part of 'splash_cubit.dart';
 
-enum SplashStatus { initial, loading, navigateToBoarding, navigateToBeforeAuth }
+enum SplashStatus {
+  initial,
+  loading,
+  navigateToBoarding,
+  navigateToBeforeAuth,
+  navigateToAuth,
+}
 
 class SplashState {
   final SplashStatus status;

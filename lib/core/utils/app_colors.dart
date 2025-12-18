@@ -34,6 +34,10 @@ abstract class AppLightColors {
   static Color get black12Color => Colors.black12;
 
   static Color get greyColor => Colors.grey;
+  static Color get greyColor2 => Color(0xfff7f7f7);
+  static Color get greyColor3 => Color(0xffA0A0A7);
+  static Color get greyColor4 => Color(0xff4B4B4B);
+  static Color get greyColor5 => Color(0xffeaeaea);
 
   static Color get greenColor => Colors.green;
 

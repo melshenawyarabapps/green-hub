@@ -9,6 +9,7 @@ abstract class AppRadius {
       BorderRadius.vertical(top: Radius.circular(radius));
 
   static double get r1 => 1.r;
+  static double get r2 => 2.r;
   static double get r6 => 6.r;
 
   static double get r7 => 7.r;

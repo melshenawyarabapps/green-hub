@@ -57,9 +57,19 @@ abstract class AppTheme {
         fontSize: FontSizes.s12,
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
+      displaySmall: AppStyles.getRegularStyle(
+        color: AppLightColors.greyColor4,
+        fontSize: FontSizes.s12,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
       bodyMedium: AppStyles.getBoldStyle(
         color: AppLightColors.blackColor,
         fontSize: FontSizes.s26,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      bodySmall: AppStyles.getBoldStyle(
+        color: AppLightColors.blackColor,
+        fontSize: FontSizes.s12,
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
       bodyLarge: AppStyles.getSemiBoldStyle(
@@ -68,6 +78,48 @@ abstract class AppTheme {
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
     ),
+    inputDecorationTheme: InputDecorationThemeData(
+      filled: true,
+      fillColor: AppLightColors.greyColor2,
+      hintStyle: AppStyles.getRegularStyle(
+        color: AppLightColors.greyColor3,
+        fontSize: FontSizes.s12,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: AppRadius.all(AppRadius.r40),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: AppRadius.all(AppRadius.r40),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: AppRadius.all(AppRadius.r40),
+        borderSide: BorderSide(color: AppLightColors.primaryColor, width: 1.w),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: AppRadius.all(AppRadius.r40),
+        borderSide: BorderSide(color: AppLightColors.redColor, width: 1.w),
+      ),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppLightColors
+              .primaryColor; // Fill with primary color when selected
+        }
+        return AppLightColors.transparent; // No fill when not selected
+      }),
+      checkColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppLightColors
+              .whiteColor; // Fill with primary color when selected
+        }
+        return AppLightColors.greyColor3; // No fill when not selected
+      }),
+      shape: RoundedRectangleBorder(borderRadius: AppRadius.all(AppRadius.r2)),
+    ),
+
     extensions: [
       AppDecorations(
         mainDecoration: BoxDecoration(
@@ -96,6 +148,11 @@ abstract class AppTheme {
         circleWhiteDecoration: BoxDecoration(
           color: AppLightColors.whiteColor,
           borderRadius: BorderRadius.all(Radius.circular(100)),
+        ),
+        circleWhiteBorderDecoration: BoxDecoration(
+          color: AppLightColors.whiteColor,
+          borderRadius: BorderRadius.all(Radius.circular(100)),
+          border: Border.all(color: AppLightColors.greyColor5),
         ),
       ),
     ],

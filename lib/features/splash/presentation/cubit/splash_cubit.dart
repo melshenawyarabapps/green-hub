@@ -16,7 +16,7 @@ class SplashCubit extends Cubit<SplashState> {
     final boardingViewed = await _boardingRepository.isBoardingViewed();
 
     if (boardingViewed) {
-      emit(state.copyWith(status: SplashStatus.navigateToBeforeAuth));
+      emit(state.copyWith(status: SplashStatus.navigateToAuth));
     } else {
       emit(state.copyWith(status: SplashStatus.navigateToBoarding));
     }

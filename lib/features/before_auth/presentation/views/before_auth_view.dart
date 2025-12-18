@@ -24,9 +24,9 @@ class BeforeAuthView extends StatelessWidget {
       child: BlocListener<BeforeAuthCubit, BeforeAuthState>(
         listener: (context, state) {
           if (state.status == BeforeAuthStatus.navigateToLogin) {
-            context.pushNamed(AppRoutes.authView);
+            context.pushNamed(AppRoutes.loginView);
           } else if (state.status == BeforeAuthStatus.navigateToRegister) {
-            context.pushNamed(AppRoutes.authView);
+            context.pushNamed(AppRoutes.registerView);
           }
         },
         child: const _BeforeAuthViewBody(),
@@ -124,12 +124,16 @@ class _BeforeAuthViewBody extends StatelessWidget {
 
                     AppElevatedButton(
                       title: LocaleKeys.yesNew.tr(),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<BeforeAuthCubit>().navigateToRegister();
+                      },
                     ),
                     16.verticalSpace,
                     AppOutlinedButton(
                       title: LocaleKeys.no.tr(),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<BeforeAuthCubit>().navigateToLogin();
+                      },
                     ),
                   ],
                 ),

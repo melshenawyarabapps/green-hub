@@ -8,9 +8,14 @@ class Assets {
   static const String imagesBoarding3 = 'assets/images/boarding3.png';
   static const String imagesChooseImage = 'assets/images/chooseImage.png';
   static const String imagesChooseOut = 'assets/images/chooseOut.png';
+  static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
   static const String svgsBack = 'assets/svgs/back.svg';
   static const String svgsEn = 'assets/svgs/en.svg';
+  static const String svgsLocation = 'assets/svgs/location.svg';
+  static const String svgsProfile = 'assets/svgs/profile.svg';
+  static const String svgsSa = 'assets/svgs/sa.svg';
   static const String svgsSkip = 'assets/svgs/skip.svg';
+  static const String svgsSmsTracking = 'assets/svgs/sms-tracking.svg';
   static const String svgsSplash = 'assets/svgs/splash.svg';
   static const String svgsSplash1 = 'assets/svgs/splash1.svg';
   static const String svgsWhiteLogo = 'assets/svgs/whiteLogo.svg';
