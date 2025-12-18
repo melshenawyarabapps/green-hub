@@ -47,7 +47,7 @@ class _BoardingViewState extends State<BoardingView> {
       child: BlocConsumer<BoardingCubit, BoardingState>(
         listener: (context, state) {
           if (state.status == BoardingStatus.navigateToBeforeAuth) {
-            context.pushReplacementNamed(AppRoutes.beforeAuthView);
+            context.pushNamed(AppRoutes.beforeAuthView);
           }
           if (state.animateToPage) {
             _pageController.animateToPage(

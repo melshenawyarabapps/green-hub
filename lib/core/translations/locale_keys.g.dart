@@ -44,4 +44,7 @@ abstract class LocaleKeys {
       "deliveryBoardingDescription2";
   static const String deliveryBoardingDescription3 =
       "deliveryBoardingDescription3";
+  static const String newUser = "newUser";
+  static const String yesNew = "yesNew";
+  static const String no = "no";
 }

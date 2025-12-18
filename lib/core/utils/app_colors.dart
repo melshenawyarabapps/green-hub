@@ -5,6 +5,10 @@ abstract class AppLightColors {
 
   static Color get primaryColor => const Color(0xFF048372);
 
+  static Color get primaryColor8 => const Color(0x14048372);
+
+  static Color get primaryColor30 => const Color(0x4D048372);
+
   static Color get secondaryColor => const Color(0xFFAECF5C);
 
   static Color get thirdColor => const Color(0xFFB6FF00);

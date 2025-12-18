@@ -4,6 +4,7 @@ import 'package:greenhub/core/services/cache/cache_service.dart';
 import 'package:greenhub/features/boarding/data/repos/boarding_repository.dart';
 import 'package:greenhub/features/boarding/presentation/cubit/boarding_cubit.dart';
 import 'package:greenhub/features/splash/presentation/cubit/splash_cubit.dart';
+import 'package:greenhub/features/before_auth/presentation/cubit/before_auth_cubit.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -13,10 +14,7 @@ setUp() {
   getIt.registerLazySingleton(
     () => BoardingRepository(getIt.get<CacheService>()),
   );
-  getIt.registerFactory(
-    () => BoardingCubit(getIt.get<BoardingRepository>()),
-  );
-  getIt.registerFactory(
-    () => SplashCubit(getIt.get<BoardingRepository>()),
-  );
+  getIt.registerFactory(() => BoardingCubit(getIt.get<BoardingRepository>()));
+  getIt.registerFactory(() => SplashCubit(getIt.get<BoardingRepository>()));
+  getIt.registerFactory(() => BeforeAuthCubit());
 }

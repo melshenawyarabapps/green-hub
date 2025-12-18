@@ -39,6 +39,9 @@ class CodegenLoader extends AssetLoader {
     "userBoardingDescription1":"يصل طلبك إلى منزلك بسهولة وسرعة، دون \nالحاجة إلى عناء الذهاب، نصل إليك حيثما كنت.",
     "userBoardingDescription2":"اتّبع شحنتك على الخريطة، واعرف موقع السائق \nفي كل وقت.",
     "userBoardingDescription3":"نهتم بكل التفاصيل. جرب تجربة توصيل مختلفة، \nبجودة عالية وخدمة على مدار الساعة.",
+  "newUser":"هل أنت مستخدم جديد؟",
+    "yesNew":"نعم ، جديد",
+    "no":"لا",
   };
 
   static const Map<String, dynamic> en = {
