@@ -48,10 +48,16 @@ abstract class AppLightColors {
   static Color get greyColor6 => Color(0xff929292);
 
   static Color get greyColor7 => Color(0xff656F77);
+  static Color get greyColor8 => Color(0xffb3b3b3);
+  static Color get greyColor9 => Color(0xfff3f3f3);
 
   static Color get greenColor => Colors.green;
 
   static Color get redColor => Colors.red;
+
+  // Profile gradient colors
+  static Color get profileGradientStart => const Color(0xFFD1FEF8);
+  static Color get profileGradientEnd => const Color(0xFFF1FDD1);
 }
 
 abstract class AppDarkColors {

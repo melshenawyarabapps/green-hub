@@ -90,4 +90,25 @@ abstract class LocaleKeys {
   static const String loginSuccessfully = "loginSuccessfully";
   static const String loginSuccessfullyDescription =
       "loginSuccessfullyDescription";
+  static const String home = "home";
+  static const String offers = "offers";
+  static const String orders = "orders";
+  static const String more = "more";
+  static const String createOrder = "createOrder";
+  static const String edit = "edit";
+  static const String editAccountInfo = "editAccountInfo";
+  static const String editAccountInfoDesc = "editAccountInfoDesc";
+  static const String aboutApp = "aboutApp";
+  static const String aboutAppDesc = "aboutAppDesc";
+  static const String contactUs = "contactUs";
+  static const String contactUsDesc = "contactUsDesc";
+  static const String myAddresses = "myAddresses";
+  static const String myAddressesDesc = "myAddressesDesc";
+  static const String wallet = "wallet";
+  static const String walletDesc = "walletDesc";
+  static const String settings = "settings";
+  static const String settingsDesc = "settingsDesc";
+  static const String logout = "logout";
+  static const String logoutDesc = "logoutDesc";
+  static const String continueQuestion = "continueQuestion";
 }

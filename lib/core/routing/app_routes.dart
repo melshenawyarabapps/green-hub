@@ -7,4 +7,5 @@ abstract class AppRoutes {
   static const String authView = '/authView';
   static const String verificationView = '/verificationView';
   static const String navigationView = '/navigationView';
+  static const String moreView = '/moreView';
 }

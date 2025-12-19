@@ -7,6 +7,7 @@ import 'package:greenhub/features/auth/presentation/views/verification_view.dart
 import 'package:greenhub/features/before_auth/presentation/views/before_auth_view.dart';
 import 'package:greenhub/features/boarding/presentation/views/boarding_view.dart';
 import 'package:greenhub/features/navigation/presentation/views/navigation_view.dart';
+import 'package:greenhub/features/more/presentation/views/more_view.dart';
 import 'package:greenhub/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -28,6 +29,8 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (_) => const VerificationView());
       case AppRoutes.navigationView:
         return MaterialPageRoute(builder: (_) => const NavigationView());
+      case AppRoutes.moreView:
+        return MaterialPageRoute(builder: (_) => const MoreView());
       default:
         return MaterialPageRoute(
           builder:

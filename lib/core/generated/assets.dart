@@ -14,6 +14,7 @@ class Assets {
   static const String imagesLogin = 'assets/images/login.png';
   static const String svgsAdd = 'assets/svgs/add.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
+  static const String svgsArrowEnd = 'assets/svgs/arrowEnd.svg';
   static const String svgsBack = 'assets/svgs/back.svg';
   static const String svgsCars = 'assets/svgs/cars.svg';
   static const String svgsCode = 'assets/svgs/code.svg';

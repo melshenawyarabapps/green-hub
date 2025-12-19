@@ -11,12 +11,14 @@ import 'package:greenhub/core/utils/font_sizes.dart';
 
 abstract class AppTheme {
   static ThemeData get lightTheme => ThemeData(
+    scaffoldBackgroundColor: AppLightColors.whiteColor,
     primaryColor: AppLightColors.primaryColor,
     secondaryHeaderColor: AppLightColors.secondaryColor,
+    canvasColor: AppLightColors.primaryColor12,
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
-        statusBarColor: AppLightColors.transparent
+        statusBarColor: AppLightColors.transparent,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -92,6 +94,18 @@ abstract class AppTheme {
         fontSize: FontSizes.s12,
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
+      labelSmall: AppStyles.getMediumStyle(
+        color: AppLightColors.greyColor8,
+        fontSize: FontSizes.s10,
+      ),
+      labelMedium: AppStyles.getSemiBoldStyle(
+        color: AppLightColors.primaryColor,
+        fontSize: FontSizes.s10,
+      ),
+      labelLarge: AppStyles.getSemiBoldStyle(
+        color: AppLightColors.redColor,
+        fontSize: FontSizes.s13,
+      ),
       bodyMedium: AppStyles.getBoldStyle(
         color: AppLightColors.blackColor,
         fontSize: FontSizes.s26,
@@ -107,6 +121,19 @@ abstract class AppTheme {
         fontSize: FontSizes.s44,
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
+    ),
+    dividerTheme: DividerThemeData(
+      color: AppLightColors.greyColor9,
+      space: 24.h,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppLightColors.transparent,
+      shape: CircleBorder(),
+      hoverColor: AppLightColors.transparent,
+      splashColor: AppLightColors.transparent,
+      focusColor: AppLightColors.transparent,
+      elevation: 0,
+      extendedPadding: AppPadding.zero,
     ),
     inputDecorationTheme: InputDecorationThemeData(
       filled: true,
@@ -135,6 +162,10 @@ abstract class AppTheme {
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppLightColors.transparent,
       modalBarrierColor: AppLightColors.black12Color,
+    ),
+    bottomAppBarTheme: BottomAppBarThemeData(
+      color: AppLightColors.whiteColor,
+      elevation: 10,
     ),
     extensions: [
       AppDecorations(
@@ -183,6 +214,17 @@ abstract class AppTheme {
         notchDecoration: BoxDecoration(
           color: AppLightColors.greyColor3,
           borderRadius: AppRadius.all(AppRadius.r10),
+        ),
+        profileDecoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: AlignmentDirectional.centerStart,
+            end: AlignmentDirectional.centerEnd,
+            colors: [
+              AppLightColors.profileGradientStart,
+              AppLightColors.profileGradientEnd,
+            ],
+          ),
+          borderRadius: AppRadius.all(AppRadius.r12),
         ),
       ),
     ],
