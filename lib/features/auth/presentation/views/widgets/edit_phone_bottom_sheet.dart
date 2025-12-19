@@ -63,6 +63,7 @@ class EditPhoneBottomSheet extends StatelessWidget {
             AppElevatedButton(
               title: LocaleKeys.yes.tr(),
               onPressed: () async {
+                // Capture the navigator context before popping
                 context.pop();
                 await SuccessBottomSheet.show(
                   context,
