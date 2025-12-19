@@ -10,6 +10,7 @@ abstract class AppRadius {
 
   static double get r1 => 1.r;
   static double get r2 => 2.r;
+  static double get r4 => 4.r;
   static double get r6 => 6.r;
 
   static double get r7 => 7.r;
@@ -53,4 +54,5 @@ abstract class AppRadius {
   static double get r32 => 32.r;
 
   static double get r40 => 40.r;
+  static double get r100 => 100.r;
 }

@@ -2,7 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String iconsEn = 'assets/icons/en.png';
   static const String iconsLogo = 'assets/icons/logo.png';
+  static const String iconsSa = 'assets/icons/sa.png';
   static const String imagesAuth = 'assets/images/auth.png';
   static const String imagesBoarding1 = 'assets/images/boarding1.png';
   static const String imagesBoarding2 = 'assets/images/boarding2.png';
@@ -10,16 +12,38 @@ class Assets {
   static const String imagesChooseImage = 'assets/images/chooseImage.png';
   static const String imagesChooseOut = 'assets/images/chooseOut.png';
   static const String imagesLogin = 'assets/images/login.png';
+  static const String svgsAdd = 'assets/svgs/add.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
   static const String svgsBack = 'assets/svgs/back.svg';
-  static const String svgsEn = 'assets/svgs/en.svg';
+  static const String svgsCars = 'assets/svgs/cars.svg';
+  static const String svgsCode = 'assets/svgs/code.svg';
+  static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
+  static const String svgsEdit = 'assets/svgs/edit.svg';
+  static const String svgsEditProfile = 'assets/svgs/editProfile.svg';
+  static const String svgsError = 'assets/svgs/error.svg';
+  static const String svgsFaceId = 'assets/svgs/faceId.svg';
+  static const String svgsHome = 'assets/svgs/home.svg';
+  static const String svgsInhome = 'assets/svgs/inhome.svg';
+  static const String svgsInmore = 'assets/svgs/inmore.svg';
+  static const String svgsInoffers = 'assets/svgs/inoffers.svg';
+  static const String svgsInorders = 'assets/svgs/inorders.svg';
   static const String svgsLocation = 'assets/svgs/location.svg';
+  static const String svgsLocations = 'assets/svgs/locations.svg';
+  static const String svgsLogout = 'assets/svgs/logout.svg';
+  static const String svgsMore = 'assets/svgs/more.svg';
+  static const String svgsOffers = 'assets/svgs/offers.svg';
+  static const String svgsOrders = 'assets/svgs/orders.svg';
   static const String svgsProfile = 'assets/svgs/profile.svg';
-  static const String svgsSa = 'assets/svgs/sa.svg';
+  static const String svgsRate = 'assets/svgs/rate.svg';
+  static const String svgsSettings = 'assets/svgs/settings.svg';
   static const String svgsSkip = 'assets/svgs/skip.svg';
   static const String svgsSmsTracking = 'assets/svgs/sms-tracking.svg';
   static const String svgsSplash = 'assets/svgs/splash.svg';
   static const String svgsSplash1 = 'assets/svgs/splash1.svg';
+  static const String svgsSuccess = 'assets/svgs/success.svg';
+  static const String svgsSupport = 'assets/svgs/support.svg';
+  static const String svgsSvgLogo = 'assets/svgs/svgLogo.svg';
+  static const String svgsWallet = 'assets/svgs/wallet.svg';
   static const String svgsWhiteLogo = 'assets/svgs/whiteLogo.svg';
 
 }

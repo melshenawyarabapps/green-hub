@@ -22,7 +22,7 @@ class CountryWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(Assets.svgsSa, width: 35.w, height: 22.h),
+              Image.asset(Assets.iconsSa, width: 35.w, height: 22.h),
               4.horizontalSpace,
               Text('966+', style: theme.textTheme.displaySmall),
             ],

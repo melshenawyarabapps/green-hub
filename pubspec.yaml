@@ -30,6 +30,8 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter_svg: ^2.2.3
   google_fonts: ^6.3.3
+  pinput:
+    path: ../Flutter_Pinput
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,8 +48,4 @@ flutter:
     - assets/icons/
     - assets/svgs/
     - assets/images/
-
-
-flutter_assets_generator:
-  output_dir: core/generated
 

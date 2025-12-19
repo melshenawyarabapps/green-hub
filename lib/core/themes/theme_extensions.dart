@@ -7,6 +7,9 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
   final BoxDecoration circleWhiteDecoration;
   final BoxDecoration circleWhite20Decoration;
   final BoxDecoration circleWhiteBorderDecoration;
+  final BoxDecoration selectedDecoration;
+  final BoxDecoration unselectedDecoration;
+  final BoxDecoration notchDecoration;
 
   const AppDecorations({
     required this.mainDecoration,
@@ -15,6 +18,9 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     required this.circleWhiteDecoration,
     required this.circleWhite20Decoration,
     required this.circleWhiteBorderDecoration,
+    required this.selectedDecoration,
+    required this.unselectedDecoration,
+    required this.notchDecoration,
   });
 
   @override
@@ -25,6 +31,9 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     BoxDecoration? circleWhiteDecoration,
     BoxDecoration? circleWhite20Decoration,
     BoxDecoration? circleWhiteBorderDecoration,
+    BoxDecoration? selectedDecoration,
+    BoxDecoration? unselectedDecoration,
+    BoxDecoration? notchDecoration,
   }) {
     return AppDecorations(
       mainDecoration: mainDecoration ?? this.mainDecoration,
@@ -38,6 +47,9 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
           circleWhiteDecoration ?? this.circleWhiteDecoration,
       circleWhiteBorderDecoration:
           circleWhiteBorderDecoration ?? this.circleWhiteBorderDecoration,
+      unselectedDecoration: unselectedDecoration ?? this.unselectedDecoration,
+      selectedDecoration: selectedDecoration ?? this.selectedDecoration,
+      notchDecoration: notchDecoration ?? this.notchDecoration,
     );
   }
 
@@ -75,6 +87,19 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
           BoxDecoration.lerp(
             circleWhiteBorderDecoration,
             other.circleWhiteBorderDecoration,
+            t,
+          )!,
+      selectedDecoration:
+          BoxDecoration.lerp(selectedDecoration, other.selectedDecoration, t)!,
+      unselectedDecoration:
+          BoxDecoration.lerp(
+            unselectedDecoration,
+            other.unselectedDecoration,
+            t,
+          )!, notchDecoration:
+          BoxDecoration.lerp(
+            notchDecoration,
+            other.notchDecoration,
             t,
           )!,
     );

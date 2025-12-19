@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/utils/app_colors.dart';
+import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/utils/app_radius.dart';
 import 'package:greenhub/core/utils/app_styles.dart';
 import 'package:greenhub/core/utils/font_sizes.dart';
@@ -11,6 +13,12 @@ abstract class AppTheme {
   static ThemeData get lightTheme => ThemeData(
     primaryColor: AppLightColors.primaryColor,
     secondaryHeaderColor: AppLightColors.secondaryColor,
+    appBarTheme: AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        statusBarColor: AppLightColors.transparent
+      ),
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(AppLightColors.primaryColor),
@@ -43,11 +51,12 @@ abstract class AppTheme {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
+        padding: WidgetStatePropertyAll(AppPadding.zero),
         foregroundColor: WidgetStatePropertyAll(AppLightColors.secondaryColor),
         textStyle: WidgetStatePropertyAll(
           AppStyles.getBoldStyle(
             color: AppLightColors.secondaryColor,
-            fontSize: FontSizes.s16,
+            fontSize: FontSizes.s14,
           ),
         ),
       ),
@@ -70,6 +79,16 @@ abstract class AppTheme {
       ),
       displaySmall: AppStyles.getRegularStyle(
         color: AppLightColors.greyColor4,
+        fontSize: FontSizes.s12,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      displayMedium: AppStyles.getRegularStyle(
+        color: AppLightColors.greyColor6,
+        fontSize: FontSizes.s14,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      displayLarge: AppStyles.getRegularStyle(
+        color: AppLightColors.greyColor7,
         fontSize: FontSizes.s12,
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
@@ -113,24 +132,10 @@ abstract class AppTheme {
         borderSide: BorderSide(color: AppLightColors.redColor, width: 1.w),
       ),
     ),
-    checkboxTheme: CheckboxThemeData(
-      fillColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
-          return AppLightColors
-              .primaryColor; // Fill with primary color when selected
-        }
-        return AppLightColors.transparent; // No fill when not selected
-      }),
-      checkColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.selected)) {
-          return AppLightColors
-              .whiteColor; // Fill with primary color when selected
-        }
-        return AppLightColors.greyColor3; // No fill when not selected
-      }),
-      shape: RoundedRectangleBorder(borderRadius: AppRadius.all(AppRadius.r2)),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppLightColors.transparent,
+      modalBarrierColor: AppLightColors.black12Color,
     ),
-
     extensions: [
       AppDecorations(
         mainDecoration: BoxDecoration(
@@ -154,16 +159,30 @@ abstract class AppTheme {
         ),
         circleWhite20Decoration: BoxDecoration(
           color: AppLightColors.white20Color,
-          borderRadius: BorderRadius.all(Radius.circular(100)),
+          borderRadius: AppRadius.vertical(AppRadius.r100),
         ),
         circleWhiteDecoration: BoxDecoration(
           color: AppLightColors.whiteColor,
-          borderRadius: BorderRadius.all(Radius.circular(100)),
+          borderRadius: AppRadius.all(AppRadius.r100),
         ),
         circleWhiteBorderDecoration: BoxDecoration(
           color: AppLightColors.whiteColor,
-          borderRadius: BorderRadius.all(Radius.circular(100)),
+          borderRadius: AppRadius.all(AppRadius.r100),
           border: Border.all(color: AppLightColors.greyColor5),
+        ),
+        selectedDecoration: BoxDecoration(
+          color: AppLightColors.primaryColor,
+          borderRadius: AppRadius.all(AppRadius.r4),
+          border: Border.all(color: AppLightColors.primaryColor),
+        ),
+        unselectedDecoration: BoxDecoration(
+          color: AppLightColors.transparent,
+          borderRadius: AppRadius.all(AppRadius.r4),
+          border: Border.all(color: AppLightColors.greyColor3),
+        ),
+        notchDecoration: BoxDecoration(
+          color: AppLightColors.greyColor3,
+          borderRadius: AppRadius.all(AppRadius.r10),
         ),
       ),
     ],

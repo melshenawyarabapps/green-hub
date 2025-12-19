@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 extension ContextExtensions on BuildContext {
   double get topPadding => MediaQuery.paddingOf(this).top;
+  double get bottomPadding => MediaQuery.viewInsetsOf(this).bottom;
 
   Future<T?> pushNamed<T extends Object?>(
     String routeName, {
@@ -32,6 +33,7 @@ extension ContextExtensions on BuildContext {
       routeName,
       (route) => false,
       arguments: arguments,
+
     );
   }
 }

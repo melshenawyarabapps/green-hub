@@ -61,6 +61,27 @@ class AuthView extends StatelessWidget {
                 AppElevatedButton(
                   title: LocaleKeys.loginAction.tr(),
                   onPressed: () {
+                    // ErrorBottomSheet.show(
+                    //   context,
+                    //   title: LocaleKeys.errorCreateAccount.tr(),
+                    //   subTitle: LocaleKeys.errorCreateAccountDescription.tr(),
+                    //   elevatedText: LocaleKeys.tryAgain.tr(),
+                    //   text: LocaleKeys.returnToLogin.tr(),
+                    //   textPressed: () {
+                    //     context.pop();
+                    //     context.pushReplacementNamed(AppRoutes.loginView);
+                    //   },
+                    //   elevatedPressed: () {
+                    //     context.pop();
+                    //   },
+                    //   enableDrag: true,
+                    // );
+                    // SuccessBottomSheet.show(
+                    //   context,
+                    //   title: LocaleKeys.successCreateAccount.tr(),
+                    //   subTitle: LocaleKeys.successCreateAccountDescription.tr(),
+                    //   enableDrag: true,
+                    // );
                     context.pushNamed(AppRoutes.loginView);
                   },
                 ),

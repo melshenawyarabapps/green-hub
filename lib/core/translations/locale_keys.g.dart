@@ -72,4 +72,22 @@ abstract class LocaleKeys {
   static const String fieldRequired = "fieldRequired";
   static const String mustBeNumber = "mustBeNumber";
   static const String authLandingTitle14 = "authLandingTitle14";
+  static const String errorCreateAccount = "errorCreateAccount";
+  static const String errorCreateAccountDescription =
+      "errorCreateAccountDescription";
+  static const String successCreateAccount = "successCreateAccount";
+  static const String successCreateAccountDescription =
+      "successCreateAccountDescription";
+  static const String verificationCode = "verificationCode";
+  static const String verificationCodeDescription =
+      "verificationCodeDescription";
+  static const String ifCodeNotReceived = "ifCodeNotReceived";
+  static const String resendCode = "resendCode";
+  static const String youNeedChangePhone = "youNeedChangePhone";
+  static const String changePhone = "changePhone";
+  static const String editPhone = "editPhone";
+  static const String yes = "yes";
+  static const String loginSuccessfully = "loginSuccessfully";
+  static const String loginSuccessfullyDescription =
+      "loginSuccessfullyDescription";
 }
