@@ -5,11 +5,19 @@ abstract class AppLightColors {
 
   static Color get primaryColor => const Color(0xFF048372);
 
+  static Color get primaryColor8 => const Color(0x14048372);
+
+  static Color get primaryColor30 => const Color(0x4D048372);
+
   static Color get secondaryColor => const Color(0xFFAECF5C);
+
+  static Color get thirdColor => const Color(0xFFB6FF00);
 
   static Color get transparent => Colors.transparent;
 
   static Color get whiteColor => Colors.white;
+
+  static Color get white20Color => Color(0x33FFFFFF);
 
   static Color get blackColor => Colors.black;
 
@@ -26,11 +34,14 @@ abstract class AppLightColors {
   static Color get black12Color => Colors.black12;
 
   static Color get greyColor => Colors.grey;
+  static Color get greyColor2 => Color(0xfff7f7f7);
+  static Color get greyColor3 => Color(0xffA0A0A7);
+  static Color get greyColor4 => Color(0xff4B4B4B);
+  static Color get greyColor5 => Color(0xffeaeaea);
 
   static Color get greenColor => Colors.green;
 
   static Color get redColor => Colors.red;
-
 }
 
 abstract class AppDarkColors {

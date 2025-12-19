@@ -16,4 +16,60 @@ abstract class LocaleKeys {
   static const String oppsAnUnexpectedErrorOccurredPleaseTryAgainLater =
       "oppsAnUnexpectedErrorOccurredPleaseTryAgainLater";
   static const String noInternetConnection = "noInternetConnection";
+  static const String next = "next";
+  static const String userBoardingTitle11 = "userBoardingTitle11";
+  static const String userBoardingTitle12 = "userBoardingTitle12";
+  static const String userBoardingTitle13 = "userBoardingTitle13";
+  static const String userBoardingTitle21 = "userBoardingTitle21";
+  static const String userBoardingTitle22 = "userBoardingTitle22";
+  static const String userBoardingTitle23 = "userBoardingTitle23";
+  static const String userBoardingTitle31 = "userBoardingTitle31";
+  static const String userBoardingTitle32 = "userBoardingTitle32";
+  static const String userBoardingTitle33 = "userBoardingTitle33";
+  static const String deliveryBoardingTitle11 = "deliveryBoardingTitle11";
+  static const String deliveryBoardingTitle12 = "deliveryBoardingTitle12";
+  static const String deliveryBoardingTitle13 = "deliveryBoardingTitle13";
+  static const String deliveryBoardingTitle21 = "deliveryBoardingTitle21";
+  static const String deliveryBoardingTitle22 = "deliveryBoardingTitle22";
+  static const String deliveryBoardingTitle23 = "deliveryBoardingTitle23";
+  static const String deliveryBoardingTitle31 = "deliveryBoardingTitle31";
+  static const String deliveryBoardingTitle32 = "deliveryBoardingTitle32";
+  static const String deliveryBoardingTitle33 = "deliveryBoardingTitle33";
+  static const String userBoardingDescription1 = "userBoardingDescription1";
+  static const String userBoardingDescription2 = "userBoardingDescription2";
+  static const String userBoardingDescription3 = "userBoardingDescription3";
+  static const String deliveryBoardingDescription1 =
+      "deliveryBoardingDescription1";
+  static const String deliveryBoardingDescription2 =
+      "deliveryBoardingDescription2";
+  static const String deliveryBoardingDescription3 =
+      "deliveryBoardingDescription3";
+  static const String newUser = "newUser";
+  static const String yesNew = "yesNew";
+  static const String no = "no";
+  static const String createAccount = "createAccount";
+  static const String fullName = "fullName";
+  static const String phoneNumber = "phoneNumber";
+  static const String email = "email";
+  static const String favDestinations = "favDestinations";
+  static const String agreeTerms = "agreeTerms";
+  static const String saveData = "saveData";
+  static const String createAccountFailed = "createAccountFailed";
+  static const String createAccountFailedDesc = "createAccountFailedDesc";
+  static const String tryAgain = "tryAgain";
+  static const String returnToLogin = "returnToLogin";
+  static const String accountCreatedSuccess = "accountCreatedSuccess";
+  static const String readyToStart = "readyToStart";
+  static const String registerNowAndStart = "registerNowAndStart";
+  static const String loginTitle = "loginTitle";
+  static const String loginAction = "loginAction";
+  static const String back = "back";
+  static const String authLandingTitle11 = "authLandingTitle11";
+  static const String authLandingTitle12 = "authLandingTitle12";
+  static const String authLandingTitle13 = "authLandingTitle13";
+  static const String authLandingSubtitle = "authLandingSubtitle";
+  static const String havePreviousAccount = "havePreviousAccount";
+  static const String fieldRequired = "fieldRequired";
+  static const String mustBeNumber = "mustBeNumber";
+  static const String authLandingTitle14 = "authLandingTitle14";
 }

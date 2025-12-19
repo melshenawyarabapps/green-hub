@@ -46,6 +46,8 @@ abstract class AppPadding {
 
   static double get p16 => 16;
 
+  static double get p20 => 20;
+
   static double get p24 => 24;
 
   static double get p28 => 28;
@@ -53,4 +55,6 @@ abstract class AppPadding {
   static double get p32 => 32;
 
   static double get p48 => 48;
+
+  static double get p118 => 118;
 }

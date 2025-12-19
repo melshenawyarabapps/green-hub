@@ -7,37 +7,84 @@ abstract class AppStyles {
     double fontSize,
     FontWeight fontWeight,
     Color color,
+    String? fontFamily,
   ) {
-    return TextStyle(fontSize: fontSize, color: color, fontWeight: fontWeight);
+    return TextStyle(
+      fontSize: fontSize,
+      color: color,
+      fontWeight: fontWeight,
+      fontFamily: fontFamily,
+    );
   }
 
   // regular style
 
-  static TextStyle getBoldStyle({double? fontSize, required Color color}) {
-    return _getTextStyle(fontSize ?? FontSizes.s14, FontWeights.bold, color);
+  static TextStyle getBoldStyle({
+    double? fontSize,
+    required Color color,
+    String? fontFamily,
+  }) {
+    return _getTextStyle(
+      fontSize ?? FontSizes.s14,
+      FontWeights.bold,
+      color,
+      fontFamily,
+    );
   }
 
-  static TextStyle getSemiBoldStyle({double? fontSize, required Color color}) {
+  static TextStyle getSemiBoldStyle({
+    double? fontSize,
+    required Color color,
+    String? fontFamily,
+  }) {
     return _getTextStyle(
       fontSize ?? FontSizes.s14,
       FontWeights.semiBold,
       color,
+      fontFamily,
     );
   }
 
-  static TextStyle getRegularStyle({double? fontSize, required Color color}) {
-    return _getTextStyle(fontSize ?? FontSizes.s14, FontWeights.regular, color);
+  static TextStyle getRegularStyle({
+    double? fontSize,
+    required Color color,
+    String? fontFamily,
+  }) {
+    return _getTextStyle(
+      fontSize ?? FontSizes.s14,
+      FontWeights.regular,
+      color,
+      fontFamily,
+    );
   }
 
   // medium style
 
-  static TextStyle getMediumStyle({double? fontSize, required Color color}) {
-    return _getTextStyle(fontSize ?? FontSizes.s14, FontWeights.medium, color);
+  static TextStyle getMediumStyle({
+    double? fontSize,
+    required Color color,
+    String? fontFamily,
+  }) {
+    return _getTextStyle(
+      fontSize ?? FontSizes.s14,
+      FontWeights.medium,
+      color,
+      fontFamily,
+    );
   }
 
   // light style
 
-  static TextStyle getLightStyle({double? fontSize, required Color color}) {
-    return _getTextStyle(fontSize ?? FontSizes.s14, FontWeights.light, color);
+  static TextStyle getLightStyle({
+    double? fontSize,
+    required Color color,
+    String? fontFamily,
+  }) {
+    return _getTextStyle(
+      fontSize ?? FontSizes.s14,
+      FontWeights.light,
+      color,
+      fontFamily,
+    );
   }
 }

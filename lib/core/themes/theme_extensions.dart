@@ -3,26 +3,41 @@ import 'package:flutter/material.dart';
 class AppDecorations extends ThemeExtension<AppDecorations> {
   final BoxDecoration mainDecoration;
   final BoxDecoration borderWhiteDecoration;
-  final BoxDecoration borderWhite10Decoration;
+  final BoxDecoration borderWhite20Decoration;
+  final BoxDecoration circleWhiteDecoration;
+  final BoxDecoration circleWhite20Decoration;
+  final BoxDecoration circleWhiteBorderDecoration;
 
   const AppDecorations({
     required this.mainDecoration,
-    required this.borderWhite10Decoration,
+    required this.borderWhite20Decoration,
     required this.borderWhiteDecoration,
+    required this.circleWhiteDecoration,
+    required this.circleWhite20Decoration,
+    required this.circleWhiteBorderDecoration,
   });
 
   @override
   AppDecorations copyWith({
     BoxDecoration? mainDecoration,
     BoxDecoration? borderWhiteDecoration,
-    BoxDecoration? borderWhite10Decoration,
+    BoxDecoration? borderWhite20Decoration,
+    BoxDecoration? circleWhiteDecoration,
+    BoxDecoration? circleWhite20Decoration,
+    BoxDecoration? circleWhiteBorderDecoration,
   }) {
     return AppDecorations(
       mainDecoration: mainDecoration ?? this.mainDecoration,
       borderWhiteDecoration:
           borderWhiteDecoration ?? this.borderWhiteDecoration,
-      borderWhite10Decoration:
-          borderWhite10Decoration ?? this.borderWhite10Decoration,
+      borderWhite20Decoration:
+          borderWhite20Decoration ?? this.borderWhite20Decoration,
+      circleWhite20Decoration:
+          circleWhite20Decoration ?? this.circleWhite20Decoration,
+      circleWhiteDecoration:
+          circleWhiteDecoration ?? this.circleWhiteDecoration,
+      circleWhiteBorderDecoration:
+          circleWhiteBorderDecoration ?? this.circleWhiteBorderDecoration,
     );
   }
 
@@ -38,10 +53,28 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
             other.borderWhiteDecoration,
             t,
           )!,
-      borderWhite10Decoration:
+      borderWhite20Decoration:
           BoxDecoration.lerp(
-            borderWhite10Decoration,
-            other.borderWhite10Decoration,
+            borderWhite20Decoration,
+            other.borderWhite20Decoration,
+            t,
+          )!,
+      circleWhite20Decoration:
+          BoxDecoration.lerp(
+            circleWhite20Decoration,
+            other.circleWhite20Decoration,
+            t,
+          )!,
+      circleWhiteDecoration:
+          BoxDecoration.lerp(
+            circleWhiteDecoration,
+            other.circleWhiteDecoration,
+            t,
+          )!,
+      circleWhiteBorderDecoration:
+          BoxDecoration.lerp(
+            circleWhiteBorderDecoration,
+            other.circleWhiteBorderDecoration,
             t,
           )!,
     );
