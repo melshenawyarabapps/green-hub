@@ -19,4 +19,8 @@ extension StringExtensions on String? {
 
     return null;
   }
+
+  bool get isUser {
+    return this == 'user';
+  }
 }

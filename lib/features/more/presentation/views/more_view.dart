@@ -53,10 +53,9 @@ class MoreView extends StatelessWidget {
                     decoration: decorations?.borderWhiteDecoration,
                     padding: AppPadding.onlyPadding(top: AppPadding.p16),
                     child: SingleChildScrollView(
-                      padding: AppPadding.hvPadding(width:AppPadding.p16,),
+                      padding: AppPadding.hvPadding(width: AppPadding.p16),
                       child: Column(
                         children: [
-
                           const ProfileHeaderWidget(
                             userName: 'مصطفى الجمال',
                             location: 'الدمام، السعودية',
@@ -128,8 +127,7 @@ class MoreView extends StatelessWidget {
                   isLogout: item.isLogout,
                   onTap: () => _handleMenuTap(context, item.titleKey),
                 ),
-                if (item.titleKey != LocaleKeys.logout)
-                  Divider(),
+                if (item.titleKey != LocaleKeys.logout) Divider(),
               ],
             );
           }).toList(),
@@ -137,42 +135,7 @@ class MoreView extends StatelessWidget {
   }
 
   void _handleMenuTap(BuildContext context, String itemKey) {
-    // Handle navigation based on item
-    switch (itemKey) {
-      case LocaleKeys.logout:
-        _showLogoutDialog(context);
-        break;
-      // Add other navigation cases as needed
-    }
-  }
-
-  void _showLogoutDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text(LocaleKeys.logout.tr()),
-            content: Text(
-              '${LocaleKeys.logout.tr()} ${LocaleKeys.continueQuestion.tr()}',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => context.pop(),
-                child: Text(LocaleKeys.back.tr()),
-              ),
-              TextButton(
-                onPressed: () {
-                  context.pop();
-                  // TODO: Implement logout logic
-                },
-                child: Text(
-                  LocaleKeys.yes.tr(),
-                  style: const TextStyle(color: Colors.red),
-                ),
-              ),
-            ],
-          ),
-    );
+    switch (itemKey) {}
   }
 }
 
