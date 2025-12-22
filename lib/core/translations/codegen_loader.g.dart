@@ -42,7 +42,23 @@ class CodegenLoader extends AssetLoader {
         "اتّبع شحنتك على الخريطة، واعرف موقع السائق \nفي كل وقت.",
     "userBoardingDescription3":
         "نهتم بكل التفاصيل. جرب تجربة توصيل مختلفة، \nبجودة عالية وخدمة على مدار الساعة.",
-    "newUser": "هل أنت مستخدم جديد؟",
+    "deliveryBoardingTitle11": "ابدأ مستقبلك مع\n",
+    "deliveryBoardingTitle12": "SHIPHUB",
+    "deliveryBoardingTitle13": "",
+    "deliveryBoardingTitle21": "اختر رحلات ",
+    "deliveryBoardingTitle22": "التوصيل ",
+    "deliveryBoardingTitle23": "التي تناسب وقتك",
+    "deliveryBoardingTitle31": "دعم",
+    "deliveryBoardingTitle32": " متواصل",
+    "deliveryBoardingTitle33": " على مدار الساعة",
+    "deliveryBoardingDescription1":
+        "كن جزءًا من أكبر شبكة توصيل في المملكة. ابدأ العمل الآن، واربح بحرية — كل يوم فرصة جديدة.",
+    "deliveryBoardingDescription2":
+        "اختَر رحلات التوصيل التي تناسب وقتك،\nواعمل بالمرونة التي تريدها.",
+    "deliveryBoardingDescription3":
+        "دعم فني على مدار الساعة، وتقارير واضحة بكل رحلة. والأرباح تصلك بسرعة، بدون تأخير.",
+    "userNew": "هل أنت مستخدم جديد؟",
+    "deliveryNew": "هل أنت سائق جديد؟",
     "yesNew": "نعم ، جديد",
     "no": "لا",
     "createAccount": "إنشاء حساب",
@@ -63,12 +79,16 @@ class CodegenLoader extends AssetLoader {
     "loginTitle": "تسجيل الدخول",
     "loginAction": "سجل دخولك",
     "back": "عودة",
-    "authLandingTitle11": "احجز",
-    "authLandingTitle12": " توصيلك",
-    "authLandingTitle13": " وأسعد",
-    "authLandingTitle14": " يومك",
+    "userAuthLandingTitle1": "احجز",
+    "userAuthLandingTitle2": " توصيلك",
+    "userAuthLandingTitle3": " وأسعد",
+    "userAuthLandingTitle4": " يومك",
+    "deliveryAuthLandingTitle1": "ابدأ عملك في\n",
+    "deliveryAuthLandingTitle2": "التوصيل",
+    "deliveryAuthLandingTitle3": "",
+    "deliveryAuthLandingTitle4": "، وحقق\nدخلاً منتظمًا.",
     "authLandingSubtitle": "استلم طلبك في الوقت المثالي",
-    "havePreviousAccount": "هل لديك حساب سابق؟",
+    "havePreviousAccount": "هل لديك حساب سابق؟ ",
     "fieldRequired": "هذا الحقل مطلوب",
     "mustBeNumber": "يجب ان يكون رقم حقيقي",
     "errorCreateAccount": "فشل إنشاء الحساب🚫",
@@ -110,6 +130,23 @@ class CodegenLoader extends AssetLoader {
     "offers": "العروض",
     "orders": "طلباتي",
     "createOrder": "إنشاء طلب فوري",
+    "areYouCompany": "هل أنت تابع لشركة؟",
+    "yesCompany": "نعم ، تابع لشركة",
+    "loginNowAndStart": "سجل الآن وابدأ ",
+    "loginToViewOrders": "سجل دخولك لمشاهدة الطلبات، تتبع الشحنات، ",
+    "loginSuccessfullyDescriptionDelivery":
+        "أهلاً وسهلاً بيك في SHIPHUB! ابدأ الآن باستقبال الطلبات من العملاء",
+    "enterData": "ادخل بياناتك",
+    "idNumber": "الرقم التسلسلي",
+    "enterIdNumber": "اكتب الرقم التسلسلي",
+    "verifyFace": "تأكيد بصمة الوجه",
+    "activeFace": "فعل بصمة وجهك",
+    "addFaceId": "إضافة بصمة الوجة",
+    "photoFace": "صور وجهك !",
+    "photoFaceDescription":
+        "استخدم رمز تحقيق الوجه للتأكد من الهوية\nللمزيد من الحماية",
+    "startNow": "ابدأ الأن",
+    "addedSuccessfully": "تمت الإضافة بنجاح! 🎉",
   };
 
   static const Map<String, dynamic> moreAr = {};

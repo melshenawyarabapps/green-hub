@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/extensions/string_extensions.dart';
-import 'package:greenhub/core/routing/app_routes.dart';
-import 'package:greenhub/core/services/navigator/navigator_service.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/app_text_form_field.dart';
 import 'package:greenhub/core/widgets/country_widget.dart';
-import 'package:greenhub/core/widgets/success_bottom_sheet.dart';
 
 class EditPhoneBottomSheet extends StatelessWidget {
   const EditPhoneBottomSheet({super.key});
@@ -62,17 +59,8 @@ class EditPhoneBottomSheet extends StatelessWidget {
             56.verticalSpace,
             AppElevatedButton(
               title: LocaleKeys.yes.tr(),
-              onPressed: () async {
-                // Capture the navigator context before popping
+              onPressed: ()  {
                 context.pop();
-                await SuccessBottomSheet.show(
-                  context,
-                  title: LocaleKeys.loginSuccessfully.tr(),
-                  subTitle: LocaleKeys.loginSuccessfullyDescription.tr(),
-                );
-                NavigatorService.currentContext!.pushNamedAndRemoveUntil(
-                  AppRoutes.navigationView,
-                );
               },
             ),
             24.verticalSpace,

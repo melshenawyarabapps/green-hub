@@ -13,6 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final bool readOnly;
   final int? maxLength;
   final double? prefixWidth;
+  final bool enabled;
 
   const AppTextFormField({
     super.key,
@@ -27,12 +28,14 @@ class AppTextFormField extends StatelessWidget {
     this.readOnly = false,
     this.maxLength,
     this.prefixWidth,
+    this.enabled=true,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return TextFormField(
+      enabled: enabled,
       controller: controller,
       obscureText: obscureText,
       validator: validator,

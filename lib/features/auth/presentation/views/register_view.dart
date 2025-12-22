@@ -44,6 +44,7 @@ class _RegisterViewBody extends HookWidget {
     final textTheme = theme.textTheme;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SizedBox(
         height: 800.h,
         child: Stack(
@@ -72,129 +73,131 @@ class _RegisterViewBody extends HookWidget {
                   padding: AppPadding.horizontalPadding(AppPadding.p20),
                   decoration: decorations?.borderWhiteDecoration,
                   margin: AppPadding.onlyPadding(bottom: context.bottomPadding),
-                  child: Form(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        48.verticalSpace,
-                        Text(
-                          LocaleKeys.createAccount.tr(),
-                          style: textTheme.bodyMedium,
-                        ),
-                        32.verticalSpace,
-                        AppTextFormField(
-                          hintText: LocaleKeys.fullName.tr(),
-                          prefixIcon: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                Assets.svgsProfile,
-                                width: 20.w,
-                                height: 20.h,
-                              ),
-                            ],
+                  child: SingleChildScrollView(
+                    child: Form(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          48.verticalSpace,
+                          Text(
+                            LocaleKeys.createAccount.tr(),
+                            style: textTheme.bodyMedium,
                           ),
-                          keyboardType: TextInputType.text,
-                          validator: (value) {
-                            final validator = value.validateText;
-                            if (validator != null) {
-                              return validator.tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        24.verticalSpace,
-                        AppTextFormField(
-                          hintText: LocaleKeys.phoneNumber.tr(),
-                          prefixIcon: const CountryWidget(),
-                          keyboardType: TextInputType.number,
-                          maxLength: 9,
-                          prefixWidth: 90.w,
-                          validator: (value) {
-                            final validator = value.validateNumber;
-                            if (validator != null) {
-                              return validator.tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        24.verticalSpace,
-                        AppTextFormField(
-                          hintText: LocaleKeys.email.tr(),
-                          prefixIcon: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                Assets.svgsSmsTracking,
-                                width: 20.w,
-                                height: 20.h,
-                              ),
-                            ],
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          validator: (value) {
-                            final validator = value.validateText;
-                            if (validator != null) {
-                              return validator.tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        24.verticalSpace,
-                        AppTextFormField(
-                          hintText: LocaleKeys.favDestinations.tr(),
-                          prefixIcon: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                Assets.svgsLocation,
-                                width: 16.w,
-                                height: 16.h,
-                              ),
-                            ],
-                          ),
-                          suffixIcon: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                Assets.svgsArrowDown,
-                                width: 12.w,
-                                height: 12.h,
-                              ),
-                            ],
-                          ),
-                          keyboardType: TextInputType.text,
-                          validator: (value) {
-                            final validator = value.validateText;
-                            if (validator != null) {
-                              return validator.tr();
-                            }
-                            return null;
-                          },
-                        ),
-                        24.verticalSpace,
-                        Row(
-                          children: [
-                            AppSelectButton(
-                              value: isSelected.value,
-                              onChanged: (value) {
-                                isSelected.value = value ?? false;
-                              },
+                          32.verticalSpace,
+                          AppTextFormField(
+                            hintText: LocaleKeys.fullName.tr(),
+                            prefixIcon: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.svgsProfile,
+                                  width: 20.w,
+                                  height: 20.h,
+                                ),
+                              ],
                             ),
-                            8.horizontalSpace,
-                            Text(
-                              LocaleKeys.agreeTerms.tr(),
-                              style: textTheme.displaySmall,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              final validator = value.validateText;
+                              if (validator != null) {
+                                return validator.tr();
+                              }
+                              return null;
+                            },
+                          ),
+                          24.verticalSpace,
+                          AppTextFormField(
+                            hintText: LocaleKeys.phoneNumber.tr(),
+                            prefixIcon: const CountryWidget(),
+                            keyboardType: TextInputType.number,
+                            maxLength: 9,
+                            prefixWidth: 90.w,
+                            validator: (value) {
+                              final validator = value.validateNumber;
+                              if (validator != null) {
+                                return validator.tr();
+                              }
+                              return null;
+                            },
+                          ),
+                          24.verticalSpace,
+                          AppTextFormField(
+                            hintText: LocaleKeys.email.tr(),
+                            prefixIcon: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.svgsSmsTracking,
+                                  width: 20.w,
+                                  height: 20.h,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              final validator = value.validateText;
+                              if (validator != null) {
+                                return validator.tr();
+                              }
+                              return null;
+                            },
+                          ),
+                          24.verticalSpace,
+                          AppTextFormField(
+                            hintText: LocaleKeys.favDestinations.tr(),
+                            prefixIcon: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.svgsLocation,
+                                  width: 16.w,
+                                  height: 16.h,
+                                ),
+                              ],
+                            ),
+                            suffixIcon: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.svgsArrowDown,
+                                  width: 12.w,
+                                  height: 12.h,
+                                ),
+                              ],
+                            ),
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              final validator = value.validateText;
+                              if (validator != null) {
+                                return validator.tr();
+                              }
+                              return null;
+                            },
+                          ),
+                          24.verticalSpace,
+                          Row(
+                            children: [
+                              AppSelectButton(
+                                value: isSelected.value,
+                                onChanged: (value) {
+                                  isSelected.value = value ?? false;
+                                },
+                              ),
+                              8.horizontalSpace,
+                              Text(
+                                LocaleKeys.agreeTerms.tr(),
+                                style: textTheme.displaySmall,
+                              ),
+                            ],
+                          ),
 
-                        120.verticalSpace,
-                        AppElevatedButton(
-                          title: LocaleKeys.saveData.tr(),
-                          onPressed: () {},
-                        ),
-                      ],
+                          120.verticalSpace,
+                          AppElevatedButton(
+                            title: LocaleKeys.saveData.tr(),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

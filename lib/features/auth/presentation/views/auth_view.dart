@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:greenhub/core/config/app_config.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
+import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
@@ -15,6 +17,8 @@ class AuthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final currentFlavor = AppConfig.instance.currentFlavor;
+    final isUser = currentFlavor.isUser;
     return Scaffold(
       body: Stack(
         children: [
@@ -31,32 +35,32 @@ class AuthView extends StatelessWidget {
                   text: TextSpan(
                     style: theme.textTheme.titleLarge,
                     children: [
-                      TextSpan(text: LocaleKeys.authLandingTitle11.tr()),
+                      TextSpan(text: '${currentFlavor}AuthLandingTitle1'.tr()),
                       TextSpan(
-                        text: LocaleKeys.authLandingTitle12.tr(),
+                        text: '${currentFlavor}AuthLandingTitle2'.tr(),
                         style: theme.textTheme.bodyLarge,
                       ),
-                      TextSpan(text: "،"),
+                     if(isUser) TextSpan(text: "،"),
 
-                      TextSpan(text: "\n"),
+                    if(isUser)  TextSpan(text: "\n"),
                       TextSpan(
-                        text: LocaleKeys.authLandingTitle13.tr(),
+                        text: '${currentFlavor}AuthLandingTitle3'.tr(),
                         style: theme.textTheme.bodyLarge,
                       ),
-                      TextSpan(text: LocaleKeys.authLandingTitle14.tr()),
+                      TextSpan(text: '${currentFlavor}AuthLandingTitle4'.tr()),
                     ],
                   ),
                 ),
-
-                12.verticalSpace,
-
-                Text(
-                  LocaleKeys.authLandingSubtitle.tr(),
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontSize: FontSizes.s16,
+                if (isUser) ...[
+                  12.verticalSpace,
+                  Text(
+                    LocaleKeys.authLandingSubtitle.tr(),
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontSize: FontSizes.s16,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                ),
+                ],
                 32.verticalSpace,
                 AppElevatedButton(
                   title: LocaleKeys.loginAction.tr(),
@@ -96,8 +100,11 @@ class AuthView extends StatelessWidget {
                     ),
                     AppTextButton(
                       onPressed: () {
-                        context.pushNamed(AppRoutes.registerView);
-                      },
+                        context.pushNamed(
+                          AppConfig.instance.currentFlavor.isUser
+                              ? AppRoutes.registerView
+                              : AppRoutes.beforeRegisterView,
+                        );                      },
                       title: LocaleKeys.createAccount.tr(),
                     ),
                   ],

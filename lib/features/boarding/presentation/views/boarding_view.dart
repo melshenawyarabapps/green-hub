@@ -83,7 +83,7 @@ class _BoardingViewState extends State<BoardingView> {
                             child: SizedBox(
                               width: 375.w,
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: AppPadding.horizontalPadding(
@@ -114,12 +114,12 @@ class _BoardingViewState extends State<BoardingView> {
                                   16.verticalSpace,
                                   Padding(
                                     padding: AppPadding.horizontalPadding(
-                                      AppPadding.p8,
+                                      AppPadding.p16,
                                     ),
                                     child: Row(
                                       children: [
                                         Text(
-                                          'userBoardingDescription${index + 1}'
+                                          '${AppConfig.instance.currentFlavor}BoardingDescription${index + 1}'
                                               .tr(),
                                           style: textTheme.titleMedium,
                                           textAlign: TextAlign.start,
@@ -128,11 +128,16 @@ class _BoardingViewState extends State<BoardingView> {
                                     ),
                                   ),
                                   32.verticalSpace,
-                                  AppElevatedButton(
-                                    title: LocaleKeys.next.tr(),
-                                    onPressed: () {
-                                      context.read<BoardingCubit>().nextPage();
-                                    },
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AppElevatedButton(
+                                        title: LocaleKeys.next.tr(),
+                                        onPressed: () {
+                                          context.read<BoardingCubit>().nextPage();
+                                        },
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),

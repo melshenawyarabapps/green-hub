@@ -44,7 +44,6 @@ abstract class LocaleKeys {
       "deliveryBoardingDescription2";
   static const String deliveryBoardingDescription3 =
       "deliveryBoardingDescription3";
-  static const String newUser = "newUser";
   static const String yesNew = "yesNew";
   static const String no = "no";
   static const String createAccount = "createAccount";
@@ -64,14 +63,10 @@ abstract class LocaleKeys {
   static const String loginTitle = "loginTitle";
   static const String loginAction = "loginAction";
   static const String back = "back";
-  static const String authLandingTitle11 = "authLandingTitle11";
-  static const String authLandingTitle12 = "authLandingTitle12";
-  static const String authLandingTitle13 = "authLandingTitle13";
   static const String authLandingSubtitle = "authLandingSubtitle";
   static const String havePreviousAccount = "havePreviousAccount";
   static const String fieldRequired = "fieldRequired";
   static const String mustBeNumber = "mustBeNumber";
-  static const String authLandingTitle14 = "authLandingTitle14";
   static const String errorCreateAccount = "errorCreateAccount";
   static const String errorCreateAccountDescription =
       "errorCreateAccountDescription";
@@ -111,4 +106,20 @@ abstract class LocaleKeys {
   static const String logout = "logout";
   static const String logoutDesc = "logoutDesc";
   static const String continueQuestion = "continueQuestion";
+  static const String areYouCompany = "areYouCompany";
+  static const String yesCompany = "yesCompany";
+  static const String deliveryAuthLandingTitle2 = "deliveryAuthLandingTitle2";
+  static const String loginNowAndStart = "loginNowAndStart";
+  static const String loginToViewOrders = "loginToViewOrders";
+  static const String loginSuccessfullyDescriptionDelivery = "loginSuccessfullyDescriptionDelivery";
+  static const String enterData = "enterData";
+  static const String idNumber = "idNumber";
+  static const String enterIdNumber = "enterIdNumber";
+  static const String verifyFace = "verifyFace";
+  static const String activeFace = "activeFace";
+  static const String addFaceId = "addFaceId";
+  static const String photoFace = "photoFace";
+  static const String photoFaceDescription = "photoFaceDescription";
+  static const String startNow = "startNow";
+  static const String addedSuccessfully = "addedSuccessfully";
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/features/auth/presentation/views/auth_view.dart';
+import 'package:greenhub/features/auth/presentation/views/before_register_view.dart';
+import 'package:greenhub/features/auth/presentation/views/face_id_view.dart';
 import 'package:greenhub/features/auth/presentation/views/login_view.dart';
 import 'package:greenhub/features/auth/presentation/views/register_view.dart';
 import 'package:greenhub/features/auth/presentation/views/verification_view.dart';
@@ -31,6 +33,10 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (_) => const NavigationView());
       case AppRoutes.moreView:
         return MaterialPageRoute(builder: (_) => const MoreView());
+      case AppRoutes.beforeRegisterView:
+        return MaterialPageRoute(builder: (_) => const BeforeRegisterView());
+      case AppRoutes.faceIdView:
+        return MaterialPageRoute(builder: (_) => const FaceIdView());
       default:
         return MaterialPageRoute(
           builder:

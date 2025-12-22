@@ -2,8 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:greenhub/core/config/app_config.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
+import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
+import 'package:greenhub/core/routing/app_routes.dart';
+import 'package:greenhub/core/services/navigator/navigator_service.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_colors.dart';
@@ -14,6 +18,7 @@ import 'package:greenhub/core/utils/font_sizes.dart';
 import 'package:greenhub/core/utils/font_weights.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
+import 'package:greenhub/core/widgets/success_bottom_sheet.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/edit_phone_bottom_sheet.dart';
 import 'package:pinput/pinput.dart';
 
@@ -146,14 +151,39 @@ class VerificationView extends StatelessWidget {
                             ),
                             AppTextButton.primary(
                               title: LocaleKeys.changePhone.tr(),
+                              onPressed: () {
+                                EditPhoneBottomSheet.show(context);
+                              },
                             ),
                           ],
                         ),
                         32.verticalSpace,
                         AppElevatedButton(
                           title: LocaleKeys.loginAction.tr(),
-                          onPressed: () {
-                            EditPhoneBottomSheet.show(context);
+                          onPressed: () async {
+                            final isUser =
+                                AppConfig.instance.currentFlavor.isUser;
+                            SuccessBottomSheet.show(
+                              context,
+                              title: LocaleKeys.loginSuccessfully.tr(),
+                              subTitle:
+                                  isUser
+                                      ? LocaleKeys.loginSuccessfullyDescription
+                                          .tr()
+                                      : LocaleKeys
+                                          .loginSuccessfullyDescriptionDelivery
+                                          .tr(),
+                            ).then((_) {
+                              if (isUser) {
+                                context.pushNamedAndRemoveUntil(
+                                  AppRoutes.navigationView,
+                                );
+                              } else {
+                                context.pushReplacementNamed(
+                                  AppRoutes.faceIdView,
+                                );
+                              }
+                            });
                           },
                         ),
                         16.verticalSpace,
