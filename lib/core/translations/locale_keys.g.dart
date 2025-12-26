@@ -122,4 +122,27 @@ abstract class LocaleKeys {
   static const String photoFaceDescription = "photoFaceDescription";
   static const String startNow = "startNow";
   static const String addedSuccessfully = "addedSuccessfully";
+  static const String yourRate = "yourRate";
+  static const String yourRateDescription = "yourRateDescription";
+  static const String cars = "cars";
+  static const String carsDescription = "carsDescription";
+  static const String readyToOrders = "readyToOrders";
+  static const String shareCode = "shareCode";
+  static const String setupProfile = "setupProfile";
+  static const String uploadPhoto = "uploadPhoto";
+  static const String uploadPhotDescription = "uploadPhotDescription";
+  static const String dateBirth = "dateBirth";
+  static const String nationality = "nationality";
+  static const String carType = "carType";
+  static const String numbers = "numbers";
+  static const String carsRegister = "carsRegister";
+  static const String choose = "choose";
+  static const String registerPhoto = "registerPhoto";
+  static const String carsPhoto = "carsPhoto";
+  static const String driverPhoto = "driverPhoto";
+  static const String iqamaPhoto = "iqamaPhoto";
+  static const String facePhoto = "facePhoto";
+  static const String iban = "iban";
+  static const String registerSuccessfully = "registerSuccessfully";
+  static const String registerSuccessfullyDescription = "registerSuccessfullyDescription";
 }

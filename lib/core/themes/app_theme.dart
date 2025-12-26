@@ -167,6 +167,15 @@ abstract class AppTheme {
       color: AppLightColors.whiteColor,
       elevation: 10,
     ),
+    switchTheme: SwitchThemeData(
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return AppLightColors.secondaryColor;
+        }
+        return AppLightColors.greyColor8;
+      }),
+      thumbColor: WidgetStateProperty.all(AppLightColors.whiteColor),
+    ),
     extensions: [
       AppDecorations(
         mainDecoration: BoxDecoration(
@@ -225,6 +234,14 @@ abstract class AppTheme {
             ],
           ),
           borderRadius: AppRadius.all(AppRadius.r12),
+        ),
+        secondaryDecoration: BoxDecoration(
+          color: AppLightColors.secondaryColor,
+          borderRadius: AppRadius.all(AppRadius.r12),
+        ),
+        grayDecoration: BoxDecoration(
+          color: AppLightColors.greyColor2,
+          borderRadius: AppRadius.all(AppRadius.r16),
         ),
       ),
     ],

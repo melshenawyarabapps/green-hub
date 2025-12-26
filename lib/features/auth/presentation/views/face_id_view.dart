@@ -6,13 +6,15 @@ import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
+import 'package:greenhub/core/services/navigator/navigator_service.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
 import 'package:greenhub/core/widgets/app_text_form_field.dart';
-import 'package:local_auth/local_auth.dart';
+import 'package:greenhub/core/widgets/success_bottom_sheet.dart';
+import 'package:greenhub/features/auth/presentation/views/widgets/face_id_bottom_sheet.dart';
 
 class FaceIdView extends StatelessWidget {
   const FaceIdView({super.key});
@@ -77,31 +79,28 @@ class FaceIdView extends StatelessWidget {
                           ),
                           24.verticalSpace,
                           AppTextFormField(
+                            onTap: () async{
+                              await FaceIdBottomSheet.show(context);
+                              await SuccessBottomSheet.show(
+                                context,
+                                title: LocaleKeys.addedSuccessfully.tr(),
+                                subTitle:
+                                LocaleKeys.loginSuccessfullyDescriptionDelivery.tr(),
+                              );
+                              context.pushNamedAndRemoveUntil(
+                                AppRoutes.navigationView,
+                              );
+                            },
                             hintText: LocaleKeys.verifyFace.tr(),
-                            suffixIcon: InkWell(
-                              onTap: () async {
-                                final LocalAuthentication auth =
-                                    LocalAuthentication();
-                                // ···
-                                final bool canAuthenticateWithBiometrics =
-                                    await auth.canCheckBiometrics;
-                                final bool canAuthenticate =
-                                    canAuthenticateWithBiometrics ||
-                                    await auth.isDeviceSupported();
-                                if (canAuthenticate) {
-                                  auth.authenticate(localizedReason: '');
-                                }
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    Assets.svgsSFaceId,
-                                    width: 20.w,
-                                    height: 20.h,
-                                  ),
-                                ],
-                              ),
+                            suffixIcon: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.svgsSFaceId,
+                                  width: 20.w,
+                                  height: 20.h,
+                                ),
+                              ],
                             ),
                             keyboardType: TextInputType.text,
                             enabled: false,
@@ -113,7 +112,7 @@ class FaceIdView extends StatelessWidget {
                               return null;
                             },
                           ),
-                          304.verticalSpace,
+                          288.verticalSpace,
                           AppElevatedButton(
                             title: LocaleKeys.loginAction.tr(),
                             onPressed: () {
@@ -123,12 +122,18 @@ class FaceIdView extends StatelessWidget {
                             },
                           ),
                           8.verticalSpace,
-                          AppTextButton.black(
-                            title: LocaleKeys.returnToLogin.tr(),
-                            onPressed: () {
-                              context.pop();
-                            },
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AppTextButton.black(
+                                title: LocaleKeys.returnToLogin.tr(),
+                                onPressed: () {
+                                  context.pop();
+                                },
+                              ),
+                            ],
                           ),
+                          16.verticalSpace,
                         ],
                       ),
                     ),

@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:greenhub/core/extensions/context_extensions.dart';
+import 'package:greenhub/core/config/app_config.dart';
+import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
@@ -10,6 +11,7 @@ import 'package:greenhub/core/utils/font_sizes.dart';
 import 'package:greenhub/core/utils/font_weights.dart';
 import 'package:greenhub/features/more/presentation/views/widgets/more_menu_item.dart';
 import 'package:greenhub/features/more/presentation/views/widgets/profile_header_widget.dart';
+import 'package:greenhub/features/more/presentation/views/widgets/share_code_widget.dart';
 
 class MoreView extends StatelessWidget {
   const MoreView({super.key});
@@ -53,7 +55,11 @@ class MoreView extends StatelessWidget {
                     decoration: decorations?.borderWhiteDecoration,
                     padding: AppPadding.onlyPadding(top: AppPadding.p16),
                     child: SingleChildScrollView(
-                      padding: AppPadding.hvPadding(width: AppPadding.p16),
+                      padding: AppPadding.onlyPadding(
+                        start: AppPadding.p16,
+                        end: AppPadding.p16,
+                        bottom: AppPadding.p56,
+                      ),
                       child: Column(
                         children: [
                           const ProfileHeaderWidget(
@@ -61,6 +67,8 @@ class MoreView extends StatelessWidget {
                             location: 'الدمام، السعودية',
                           ),
                           16.verticalSpace,
+                          if(!AppConfig.instance.currentFlavor.isUser)
+                            const ShareCodeWidget(),
                           _buildMenuItems(context),
                         ],
                       ),
@@ -87,16 +95,29 @@ class MoreView extends StatelessWidget {
         titleKey: LocaleKeys.aboutApp,
         subtitleKey: LocaleKeys.aboutAppDesc,
       ),
+      if (!AppConfig.instance.currentFlavor.isUser)
+        _MenuItemData(
+          icon: Assets.svgsRate,
+          titleKey: LocaleKeys.yourRate,
+          subtitleKey: LocaleKeys.yourRateDescription,
+        ),
       _MenuItemData(
         icon: Assets.svgsSupport,
         titleKey: LocaleKeys.contactUs,
         subtitleKey: LocaleKeys.contactUsDesc,
       ),
-      _MenuItemData(
-        icon: Assets.svgsLocations,
-        titleKey: LocaleKeys.myAddresses,
-        subtitleKey: LocaleKeys.myAddressesDesc,
-      ),
+      if (AppConfig.instance.currentFlavor.isUser)
+        _MenuItemData(
+          icon: Assets.svgsLocations,
+          titleKey: LocaleKeys.myAddresses,
+          subtitleKey: LocaleKeys.myAddressesDesc,
+        ),
+      if (!AppConfig.instance.currentFlavor.isUser)
+        _MenuItemData(
+          icon: Assets.svgsCars,
+          titleKey: LocaleKeys.cars,
+          subtitleKey: LocaleKeys.carsDescription,
+        ),
       _MenuItemData(
         icon: Assets.svgsWallet,
         titleKey: LocaleKeys.wallet,

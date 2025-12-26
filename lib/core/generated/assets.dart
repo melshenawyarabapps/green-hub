@@ -16,7 +16,8 @@ class Assets {
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
   static const String svgsArrowEnd = 'assets/svgs/arrowEnd.svg';
   static const String svgsBack = 'assets/svgs/back.svg';
-  static const String svgsCars = 'assets/svgs/cars.svg';
+  static const String svgsCalendar = 'assets/svgs/calendar.svg';
+  static const String svgsCars = 'assets/svgs/cars.png';
   static const String svgsCode = 'assets/svgs/code.svg';
   static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
   static const String svgsEdit = 'assets/svgs/edit.svg';
@@ -35,7 +36,7 @@ class Assets {
   static const String svgsOffers = 'assets/svgs/offers.svg';
   static const String svgsOrders = 'assets/svgs/orders.svg';
   static const String svgsProfile = 'assets/svgs/profile.svg';
-  static const String svgsRate = 'assets/svgs/rate.svg';
+  static const String svgsRate = 'assets/svgs/rate.png';
   static const String svgsSFaceId = 'assets/svgs/sFaceId.svg';
   static const String svgsSettings = 'assets/svgs/settings.svg';
   static const String svgsSkip = 'assets/svgs/skip.svg';

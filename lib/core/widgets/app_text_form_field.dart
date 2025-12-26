@@ -34,26 +34,28 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return TextFormField(
-      enabled: enabled,
-      controller: controller,
-      obscureText: obscureText,
-      validator: validator,
-      keyboardType: keyboardType,
+    return InkWell(
       onTap: onTap,
-      readOnly: readOnly,
-      maxLength: maxLength,
-      style: theme.textTheme.bodySmall,
-      cursorColor: theme.primaryColor,
-      decoration: InputDecoration(
-        hintText: hintText,
-        suffixIcon: suffixIcon,
-        prefixIcon: prefixIcon,
-        prefixIconConstraints:
-            prefixWidth ==null?null: BoxConstraints(
-          maxWidth: prefixWidth!
+      child: TextFormField(
+        enabled: enabled,
+        controller: controller,
+        obscureText: obscureText,
+        validator: validator,
+        keyboardType: keyboardType,
+        readOnly: readOnly,
+        maxLength: maxLength,
+        style: theme.textTheme.bodySmall,
+        cursorColor: theme.primaryColor,
+        decoration: InputDecoration(
+          hintText: hintText,
+          suffixIcon: suffixIcon,
+          prefixIcon: prefixIcon,
+          prefixIconConstraints:
+              prefixWidth ==null?null: BoxConstraints(
+            maxWidth: prefixWidth!
+          ),
+          counterText: maxLength != null ? '' : null, // Hide counter
         ),
-        counterText: maxLength != null ? '' : null, // Hide counter
       ),
     );
   }

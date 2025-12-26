@@ -11,6 +11,8 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
   final BoxDecoration unselectedDecoration;
   final BoxDecoration notchDecoration;
   final BoxDecoration profileDecoration;
+  final BoxDecoration secondaryDecoration;
+  final BoxDecoration grayDecoration;
 
   const AppDecorations({
     required this.mainDecoration,
@@ -23,6 +25,8 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     required this.unselectedDecoration,
     required this.notchDecoration,
     required this.profileDecoration,
+    required this.secondaryDecoration,
+    required this.grayDecoration,
   });
 
   @override
@@ -37,6 +41,8 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     BoxDecoration? unselectedDecoration,
     BoxDecoration? notchDecoration,
     BoxDecoration? profileDecoration,
+    BoxDecoration? secondaryDecoration,
+    BoxDecoration? grayDecoration,
   }) {
     return AppDecorations(
       mainDecoration: mainDecoration ?? this.mainDecoration,
@@ -54,6 +60,8 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
       selectedDecoration: selectedDecoration ?? this.selectedDecoration,
       notchDecoration: notchDecoration ?? this.notchDecoration,
       profileDecoration: profileDecoration ?? this.profileDecoration,
+      secondaryDecoration: secondaryDecoration ?? this.secondaryDecoration,
+      grayDecoration: grayDecoration ?? this.grayDecoration,
     );
   }
 
@@ -105,6 +113,17 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
           BoxDecoration.lerp(notchDecoration, other.notchDecoration, t)!,
       profileDecoration:
           BoxDecoration.lerp(profileDecoration, other.profileDecoration, t)!,
+      secondaryDecoration:
+          BoxDecoration.lerp(
+            secondaryDecoration,
+            other.secondaryDecoration,
+            t,
+          )!, grayDecoration:
+          BoxDecoration.lerp(
+            grayDecoration,
+            other.grayDecoration,
+            t,
+          )!,
     );
   }
 }

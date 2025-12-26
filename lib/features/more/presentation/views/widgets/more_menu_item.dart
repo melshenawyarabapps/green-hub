@@ -28,7 +28,7 @@ class MoreMenuItem extends StatelessWidget {
       onTap: onTap,
       child: Row(
         children: [
-          SvgPicture.asset(icon),
+          icon.endsWith('png') ? Image.asset(icon) : SvgPicture.asset(icon),
           8.horizontalSpace,
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

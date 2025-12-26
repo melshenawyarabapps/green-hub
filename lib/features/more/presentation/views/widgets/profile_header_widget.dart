@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:greenhub/core/config/app_config.dart';
+import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
@@ -9,6 +11,7 @@ import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/utils/app_radius.dart';
 import 'package:greenhub/core/utils/font_sizes.dart';
 import 'package:greenhub/core/utils/font_weights.dart';
+import 'package:greenhub/core/widgets/app_buttons.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
   const ProfileHeaderWidget({
@@ -69,33 +72,60 @@ class ProfileHeaderWidget extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          InkWell(
-            onTap: onEditPressed,
-            child: Container(
-              width: 81.w,
-              height: 32.h,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: decorations?.borderWhiteDecoration.color,
-                borderRadius: AppRadius.all(AppRadius.r16),
+          if (AppConfig.instance.currentFlavor.isUser)
+            InkWell(
+              onTap: onEditPressed,
+              child: Container(
+                width: 81.w,
+                height: 32.h,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: decorations?.borderWhiteDecoration.color,
+                  borderRadius: AppRadius.all(AppRadius.r16),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      LocaleKeys.edit.tr(),
+                      style: textTheme.bodyMedium?.copyWith(
+                        fontSize: FontSizes.s10,
+                        fontWeight: FontWeights.medium,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    4.horizontalSpace,
+                    SvgPicture.asset(
+                      Assets.svgsEdit,
+                      height: 16.h,
+                      width: 16.w,
+                    ),
+                  ],
+                ),
               ),
+            )
+          else
+            Container(
+              width: 144.w,
+              height: 36.h,
+              decoration: decorations?.selectedDecoration.copyWith(
+                borderRadius: AppRadius.all(AppRadius.r18),
+              ),
+              padding: AppPadding.horizontalPadding(AppPadding.p8),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    LocaleKeys.edit.tr(),
-                    style: textTheme.bodyMedium?.copyWith(
+                    LocaleKeys.readyToOrders.tr(),
+                    style: textTheme.titleSmall?.copyWith(
                       fontSize: FontSizes.s10,
-                      fontWeight: FontWeights.medium,
-                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeights.semiBold,
                     ),
                   ),
-                  4.horizontalSpace,
-                  SvgPicture.asset(Assets.svgsEdit, height: 16.h, width: 16.w),
+                  Expanded(child: AppSwitchButton(value: true)),
                 ],
               ),
             ),
-          ),
         ],
       ),
     );

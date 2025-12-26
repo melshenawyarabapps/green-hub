@@ -52,6 +52,21 @@ class AppSelectButton extends StatelessWidget {
   }
 }
 
+class AppSwitchButton extends StatelessWidget {
+  const AppSwitchButton({super.key, this.onChanged, required this.value});
+
+  final ValueChanged<bool?>? onChanged;
+  final bool value;
+
+  @override
+  Widget build(BuildContext context) {
+    final decorations = Theme.of(context).extension<AppDecorations>();
+    return Transform.scale(
+        scale: 0.5,
+        child: Switch(value: value, onChanged: onChanged,));
+  }
+}
+
 class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton({super.key, required this.title, this.onPressed});
 
