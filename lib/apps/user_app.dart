@@ -25,24 +25,28 @@ class UserApp extends StatelessWidget {
         statusBarColor: AppLightColors.transparent,
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light,
-
       ),
     );
     return ScreenUtilInit(
       designSize: const Size(375, 800),
       builder:
-          (_, _) => MaterialApp(
-            navigatorKey: NavigatorService.navigatorKey,
-            title: 'ShipHub',
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.light,
-            onGenerateRoute: AppRouter.onGenerateRoute,
-            initialRoute: AppRoutes.splashView,
+          (_, _) => Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).padding.bottom,
+            ),
+            child: MaterialApp(
+              navigatorKey: NavigatorService.navigatorKey,
+              title: 'ShipHub',
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              debugShowCheckedModeBanner: false,
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              themeMode: ThemeMode.light,
+              onGenerateRoute: AppRouter.onGenerateRoute,
+              initialRoute: AppRoutes.splashView,
+            ),
           ),
     );
   }
