@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/services/di/di.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
-import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
 import 'package:greenhub/features/auth/presentation/cubit/register_cubit.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/register_sub_widgets/delivery_form_fields.dart';
