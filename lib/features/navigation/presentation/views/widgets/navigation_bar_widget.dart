@@ -20,13 +20,13 @@ class NavigationBarWidget extends StatelessWidget {
     return CustomPaint(
       size: Size(
         MediaQuery.of(context).size.width,
-        72.h,
+        80.h,
       ),
-      painter: NotchedNavigationBarPainter(
+      painter: RPSCustomPainter(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       child: SizedBox(
-        height: 72.h,
+        height: 80.h,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -57,7 +57,6 @@ class NavigationBarWidget extends StatelessWidget {
             ),
             SizedBox(
               width: 80.w,
-              height: 72.h,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -108,127 +107,83 @@ class RPSCustomPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final radius = 20.0;
-
-    // Scale factors to fit the notch to the screen width
-    final notchOriginalWidth = 90.0;
-    final notchOriginalHeight = 45.0;
-    final notchScale = 1.0; // Adjust this to scale the notch size
-    final notchWidth = notchOriginalWidth * notchScale;
-    final notchHeight = notchOriginalHeight * notchScale;
+    const radius = 20.0;
+    const notchWidth = 80.0;
+    const notchDepth = 52.0; // Adjustable notch depth
 
     // Draw shadow first
-    Paint shadowPaint = Paint()
-      ..color = Colors.black.withValues(alpha: 0.1)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
+    Paint shadowPaint =
+        Paint()
+          ..color = Colors.black.withValues(alpha: 0.1)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
 
-    Path shadowPath = Path();
-
-    // Start from top-left with rounded corner
-    shadowPath.moveTo(radius, 0);
-
-    // Top edge to left notch start
-    shadowPath.lineTo(size.width * 0.5 - notchWidth / 2, 0);
-
-    // Shape 1: Left side of notch (curves down)
-    // Bezier curve from (90, 0) to (45, 45) with control points (73, 0) and (87.5, 45)
-    // But we need to translate: start at current position, end at center bottom
-    shadowPath.cubicTo(
-      size.width * 0.5 - notchWidth / 2 + 73 * notchScale, // control point 1 x
-      0, // control point 1 y
-      size.width * 0.5 - notchWidth / 2 + 87.5 * notchScale, // control point 2 x
-      notchHeight, // control point 2 y
-      size.width * 0.5, // end point x (center)
-      notchHeight, // end point y (bottom of notch)
-    );
-
-    // Shape 2: Right side of notch (curves back up)
-    // Bezier curve from (45, 45) to (0, 0) with control points (2.5, 45) and (17.5, 0)
-    // Translate: start at center bottom, end at right side of notch
-    shadowPath.cubicTo(
-      size.width * 0.5 + 2.5 * notchScale, // control point 1 x
-      notchHeight, // control point 1 y
-      size.width * 0.5 + 17.5 * notchScale, // control point 2 x
-      0, // control point 2 y
-      size.width * 0.5 + notchWidth / 2, // end point x
-      0, // end point y
-    );
-
-    // Top edge to top-right
-    shadowPath.lineTo(size.width - radius, 0);
-
-    // Top-right rounded corner
-    shadowPath.quadraticBezierTo(
-      size.width,
-      0,
-      size.width,
-      radius,
-    );
-
-    // Right edge (straight to bottom)
-    shadowPath.lineTo(size.width, size.height);
-
-    // Bottom edge (straight)
-    shadowPath.lineTo(0, size.height);
-
-    // Left edge (straight up)
-    shadowPath.lineTo(0, radius);
-
-    // Top-left rounded corner
-    shadowPath.quadraticBezierTo(
-      0,
-      0,
-      radius,
-      0,
-    );
-
-    shadowPath.close();
-
+    Path shadowPath = _createNotchPath(size, radius, notchWidth, notchDepth);
     canvas.drawPath(shadowPath, shadowPaint);
 
     // Draw main background shape
-    Paint paintFill0 = Paint()
-      ..color = backgroundColor
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 0
-      ..strokeCap = StrokeCap.butt
-      ..strokeJoin = StrokeJoin.miter;
+    Paint paintFill0 =
+        Paint()
+          ..color = backgroundColor
+          ..style = PaintingStyle.fill
+          ..strokeWidth = 0
+          ..strokeCap = StrokeCap.butt
+          ..strokeJoin = StrokeJoin.miter;
 
-    Path path_0 = Path();
+    Path path_0 = _createNotchPath(size, radius, notchWidth, notchDepth);
+    canvas.drawPath(path_0, paintFill0);
+  }
 
-    // Start from top-left with rounded corner
-    path_0.moveTo(radius, 0);
+  Path _createNotchPath(Size size, double radius, double notchWidth, double notchDepth) {
+    final double centerX = size.width / 2;
+    final double notchRadiusX = notchWidth / 2; // Horizontal radius (wider)
+    final double notchRadiusY = notchDepth; // Vertical radius (controls depth)
+    const double curveDistance = 15.0; // Distance for the smooth curve transition
 
-    // Top edge to left notch start
-    path_0.lineTo(size.width * 0.5 - notchWidth / 2, 0);
+    Path path = Path();
 
-    // Shape 1: Left side of notch (curves down)
-    // Bezier curve from (90, 0) to (45, 45) with control points (73, 0) and (87.5, 45)
-    path_0.cubicTo(
-      size.width * 0.5 - notchWidth / 2 + 73 * notchScale, // control point 1 x
-      0, // control point 1 y
-      size.width * 0.5 - notchWidth / 2 + 87.5 * notchScale, // control point 2 x
-      notchHeight, // control point 2 y
-      size.width * 0.5, // end point x (center)
-      notchHeight, // end point y (bottom of notch)
+    // Start from top-left corner
+    path.moveTo(0, radius);
+
+    // Top-left rounded corner
+    path.quadraticBezierTo(
+      0,
+      0,
+      radius,
+      0,
     );
 
-    // Shape 2: Right side of notch (curves back up)
-    // Bezier curve from (45, 45) to (0, 0) with control points (2.5, 45) and (17.5, 0)
-    path_0.cubicTo(
-      size.width * 0.5 + 2.5 * notchScale, // control point 1 x
-      notchHeight, // control point 1 y
-      size.width * 0.5 + 17.5 * notchScale, // control point 2 x
-      0, // control point 2 y
-      size.width * 0.5 + notchWidth / 2, // end point x
-      0, // end point y
+    // Top edge to left side of notch (before the curve starts)
+    path.lineTo(centerX - notchRadiusX - curveDistance, 0);
+
+    // Left smooth curve transition into the oval
+
+    path.quadraticBezierTo(
+      centerX - notchRadiusX,
+      0,
+      centerX - notchRadiusX + 5,
+      notchDepth * 0.2,
     );
 
-    // Top edge to top-right
-    path_0.lineTo(size.width - radius, 0);
+    // Oval/elliptical arc at the bottom of the notch
+    path.arcToPoint(
+      Offset(centerX + notchRadiusX - 5, notchDepth * 0.2),
+      radius: Radius.elliptical(notchRadiusX, notchRadiusY),
+      clockwise: false,
+    );
+
+    // Right smooth curve transition from the oval
+    path.quadraticBezierTo(
+      centerX + notchRadiusX,
+      0,
+      centerX + notchRadiusX + curveDistance,
+      0,
+    );
+
+    // Top edge to top-right corner
+    path.lineTo(size.width - radius, 0);
 
     // Top-right rounded corner
-    path_0.quadraticBezierTo(
+    path.quadraticBezierTo(
       size.width,
       0,
       size.width,
@@ -236,100 +191,21 @@ class RPSCustomPainter extends CustomPainter {
     );
 
     // Right edge (straight to bottom)
-    path_0.lineTo(size.width, size.height);
+    path.lineTo(size.width, size.height);
 
     // Bottom edge (straight)
-    path_0.lineTo(0, size.height);
+    path.lineTo(0, size.height);
 
-    // Left edge (straight up)
-    path_0.lineTo(0, radius);
+    // Left edge (straight up) - closes the path
+    path.lineTo(0, radius);
 
-    // Top-left rounded corner
-    path_0.quadraticBezierTo(
-      0,
-      0,
-      radius,
-      0,
-    );
+    path.close();
 
-    path_0.close();
-
-    canvas.drawPath(path_0, paintFill0);
+    return path;
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
-}
-
-class NotchedNavigationBarPainter extends CustomPainter {
-  final Color backgroundColor;
-
-  NotchedNavigationBarPainter({required this.backgroundColor});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final double radius = 20.0;
-
-    // Notch size relative to screen width
-    final double notchWidth = 90.0;
-    final double notchHeight = 45.0;
-
-    final double centerX = size.width / 2;
-
-    Paint paint = Paint()
-      ..color = backgroundColor
-      ..style = PaintingStyle.fill;
-
-    Path path = Path();
-
-    // Start from top-left corner with rounded radius
-    path.moveTo(radius, 0);
-    path.lineTo(centerX - notchWidth / 2, 0);
-
-    // Left side of notch (Bezier)
-    path.cubicTo(
-      centerX - notchWidth / 2 + 73, // control point 1 x
-      0,                             // control point 1 y
-      centerX - notchWidth / 2 + 87.5, // control point 2 x
-      notchHeight,                   // control point 2 y
-      centerX,                       // end point x
-      notchHeight,                   // end point y
-    );
-
-    // Right side of notch (Bezier)
-    path.cubicTo(
-      centerX + 2.5,                 // control point 1 x
-      notchHeight,                   // control point 1 y
-      centerX + 17.5,                // control point 2 x
-      0,                             // control point 2 y
-      centerX + notchWidth / 2,      // end point x
-      0,                             // end point y
-    );
-
-    // Top-right rounded corner
-    path.lineTo(size.width - radius, 0);
-    path.quadraticBezierTo(size.width, 0, size.width, radius);
-
-    // Right edge
-    path.lineTo(size.width, size.height);
-
-    // Bottom edge
-    path.lineTo(0, size.height);
-
-    // Left edge
-    path.lineTo(0, radius);
-
-    // Top-left rounded corner
-    path.quadraticBezierTo(0, 0, radius, 0);
-
-    path.close();
-
-    canvas.drawShadow(path, Colors.black.withOpacity(0.1), 5, true);
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
