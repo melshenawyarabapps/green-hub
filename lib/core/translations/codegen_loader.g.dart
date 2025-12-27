@@ -83,6 +83,7 @@ class CodegenLoader extends AssetLoader {
     "userAuthLandingTitle2": " توصيلك",
     "userAuthLandingTitle3": " وأسعد",
     "userAuthLandingTitle4": " يومك",
+    "loginToStart": "سجل دخولك لمشاهدة الطلبات، تتبع الشحنات، وابدأ رحلتك مع ShipHub",
     "deliveryAuthLandingTitle1": "ابدأ عملك في\n",
     "deliveryAuthLandingTitle2": "التوصيل",
     "deliveryAuthLandingTitle3": "",

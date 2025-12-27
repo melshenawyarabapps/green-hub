@@ -7,6 +7,8 @@ extension ContextExtensions on BuildContext {
   double get topPadding => MediaQuery.paddingOf(this).top;
   double get bottomPadding => MediaQuery.viewInsetsOf(this).bottom;
 
+  ThemeData get theme => Theme.of(this);
+
   double get screenHeight => MediaQuery.sizeOf(this).height;
   double get screenWidth => MediaQuery.sizeOf(this).width;
 

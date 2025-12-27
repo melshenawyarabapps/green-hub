@@ -111,6 +111,7 @@ abstract class LocaleKeys {
   static const String deliveryAuthLandingTitle2 = "deliveryAuthLandingTitle2";
   static const String loginNowAndStart = "loginNowAndStart";
   static const String loginToViewOrders = "loginToViewOrders";
+  static const String loginToStart = 'loginToStart';
   static const String loginSuccessfullyDescriptionDelivery = "loginSuccessfullyDescriptionDelivery";
   static const String enterData = "enterData";
   static const String idNumber = "idNumber";
