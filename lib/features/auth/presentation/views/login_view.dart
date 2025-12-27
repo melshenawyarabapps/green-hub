@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
-import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/services/di/di.dart';
@@ -13,8 +12,7 @@ import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
-import 'package:greenhub/core/widgets/app_text_form_field.dart';
-import 'package:greenhub/core/widgets/country_widget.dart';
+import 'package:greenhub/core/widgets/app_phone_text_field.dart';
 import 'package:greenhub/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/login_texts_widget.dart';
 
@@ -41,7 +39,7 @@ class _LoginViewBody extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final decorations = theme.extension<AppDecorations>();
-
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SizedBox(
@@ -60,9 +58,12 @@ class _LoginViewBody extends StatelessWidget {
             SafeArea(
               child: Padding(
                 padding: AppPadding.onlyPadding(top: AppPadding.p56),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [SvgPicture.asset(Assets.svgsWhiteLogo)],
+                child: Visibility(
+                  visible: !isKeyboardOpen,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [SvgPicture.asset(Assets.svgsWhiteLogo)],
+                  ),
                 ),
               ),
             ),
@@ -94,24 +95,8 @@ class _LoginViewBody extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            if (context.isUser)
-                              40.verticalSpace
-                            else
-                              60.verticalSpace,
-                            AppTextFormField(
-                              hintText: LocaleKeys.phoneNumber.tr(),
-                              prefixIcon: const CountryWidget(),
-                              keyboardType: TextInputType.number,
-                              maxLength: 9,
-                              prefixWidth: 90.w,
-                              validator: (value) {
-                                final validator = value.validateNumber;
-                                if (validator != null) {
-                                  return validator.tr();
-                                }
-                                return null;
-                              },
-                            ),
+                            if (context.isUser) 40.verticalSpace else 60.verticalSpace,
+                            const AppPhoneTextField(),
                             56.verticalSpace,
                             AppElevatedButton(
                               title: LocaleKeys.loginAction.tr(),
