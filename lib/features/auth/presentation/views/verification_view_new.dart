@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/register_sub_widgets/register_form_container.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/verification_sub_widgets/change_phone_section.dart';
@@ -18,7 +17,7 @@ class VerificationView extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SizedBox(
-        height: context.screenHeight,
+        height: 800.h,
         child: Stack(
           alignment: AlignmentGeometry.topCenter,
           children: [
@@ -34,6 +33,7 @@ class VerificationView extends StatelessWidget {
                       const VerificationTitle(),
                       ResendCodeSection(
                         onResend: () {
+                          // TODO: Implement resend code logic
                           debugPrint('Resending code...');
                         },
                       ),
@@ -52,3 +52,4 @@ class VerificationView extends StatelessWidget {
     );
   }
 }
+
