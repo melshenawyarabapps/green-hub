@@ -5,25 +5,24 @@ import 'package:flutter_svg/flutter_svg.dart';
 class NavigationItemWidget extends StatelessWidget {
   const NavigationItemWidget({
     super.key,
-    required this.currentIndex,
     required this.icon,
     required this.title,
     required this.index,
+    required this.changeIndex,
+    required this.isActive,
   });
-
-  final ValueNotifier<int> currentIndex;
 
   final int index;
   final String icon;
   final String title;
+  final Function(int index) changeIndex;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
-    final isActive = currentIndex.value == index;
-    final textTheme = Theme.of(context).textTheme;
     return InkWell(
       onTap: () {
-        currentIndex.value = index;
+        changeIndex(index);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -33,12 +32,37 @@ class NavigationItemWidget extends StatelessWidget {
             icon,
           ),
           4.verticalSpace,
-          Text(
-            title,
-            style: isActive ? textTheme.labelMedium : textTheme.labelSmall,
+          BottomItemText(
+            title: title,
+            isActive: isActive,
           ),
         ],
       ),
+    );
+  }
+}
+
+class BottomItemText extends StatelessWidget {
+  const BottomItemText({super.key, required this.title, required this.isActive});
+
+  final String title;
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Text(
+      title,
+      style:
+          isActive
+              ? textTheme.labelLarge!.copyWith(
+                color: Theme.of(context).primaryColor,
+                fontSize: 12.sp,
+              )
+              : textTheme.labelLarge!.copyWith(
+                color: textTheme.labelSmall!.color,
+                fontSize: 12.sp,
+              ),
     );
   }
 }

@@ -6,15 +6,15 @@ import 'package:greenhub/core/utils/app_colors.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 
 class NotchWidget extends StatelessWidget {
-  const NotchWidget({super.key, required this.currentIndex});
+  const NotchWidget({super.key, this.onTap,});
 
-  final ValueNotifier<int> currentIndex;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        currentIndex.value = 2;
+        onTap?.call();
       },
       child: Container(
         decoration: BoxDecoration(
