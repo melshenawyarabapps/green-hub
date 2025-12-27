@@ -59,3 +59,35 @@ abstract class AppPadding {
 
   static double get p118 => 118;
 }
+
+abstract class AppMargin {
+  static EdgeInsets verticalMargin(double height) =>
+      EdgeInsets.symmetric(vertical: height).h;
+
+  static EdgeInsets horizontalMargin(double width) =>
+      EdgeInsets.symmetric(horizontal: width).w;
+
+  static EdgeInsets hvMargin({double height = 0.0, double width = 0.0}) =>
+      EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
+
+  static EdgeInsets get zero => EdgeInsets.zero;
+
+  static EdgeInsetsDirectional onlyMargin({
+    double start = 0.0,
+    double top = 0.0,
+    double end = 0.0,
+    double bottom = 0.0,
+  }) => EdgeInsetsDirectional.only(
+    top: top.h,
+    bottom: bottom.h,
+    start: start.w,
+    end: end.w,
+  );
+
+  static EdgeInsetsDirectional all(double all) => EdgeInsetsDirectional.only(
+    top: all.h,
+    bottom: all.h,
+    start: all.w,
+    end: all.w,
+  );
+}
