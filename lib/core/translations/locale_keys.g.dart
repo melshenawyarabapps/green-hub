@@ -142,4 +142,8 @@ abstract class LocaleKeys {
 
   static const String userAppBarSubTitle = 'userAppBarSubTitle';
   static const String deliveryAppBarSubTitle = 'deliveryAppBarSubTitle';
+
+  static const String emergencyContact = 'emergencyContact';
+
+  static const String enterTrackingNumber = 'enterTrackingNumber';
 }

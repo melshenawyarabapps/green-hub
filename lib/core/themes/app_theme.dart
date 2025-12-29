@@ -15,6 +15,8 @@ abstract class AppTheme {
     primaryColor: AppLightColors.primaryColor,
     colorScheme: ColorScheme.light(
       secondaryContainer: AppLightColors.lightSecondaryColor,
+      error: AppLightColors.redColor,
+      onError: AppLightColors.darkRedColor,
     ),
     secondaryHeaderColor: AppLightColors.secondaryColor,
     canvasColor: AppLightColors.primaryColor12,

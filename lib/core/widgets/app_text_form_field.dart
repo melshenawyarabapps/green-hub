@@ -28,7 +28,7 @@ class AppTextFormField extends StatelessWidget {
     this.readOnly = false,
     this.maxLength,
     this.prefixWidth,
-    this.enabled=true,
+    this.enabled = true,
   });
 
   @override
@@ -51,9 +51,7 @@ class AppTextFormField extends StatelessWidget {
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
           prefixIconConstraints:
-              prefixWidth ==null?null: BoxConstraints(
-            maxWidth: prefixWidth!
-          ),
+              prefixWidth == null ? null : BoxConstraints(maxWidth: prefixWidth!),
           counterText: maxLength != null ? '' : null, // Hide counter
         ),
       ),

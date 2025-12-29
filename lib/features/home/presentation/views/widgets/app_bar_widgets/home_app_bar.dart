@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
-import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_actions_widget.dart';
+import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_buttons_widget.dart';
+import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_driver_action_widget.dart';
+import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_user_action_widget.dart';
 import 'package:greenhub/generated/assets.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -37,7 +39,7 @@ class HomeAppBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppBarActionsWidget(
+          AppBarButtonsWidget(
             isUser: isUser,
           ),
           20.verticalSpace,
@@ -50,6 +52,8 @@ class HomeAppBar extends StatelessWidget {
             isUser ? LocaleKeys.userAppBarSubTitle.tr() : LocaleKeys.deliveryAppBarSubTitle.tr(),
             style: textTheme.titleSmall,
           ),
+          const Spacer(),
+          if (isUser) const AppBarUserActionWidget() else const AppBarDriverActionWidget(),
         ],
       ),
     );

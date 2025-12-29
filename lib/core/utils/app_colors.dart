@@ -21,6 +21,10 @@ abstract class AppLightColors {
 
   static Color get whiteColor => Colors.white;
 
+  static Color get darkRedColor => const Color(0xffCF391E);
+
+  static Color get redColor => const Color(0xffCF391E);
+
   static Color get white20Color => const Color(0x33FFFFFF);
 
   static Color get blackColor => Colors.black;
@@ -39,23 +43,23 @@ abstract class AppLightColors {
 
   static Color get greyColor => Colors.grey;
 
-  static Color get greyColor2 => Color(0xfff7f7f7);
+  static Color get greyColor1 => const Color(0xfff5f5f5);
 
-  static Color get greyColor3 => Color(0xffA0A0A7);
+  static Color get greyColor2 => const Color(0xfff7f7f7);
 
-  static Color get greyColor4 => Color(0xff4B4B4B);
+  static Color get greyColor3 => const Color(0xffA0A0A7);
 
-  static Color get greyColor5 => Color(0xffeaeaea);
+  static Color get greyColor4 => const Color(0xff4B4B4B);
 
-  static Color get greyColor6 => Color(0xff929292);
+  static Color get greyColor5 => const Color(0xffeaeaea);
 
-  static Color get greyColor7 => Color(0xff656F77);
-  static Color get greyColor8 => Color(0xffb3b3b3);
-  static Color get greyColor9 => Color(0xfff3f3f3);
+  static Color get greyColor6 => const Color(0xff929292);
+
+  static Color get greyColor7 => const Color(0xff656F77);
+  static Color get greyColor8 => const Color(0xffb3b3b3);
+  static Color get greyColor9 => const Color(0xfff3f3f3);
 
   static Color get greenColor => Colors.green;
-
-  static Color get redColor => Colors.red;
 
   // Profile gradient colors
   static Color get profileGradientStart => const Color(0xFFD1FEF8);

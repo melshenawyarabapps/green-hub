@@ -170,6 +170,8 @@ class CodegenLoader extends AssetLoader {
     "registerSuccessfully": "تم إنشاء حساب الشخصى بنجاح! 🎉",
     "registerSuccessfullyDescription":
         "يظل حسابك معلقًا مؤقتًا حتى يتم التحقق من بياناتك من قبل الإدارة. سيصلك إشعار خلال 24-48 ساعة سواءً بالقبول أو الرفض.",
+    "emergencyContact": "رقم الطوارئ",
+    "enterTrackingNumber" : "أدخل رقم التتبع",
   };
 
   static const Map<String, dynamic> moreAr = {};

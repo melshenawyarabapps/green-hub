@@ -14,6 +14,7 @@ class Assets {
   static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String svgsAdd = 'assets/svgs/add.svg';
+  static const String svgsAllert = 'assets/svgs/allert.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
   static const String svgsArrowEnd = 'assets/svgs/arrowEnd.svg';
   static const String svgsBack = 'assets/svgs/back.svg';
@@ -41,6 +42,8 @@ class Assets {
   static const String svgsProfile = 'assets/svgs/profile.svg';
   static const String svgsRate = 'assets/svgs/rate.png';
   static const String svgsSFaceId = 'assets/svgs/sFaceId.svg';
+  static const String svgsSearch = 'assets/svgs/search.svg';
+  static const String svgsSendWithRotate = 'assets/svgs/send_with_rotate.svg';
   static const String svgsSettings = 'assets/svgs/settings.svg';
   static const String svgsSkip = 'assets/svgs/skip.svg';
   static const String svgsSmsTracking = 'assets/svgs/sms-tracking.svg';

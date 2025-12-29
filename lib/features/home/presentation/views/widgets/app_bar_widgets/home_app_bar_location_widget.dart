@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
+import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_grediant_container.dart';
 
 import '../../../../../../generated/assets.dart';
 
@@ -13,22 +14,7 @@ class HomeAppBarLocationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final textTheme = context.textTheme;
-    return Container(
-      padding: AppPadding.hvPadding(
-        horizontal: 8,
-        vertical: 6,
-      ),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xff4B9C86),
-            Color(0xff7EB87D),
-          ],
-          begin: AlignmentDirectional.centerStart,
-          end: AlignmentDirectional.centerEnd,
-        ),
-        borderRadius: BorderRadius.circular(20),
-      ),
+    return AppBarGradientContainer(
       child: Row(
         children: [
           Container(
