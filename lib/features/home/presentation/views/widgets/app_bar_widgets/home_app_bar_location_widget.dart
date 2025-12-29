@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 
-import '../../../../../generated/assets.dart';
+import '../../../../../../generated/assets.dart';
 
 class HomeAppBarLocationWidget extends StatelessWidget {
   const HomeAppBarLocationWidget({super.key});

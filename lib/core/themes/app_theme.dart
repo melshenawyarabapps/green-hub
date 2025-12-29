@@ -109,6 +109,10 @@ abstract class AppTheme {
         color: AppLightColors.redColor,
         fontSize: FontSizes.s13,
       ),
+      headlineMedium: AppStyles.getBoldStyle(
+        color: AppLightColors.whiteColor,
+        fontSize: 24.sp,
+      ),
       bodyMedium: AppStyles.getBoldStyle(
         color: AppLightColors.blackColor,
         fontSize: FontSizes.s26,
