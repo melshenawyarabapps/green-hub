@@ -13,13 +13,15 @@ abstract class AppLightColors {
 
   static Color get secondaryColor => const Color(0xFFAECF5C);
 
+  static Color get lightSecondaryColor => const Color(0xffACCE74);
+
   static Color get thirdColor => const Color(0xFFB6FF00);
 
   static Color get transparent => Colors.transparent;
 
   static Color get whiteColor => Colors.white;
 
-  static Color get white20Color => Color(0x33FFFFFF);
+  static Color get white20Color => const Color(0x33FFFFFF);
 
   static Color get blackColor => Colors.black;
 

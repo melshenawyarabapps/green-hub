@@ -11,6 +11,7 @@ class Assets {
   static const String imagesBoarding3 = 'assets/images/boarding3.png';
   static const String imagesChooseImage = 'assets/images/chooseImage.png';
   static const String imagesChooseOut = 'assets/images/chooseOut.png';
+  static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String svgsAdd = 'assets/svgs/add.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
@@ -18,6 +19,7 @@ class Assets {
   static const String svgsBack = 'assets/svgs/back.svg';
   static const String svgsCalendar = 'assets/svgs/calendar.svg';
   static const String svgsCars = 'assets/svgs/cars.png';
+  static const String svgsChatIc = 'assets/svgs/chat_ic.svg';
   static const String svgsCode = 'assets/svgs/code.svg';
   static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
   static const String svgsEdit = 'assets/svgs/edit.svg';
@@ -33,6 +35,7 @@ class Assets {
   static const String svgsLocations = 'assets/svgs/locations.svg';
   static const String svgsLogout = 'assets/svgs/logout.svg';
   static const String svgsMore = 'assets/svgs/more.svg';
+  static const String svgsNotification = 'assets/svgs/notification.svg';
   static const String svgsOffers = 'assets/svgs/offers.svg';
   static const String svgsOrders = 'assets/svgs/orders.svg';
   static const String svgsProfile = 'assets/svgs/profile.svg';

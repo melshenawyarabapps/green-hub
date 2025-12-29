@@ -13,6 +13,9 @@ abstract class AppTheme {
   static ThemeData get lightTheme => ThemeData(
     scaffoldBackgroundColor: AppLightColors.whiteColor,
     primaryColor: AppLightColors.primaryColor,
+    colorScheme: ColorScheme.light(
+      secondaryContainer: AppLightColors.lightSecondaryColor,
+    ),
     secondaryHeaderColor: AppLightColors.secondaryColor,
     canvasColor: AppLightColors.primaryColor12,
     appBarTheme: AppBarTheme(
@@ -128,7 +131,7 @@ abstract class AppTheme {
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppLightColors.transparent,
-      shape: CircleBorder(),
+      shape: const CircleBorder(),
       hoverColor: AppLightColors.transparent,
       splashColor: AppLightColors.transparent,
       focusColor: AppLightColors.transparent,

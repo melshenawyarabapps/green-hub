@@ -17,14 +17,18 @@ import 'package:greenhub/features/splash/presentation/views/splash_view.dart';
 import '../services/di/di.dart';
 
 abstract class AppRouter {
-  static Route onGenerateRoute(RouteSettings settings) {
+  static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.splashView:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case AppRoutes.onBoardingView:
-        return MaterialPageRoute(builder: (_) => BlocProvider(
-            create: (_) => getIt.get<BoardingCubit>(),
-            child: const BoardingView()));
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (_) => getIt.get<BoardingCubit>(),
+                child: const BoardingView(),
+              ),
+        );
       case AppRoutes.beforeAuthView:
         return MaterialPageRoute(builder: (_) => const BeforeAuthView());
       case AppRoutes.authView:
@@ -44,14 +48,7 @@ abstract class AppRouter {
       case AppRoutes.faceIdView:
         return MaterialPageRoute(builder: (_) => const FaceIdView());
       default:
-        return MaterialPageRoute(
-          builder:
-              (_) => Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${settings.name}'),
-                ),
-              ),
-        );
+        return null;
     }
   }
 }
