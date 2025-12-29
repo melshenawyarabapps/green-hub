@@ -13,6 +13,9 @@ class Assets {
   static const String imagesChooseOut = 'assets/images/chooseOut.png';
   static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
+  static const String imagesMockBanner = 'assets/images/mock_banner.png';
+  static const String imagesMockService1 = 'assets/images/mock_service_1.png';
+  static const String imagesMockService2 = 'assets/images/mock_service_2.png';
   static const String svgsAdd = 'assets/svgs/add.svg';
   static const String svgsAllert = 'assets/svgs/allert.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';

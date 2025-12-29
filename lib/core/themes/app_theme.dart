@@ -115,6 +115,11 @@ abstract class AppTheme {
         color: AppLightColors.whiteColor,
         fontSize: 24.sp,
       ),
+      headlineSmall: AppStyles.getBoldStyle(
+        color: AppLightColors.blackColor,
+        fontSize: FontSizes.s16,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
       bodyMedium: AppStyles.getBoldStyle(
         color: AppLightColors.blackColor,
         fontSize: FontSizes.s26,

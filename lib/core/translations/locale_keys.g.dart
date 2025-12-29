@@ -80,6 +80,7 @@ abstract class LocaleKeys {
   static const String orders = 'orders';
   static const String more = 'more';
   static const String createOrder = 'createOrder';
+  static const String createOrdinaryOrder = 'createOrdinaryOrder';
   static const String edit = 'edit';
   static const String editAccountInfo = 'editAccountInfo';
   static const String editAccountInfoDesc = 'editAccountInfoDesc';
@@ -146,4 +147,15 @@ abstract class LocaleKeys {
   static const String emergencyContact = 'emergencyContact';
 
   static const String enterTrackingNumber = 'enterTrackingNumber';
+
+  static const String bannersTitle = 'bannersTitle';
+  static const String servicesTitle = 'servicesTitle';
+
+  static const String service1Title = 'service1Title';
+  static const String service2Title = 'service2Title';
+
+  static const String service1Description = 'service1Description';
+  static const String service2Description = 'service2Description';
+
+
 }

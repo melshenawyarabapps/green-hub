@@ -38,10 +38,7 @@ class AppSelectButton extends StatelessWidget {
       child: Container(
         height: 15.h,
         width: 15.w,
-        decoration:
-            value
-                ? decorations?.selectedDecoration
-                : decorations?.unselectedDecoration,
+        decoration: value ? decorations?.selectedDecoration : decorations?.unselectedDecoration,
         child: Icon(
           Icons.check,
           color: value ? AppLightColors.whiteColor : AppLightColors.greyColor3,
@@ -62,20 +59,31 @@ class AppSwitchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final decorations = Theme.of(context).extension<AppDecorations>();
     return Transform.scale(
-        scale: 0.5,
-        child: Switch(value: value, onChanged: onChanged,));
+      scale: 0.5,
+      child: Switch(
+        value: value,
+        onChanged: onChanged,
+      ),
+    );
   }
 }
 
 class AppElevatedButton extends StatelessWidget {
-  const AppElevatedButton({super.key, required this.title, this.onPressed});
+  const AppElevatedButton({super.key, required this.title, this.onPressed, this.color});
 
   final String title;
   final VoidCallback? onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: onPressed, child: Text(title));
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color,
+      ),
+      child: Text(title),
+    );
   }
 }
 
