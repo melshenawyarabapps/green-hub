@@ -135,6 +135,11 @@ abstract class AppTheme {
         fontSize: FontSizes.s44,
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
+      headlineLarge: AppStyles.getBoldStyle(
+        color: AppLightColors.whiteColor,
+        fontSize: FontSizes.s22,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
     ),
     dividerTheme: DividerThemeData(
       color: AppLightColors.greyColor9,
@@ -192,6 +197,10 @@ abstract class AppTheme {
     ),
     extensions: [
       AppDecorations(
+        appBarDecoration: const BoxDecoration(
+          color: Color(0xff5CA68F),
+          shape: BoxShape.circle,
+        ),
         mainDecoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [

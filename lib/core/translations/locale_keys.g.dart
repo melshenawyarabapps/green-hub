@@ -157,5 +157,15 @@ abstract class LocaleKeys {
   static const String service1Description = 'service1Description';
   static const String service2Description = 'service2Description';
 
+  static const String notifications = 'notifications';
+
+  static const String noNewNotifications = 'noNewNotifications';
+
+  static const String youHaveNoNewNotificationsAtTheMoment = 'youHaveNoNewNotificationsAtTheMoment';
+
+  static const String backToMain = 'backToMain';
+
+  static const String deleteAll = 'deleteAll';
+
 
 }

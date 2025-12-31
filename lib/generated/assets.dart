@@ -2,15 +2,19 @@
 class Assets {
   Assets._();
 
+  static const String iconsConfirmedNotification = 'assets/icons/confirmed_notification.png';
   static const String iconsEn = 'assets/icons/en.png';
+  static const String iconsGiftNotification = 'assets/icons/gift_notification.png';
   static const String iconsLogo = 'assets/icons/logo.png';
   static const String iconsSa = 'assets/icons/sa.png';
+  static const String iconsSettingsNotification = 'assets/icons/settings_notification.png';
   static const String imagesAuth = 'assets/images/auth.png';
   static const String imagesBoarding1 = 'assets/images/boarding1.png';
   static const String imagesBoarding2 = 'assets/images/boarding2.png';
   static const String imagesBoarding3 = 'assets/images/boarding3.png';
   static const String imagesChooseImage = 'assets/images/chooseImage.png';
   static const String imagesChooseOut = 'assets/images/chooseOut.png';
+  static const String imagesEmptyNotificationList = 'assets/images/empty_notification_list.png';
   static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesMockBanner = 'assets/images/mock_banner.png';
@@ -24,6 +28,7 @@ class Assets {
   static const String svgsCalendar = 'assets/svgs/calendar.svg';
   static const String svgsCars = 'assets/svgs/cars.png';
   static const String svgsChatIc = 'assets/svgs/chat_ic.svg';
+  static const String svgsClock = 'assets/svgs/clock.svg';
   static const String svgsCode = 'assets/svgs/code.svg';
   static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
   static const String svgsEdit = 'assets/svgs/edit.svg';

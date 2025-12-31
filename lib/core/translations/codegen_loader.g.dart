@@ -179,7 +179,13 @@ class CodegenLoader extends AssetLoader {
     "service2Title": "خدمة متكاملة مع التركيب",
     "service2Description":
         "لا تنسَ التوصيل! اختر خدمة إضافية مثل: التغليف، الاستلام من المتجر، أو التسليم إلى الباب",
-    "createOrdinaryOrder" : "إنشاء طلب",
+    "createOrdinaryOrder": "إنشاء طلب",
+    "notifications": "الإشعارات",
+    "noNewNotifications": "لا توجد إشعارات",
+    "youHaveNoNewNotificationsAtTheMoment":
+        "لا توجد إشعارات جديدة في الوقت الحالي.  يُرجى التحقق لاحقًا.",
+    "backToMain" : "عودة للرئيسية",
+    "deleteAll" : "حذف الكل",
   };
 
   static const Map<String, dynamic> moreAr = {};

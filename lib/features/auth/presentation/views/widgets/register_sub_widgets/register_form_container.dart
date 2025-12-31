@@ -16,7 +16,7 @@ class RegisterFormContainer extends StatelessWidget {
     return Positioned(
       bottom: 0,
       child: Container(
-        height: context.screenHeight - context.topPadding - 130.h,
+        height: height ?? context.screenHeight - context.topPadding - 130.h,
         width: 375.w,
         decoration: decorations.borderWhite20Decoration,
         padding: AppPadding.onlyPadding(top: AppPadding.p12),

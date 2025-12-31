@@ -12,6 +12,7 @@ import 'package:greenhub/features/boarding/presentation/cubit/boarding_cubit.dar
 import 'package:greenhub/features/boarding/presentation/views/boarding_view.dart';
 import 'package:greenhub/features/navigation/presentation/views/navigation_view.dart';
 import 'package:greenhub/features/more/presentation/views/more_view.dart';
+import 'package:greenhub/features/notifications/presentation/views/notification_view.dart';
 import 'package:greenhub/features/splash/presentation/views/splash_view.dart';
 
 import '../services/di/di.dart';
@@ -47,6 +48,8 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (_) => const BeforeRegisterView());
       case AppRoutes.faceIdView:
         return MaterialPageRoute(builder: (_) => const FaceIdView());
+      case AppRoutes.notificationsView:
+        return MaterialPageRoute(builder: (_) => const NotificationView());
       default:
         return null;
     }
