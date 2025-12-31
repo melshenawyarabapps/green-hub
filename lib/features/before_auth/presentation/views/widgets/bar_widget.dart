@@ -24,8 +24,8 @@ class BarWidget extends StatelessWidget {
             AppBackButton(),
             Container(
               padding: AppPadding.hvPadding(
-                height: AppPadding.p8,
-                width: AppPadding.p12,
+                vertical: AppPadding.p8,
+                horizontal: AppPadding.p12,
               ),
               decoration: BoxDecoration(
                 color: decorations?.borderWhite20Decoration.color,

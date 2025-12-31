@@ -12,19 +12,24 @@ import 'package:greenhub/features/boarding/presentation/cubit/boarding_cubit.dar
 import 'package:greenhub/features/boarding/presentation/views/boarding_view.dart';
 import 'package:greenhub/features/navigation/presentation/views/navigation_view.dart';
 import 'package:greenhub/features/more/presentation/views/more_view.dart';
+import 'package:greenhub/features/notifications/presentation/views/notification_view.dart';
 import 'package:greenhub/features/splash/presentation/views/splash_view.dart';
 
 import '../services/di/di.dart';
 
 abstract class AppRouter {
-  static Route onGenerateRoute(RouteSettings settings) {
+  static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.splashView:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case AppRoutes.onBoardingView:
-        return MaterialPageRoute(builder: (_) => BlocProvider(
-            create: (_) => getIt.get<BoardingCubit>(),
-            child: const BoardingView()));
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (_) => getIt.get<BoardingCubit>(),
+                child: const BoardingView(),
+              ),
+        );
       case AppRoutes.beforeAuthView:
         return MaterialPageRoute(builder: (_) => const BeforeAuthView());
       case AppRoutes.authView:
@@ -43,15 +48,10 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (_) => const BeforeRegisterView());
       case AppRoutes.faceIdView:
         return MaterialPageRoute(builder: (_) => const FaceIdView());
+      case AppRoutes.notificationsView:
+        return MaterialPageRoute(builder: (_) => const NotificationView());
       default:
-        return MaterialPageRoute(
-          builder:
-              (_) => Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${settings.name}'),
-                ),
-              ),
-        );
+        return null;
     }
   }
 }

@@ -40,9 +40,9 @@ class AuthView extends StatelessWidget {
                         text: '${currentFlavor}AuthLandingTitle2'.tr(),
                         style: theme.textTheme.bodyLarge,
                       ),
-                     if(isUser) TextSpan(text: "،"),
+                     if(isUser) const TextSpan(text: "،"),
 
-                    if(isUser)  TextSpan(text: "\n"),
+                    if(isUser)  const TextSpan(text: "\n"),
                       TextSpan(
                         text: '${currentFlavor}AuthLandingTitle3'.tr(),
                         style: theme.textTheme.bodyLarge,

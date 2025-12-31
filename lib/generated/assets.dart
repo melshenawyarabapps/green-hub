@@ -2,22 +2,33 @@
 class Assets {
   Assets._();
 
+  static const String iconsConfirmedNotification = 'assets/icons/confirmed_notification.png';
   static const String iconsEn = 'assets/icons/en.png';
+  static const String iconsGiftNotification = 'assets/icons/gift_notification.png';
   static const String iconsLogo = 'assets/icons/logo.png';
   static const String iconsSa = 'assets/icons/sa.png';
+  static const String iconsSettingsNotification = 'assets/icons/settings_notification.png';
   static const String imagesAuth = 'assets/images/auth.png';
   static const String imagesBoarding1 = 'assets/images/boarding1.png';
   static const String imagesBoarding2 = 'assets/images/boarding2.png';
   static const String imagesBoarding3 = 'assets/images/boarding3.png';
   static const String imagesChooseImage = 'assets/images/chooseImage.png';
   static const String imagesChooseOut = 'assets/images/chooseOut.png';
+  static const String imagesEmptyNotificationList = 'assets/images/empty_notification_list.png';
+  static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
+  static const String imagesMockBanner = 'assets/images/mock_banner.png';
+  static const String imagesMockService1 = 'assets/images/mock_service_1.png';
+  static const String imagesMockService2 = 'assets/images/mock_service_2.png';
   static const String svgsAdd = 'assets/svgs/add.svg';
+  static const String svgsAllert = 'assets/svgs/allert.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
   static const String svgsArrowEnd = 'assets/svgs/arrowEnd.svg';
   static const String svgsBack = 'assets/svgs/back.svg';
   static const String svgsCalendar = 'assets/svgs/calendar.svg';
   static const String svgsCars = 'assets/svgs/cars.png';
+  static const String svgsChatIc = 'assets/svgs/chat_ic.svg';
+  static const String svgsClock = 'assets/svgs/clock.svg';
   static const String svgsCode = 'assets/svgs/code.svg';
   static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
   static const String svgsEdit = 'assets/svgs/edit.svg';
@@ -33,11 +44,14 @@ class Assets {
   static const String svgsLocations = 'assets/svgs/locations.svg';
   static const String svgsLogout = 'assets/svgs/logout.svg';
   static const String svgsMore = 'assets/svgs/more.svg';
+  static const String svgsNotification = 'assets/svgs/notification.svg';
   static const String svgsOffers = 'assets/svgs/offers.svg';
   static const String svgsOrders = 'assets/svgs/orders.svg';
   static const String svgsProfile = 'assets/svgs/profile.svg';
   static const String svgsRate = 'assets/svgs/rate.png';
   static const String svgsSFaceId = 'assets/svgs/sFaceId.svg';
+  static const String svgsSearch = 'assets/svgs/search.svg';
+  static const String svgsSendWithRotate = 'assets/svgs/send_with_rotate.svg';
   static const String svgsSettings = 'assets/svgs/settings.svg';
   static const String svgsSkip = 'assets/svgs/skip.svg';
   static const String svgsSmsTracking = 'assets/svgs/sms-tracking.svg';

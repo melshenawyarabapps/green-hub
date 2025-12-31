@@ -13,6 +13,7 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
   final BoxDecoration profileDecoration;
   final BoxDecoration secondaryDecoration;
   final BoxDecoration grayDecoration;
+  final BoxDecoration appBarDecoration;
 
   const AppDecorations({
     required this.mainDecoration,
@@ -27,6 +28,7 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     required this.profileDecoration,
     required this.secondaryDecoration,
     required this.grayDecoration,
+    required this.appBarDecoration,
   });
 
   @override
@@ -43,6 +45,7 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
     BoxDecoration? profileDecoration,
     BoxDecoration? secondaryDecoration,
     BoxDecoration? grayDecoration,
+    BoxDecoration? appBarDecoration,
   }) {
     return AppDecorations(
       mainDecoration: mainDecoration ?? this.mainDecoration,
@@ -62,6 +65,7 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
       profileDecoration: profileDecoration ?? this.profileDecoration,
       secondaryDecoration: secondaryDecoration ?? this.secondaryDecoration,
       grayDecoration: grayDecoration ?? this.grayDecoration,
+      appBarDecoration: appBarDecoration ?? this.appBarDecoration,
     );
   }
 
@@ -122,6 +126,11 @@ class AppDecorations extends ThemeExtension<AppDecorations> {
           BoxDecoration.lerp(
             grayDecoration,
             other.grayDecoration,
+            t,
+          )!,
+      appBarDecoration: BoxDecoration.lerp(
+            appBarDecoration,
+            other.appBarDecoration,
             t,
           )!,
     );

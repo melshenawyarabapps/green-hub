@@ -13,6 +13,11 @@ abstract class AppTheme {
   static ThemeData get lightTheme => ThemeData(
     scaffoldBackgroundColor: AppLightColors.whiteColor,
     primaryColor: AppLightColors.primaryColor,
+    colorScheme: ColorScheme.light(
+      secondaryContainer: AppLightColors.lightSecondaryColor,
+      error: AppLightColors.redColor,
+      onError: AppLightColors.darkRedColor,
+    ),
     secondaryHeaderColor: AppLightColors.secondaryColor,
     canvasColor: AppLightColors.primaryColor12,
     appBarTheme: AppBarTheme(
@@ -106,6 +111,15 @@ abstract class AppTheme {
         color: AppLightColors.redColor,
         fontSize: FontSizes.s13,
       ),
+      headlineMedium: AppStyles.getBoldStyle(
+        color: AppLightColors.whiteColor,
+        fontSize: 24.sp,
+      ),
+      headlineSmall: AppStyles.getBoldStyle(
+        color: AppLightColors.blackColor,
+        fontSize: FontSizes.s16,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
       bodyMedium: AppStyles.getBoldStyle(
         color: AppLightColors.blackColor,
         fontSize: FontSizes.s26,
@@ -121,6 +135,11 @@ abstract class AppTheme {
         fontSize: FontSizes.s44,
         fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
       ),
+      headlineLarge: AppStyles.getBoldStyle(
+        color: AppLightColors.whiteColor,
+        fontSize: FontSizes.s22,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
     ),
     dividerTheme: DividerThemeData(
       color: AppLightColors.greyColor9,
@@ -128,7 +147,7 @@ abstract class AppTheme {
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppLightColors.transparent,
-      shape: CircleBorder(),
+      shape: const CircleBorder(),
       hoverColor: AppLightColors.transparent,
       splashColor: AppLightColors.transparent,
       focusColor: AppLightColors.transparent,
@@ -178,6 +197,10 @@ abstract class AppTheme {
     ),
     extensions: [
       AppDecorations(
+        appBarDecoration: const BoxDecoration(
+          color: Color(0xff5CA68F),
+          shape: BoxShape.circle,
+        ),
         mainDecoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
