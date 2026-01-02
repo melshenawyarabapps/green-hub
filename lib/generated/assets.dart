@@ -14,13 +14,18 @@ class Assets {
   static const String imagesBoarding3 = 'assets/images/boarding3.png';
   static const String imagesChooseImage = 'assets/images/chooseImage.png';
   static const String imagesChooseOut = 'assets/images/chooseOut.png';
+  static const String imagesDeliveryCar = 'assets/images/delivery_car.png';
+  static const String imagesDeliveryScooter = 'assets/images/delivery_scooter.png';
+  static const String imagesDeliveryTruck = 'assets/images/delivery_truck.png';
   static const String imagesEmptyNotificationList = 'assets/images/empty_notification_list.png';
   static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesMockBanner = 'assets/images/mock_banner.png';
+  static const String imagesMockPersonImg = 'assets/images/mock_person_img.png';
   static const String imagesMockService1 = 'assets/images/mock_service_1.png';
   static const String imagesMockService2 = 'assets/images/mock_service_2.png';
   static const String svgsAdd = 'assets/svgs/add.svg';
+  static const String svgsAddressHomeIc = 'assets/svgs/address_home_ic.svg';
   static const String svgsAllert = 'assets/svgs/allert.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
   static const String svgsArrowEnd = 'assets/svgs/arrowEnd.svg';
@@ -30,8 +35,10 @@ class Assets {
   static const String svgsChatIc = 'assets/svgs/chat_ic.svg';
   static const String svgsClock = 'assets/svgs/clock.svg';
   static const String svgsCode = 'assets/svgs/code.svg';
+  static const String svgsDeleteIc = 'assets/svgs/delete_ic.svg';
   static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
   static const String svgsEdit = 'assets/svgs/edit.svg';
+  static const String svgsEditIc = 'assets/svgs/edit_ic.svg';
   static const String svgsEditProfile = 'assets/svgs/editProfile.svg';
   static const String svgsError = 'assets/svgs/error.svg';
   static const String svgsFaceId = 'assets/svgs/faceId.svg';
@@ -47,6 +54,7 @@ class Assets {
   static const String svgsNotification = 'assets/svgs/notification.svg';
   static const String svgsOffers = 'assets/svgs/offers.svg';
   static const String svgsOrders = 'assets/svgs/orders.svg';
+  static const String svgsOutlineStar = 'assets/svgs/outline_star.svg';
   static const String svgsProfile = 'assets/svgs/profile.svg';
   static const String svgsRate = 'assets/svgs/rate.png';
   static const String svgsSFaceId = 'assets/svgs/sFaceId.svg';

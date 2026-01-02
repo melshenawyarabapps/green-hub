@@ -184,8 +184,21 @@ class CodegenLoader extends AssetLoader {
     "noNewNotifications": "لا توجد إشعارات",
     "youHaveNoNewNotificationsAtTheMoment":
         "لا توجد إشعارات جديدة في الوقت الحالي.  يُرجى التحقق لاحقًا.",
-    "backToMain" : "عودة للرئيسية",
-    "deleteAll" : "حذف الكل",
+    "backToMain": "عودة للرئيسية",
+    "deleteAll": "حذف الكل",
+    "availableVehicles": "المركبات المتاحة",
+    "selectYourAddress": "اختر عنوانك",
+    "editAddress": "تعديل العنوان",
+    "addNewAddress": "إضافة عنوان جديد",
+    "searchForAddress": "ابحث عن عنوان",
+    "governorateName": "اسم المحافظة",
+    "cityName": "اسم المدينة",
+    "districtName": "اسم الحي",
+    "streetName": "اسم الشارع",
+    "buildingNumber": "رقم المبنى",
+    "floorNumber": "رقم الدور",
+    "nearLandMark": "مكان قريب مميز",
+    "save": "حفظ",
   };
 
   static const Map<String, dynamic> moreAr = {};

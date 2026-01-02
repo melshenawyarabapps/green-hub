@@ -12,7 +12,7 @@ class RegisterFormContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final decorations = context.decorations;
-
+    final bool isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Positioned(
       bottom: 0,
       child: Container(

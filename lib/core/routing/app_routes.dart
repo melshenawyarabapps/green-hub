@@ -11,4 +11,7 @@ abstract class AppRoutes {
   static const String beforeRegisterView = '/beforeRegisterView';
   static const String faceIdView = '/faceIdView';
   static const String notificationsView = '/notificationsView';
+  static const String availableVehiclesView = '/availableVehiclesView';
+  static const String addressesView = '/addressesView';
+  static const String editAddressView = '/editAddressesView';
 }

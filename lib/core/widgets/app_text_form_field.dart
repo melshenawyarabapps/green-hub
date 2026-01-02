@@ -15,6 +15,11 @@ class AppTextFormField extends StatelessWidget {
   final double? prefixWidth;
   final bool enabled;
 
+  final int maxLines;
+  final int minLines;
+
+  final double? radius;
+
   const AppTextFormField({
     super.key,
     this.controller,
@@ -29,6 +34,9 @@ class AppTextFormField extends StatelessWidget {
     this.maxLength,
     this.prefixWidth,
     this.enabled = true,
+    this.maxLines = 1,
+    this.minLines = 1,
+    this.radius,
   });
 
   @override
@@ -37,6 +45,8 @@ class AppTextFormField extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: TextFormField(
+        maxLines: maxLines,
+        minLines: minLines,
         enabled: enabled,
         controller: controller,
         obscureText: obscureText,
@@ -50,9 +60,59 @@ class AppTextFormField extends StatelessWidget {
           hintText: hintText,
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
+          border:
+              radius != null
+                  ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(radius!),
+                    borderSide: BorderSide(
+                      color:
+                          theme.inputDecorationTheme.border?.borderSide.color ?? Colors.transparent,
+                    ),
+                  )
+                  : theme.inputDecorationTheme.border,
+          enabledBorder:
+              radius != null
+                  ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(radius!),
+                    borderSide: BorderSide(
+                      color:
+                          theme.inputDecorationTheme.enabledBorder?.borderSide.color ??
+                          Colors.transparent,
+                    ),
+                  )
+                  : theme.inputDecorationTheme.enabledBorder,
+          focusedBorder:
+              radius != null
+                  ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(radius!),
+                    borderSide: BorderSide(
+                      color:
+                          theme.inputDecorationTheme.focusedBorder?.borderSide.color ??
+                          theme.primaryColor,
+                    ),
+                  )
+                  : theme.inputDecorationTheme.focusedBorder,
+          errorBorder: radius != null
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(radius!),
+                  borderSide: BorderSide(
+                    color: theme.inputDecorationTheme.errorBorder?.borderSide.color ??
+                        Colors.red,
+                  ),
+                )
+              : theme.inputDecorationTheme.errorBorder,
+          focusedErrorBorder: radius != null
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(radius!),
+                  borderSide: BorderSide(
+                    color: theme.inputDecorationTheme.focusedErrorBorder?.borderSide.color ??
+                        Colors.red,
+                  ),
+                )
+              : theme.inputDecorationTheme.focusedErrorBorder,
           prefixIconConstraints:
               prefixWidth == null ? null : BoxConstraints(maxWidth: prefixWidth!),
-          counterText: maxLength != null ? '' : null, // Hide counter
+          counterText: maxLength != null ? '' : null,
         ),
       ),
     );

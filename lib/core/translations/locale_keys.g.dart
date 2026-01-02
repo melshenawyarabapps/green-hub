@@ -167,5 +167,19 @@ abstract class LocaleKeys {
 
   static const String deleteAll = 'deleteAll';
 
+  static const String availableVehicles = 'availableVehicles';
 
+  static const String selectYourAddress = 'selectYourAddress';
+
+  static const String editAddress = 'editAddress';
+  static const String addNewAddress = 'addNewAddress';
+  static const String searchForAddress = 'searchForAddress';
+  static const String governorateName = 'governorateName';
+  static const String districtName = 'districtName';
+  static const String cityName = 'cityName';
+  static const String streetName = 'streetName';
+  static const String buildingNumber = 'buildingNumber';
+  static const String floorNumber = 'floorNumber';
+  static const String nearLandMark = 'nearLandMark';
+  static const String save = 'save';
 }
