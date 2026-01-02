@@ -1,11 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/default_page_layout.dart';
-import 'package:greenhub/features/addresses/data/models/address_model.dart';
+import 'package:greenhub/features/addresses/data/repos/address_repository.dart';
+import 'package:greenhub/features/addresses/presentation/cubit/address_cubit.dart';
+import 'package:greenhub/features/addresses/presentation/cubit/address_state.dart';
 
+import 'edit_address_view.dart';
 import 'widgets/address_item_widget.dart';
 
 class AddressesView extends StatelessWidget {
@@ -13,27 +18,88 @@ class AddressesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => AddressCubit(AddressRepository())..fetchAddresses(),
+      child: const _AddressesViewBody(),
+    );
+  }
+}
+
+class _AddressesViewBody extends StatelessWidget {
+  const _AddressesViewBody();
+
+  @override
+  Widget build(BuildContext context) {
     return DefaultPageLayout(
       title: LocaleKeys.selectYourAddress.tr(),
-      child: ListView.separated(
-        padding: AppPadding.verticalPadding(20.h),
-        itemBuilder: (_, index) {
-          return const AddressItemWidget(
-            model: AddressModel(
-              id: 0,
-              addressName: 'منزلي',
-              governorateName: ' الرياض',
-              cityName: ' الرياض',
-              districtName: ' الرياض',
-              streetName: 'ش الايمان ',
-              buildingNumber: '5',
-              floorNumber: '4',
-              landMark: 'بجانب مسجد الهدى',
-            ),
+      child: BlocBuilder<AddressCubit, AddressState>(
+        builder: (context, state) {
+          if (state.status == AddressStatus.loading && state.addresses.isEmpty) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state.status == AddressStatus.failure) {
+            return Center(child: Text(state.errorMessage ?? 'Error loading addresses'));
+          }
+          return ListView.separated(
+            padding: AppPadding.verticalPadding(20.h),
+            itemBuilder: (_, index) {
+              if (index == state.addresses.length) {
+                return ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => BlocProvider.value(
+                              value: context.read<AddressCubit>(),
+                              child: const EditAddressView(),
+                            ),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(LocaleKeys.addNewAddress.tr()),
+                      10.horizontalSpace,
+                      CircleAvatar(
+                        radius: 12.r,
+                        backgroundColor: context.theme.secondaryHeaderColor,
+                        child: Icon(
+                          Icons.add,
+                          size: 12.r,
+                          color: context.theme.scaffoldBackgroundColor,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              final address = state.addresses[index];
+              return AddressItemWidget(
+                model: address,
+                onEdit: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (_) => BlocProvider.value(
+                            value: context.read<AddressCubit>(),
+                            child: EditAddressView(model: address),
+                          ),
+                    ),
+                  );
+                },
+                onDelete: () {
+                  context.read<AddressCubit>().deleteAddress(address.id);
+                },
+              );
+            },
+            separatorBuilder: (_, __) => 12.verticalSpace,
+            itemCount: state.addresses.length + 1,
           );
         },
-        separatorBuilder: (_, __) => 12.verticalSpace,
-        itemCount: 2,
       ),
     );
   }

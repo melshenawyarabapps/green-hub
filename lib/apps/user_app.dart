@@ -45,7 +45,7 @@ class UserApp extends StatelessWidget {
               darkTheme: AppTheme.darkTheme,
               themeMode: ThemeMode.light,
               onGenerateRoute: AppRouter.onGenerateRoute,
-              initialRoute: AppRoutes.editAddressView,
+              initialRoute: AppRoutes.addressesView,
             ),
           ),
     );

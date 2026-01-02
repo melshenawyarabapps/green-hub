@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/features/addresses/data/models/address_model.dart';
+import 'package:greenhub/features/addresses/presentation/cubit/address_cubit.dart';
 import 'package:greenhub/features/addresses/presentation/views/addresses_view.dart';
 import 'package:greenhub/features/addresses/presentation/views/edit_address_view.dart';
 import 'package:greenhub/features/auth/presentation/views/auth_view.dart';
@@ -57,7 +58,9 @@ abstract class AppRouter {
       case AppRoutes.availableVehiclesView:
         return MaterialPageRoute(builder: (_) => const AvailableVehiclesView());
       case AppRoutes.addressesView:
-        return MaterialPageRoute(builder: (_) => const AddressesView());
+        return MaterialPageRoute(builder: (_) => BlocProvider(
+            create: (_) => getIt.get<AddressCubit>()..fetchAddresses(),
+            child: const AddressesView()));
       case AppRoutes.editAddressView:
         return MaterialPageRoute(
           builder:

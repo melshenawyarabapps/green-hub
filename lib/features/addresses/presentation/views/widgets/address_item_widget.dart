@@ -9,10 +9,18 @@ import 'package:greenhub/features/addresses/data/models/address_model.dart';
 import '../../../../../generated/assets.dart';
 
 class AddressItemWidget extends StatelessWidget {
-  const AddressItemWidget({super.key, required this.model, this.hasDelete = false});
+  const AddressItemWidget({
+    super.key,
+    required this.model,
+    this.hasDelete = false,
+    this.onEdit,
+    this.onDelete,
+  });
 
   final AddressModel model;
   final bool hasDelete;
+  final VoidCallback? onEdit;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -85,17 +93,20 @@ class AddressItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: 32.w,
-            height: 32.w,
-            padding: EdgeInsets.all(9.w),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: hasDelete ? const Color(0xffFFF0F0) : AppLightColors.greyColor2,
-            ),
-            child: CustomSvgBuilder(
-              path: hasDelete ? Assets.svgsDeleteIc : Assets.svgsEditIc,
-              fit: BoxFit.contain,
+          GestureDetector(
+            onTap: hasDelete ? onDelete : onEdit,
+            child: Container(
+              width: 32.w,
+              height: 32.w,
+              padding: EdgeInsets.all(9.w),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: hasDelete ? const Color(0xffFFF0F0) : AppLightColors.greyColor2,
+              ),
+              child: CustomSvgBuilder(
+                path: hasDelete ? Assets.svgsDeleteIc : Assets.svgsEditIc,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
         ],

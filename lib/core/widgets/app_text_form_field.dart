@@ -74,10 +74,8 @@ class AppTextFormField extends StatelessWidget {
               radius != null
                   ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius!),
-                    borderSide: BorderSide(
-                      color:
-                          theme.inputDecorationTheme.enabledBorder?.borderSide.color ??
-                          Colors.transparent,
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
                     ),
                   )
                   : theme.inputDecorationTheme.enabledBorder,
@@ -92,24 +90,26 @@ class AppTextFormField extends StatelessWidget {
                     ),
                   )
                   : theme.inputDecorationTheme.focusedBorder,
-          errorBorder: radius != null
-              ? OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(radius!),
-                  borderSide: BorderSide(
-                    color: theme.inputDecorationTheme.errorBorder?.borderSide.color ??
-                        Colors.red,
-                  ),
-                )
-              : theme.inputDecorationTheme.errorBorder,
-          focusedErrorBorder: radius != null
-              ? OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(radius!),
-                  borderSide: BorderSide(
-                    color: theme.inputDecorationTheme.focusedErrorBorder?.borderSide.color ??
-                        Colors.red,
-                  ),
-                )
-              : theme.inputDecorationTheme.focusedErrorBorder,
+          errorBorder:
+              radius != null
+                  ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(radius!),
+                    borderSide: BorderSide(
+                      color: theme.inputDecorationTheme.errorBorder?.borderSide.color ?? Colors.red,
+                    ),
+                  )
+                  : theme.inputDecorationTheme.errorBorder,
+          focusedErrorBorder:
+              radius != null
+                  ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(radius!),
+                    borderSide: BorderSide(
+                      color:
+                          theme.inputDecorationTheme.focusedErrorBorder?.borderSide.color ??
+                          Colors.red,
+                    ),
+                  )
+                  : theme.inputDecorationTheme.focusedErrorBorder,
           prefixIconConstraints:
               prefixWidth == null ? null : BoxConstraints(maxWidth: prefixWidth!),
           counterText: maxLength != null ? '' : null,
