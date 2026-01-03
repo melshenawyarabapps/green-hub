@@ -184,4 +184,5 @@ abstract class LocaleKeys {
   static const String save = 'save';
   static const String addressSavedSuccessfully = 'addressSavedSuccessfully';
   static const String addressSavedSuccessfullyDescription = 'addressSavedSuccessfullyDescription';
+  static const String selectOrderType = 'selectOrderType';
 }

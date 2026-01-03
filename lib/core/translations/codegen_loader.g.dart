@@ -201,6 +201,7 @@ class CodegenLoader extends AssetLoader {
     "save": "حفظ",
     "addressSavedSuccessfully" : "تمّ حفظ العنوان بنجاح! 🎉",
     "addressSavedSuccessfullyDescription" : "تم حفظ عنوانك بنجاح، يمكنك استخدامه الآن",
+    "selectOrderType" : "اختر نوع طلبك؟",
   };
 
   static const Map<String, dynamic> moreAr = {};

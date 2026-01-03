@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +7,7 @@ import 'package:greenhub/core/config/app_config.dart';
 import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/features/home/presentation/views/user_home_view.dart';
+import 'package:greenhub/features/make_order/presentation/views/widgets/select_order_type_bottom_sheet.dart';
 import 'package:greenhub/features/more/presentation/views/more_view.dart';
 import 'package:greenhub/features/navigation/presentation/views/widgets/navigation_bar_widget.dart';
 import 'package:greenhub/features/navigation/presentation/views/widgets/notch_widget.dart';
@@ -51,9 +54,31 @@ class _NavigationViewState extends State<NavigationView> {
       extendBody: true,
       floatingActionButton: NotchWidget(
         onTap: () {
-          // setState(() {
-          //   currentIndex = 2;
-          // });
+          showModalBottomSheet(
+            backgroundColor: Colors.transparent,
+            barrierColor: Colors.black.withValues(
+              alpha: 0.2,
+            ),
+            context: context,
+            builder: (context) {
+              return Stack(
+                children: [
+                  BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                    child: Container(
+                      color: Colors.black.withValues(
+                        alpha: 0.01,
+                      ),
+                    ),
+                  ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: SelectOrderTypeBottomSheet(),
+                  ),
+                ],
+              );
+            },
+          );
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
