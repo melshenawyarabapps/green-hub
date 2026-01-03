@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
+import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 
 class AvailableVehicleItemWidget extends StatelessWidget {
@@ -21,75 +22,80 @@ class AvailableVehicleItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: AppPadding.hvPadding(
-        horizontal: 16,
-        vertical: 20,
-      ),
-      decoration: BoxDecoration(
-        color: context.theme.scaffoldBackgroundColor,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(
-              alpha: 0.05,
-            ),
-            blurRadius: 16,
-            offset: const Offset(0, 0),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: AppPadding.verticalPadding(24),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Image.asset(
-              imagePath,
-              height: 74.h,
-              width: 74.w,
-            ),
-          ),
-          10.verticalSpace,
-          Row(
-            children: [
-              Text(
-                title,
-                style: context.textTheme.headlineSmall!.copyWith(
-                  fontSize: 18,
-                ),
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(AppRoutes.createNewOrder);
+      },
+      child: Container(
+        padding: AppPadding.hvPadding(
+          horizontal: 16,
+          vertical: 20,
+        ),
+        decoration: BoxDecoration(
+          color: context.theme.scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(
+                alpha: 0.05,
               ),
-              const Spacer(),
-              Container(
-                padding: AppPadding.hvPadding(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: fontColor.withValues(
-                    alpha: 0.2,
-                  ),
-                  borderRadius: BorderRadius.circular(32),
-                  border: Border.all(
-                    color: fontColor,
-                    width: 0.5,
-                  ),
-                ),
-                child: Text(
-                  size,
-                  style: context.textTheme.labelMedium!.copyWith(
-                    color: fontColor,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+              blurRadius: 16,
+              offset: const Offset(0, 0),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              padding: AppPadding.verticalPadding(24),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.circular(12),
               ),
-            ],
-          ),
-        ],
+              child: Image.asset(
+                imagePath,
+                height: 74.h,
+                width: 74.w,
+              ),
+            ),
+            10.verticalSpace,
+            Row(
+              children: [
+                Text(
+                  title,
+                  style: context.textTheme.headlineSmall!.copyWith(
+                    fontSize: 18,
+                  ),
+                ),
+                const Spacer(),
+                Container(
+                  padding: AppPadding.hvPadding(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: fontColor.withValues(
+                      alpha: 0.2,
+                    ),
+                    borderRadius: BorderRadius.circular(32),
+                    border: Border.all(
+                      color: fontColor,
+                      width: 0.5,
+                    ),
+                  ),
+                  child: Text(
+                    size,
+                    style: context.textTheme.labelMedium!.copyWith(
+                      color: fontColor,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

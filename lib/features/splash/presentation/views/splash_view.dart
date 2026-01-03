@@ -17,12 +17,14 @@ class SplashView extends StatelessWidget {
     return BlocProvider(
       create: (_) => getIt.get<SplashCubit>()..checkBoardingStatus(),
       child: BlocListener<SplashCubit, SplashState>(
+        listenWhen: (previous, current) =>
+            previous.status != current.status,
         listener: (context, state) {
-          // if (state.status == SplashStatus.navigateToAuth) {
-          //   context.pushReplacementNamed(AppRoutes.authView);
-          // } else if (state.status == SplashStatus.navigateToBoarding) {
-          //   context.pushReplacementNamed(AppRoutes.onBoardingView);
-          // }
+          if (state.status == SplashStatus.navigateToAuth) {
+            context.pushReplacementNamed(AppRoutes.authView);
+          } else if (state.status == SplashStatus.navigateToBoarding) {
+            context.pushReplacementNamed(AppRoutes.onBoardingView);
+          }
         },
         child: Scaffold(
           body: Container(
