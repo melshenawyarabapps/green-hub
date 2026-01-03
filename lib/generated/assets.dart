@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String assetsSvgsDocumentUpload = 'assets/svgs/document_upload.svg';
   static const String iconsConfirmedNotification = 'assets/icons/confirmed_notification.png';
   static const String iconsEn = 'assets/icons/en.png';
   static const String iconsGiftNotification = 'assets/icons/gift_notification.png';
@@ -25,6 +26,7 @@ class Assets {
   static const String imagesMockService1 = 'assets/images/mock_service_1.png';
   static const String imagesMockService2 = 'assets/images/mock_service_2.png';
   static const String svgsAdd = 'assets/svgs/add.svg';
+  static const String svgsAdditionalNotes = 'assets/svgs/additional_notes.svg';
   static const String svgsAddressHomeIc = 'assets/svgs/address_home_ic.svg';
   static const String svgsAllert = 'assets/svgs/allert.svg';
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
@@ -42,11 +44,14 @@ class Assets {
   static const String svgsEditProfile = 'assets/svgs/editProfile.svg';
   static const String svgsError = 'assets/svgs/error.svg';
   static const String svgsFaceId = 'assets/svgs/faceId.svg';
+  static const String svgsFilter = 'assets/svgs/filter.svg';
+  static const String svgsGps = 'assets/svgs/gps.svg';
   static const String svgsHome = 'assets/svgs/home.svg';
   static const String svgsInhome = 'assets/svgs/inhome.svg';
   static const String svgsInmore = 'assets/svgs/inmore.svg';
   static const String svgsInoffers = 'assets/svgs/inoffers.svg';
   static const String svgsInorders = 'assets/svgs/inorders.svg';
+  static const String svgsLoadingIc = 'assets/svgs/loading_ic.svg';
   static const String svgsLocation = 'assets/svgs/location.svg';
   static const String svgsLocations = 'assets/svgs/locations.svg';
   static const String svgsLogout = 'assets/svgs/logout.svg';
@@ -55,9 +60,11 @@ class Assets {
   static const String svgsOffers = 'assets/svgs/offers.svg';
   static const String svgsOrders = 'assets/svgs/orders.svg';
   static const String svgsOutlineStar = 'assets/svgs/outline_star.svg';
+  static const String svgsPackage = 'assets/svgs/package.svg';
   static const String svgsProfile = 'assets/svgs/profile.svg';
   static const String svgsRate = 'assets/svgs/rate.png';
   static const String svgsSFaceId = 'assets/svgs/sFaceId.svg';
+  static const String svgsSaudiRiyalSymbol = 'assets/svgs/saudi_riyal_symbol.svg';
   static const String svgsSearch = 'assets/svgs/search.svg';
   static const String svgsSendWithRotate = 'assets/svgs/send_with_rotate.svg';
   static const String svgsSettings = 'assets/svgs/settings.svg';

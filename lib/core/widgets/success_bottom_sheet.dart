@@ -7,6 +7,7 @@ import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/utils/font_sizes.dart';
+import 'package:greenhub/core/utils/show_bottom_sheet_manager.dart';
 import 'package:greenhub/core/widgets/notch_widget.dart';
 
 class SuccessBottomSheet extends StatelessWidget {
@@ -26,16 +27,12 @@ class SuccessBottomSheet extends StatelessWidget {
     required String title,
     String? subTitle,
   }) async {
-    await showModalBottomSheet(
-      context: context,
+    await ShowBottomSheetManager.showSuccess(
+      context,
+      title: title,
+      subTitle: subTitle,
       enableDrag: enableDrag,
       isDismissible: isDismissible,
-      isScrollControlled: true,
-      builder:
-          (_) => SuccessBottomSheet(
-            title: title,
-            subTitle: subTitle,
-          ),
     );
   }
 

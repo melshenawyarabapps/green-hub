@@ -185,4 +185,59 @@ abstract class LocaleKeys {
   static const String addressSavedSuccessfully = 'addressSavedSuccessfully';
   static const String addressSavedSuccessfullyDescription = 'addressSavedSuccessfullyDescription';
   static const String selectOrderType = 'selectOrderType';
+
+  static const String createNewOrder = 'createNewOrder';
+
+  static const String orderDetails = 'orderDetails';
+  static const String deliveriesList = 'deliveriesList';
+  static const String payment = 'payment';
+
+  static const String typeOfTransport = 'typeOfTransport';
+  static const String selectTypeOfTransport = 'selectTypeOfTransport';
+
+  static const String installation = 'installation';
+
+  static const String load = 'load';
+
+  static const String shipmentDetails = 'shipmentDetails';
+
+  static const String weight = 'weight';
+  static const String optional = 'optional';
+  static const String enterShipmentWeight = 'enterShipmentWeight';
+  static const String shipmentType = 'shipmentType';
+  static const String selectShipmentType = 'selectShipmentType';
+  static const String shipmentReceiverNumber = 'shipmentReceiverNumber';
+  static const String vehiclesNumber = 'vehiclesNumber';
+  static const String address = 'address';
+  static const String from = 'from';
+  static const String to = 'to';
+  static const String determiningTheStartingPoint = 'determiningTheStartingPoint';
+  static const String destinationSelection = 'destinationSelection';
+  static const String uploadShipmentImages = 'destinationSelection';
+  static const String uploadTheImageHere = 'uploadTheImageHere';
+  static const String availableFormats = 'availableFormats';
+  static const String additionalNotes = 'additionalNotes';
+  static const String enterYourNotesHere = 'enterYourNotesHere';
+  static const String date = 'date';
+  static const String selectDate = 'selectDate';
+
+  static const String thereAreANumberOfCarriers = 'thereAreANumberOfCarriers';
+  static const String details = 'details';
+  static const String accept = 'accept';
+  static const String reject = 'reject';
+  static const String price = 'price';
+  static const String apply = 'apply';
+  static const String reset = 'reset';
+  static const String orderDetailsHaveBeenEnteredSuccessfully =
+      'orderDetailsHaveBeenEnteredSuccessfully';
+  static const String nowChooseTheDriverThatSuitsYouFromTheAvailableOffers =
+      'nowChooseTheDriverThatSuitsYouFromTheAvailableOffers';
+
+  static const String writeAdditionalNotesHere = 'writeAdditionalNotesHere';
+
+  static const String classification = 'classification';
+
+  static const String distance = 'distance';
+
+  static const String deliveryRating = 'deliveryRating';
 }

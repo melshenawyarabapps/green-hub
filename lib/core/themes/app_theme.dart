@@ -68,6 +68,32 @@ abstract class AppTheme {
         ),
       ),
     ),
+    primaryTextTheme: TextTheme(
+      bodyMedium: AppStyles.getBoldStyle(
+        color: AppLightColors.blackColor,
+        fontSize: FontSizes.s18,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      titleMedium: AppStyles.getBoldStyle(
+        color: AppLightColors.blackColor,
+        fontSize: FontSizes.s14,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      displaySmall: AppStyles.getRegularStyle(
+        color: AppLightColors.blackColor.withValues(
+          alpha: 0.4,
+        ),
+        fontSize: FontSizes.s10,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+      displayMedium: AppStyles.getSemiBoldStyle(
+        color: AppLightColors.blackColor.withValues(
+          alpha: 0.6,
+        ),
+        fontSize: FontSizes.s12,
+        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
+      ),
+    ),
     textTheme: TextTheme(
       titleLarge: AppStyles.getSemiBoldStyle(
         color: AppLightColors.whiteColor,

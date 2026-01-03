@@ -17,6 +17,7 @@ extension ContextExtensions on BuildContext {
   AppDecorations get decorations => Theme.of(this).extension<AppDecorations>()!;
 
   TextTheme get textTheme => Theme.of(this).textTheme;
+  TextTheme get primaryTextTheme => Theme.of(this).primaryTextTheme;
 
   Future<T?> pushNamed<T extends Object?>(
     String routeName, {

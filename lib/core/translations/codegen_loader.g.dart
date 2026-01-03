@@ -199,9 +199,53 @@ class CodegenLoader extends AssetLoader {
     "floorNumber": "رقم الدور",
     "nearLandMark": "مكان قريب مميز",
     "save": "حفظ",
-    "addressSavedSuccessfully" : "تمّ حفظ العنوان بنجاح! 🎉",
-    "addressSavedSuccessfullyDescription" : "تم حفظ عنوانك بنجاح، يمكنك استخدامه الآن",
-    "selectOrderType" : "اختر نوع طلبك؟",
+    "addressSavedSuccessfully": "تمّ حفظ العنوان بنجاح! 🎉",
+    "addressSavedSuccessfullyDescription": "تم حفظ عنوانك بنجاح، يمكنك استخدامه الآن",
+    "selectOrderType": "اختر نوع طلبك؟",
+    "createNewOrder": "إنشاء طلب جديد",
+    "orderDetails": "تفاصيل الطلب",
+    "deliveriesList": "قائمة الناقلين",
+    "payment": "الدفع",
+    "typeOfTransport": "نوع النقل",
+    "selectTypeOfTransport": "اختر نوع النقل",
+    "installation": "تركيب",
+    "load": "تحميل",
+    "shipmentDetails": "تفاصيل الشحنة",
+    "weight": "الوزن",
+    "optional": "اختياري",
+    "enterShipmentWeight": "أدخل وزن الشحنة",
+    "shipmentType": "نوع الشحنة",
+    "selectShipmentType": "اختر نوع الشحنة",
+    "shipmentReceiverNumber": "رقم مستقبل الشحنة",
+    "vehiclesNumber": "عدد المركبات",
+    "address": "العنوان",
+    "from": "من",
+    "to": "إلى",
+    "determiningTheStartingPoint": "تحديد نقطة البداية",
+    "destinationSelection": "اختيار الوجهة",
+    "uploadShipmentImages": "رفع صور الشحنة",
+    "uploadTheImageHere": "ارفع الصورة هنا",
+    "availableFormats": "الصيغ المتاحة",
+    "additionalNotes": "ملاحظات إضافية",
+    "enterYourNotesHere": "أدخل ملاحظاتك هنا",
+    "date": "التاريخ",
+    "selectDate": "اختر التاريخ",
+
+    "thereAreANumberOfCarriers": "يوجد عدد من الناقلين",
+    "details": "تفاصيل",
+    "accept": "موافقة",
+    "reject": "رفض",
+    "price": "السعر",
+    "apply": "تطبيق",
+    "reset": "إعادة تعيين",
+    "orderDetailsHaveBeenEnteredSuccessfully": "تم إدخال تفاصيل الطلب بنجاح! ✅",
+    "nowChooseTheDriverThatSuitsYouFromTheAvailableOffers":
+        "الآن، اختر السائق الذي يناسبك من العروض المتاحة.",
+
+    "writeAdditionalNotesHere": "اكتب ملاحظات إضافية هنا",
+    "classification" : "التصنيف",
+    "distance" : "المسافة",
+    "deliveryRating": "تقييم الناقل",
   };
 
   static const Map<String, dynamic> moreAr = {};
