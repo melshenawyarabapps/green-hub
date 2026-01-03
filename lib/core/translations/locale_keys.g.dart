@@ -213,9 +213,11 @@ abstract class LocaleKeys {
   static const String to = 'to';
   static const String determiningTheStartingPoint = 'determiningTheStartingPoint';
   static const String destinationSelection = 'destinationSelection';
-  static const String uploadShipmentImages = 'destinationSelection';
+  static const String uploadShipmentImages = 'uploadShipmentImages';
   static const String uploadTheImageHere = 'uploadTheImageHere';
   static const String availableFormats = 'availableFormats';
+  static const String gallery = 'gallery';
+  static const String camera = 'camera';
   static const String additionalNotes = 'additionalNotes';
   static const String enterYourNotesHere = 'enterYourNotesHere';
   static const String date = 'date';

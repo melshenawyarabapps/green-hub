@@ -45,6 +45,7 @@ class AppTextFormField extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: TextFormField(
+        onTap: onTap,
         maxLines: maxLines,
         minLines: minLines,
         enabled: enabled,

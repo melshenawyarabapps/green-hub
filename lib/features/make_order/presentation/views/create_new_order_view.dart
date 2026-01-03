@@ -20,7 +20,7 @@ class CreateNewOrderView extends StatefulWidget {
 }
 
 class _CreateNewOrderViewState extends State<CreateNewOrderView> {
-  int currentStep = 2;
+  int currentStep = 0;
 
   late List<Widget> steps;
 

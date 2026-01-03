@@ -226,11 +226,12 @@ class CodegenLoader extends AssetLoader {
     "uploadShipmentImages": "رفع صور الشحنة",
     "uploadTheImageHere": "ارفع الصورة هنا",
     "availableFormats": "الصيغ المتاحة",
+    "gallery": "المعرض",
+    "camera": "الكاميرا",
     "additionalNotes": "ملاحظات إضافية",
     "enterYourNotesHere": "أدخل ملاحظاتك هنا",
     "date": "التاريخ",
     "selectDate": "اختر التاريخ",
-
     "thereAreANumberOfCarriers": "يوجد عدد من الناقلين",
     "details": "تفاصيل",
     "accept": "موافقة",
