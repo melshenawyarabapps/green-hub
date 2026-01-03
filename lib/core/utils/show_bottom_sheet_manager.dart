@@ -44,6 +44,7 @@ class ShowBottomSheetManager {
     bool isDismissible = true,
     required String title,
     String? subTitle,
+    Widget? footer,
   }) async {
     await showModalBottomSheet(
       context: context,
@@ -70,6 +71,7 @@ class ShowBottomSheetManager {
                 child: SuccessBottomSheet(
                   title: title,
                   subTitle: subTitle,
+                  footer: footer,
                 ),
               ),
             ],

@@ -22,6 +22,7 @@ class Assets {
   static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesMockBanner = 'assets/images/mock_banner.png';
+  static const String imagesMockPaymentImg = 'assets/images/mock_payment_img.png';
   static const String imagesMockPersonImg = 'assets/images/mock_person_img.png';
   static const String imagesMockService1 = 'assets/images/mock_service_1.png';
   static const String imagesMockService2 = 'assets/images/mock_service_2.png';
@@ -37,6 +38,7 @@ class Assets {
   static const String svgsChatIc = 'assets/svgs/chat_ic.svg';
   static const String svgsClock = 'assets/svgs/clock.svg';
   static const String svgsCode = 'assets/svgs/code.svg';
+  static const String svgsCoupon = 'assets/svgs/coupon.svg';
   static const String svgsDeleteIc = 'assets/svgs/delete_ic.svg';
   static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
   static const String svgsEdit = 'assets/svgs/edit.svg';

@@ -240,4 +240,23 @@ abstract class LocaleKeys {
   static const String distance = 'distance';
 
   static const String deliveryRating = 'deliveryRating';
+
+  static const String paymentDetails = 'paymentDetails';
+  static const String serviceCost = 'serviceCost';
+  static const String valueAddedTax = 'valueAddedTax';
+  static const String totalPrice = 'totalPrice';
+  static const String paymentWay = 'paymentWay';
+  static const String activation = 'activation';
+  static const String byClickingOnPaymentYouAgreeToTheTermsAndConditions =
+      'byClickingOnPaymentYouAgreeToTheTermsAndConditions';
+  static const String confirmPayment = 'confirmPayment';
+  static const String cancelTheOrder = 'cancelTheOrder';
+
+  static const String change = 'change';
+  static const String discountCoupon = 'discountCoupon';
+  static const String paymentSuccessful = 'paymentSuccessful';
+  static const String theAmountIsReservedAndWillBeReleasedAfterTheApplicationIsCompleted =
+      'theAmountIsReservedAndWillBeReleasedAfterTheApplicationIsCompleted';
+
+  static const String followTheOrder = 'followTheOrder';
 }

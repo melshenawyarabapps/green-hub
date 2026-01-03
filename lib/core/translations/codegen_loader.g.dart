@@ -246,6 +246,22 @@ class CodegenLoader extends AssetLoader {
     "classification" : "التصنيف",
     "distance" : "المسافة",
     "deliveryRating": "تقييم الناقل",
+
+    "paymentDetails": "تفاصيل الدفع",
+    "serviceCost": "تكلفة الخدمة",
+    "valueAddedTax": "ضريبة القيمة المضافة",
+    "totalPrice": "المبلغ الإجمالي",
+    "paymentWay": "طريقة الدفع",
+    "activation": "تفعيل",
+    "byClickingOnPaymentYouAgreeToTheTermsAndConditions": "بالضغط على الدفع أنت توافق على الشروط والأحكام",
+    "confirmPayment": "تأكيد الدفع",
+    "cancelTheOrder": "إلغاء الطلب",
+    "change" : "تغيير",
+    "discountCoupon" : "كوبون الخصم",
+    "theAmountIsReservedAndWillBeReleasedAfterTheApplicationIsCompleted" : "المبلغ محجوز وسيتم تحريره بعد إكمال الطلب",
+    "paymentSuccessful" : "تم الدفع بنجاح! ✅",
+    "followTheOrder" : "متابعة الطلب",
+
   };
 
   static const Map<String, dynamic> moreAr = {};

@@ -15,10 +15,12 @@ class SuccessBottomSheet extends StatelessWidget {
     super.key,
     required this.title,
     this.subTitle,
+    this.footer,
   });
 
   final String title;
   final String? subTitle;
+  final Widget? footer;
 
   static Future show(
     context, {
@@ -26,6 +28,7 @@ class SuccessBottomSheet extends StatelessWidget {
     bool isDismissible = true,
     required String title,
     String? subTitle,
+    Widget? footer,
   }) async {
     await ShowBottomSheetManager.showSuccess(
       context,
@@ -33,6 +36,7 @@ class SuccessBottomSheet extends StatelessWidget {
       subTitle: subTitle,
       enableDrag: enableDrag,
       isDismissible: isDismissible,
+      footer: footer,
     );
   }
 
@@ -45,25 +49,42 @@ class SuccessBottomSheet extends StatelessWidget {
       height: 381.h,
       width: double.infinity,
       decoration: decorations?.borderWhiteDecoration,
-      padding: AppPadding.horizontalPadding(AppPadding.p32),
       child: Column(
         children: [
-          const NotchWidget(),
-          16.verticalSpace,
-          SvgPicture.asset(Assets.svgsSuccess),
-          24.verticalSpace,
-          Text(
-            title,
-            style: textTheme.bodyMedium?.copyWith(fontSize: FontSizes.s24),
-          ),
-          if (subTitle != null) ...[
-            24.verticalSpace,
-            Text(
-              subTitle!,
-              style: textTheme.displayMedium,
-              textAlign: TextAlign.center,
+          Padding(
+            padding: AppPadding.horizontalPadding(AppPadding.p32),
+            child: Column(
+              children: [
+                const NotchWidget(),
+                16.verticalSpace,
+                SvgPicture.asset(Assets.svgsSuccess),
+                24.verticalSpace,
+                Text(
+                  title,
+                  style: textTheme.bodyMedium?.copyWith(fontSize: FontSizes.s24),
+                ),
+                if (subTitle != null) ...[
+                  24.verticalSpace,
+                  Text(
+                    subTitle!,
+                    style: textTheme.displayMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ],
             ),
-          ],
+          ),
+          if (footer != null)
+            Padding(
+              padding:AppPadding.horizontalPadding(16),
+              child: Column(
+                children: [
+                  30.verticalSpace,
+                  footer!,
+                  24.verticalSpace,
+                ],
+              ),
+            ),
         ],
       ),
     );
