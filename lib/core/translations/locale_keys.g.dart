@@ -218,6 +218,8 @@ abstract class LocaleKeys {
   static const String availableFormats = 'availableFormats';
   static const String gallery = 'gallery';
   static const String camera = 'camera';
+  static const String invalidOtp = 'invalidOtp';
+  static const String agreeTermsRequired = 'agreeTermsRequired';
   static const String additionalNotes = 'additionalNotes';
   static const String enterYourNotesHere = 'enterYourNotesHere';
   static const String date = 'date';

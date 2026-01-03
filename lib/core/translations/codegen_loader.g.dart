@@ -228,6 +228,8 @@ class CodegenLoader extends AssetLoader {
     "availableFormats": "الصيغ المتاحة",
     "gallery": "المعرض",
     "camera": "الكاميرا",
+    "invalidOtp": "رمز التحقق غير صحيح",
+    "agreeTermsRequired": "يجب الموافقة على الشروط والأحكام",
     "additionalNotes": "ملاحظات إضافية",
     "enterYourNotesHere": "أدخل ملاحظاتك هنا",
     "date": "التاريخ",

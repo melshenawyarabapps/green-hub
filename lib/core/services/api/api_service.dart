@@ -3,7 +3,6 @@ import 'package:greenhub/core/services/observers/dio_interceptor_observer.dart';
 import 'package:greenhub/core/utils/end_points.dart';
 
 class ApiService {
-
   ApiService() {
     final baseOptions = BaseOptions(
       baseUrl: EndPoints.baseUrl,

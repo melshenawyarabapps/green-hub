@@ -7,11 +7,14 @@ import 'package:greenhub/core/widgets/app_text_form_field.dart';
 import 'package:greenhub/core/widgets/country_widget.dart';
 
 class AppPhoneTextField extends StatelessWidget {
-  const AppPhoneTextField({super.key});
+  const AppPhoneTextField({super.key, this.controller});
+
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return AppTextFormField(
+      controller: controller,
       hintText: LocaleKeys.phoneNumber.tr(),
       prefixIcon: const CountryWidget(),
       keyboardType: TextInputType.number,

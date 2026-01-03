@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
+import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/services/di/di.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
-import 'package:greenhub/features/auth/presentation/cubit/register_cubit.dart';
+import 'package:greenhub/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/register_sub_widgets/delivery_form_fields.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/register_sub_widgets/register_action_button.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/register_sub_widgets/register_form_container.dart';
@@ -20,23 +20,36 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isUser = context.isUser;
     return BlocProvider(
-      create: (_) => getIt.get<RegisterCubit>(),
-      child: BlocListener<RegisterCubit, RegisterState>(
-        listener: (context, state) {},
+      create: (_) => getIt.get<AuthCubit>()..setAuthFlow(AuthFlow.register, isUser: isUser),
+      child: BlocListener<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state.isFailure && state.errorMessage != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.errorMessage!)),
+            );
+          }
+          if (state.isSuccess && state.isOtpSent) {
+            context.pushNamed(
+              AppRoutes.verificationView,
+              arguments: context.read<AuthCubit>(),
+            );
+          }
+        },
         child: const _RegisterViewBody(),
       ),
     );
   }
 }
 
-class _RegisterViewBody extends HookWidget {
+class _RegisterViewBody extends StatelessWidget {
   const _RegisterViewBody();
 
   @override
   Widget build(BuildContext context) {
-    final isSelected = useState(false);
     final isUser = context.isUser;
+    final cubit = context.read<AuthCubit>();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -51,6 +64,7 @@ class _RegisterViewBody extends HookWidget {
               height: context.screenHeight - context.topPadding - 130.h,
               child: SingleChildScrollView(
                 child: Form(
+                  key: cubit.registerFormKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -63,10 +77,13 @@ class _RegisterViewBody extends HookWidget {
                         32.verticalSpace,
                         const UserFormFields(),
                         24.verticalSpace,
-                        TermsCheckbox(
-                          value: isSelected.value,
-                          onChanged: (value) {
-                            isSelected.value = value ?? false;
+                        BlocBuilder<AuthCubit, AuthState>(
+                          buildWhen: (prev, curr) => prev.agreeTerms != curr.agreeTerms,
+                          builder: (context, state) {
+                            return TermsCheckbox(
+                              value: state.agreeTerms,
+                              onChanged: (value) => cubit.toggleTerms(value),
+                            );
                           },
                         ),
                         120.verticalSpace,

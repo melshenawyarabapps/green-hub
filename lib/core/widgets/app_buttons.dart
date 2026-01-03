@@ -69,21 +69,38 @@ class AppSwitchButton extends StatelessWidget {
 }
 
 class AppElevatedButton extends StatelessWidget {
-  const AppElevatedButton({super.key, required this.title, this.onPressed, this.color, this.textColor});
+  const AppElevatedButton({
+    super.key,
+    required this.title,
+    this.onPressed,
+    this.color,
+    this.textColor,
+    this.isLoading = false,
+  });
 
   final String title;
   final VoidCallback? onPressed;
   final Color? color;
   final Color? textColor;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
       ),
-      child: Text(title, style: TextStyle(color: textColor)),
+      child: isLoading
+          ? SizedBox(
+              height: 20.h,
+              width: 20.h,
+              child: const CircularProgressIndicator(
+                strokeWidth: 2,
+                color: Colors.white,
+              ),
+            )
+          : Text(title, style: TextStyle(color: textColor)),
     );
   }
 }

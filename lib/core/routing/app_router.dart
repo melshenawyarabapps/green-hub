@@ -5,6 +5,7 @@ import 'package:greenhub/features/addresses/data/models/address_model.dart';
 import 'package:greenhub/features/addresses/presentation/cubit/address_cubit.dart';
 import 'package:greenhub/features/addresses/presentation/views/addresses_view.dart';
 import 'package:greenhub/features/addresses/presentation/views/edit_address_view.dart';
+import 'package:greenhub/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:greenhub/features/auth/presentation/views/auth_view.dart';
 import 'package:greenhub/features/auth/presentation/views/before_register_view.dart';
 import 'package:greenhub/features/auth/presentation/views/face_id_view.dart';
@@ -45,7 +46,13 @@ abstract class AppRouter {
       case AppRoutes.registerView:
         return MaterialPageRoute(builder: (_) => const RegisterView());
       case AppRoutes.verificationView:
-        return MaterialPageRoute(builder: (_) => const VerificationView());
+        final authCubit = settings.arguments as AuthCubit;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: authCubit,
+            child: const VerificationView(),
+          ),
+        );
       case AppRoutes.navigationView:
         return MaterialPageRoute(builder: (_) => const NavigationView());
       case AppRoutes.moreView:

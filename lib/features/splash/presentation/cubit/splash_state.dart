@@ -6,6 +6,7 @@ enum SplashStatus {
   navigateToBoarding,
   navigateToBeforeAuth,
   navigateToAuth,
+  navigateToHome,
 }
 
 class SplashState {

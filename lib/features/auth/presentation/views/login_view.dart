@@ -13,7 +13,7 @@ import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
 import 'package:greenhub/core/widgets/app_phone_text_field.dart';
-import 'package:greenhub/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:greenhub/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/login_texts_widget.dart';
 
 class LoginView extends StatelessWidget {
@@ -21,10 +21,23 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isUser = context.isUser;
     return BlocProvider(
-      create: (_) => getIt.get<LoginCubit>(),
-      child: BlocListener<LoginCubit, LoginState>(
-        listener: (context, state) {},
+      create: (_) => getIt.get<AuthCubit>()..setAuthFlow(AuthFlow.login, isUser: isUser),
+      child: BlocListener<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state.isFailure && state.errorMessage != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.errorMessage!)),
+            );
+          }
+          if (state.isSuccess && state.isOtpSent) {
+            context.pushNamed(
+              AppRoutes.verificationView,
+              arguments: context.read<AuthCubit>(),
+            );
+          }
+        },
         child: const _LoginViewBody(),
       ),
     );
@@ -40,6 +53,8 @@ class _LoginViewBody extends StatelessWidget {
     final textTheme = theme.textTheme;
     final decorations = theme.extension<AppDecorations>();
     final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
+    final cubit = context.read<AuthCubit>();
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SizedBox(
@@ -83,35 +98,43 @@ class _LoginViewBody extends StatelessWidget {
                         alignment: AlignmentGeometry.center,
                         decoration: decorations?.borderWhiteDecoration,
                         padding: AppPadding.horizontalPadding(AppPadding.p20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            40.verticalSpace,
-                            Row(
-                              children: [
-                                Text(
-                                  LocaleKeys.loginTitle.tr(),
-                                  style: textTheme.bodyMedium,
-                                ),
-                              ],
-                            ),
-                            if (context.isUser) 40.verticalSpace else 60.verticalSpace,
-                            const AppPhoneTextField(),
-                            56.verticalSpace,
-                            AppElevatedButton(
-                              title: LocaleKeys.loginAction.tr(),
-                              onPressed: () {
-                                context.pushNamed(AppRoutes.verificationView);
-                              },
-                            ),
-                            8.verticalSpace,
-                            AppTextButton.black(
-                              title: LocaleKeys.back.tr(),
-                              onPressed: () {
-                                context.pop();
-                              },
-                            ),
-                          ],
+                        child: Form(
+                          key: cubit.loginFormKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              40.verticalSpace,
+                              Row(
+                                children: [
+                                  Text(
+                                    LocaleKeys.loginTitle.tr(),
+                                    style: textTheme.bodyMedium,
+                                  ),
+                                ],
+                              ),
+                              if (context.isUser) 40.verticalSpace else 60.verticalSpace,
+                              AppPhoneTextField(
+                                controller: cubit.phoneController,
+                              ),
+                              40.verticalSpace,
+                              BlocBuilder<AuthCubit, AuthState>(
+                                builder: (context, state) {
+                                  return AppElevatedButton(
+                                    title: LocaleKeys.loginAction.tr(),
+                                    isLoading: state.isLoading,
+                                    onPressed: state.isLoading ? null : () => cubit.sendOtp(),
+                                  );
+                                },
+                              ),
+                              8.verticalSpace,
+                              AppTextButton.black(
+                                title: LocaleKeys.back.tr(),
+                                onPressed: () {
+                                  context.pop();
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:greenhub/core/extensions/context_extensions.dart';
-import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
-import 'package:greenhub/core/widgets/success_bottom_sheet.dart';
+import 'package:greenhub/features/auth/presentation/cubit/auth_cubit.dart';
 
 class RegisterActionButton extends StatelessWidget {
   final bool isUser;
@@ -17,25 +16,17 @@ class RegisterActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AuthCubit>();
+
     return Column(
       children: [
-        AppElevatedButton(
-          title: isUser ? LocaleKeys.saveData.tr() : LocaleKeys.next.tr(),
-          onPressed: () async {
-            if (isUser) {
-              context.pushNamedAndRemoveUntil(
-                AppRoutes.navigationView,
-              );
-            } else {
-              await SuccessBottomSheet.show(
-                context,
-                title: LocaleKeys.registerSuccessfully.tr(),
-                subTitle: LocaleKeys.registerSuccessfullyDescription.tr(),
-              );
-              context.pushNamedAndRemoveUntil(
-                AppRoutes.navigationView,
-              );
-            }
+        BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            return AppElevatedButton(
+              title: isUser ? LocaleKeys.saveData.tr() : LocaleKeys.next.tr(),
+              isLoading: state.isLoading,
+              onPressed: state.isLoading ? null : () => cubit.sendOtp(),
+            );
           },
         ),
         24.verticalSpace,

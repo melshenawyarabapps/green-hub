@@ -23,10 +23,10 @@ class PinInputField extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Pinput(
-          length: 4,
+          length: 6,
           controller: controller,
           mainAxisAlignment: MainAxisAlignment.center,
-          separatorBuilder: (_) => 16.horizontalSpace,
+          separatorBuilder: (_) => 8.horizontalSpace,
           keyboardType: TextInputType.number,
           onCompleted: onCompleted,
           defaultPinTheme: PinTheme(
@@ -34,8 +34,8 @@ class PinInputField extends StatelessWidget {
               color: AppLightColors.primaryColor,
               fontSize: FontSizes.s24,
             ),
-            height: 56.h,
-            width: 56.w,
+            height: 50.h,
+            width: 45.w,
             decoration: BoxDecoration(
               borderRadius: AppRadius.all(AppRadius.r12),
               color: AppLightColors.greyColor2,
@@ -48,8 +48,8 @@ class PinInputField extends StatelessWidget {
               color: AppLightColors.primaryColor,
               fontSize: FontSizes.s24,
             ),
-            height: 56.h,
-            width: 56.w,
+            height: 50.h,
+            width: 45.w,
             decoration: BoxDecoration(
               borderRadius: AppRadius.all(AppRadius.r12),
               color: AppLightColors.primaryColor12,
