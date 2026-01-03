@@ -199,6 +199,8 @@ class CodegenLoader extends AssetLoader {
     "floorNumber": "رقم الدور",
     "nearLandMark": "مكان قريب مميز",
     "save": "حفظ",
+    "addressSavedSuccessfully" : "تمّ حفظ العنوان بنجاح! 🎉",
+    "addressSavedSuccessfullyDescription" : "تم حفظ عنوانك بنجاح، يمكنك استخدامه الآن",
   };
 
   static const Map<String, dynamic> moreAr = {};

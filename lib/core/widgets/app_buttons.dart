@@ -69,11 +69,12 @@ class AppSwitchButton extends StatelessWidget {
 }
 
 class AppElevatedButton extends StatelessWidget {
-  const AppElevatedButton({super.key, required this.title, this.onPressed, this.color});
+  const AppElevatedButton({super.key, required this.title, this.onPressed, this.color, this.textColor});
 
   final String title;
   final VoidCallback? onPressed;
   final Color? color;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +83,7 @@ class AppElevatedButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
       ),
-      child: Text(title),
+      child: Text(title, style: TextStyle(color: textColor)),
     );
   }
 }

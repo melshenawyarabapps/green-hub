@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -75,10 +73,16 @@ class ServiceItemWidget extends StatelessWidget {
           const SizedBox(height: 12),
           AppElevatedButton(
             onPressed: () {
-              log('${LocaleKeys.createOrdinaryOrder.tr()} pressed');
+              if (onPressed != null) {
+                onPressed!();
+              }
             },
             title: LocaleKeys.createOrdinaryOrder.tr(),
             color: buttonColor,
+            textColor:
+                buttonColor == context.theme.secondaryHeaderColor
+                    ? AppLightColors.blackColor
+                    : null,
           ),
         ],
       ),

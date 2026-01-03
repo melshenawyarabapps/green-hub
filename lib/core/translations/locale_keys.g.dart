@@ -182,4 +182,6 @@ abstract class LocaleKeys {
   static const String floorNumber = 'floorNumber';
   static const String nearLandMark = 'nearLandMark';
   static const String save = 'save';
+  static const String addressSavedSuccessfully = 'addressSavedSuccessfully';
+  static const String addressSavedSuccessfullyDescription = 'addressSavedSuccessfullyDescription';
 }

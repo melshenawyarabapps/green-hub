@@ -51,9 +51,9 @@ class _NavigationViewState extends State<NavigationView> {
       extendBody: true,
       floatingActionButton: NotchWidget(
         onTap: () {
-          setState(() {
-            currentIndex = 2;
-          });
+          // setState(() {
+          //   currentIndex = 2;
+          // });
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

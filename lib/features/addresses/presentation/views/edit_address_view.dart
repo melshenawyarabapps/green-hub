@@ -8,6 +8,7 @@ import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/app_text_form_field.dart';
 import 'package:greenhub/core/widgets/default_page_layout.dart';
+import 'package:greenhub/core/widgets/success_bottom_sheet.dart';
 import 'package:greenhub/features/addresses/data/models/address_model.dart';
 import 'package:greenhub/features/addresses/presentation/cubit/address_cubit.dart';
 import 'package:greenhub/features/addresses/presentation/cubit/address_state.dart';
@@ -102,7 +103,14 @@ class _EditAddressViewState extends State<EditAddressView> {
     return BlocListener<AddressCubit, AddressState>(
       listener: (context, state) {
         if (state.status == AddressStatus.success) {
-          Navigator.pop(context);
+          // Navigator.pop(context);
+          SuccessBottomSheet.show(
+            context,
+            title: LocaleKeys.addressSavedSuccessfully.tr(),
+            subTitle: LocaleKeys.addressSavedSuccessfullyDescription.tr(),
+          ).whenComplete(() {
+            Navigator.pop(context);
+          });
         } else if (state.status == AddressStatus.failure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage ?? 'Error saving address')),

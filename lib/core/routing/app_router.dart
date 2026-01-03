@@ -58,23 +58,42 @@ abstract class AppRouter {
       case AppRoutes.availableVehiclesView:
         return MaterialPageRoute(builder: (_) => const AvailableVehiclesView());
       case AppRoutes.addressesView:
-        return MaterialPageRoute(builder: (_) => BlocProvider(
-            create: (_) => getIt.get<AddressCubit>()..fetchAddresses(),
-            child: const AddressesView()));
-      case AppRoutes.editAddressView:
         return MaterialPageRoute(
           builder:
-              (_) => const EditAddressView(
-                model: AddressModel(
-                  id: 0,
-                  addressName: 'منزلي',
-                  governorateName: ' الرياض',
-                  cityName: ' الرياض',
-                  districtName: ' الرياض',
-                  streetName: 'ش الايمان ',
-                  buildingNumber: '5',
-                  floorNumber: '4',
-                  landMark: 'بجانب مسجد الهدى',
+              (_) => BlocProvider(
+                create: (_) => getIt.get<AddressCubit>()..fetchAddresses(),
+                child: const AddressesView(),
+              ),
+        );
+      case AppRoutes.addAddressView:
+        final params = settings.arguments as Map<String, dynamic>?;
+        final addressCubit =
+            params != null && params.containsKey('addressCubit')
+                ? params['addressCubit'] as AddressCubit
+                : null;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: addressCubit ?? getIt.get<AddressCubit>(),
+                child: const EditAddressView(),
+              ),
+        );
+      case AppRoutes.editAddressView:
+        final params = settings.arguments as Map<String, dynamic>?;
+        final addressCubit =
+            params != null && params.containsKey('addressCubit')
+                ? params['addressCubit'] as AddressCubit
+                : null;
+        final addressModel =
+            params != null && params.containsKey('addressModel')
+                ? params['addressModel'] as AddressModel
+                : null;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: addressCubit ?? getIt.get<AddressCubit>(),
+                child: EditAddressView(
+                  model: addressModel,
                 ),
               ),
         );

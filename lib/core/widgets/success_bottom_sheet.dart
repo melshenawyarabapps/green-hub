@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,7 +23,7 @@ class SuccessBottomSheet extends StatelessWidget {
     bool isDismissible = true,
     required String title,
     String? subTitle,
-  })async {
+  }) async {
     await showModalBottomSheet(
       context: context,
       enableDrag: enableDrag,
@@ -62,7 +60,7 @@ class SuccessBottomSheet extends StatelessWidget {
           if (subTitle != null) ...[
             24.verticalSpace,
             Text(
-             subTitle!,
+              subTitle!,
               style: textTheme.displayMedium,
               textAlign: TextAlign.center,
             ),

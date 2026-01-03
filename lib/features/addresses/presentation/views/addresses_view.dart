@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
+import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/default_page_layout.dart';
 import 'package:greenhub/features/addresses/data/repos/address_repository.dart';
 import 'package:greenhub/features/addresses/presentation/cubit/address_cubit.dart';
 import 'package:greenhub/features/addresses/presentation/cubit/address_state.dart';
-
-import 'edit_address_view.dart';
 import 'widgets/address_item_widget.dart';
 
 class AddressesView extends StatelessWidget {
@@ -46,15 +45,11 @@ class _AddressesViewBody extends StatelessWidget {
               if (index == state.addresses.length) {
                 return ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder:
-                            (_) => BlocProvider.value(
-                              value: context.read<AddressCubit>(),
-                              child: const EditAddressView(),
-                            ),
-                      ),
+                    context.pushNamed(
+                      AppRoutes.addAddressView,
+                      arguments: {
+                        'addressCubit': context.read<AddressCubit>(),
+                      },
                     );
                   },
                   child: Row(
@@ -80,15 +75,12 @@ class _AddressesViewBody extends StatelessWidget {
               return AddressItemWidget(
                 model: address,
                 onEdit: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder:
-                          (_) => BlocProvider.value(
-                            value: context.read<AddressCubit>(),
-                            child: EditAddressView(model: address),
-                          ),
-                    ),
+                  context.pushNamed(
+                    AppRoutes.editAddressView,
+                    arguments: {
+                      'addressCubit': context.read<AddressCubit>(),
+                      'addressModel': address,
+                    },
                   );
                 },
                 onDelete: () {

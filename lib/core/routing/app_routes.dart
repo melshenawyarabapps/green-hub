@@ -14,4 +14,5 @@ abstract class AppRoutes {
   static const String availableVehiclesView = '/availableVehiclesView';
   static const String addressesView = '/addressesView';
   static const String editAddressView = '/editAddressesView';
+  static const String addAddressView = '/addAddressesView';
 }
