@@ -34,11 +34,13 @@ class Assets {
   static const String svgsArrowDown = 'assets/svgs/arrow-down.svg';
   static const String svgsArrowEnd = 'assets/svgs/arrowEnd.svg';
   static const String svgsBack = 'assets/svgs/back.svg';
+  static const String svgsBox = 'assets/svgs/box.svg';
   static const String svgsCalendar = 'assets/svgs/calendar.svg';
   static const String svgsCars = 'assets/svgs/cars.png';
   static const String svgsChatIc = 'assets/svgs/chat_ic.svg';
   static const String svgsClock = 'assets/svgs/clock.svg';
   static const String svgsCode = 'assets/svgs/code.svg';
+  static const String svgsCoins = 'assets/svgs/coins.svg';
   static const String svgsCoupon = 'assets/svgs/coupon.svg';
   static const String svgsDeleteIc = 'assets/svgs/delete_ic.svg';
   static const String svgsDocumentUpload = 'assets/svgs/document-upload.svg';
@@ -61,6 +63,7 @@ class Assets {
   static const String svgsMore = 'assets/svgs/more.svg';
   static const String svgsNotification = 'assets/svgs/notification.svg';
   static const String svgsOffers = 'assets/svgs/offers.svg';
+  static const String svgsOrderPackageIc = 'assets/svgs/order_package_ic.svg';
   static const String svgsOrders = 'assets/svgs/orders.svg';
   static const String svgsOutlineStar = 'assets/svgs/outline_star.svg';
   static const String svgsPackage = 'assets/svgs/package.svg';
@@ -78,6 +81,7 @@ class Assets {
   static const String svgsSuccess = 'assets/svgs/success.svg';
   static const String svgsSupport = 'assets/svgs/support.svg';
   static const String svgsSvgLogo = 'assets/svgs/svgLogo.svg';
+  static const String svgsVechileIc = 'assets/svgs/vechile_ic.svg';
   static const String svgsWallet = 'assets/svgs/wallet.svg';
   static const String svgsWhiteLogo = 'assets/svgs/whiteLogo.svg';
 

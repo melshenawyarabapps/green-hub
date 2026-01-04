@@ -10,6 +10,7 @@ import 'package:greenhub/core/widgets/custom_range_selector_widget.dart';
 import 'package:greenhub/core/widgets/custom_svg_builder.dart';
 import 'package:greenhub/core/widgets/notch_widget.dart';
 import 'package:greenhub/features/orders/presentation/views/widgets/create_order_widgets/custom_drop_down_menu.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/custom_divider.dart';
 import 'package:greenhub/generated/assets.dart';
 
 class FilterDeliveriesBottomSheet extends StatelessWidget {
@@ -35,15 +36,7 @@ class FilterDeliveriesBottomSheet extends StatelessWidget {
         children: [
           const NotchWidget(),
           const _FilterHeader(),
-          Padding(
-            padding: AppPadding.hvPadding(
-              vertical: 28,
-            ),
-            child: const Divider(
-              height: 0.5,
-              color: Color(0xffE1E9EF),
-            ),
-          ),
+          const CustomDivider(),
           const _FilterByPrice(),
           28.verticalSpace,
           const _FilterWithRate(),

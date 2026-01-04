@@ -246,8 +246,8 @@ class CodegenLoader extends AssetLoader {
         "الآن، اختر السائق الذي يناسبك من العروض المتاحة.",
 
     "writeAdditionalNotesHere": "اكتب ملاحظات إضافية هنا",
-    "classification" : "التصنيف",
-    "distance" : "المسافة",
+    "classification": "التصنيف",
+    "distance": "المسافة",
     "deliveryRating": "تقييم الناقل",
 
     "paymentDetails": "تفاصيل الدفع",
@@ -256,15 +256,28 @@ class CodegenLoader extends AssetLoader {
     "totalPrice": "المبلغ الإجمالي",
     "paymentWay": "طريقة الدفع",
     "activation": "تفعيل",
-    "byClickingOnPaymentYouAgreeToTheTermsAndConditions": "بالضغط على الدفع أنت توافق على الشروط والأحكام",
+    "byClickingOnPaymentYouAgreeToTheTermsAndConditions":
+        "بالضغط على الدفع أنت توافق على الشروط والأحكام",
     "confirmPayment": "تأكيد الدفع",
     "cancelTheOrder": "إلغاء الطلب",
-    "change" : "تغيير",
-    "discountCoupon" : "كوبون الخصم",
-    "theAmountIsReservedAndWillBeReleasedAfterTheApplicationIsCompleted" : "المبلغ محجوز وسيتم تحريره بعد إكمال الطلب",
-    "paymentSuccessful" : "تم الدفع بنجاح! ✅",
-    "followTheOrder" : "متابعة الطلب",
-
+    "change": "تغيير",
+    "discountCoupon": "كوبون الخصم",
+    "theAmountIsReservedAndWillBeReleasedAfterTheApplicationIsCompleted":
+        "المبلغ محجوز وسيتم تحريره بعد إكمال الطلب",
+    "paymentSuccessful": "تم الدفع بنجاح! ✅",
+    "followTheOrder": "متابعة الطلب",
+    "myOrders": "طلباتي",
+    "scheduled": "مجدولة",
+    "transferInProgress": "جاري النقل",
+    "precedent": "سابقة",
+    "processing": "قيد المعالجة",
+    "delivered": "تم التسليم",
+    "cancelled": "ملغاة",
+    "pending": "قيد الانتظار",
+    "noOrders": "لا توجد طلبات",
+    'youHaveNoOrders': "ليس لديك طلبات في الوقت الحالي. يرجى التحقق مرة أخرى لاحقًا.",
+    "orderNumber": "رقم الطلب",
+    "minutes" : "دقائق",
   };
 
   static const Map<String, dynamic> moreAr = {};

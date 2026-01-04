@@ -76,6 +76,7 @@ class AppElevatedButton extends StatelessWidget {
     this.color,
     this.textColor,
     this.isLoading = false,
+    this.textSize = 14,
   });
 
   final String title;
@@ -83,6 +84,7 @@ class AppElevatedButton extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   final bool isLoading;
+  final double textSize;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +102,7 @@ class AppElevatedButton extends StatelessWidget {
                 color: Colors.white,
               ),
             )
-          : Text(title, style: TextStyle(color: textColor)),
+          : Text(title, style: TextStyle(color: textColor, fontSize: textSize)),
     );
   }
 }

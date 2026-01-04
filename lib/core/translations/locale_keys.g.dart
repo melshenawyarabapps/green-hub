@@ -263,4 +263,21 @@ abstract class LocaleKeys {
       'theAmountIsReservedAndWillBeReleasedAfterTheApplicationIsCompleted';
 
   static const String followTheOrder = 'followTheOrder';
+
+  static const String myOrders = 'myOrders';
+
+  static const String precedent = 'precedent';
+  static const String transferInProgress = 'transferInProgress';
+  static const String scheduled = 'scheduled';
+
+  static const String processing = 'processing';
+  static const String delivered = 'delivered';
+  static const String cancelled = 'cancelled';
+  static const String pending = 'pending';
+
+  static const String noOrders = 'noOrders';
+  static const String youHaveNoOrders = 'youHaveNoOrders';
+
+  static const String orderNumber = 'orderNumber';
+  static const String minutes = 'minutes';
 }
