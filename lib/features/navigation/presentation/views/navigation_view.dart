@@ -7,7 +7,7 @@ import 'package:greenhub/core/config/app_config.dart';
 import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/features/home/presentation/views/user_home_view.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/select_order_type_bottom_sheet.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/select_order_type_bottom_sheet.dart';
 import 'package:greenhub/features/more/presentation/views/more_view.dart';
 import 'package:greenhub/features/navigation/presentation/views/widgets/navigation_bar_widget.dart';
 import 'package:greenhub/features/navigation/presentation/views/widgets/notch_widget.dart';

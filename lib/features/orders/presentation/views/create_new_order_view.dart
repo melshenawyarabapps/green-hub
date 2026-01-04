@@ -7,10 +7,10 @@ import 'package:greenhub/core/utils/app_colors.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/default_page_layout.dart';
 import 'package:greenhub/core/widgets/success_bottom_sheet.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/create_order_widgets/create_new_order_body.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/create_order_widgets/create_order_stepper_widget.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/deliveries_list_widget/deliveries_list_body.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/payment_widget/confirm_payment_body.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/create_order_widgets/create_new_order_body.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/create_order_widgets/create_order_stepper_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/deliveries_list_widget/deliveries_list_body.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/payment_widget/confirm_payment_body.dart';
 
 class CreateNewOrderView extends StatefulWidget {
   const CreateNewOrderView({super.key});

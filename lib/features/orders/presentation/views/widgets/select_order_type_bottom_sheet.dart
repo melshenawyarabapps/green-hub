@@ -9,7 +9,7 @@ import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/utils/font_sizes.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/notch_widget.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/select_order_type_bottom_sheet_widgets/order_type_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/select_order_type_bottom_sheet_widgets/order_type_widget.dart';
 import 'package:greenhub/generated/assets.dart';
 
 class SelectOrderTypeBottomSheet extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/deliveries_list_widget/available_delivery_offer_item_widget.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/deliveries_list_widget/deliveries_list_count_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/deliveries_list_widget/available_delivery_offer_item_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/deliveries_list_widget/deliveries_list_count_widget.dart';
 
 class DeliveriesListBody extends StatelessWidget {
   const DeliveriesListBody({super.key});

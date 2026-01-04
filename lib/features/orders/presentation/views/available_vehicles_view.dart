@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/default_page_layout.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/available_vehicles_widgets/available_vehicle_item_widget.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/available_vehicles_widgets/delivery_info_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/available_vehicles_widgets/available_vehicle_item_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/available_vehicles_widgets/delivery_info_widget.dart';
 
 import '../../../../generated/assets.dart';
 

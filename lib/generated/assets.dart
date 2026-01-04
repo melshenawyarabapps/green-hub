@@ -19,6 +19,7 @@ class Assets {
   static const String imagesDeliveryScooter = 'assets/images/delivery_scooter.png';
   static const String imagesDeliveryTruck = 'assets/images/delivery_truck.png';
   static const String imagesEmptyNotificationList = 'assets/images/empty_notification_list.png';
+  static const String imagesEmptyOrdersImg = 'assets/images/empty_orders_img.png';
   static const String imagesHomeAppBarBackground = 'assets/images/home_app_bar_background.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesMockBanner = 'assets/images/mock_banner.png';

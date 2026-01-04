@@ -6,7 +6,7 @@ import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_colors.dart';
 import 'package:greenhub/core/utils/show_bottom_sheet_manager.dart';
 import 'package:greenhub/core/widgets/custom_svg_builder.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/deliveries_list_widget/filter_deliveries_bottom_sheet.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/deliveries_list_widget/filter_deliveries_bottom_sheet.dart';
 import 'package:greenhub/generated/assets.dart';
 
 class DeliveriesListCountWidget extends StatelessWidget {

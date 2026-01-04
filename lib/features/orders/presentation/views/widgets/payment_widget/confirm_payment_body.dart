@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/payment_widget/add_coupon_widget.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/payment_widget/confirmation_widget.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/payment_widget/payment_details_widget.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/payment_widget/payment_wayes_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/payment_widget/add_coupon_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/payment_widget/confirmation_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/payment_widget/payment_details_widget.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/payment_widget/payment_wayes_widget.dart';
 import '../create_order_widgets/create_order_container.dart';
 
 class ConfirmPaymentBody extends StatelessWidget {

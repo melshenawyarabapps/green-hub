@@ -15,8 +15,8 @@ import 'package:greenhub/features/auth/presentation/views/verification_view.dart
 import 'package:greenhub/features/before_auth/presentation/views/before_auth_view.dart';
 import 'package:greenhub/features/boarding/presentation/cubit/boarding_cubit.dart';
 import 'package:greenhub/features/boarding/presentation/views/boarding_view.dart';
-import 'package:greenhub/features/make_order/presentation/views/available_vehicles_view.dart';
-import 'package:greenhub/features/make_order/presentation/views/create_new_order_view.dart';
+import 'package:greenhub/features/orders/presentation/views/available_vehicles_view.dart';
+import 'package:greenhub/features/orders/presentation/views/create_new_order_view.dart';
 import 'package:greenhub/features/navigation/presentation/views/navigation_view.dart';
 import 'package:greenhub/features/more/presentation/views/more_view.dart';
 import 'package:greenhub/features/notifications/presentation/views/notification_view.dart';

@@ -7,7 +7,7 @@ import 'package:greenhub/core/utils/app_colors.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/core/widgets/app_phone_text_field.dart';
 import 'package:greenhub/core/widgets/app_text_form_field.dart';
-import 'package:greenhub/features/make_order/presentation/views/widgets/create_order_widgets/custom_drop_down_menu.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/create_order_widgets/custom_drop_down_menu.dart';
 
 class ShipmentDetailsWidget extends StatelessWidget {
   const ShipmentDetailsWidget({super.key});
