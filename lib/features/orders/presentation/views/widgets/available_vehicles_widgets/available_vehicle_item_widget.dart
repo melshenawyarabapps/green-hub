@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/available_vehicles_widgets/custom_vechile_size_widget.dart';
 
 class AvailableVehicleItemWidget extends StatelessWidget {
   const AvailableVehicleItemWidget({
@@ -69,28 +70,9 @@ class AvailableVehicleItemWidget extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                Container(
-                  padding: AppPadding.hvPadding(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: fontColor.withValues(
-                      alpha: 0.2,
-                    ),
-                    borderRadius: BorderRadius.circular(32),
-                    border: Border.all(
-                      color: fontColor,
-                      width: 0.5,
-                    ),
-                  ),
-                  child: Text(
-                    size,
-                    style: context.textTheme.labelMedium!.copyWith(
-                      color: fontColor,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                CustomVechileSizeWidget(
+                  size: size,
+                  fontColor: fontColor,
                 ),
               ],
             ),

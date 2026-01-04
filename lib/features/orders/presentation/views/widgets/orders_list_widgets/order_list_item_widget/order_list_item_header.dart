@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
+import 'package:greenhub/features/home/presentation/views/widgets/package_icon_widget.dart';
 import 'package:greenhub/features/orders/data/enums/order_states_enum.dart';
+import 'package:greenhub/features/orders/presentation/views/widgets/orders_list_widgets/order_list_item_widget/order_number_widget.dart';
 import 'package:greenhub/generated/assets.dart';
 import 'package:greenhub/core/utils/app_colors.dart';
 import 'package:greenhub/core/widgets/custom_svg_builder.dart';
@@ -17,34 +19,9 @@ class OrderListItemHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(
-          radius: 18,
-          backgroundColor: AppLightColors.greyColor2,
-          child: const CustomSvgBuilder(
-            path: Assets.svgsOrderPackageIc,
-            width: 16,
-            height: 16,
-          ),
-        ),
+        const PackageIconWidget(),
         8.horizontalSpace,
-        Row(
-          children: [
-            Text(
-              '${LocaleKeys.orderNumber.tr()}: ',
-              style: context.textTheme.labelSmall?.copyWith(
-                color: AppLightColors.greyColor,
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              '#SH1234',
-              style: context.primaryTextTheme.titleMedium?.copyWith(
-                color: AppLightColors.primaryColor,
-              ),
-            ),
-          ],
-        ),
+        const OrderNumberWidget(),
         const Spacer(),
         Container(
           padding: EdgeInsets.symmetric(

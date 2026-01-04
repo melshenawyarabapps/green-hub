@@ -7,6 +7,7 @@ import 'package:greenhub/core/utils/app_padding.dart';
 import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_buttons_widget.dart';
 import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_driver_action_widget.dart';
 import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/app_bar_user_action_widget.dart';
+import 'package:greenhub/features/home/presentation/views/widgets/app_bar_widgets/state_toggle_widget.dart';
 import 'package:greenhub/generated/assets.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -43,14 +44,28 @@ class HomeAppBar extends StatelessWidget {
             isUser: isUser,
           ),
           20.verticalSpace,
-          Text(
-            isUser ? LocaleKeys.userAppBarTitle.tr() : LocaleKeys.deliveryAppBarTitle.tr(),
-            style: textTheme.headlineMedium,
-          ),
-          12.verticalSpace,
-          Text(
-            isUser ? LocaleKeys.userAppBarSubTitle.tr() : LocaleKeys.deliveryAppBarSubTitle.tr(),
-            style: textTheme.titleSmall,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    isUser ? LocaleKeys.userAppBarTitle.tr() : LocaleKeys.deliveryAppBarTitle.tr(),
+                    style: textTheme.headlineMedium,
+                  ),
+                  8.verticalSpace,
+                  Text(
+                    isUser
+                        ? LocaleKeys.userAppBarSubTitle.tr()
+                        : LocaleKeys.deliveryAppBarSubTitle.tr(),
+                    style: textTheme.titleSmall,
+                  ),
+                ],
+              ),
+              const Spacer(),
+              if (!isUser) const StateToggleWidget(),
+            ],
           ),
           const Spacer(),
           if (isUser) const AppBarUserActionWidget() else const AppBarDriverActionWidget(),

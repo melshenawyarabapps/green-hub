@@ -280,4 +280,13 @@ abstract class LocaleKeys {
 
   static const String orderNumber = 'orderNumber';
   static const String minutes = 'minutes';
+
+  static const String yourWallet = 'yourWallet';
+
+  static const String totalCurrentBalance = 'totalCurrentBalance';
+
+  static const String newOrders = 'newOrders';
+
+  static const String seeAll = 'seeAll';
+  static const String sendAPriceQuote = 'sendAPriceQuote';
 }

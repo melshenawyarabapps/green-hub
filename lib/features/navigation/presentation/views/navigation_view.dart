@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:greenhub/core/config/app_config.dart';
 import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
+import 'package:greenhub/features/home/presentation/views/delivery_home_view.dart';
 import 'package:greenhub/features/home/presentation/views/user_home_view.dart';
 import 'package:greenhub/features/orders/presentation/views/orders_list_view.dart';
 import 'package:greenhub/features/orders/presentation/views/widgets/select_order_type_bottom_sheet.dart';
@@ -37,14 +38,14 @@ class _NavigationViewState extends State<NavigationView> {
       ];
     } else {
       _pages = [
-        _PlaceholderPage(title: LocaleKeys.home.tr()),
+        const DeliveryHomeView(),
         _PlaceholderPage(title: LocaleKeys.offers.tr()),
         _PlaceholderPage(title: LocaleKeys.createOrder.tr()),
         _PlaceholderPage(title: LocaleKeys.orders.tr()),
         const MoreView(),
       ];
     }
-    currentIndex = 3;
+    currentIndex = 0;
     super.initState();
   }
 

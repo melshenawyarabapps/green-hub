@@ -57,7 +57,6 @@ class AppSwitchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final decorations = Theme.of(context).extension<AppDecorations>();
     return Transform.scale(
       scale: 0.5,
       child: Switch(
@@ -90,19 +89,21 @@ class AppElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: isLoading ? null : onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-      ),
-      child: isLoading
-          ? SizedBox(
-              height: 20.h,
-              width: 20.h,
-              child: const CircularProgressIndicator(
-                strokeWidth: 2,
-                color: Colors.white,
+      style: ElevatedButton.styleFrom(backgroundColor: color, padding: EdgeInsets.zero),
+      child:
+          isLoading
+              ? SizedBox(
+                height: 20.h,
+                width: 20.h,
+                child: const CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: Colors.white,
+                ),
+              )
+              : Text(
+                title,
+                style: TextStyle(color: textColor, fontSize: textSize, fontWeight: FontWeight.w600),
               ),
-            )
-          : Text(title, style: TextStyle(color: textColor, fontSize: textSize)),
     );
   }
 }

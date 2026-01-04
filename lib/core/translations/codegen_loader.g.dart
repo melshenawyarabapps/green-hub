@@ -277,7 +277,12 @@ class CodegenLoader extends AssetLoader {
     "noOrders": "لا توجد طلبات",
     'youHaveNoOrders': "ليس لديك طلبات في الوقت الحالي. يرجى التحقق مرة أخرى لاحقًا.",
     "orderNumber": "رقم الطلب",
-    "minutes" : "دقائق",
+    "minutes": "دقائق",
+    "yourWallet": "محفظتك",
+    "totalCurrentBalance": "إجمالى رصيدك الحالي",
+    "newOrders": "الطلبات الجديدة 📦",
+    "seeAll": "رؤية الكل",
+    "sendAPriceQuote" : "إرسال عرض سعر",
   };
 
   static const Map<String, dynamic> moreAr = {};

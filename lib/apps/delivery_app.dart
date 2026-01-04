@@ -36,7 +36,7 @@ class DeliveryApp extends StatelessWidget {
               darkTheme: AppTheme.darkTheme,
               themeMode: ThemeMode.light,
               onGenerateRoute: AppRouter.onGenerateRoute,
-              initialRoute: AppRoutes.splashView,
+              initialRoute: AppRoutes.navigationView,
             ),
           ),
     );
