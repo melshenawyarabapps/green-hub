@@ -34,4 +34,3 @@ class RegisterActionButton extends StatelessWidget {
     );
   }
 }
-

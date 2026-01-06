@@ -1,6 +1,4 @@
-
 abstract class EndPoints {
-
   static const String baseUrl = 'https://greenhub.sa-fvs.com/api/v1';
 
   // Driver Auth endpoints

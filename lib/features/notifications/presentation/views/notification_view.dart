@@ -21,31 +21,57 @@ class NotificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isUser = context.isUser;
     return BlocProvider(
       create:
           (_) =>
               NotificationCubit()..loadNotifications([
                 NotificationModel(
                   isRead: false,
-                  iconPath: Assets.iconsConfirmedNotification,
-                  title: 'تم تأكيد طلبك ✅',
-                  body: 'السائق في طريقه لاستلام الشحنة.',
+                  iconPath: !isUser ? Assets.iconsRemmeber : Assets.iconsConfirmedNotification,
+                  title: !isUser ? 'لم يتم تحديث حالة الطلب #122 حتى الآن.' : 'تم تأكيد طلبك ✅',
+                  body:
+                      !isUser
+                          ? 'يرجى تحديد الحالة الحالية لتجنب التأخير'
+                          : 'السائق في طريقه لاستلام الشحنة.',
                   timeAgo: 'قبل 10 دقائق',
                   dateTime: DateTime.now(),
                 ),
                 NotificationModel(
-                  isRead: true,
-                  iconPath: Assets.iconsGiftNotification,
-                  body: 'احصل على خصم 20% عند استخدام InstaPay للدفع اليوم فقط!',
-                  title: 'عرض خاص لك! 🎉',
-                  timeAgo: 'من ساعة واحدة',
+                  isRead: false,
+                  iconPath: !isUser ? Assets.iconsRemmeber : Assets.iconsConfirmedNotification,
+                  title: !isUser ? 'لم يتم تحديث حالة الطلب #122 حتى الآن.' : 'تم تأكيد طلبك ✅',
+                  body:
+                      !isUser
+                          ? 'يرجى تحديد الحالة الحالية لتجنب التأخير'
+                          : 'السائق في طريقه لاستلام الشحنة.',
+                  timeAgo: 'قبل 10 دقائق',
                   dateTime: DateTime.now(),
                 ),
                 NotificationModel(
                   isRead: false,
                   iconPath: Assets.iconsSettingsNotification,
-                  body: 'احصل على خصم 20% عند استخدام InstaPay للدفع اليوم فقط!',
-                  title: 'عرض خاص لك! 🎉',
+                  body: 'تم تحديث معلومات حسابك بنجاح!',
+                  title: 'إذا لم تكن أنت من قام بهذا التحديث، يرجى مراجعة إعدادات الأمان فورًا.',
+                  timeAgo: 'من ساعة واحدة',
+                  dateTime: DateTime.now(),
+                ),
+                NotificationModel(
+                  isRead: false,
+                  iconPath: !isUser ? Assets.iconsRemmeber : Assets.iconsConfirmedNotification,
+                  title: !isUser ? 'لم يتم تحديث حالة الطلب #122 حتى الآن.' : 'تم تأكيد طلبك ✅',
+                  body:
+                      !isUser
+                          ? 'يرجى تحديد الحالة الحالية لتجنب التأخير'
+                          : 'السائق في طريقه لاستلام الشحنة.',
+                  timeAgo: 'قبل 10 دقائق',
+                  dateTime: DateTime.now(),
+                ),
+                NotificationModel(
+                  isRead: false,
+                  iconPath: Assets.iconsSettingsNotification,
+                  body: 'تم تحديث معلومات حسابك بنجاح!',
+                  title: 'إذا لم تكن أنت من قام بهذا التحديث، يرجى مراجعة إعدادات الأمان فورًا.',
                   timeAgo: 'من ساعة واحدة',
                   dateTime: DateTime.now(),
                 ),
@@ -55,32 +81,9 @@ class NotificationView extends StatelessWidget {
                   title: 'تم تأكيد طلبك ✅',
                   body: 'إذا لم تكن أنت من قام بهذا التحديث، يرجى مراجعة إعدادات الأمان فورًا.',
                   timeAgo: 'قبل 10 دقائق',
-                  dateTime: DateTime.now(),
-                ),
-                NotificationModel(
-                  isRead: false,
-                  iconPath: Assets.iconsGiftNotification,
-                  body: 'احصل على خصم 20% عند استخدام InstaPay للدفع اليوم فقط!',
-                  title: 'عرض خاص لك! 🎉',
-                  timeAgo: 'من ساعة واحدة',
-                  dateTime: DateTime.now().subtract(const Duration(days: 1)),
-                ),
-                NotificationModel(
-                  isRead: false,
-                  iconPath: Assets.iconsConfirmedNotification,
-                  title: 'تم تأكيد طلبك ✅',
-                  body: 'إذا لم تكن أنت من قام بهذا التحديث، يرجى مراجعة إعدادات الأمان فورًا.',
-                  timeAgo: 'قبل 10 دقائق',
                   dateTime: DateTime.now().subtract(const Duration(days: 2)),
                 ),
-                NotificationModel(
-                  isRead: false,
-                  iconPath: Assets.iconsGiftNotification,
-                  body: 'احصل على خصم 20% عند استخدام InstaPay للدفع اليوم فقط!',
-                  title: 'عرض خاص لك! 🎉',
-                  timeAgo: 'من ساعة واحدة',
-                  dateTime: DateTime.now().subtract(const Duration(days: 2)),
-                ),
+
                 NotificationModel(
                   isRead: false,
                   iconPath: Assets.iconsConfirmedNotification,

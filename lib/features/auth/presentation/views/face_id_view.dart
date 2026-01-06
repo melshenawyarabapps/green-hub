@@ -6,14 +6,13 @@ import 'package:greenhub/core/extensions/context_extensions.dart';
 import 'package:greenhub/core/extensions/string_extensions.dart';
 import 'package:greenhub/core/generated/assets.dart';
 import 'package:greenhub/core/routing/app_routes.dart';
-import 'package:greenhub/core/services/navigator/navigator_service.dart';
 import 'package:greenhub/core/themes/theme_extensions.dart';
 import 'package:greenhub/core/translations/locale_keys.g.dart';
 import 'package:greenhub/core/utils/app_padding.dart';
+import 'package:greenhub/core/utils/show_bottom_sheet_manager.dart';
 import 'package:greenhub/core/widgets/app_buttons.dart';
 import 'package:greenhub/core/widgets/app_gradient_widget.dart';
 import 'package:greenhub/core/widgets/app_text_form_field.dart';
-import 'package:greenhub/core/widgets/success_bottom_sheet.dart';
 import 'package:greenhub/features/auth/presentation/views/widgets/face_id_bottom_sheet.dart';
 
 class FaceIdView extends StatelessWidget {
@@ -79,14 +78,14 @@ class FaceIdView extends StatelessWidget {
                           ),
                           24.verticalSpace,
                           AppTextFormField(
-                            onTap: () async{
-                              await FaceIdBottomSheet.show(context);
-                              await SuccessBottomSheet.show(
-                                context,
-                                title: LocaleKeys.addedSuccessfully.tr(),
-                                subTitle:
-                                LocaleKeys.loginSuccessfullyDescriptionDelivery.tr(),
-                              );
+                            onTap: () async {
+                              await FaceIdBottomSheet.show(context).whenComplete(() {
+                                ShowBottomSheetManager.showSuccess(
+                                  context,
+                                  title: LocaleKeys.addedSuccessfully.tr(),
+                                  subTitle: LocaleKeys.loginSuccessfullyDescriptionDelivery.tr(),
+                                );
+                              });
                               context.pushNamedAndRemoveUntil(
                                 AppRoutes.navigationView,
                               );

@@ -7,6 +7,7 @@ class Assets {
   static const String iconsEn = 'assets/icons/en.png';
   static const String iconsGiftNotification = 'assets/icons/gift_notification.png';
   static const String iconsLogo = 'assets/icons/logo.png';
+  static const String iconsRemmeber = 'assets/icons/remmeber.png';
   static const String iconsSa = 'assets/icons/sa.png';
   static const String iconsSettingsNotification = 'assets/icons/settings_notification.png';
   static const String imagesAuth = 'assets/images/auth.png';
@@ -70,6 +71,7 @@ class Assets {
   static const String svgsPackage = 'assets/svgs/package.svg';
   static const String svgsProfile = 'assets/svgs/profile.svg';
   static const String svgsRate = 'assets/svgs/rate.png';
+  static const String svgsRemmeber = 'assets/svgs/remmeber.svg';
   static const String svgsSFaceId = 'assets/svgs/sFaceId.svg';
   static const String svgsSaudiRiyalSymbol = 'assets/svgs/saudi_riyal_symbol.svg';
   static const String svgsSearch = 'assets/svgs/search.svg';
